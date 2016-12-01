@@ -73,7 +73,7 @@
                 <tr>
                     <td><p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p></td>
                     <td style="width: 50px;"></td>
-                    <td> <p><asp:Button ID="btnGiris" runat="server" Text="Giriş Yap" OnClick="btnGiris_Click" /></p>   </td>
+                    <td> <p><asp:Button ID="btnGiris" runat="server" Text="Giriş Yapınız" OnClick="btnGiris_Click" /></p>   </td>
                 </tr>
             </table>
             
