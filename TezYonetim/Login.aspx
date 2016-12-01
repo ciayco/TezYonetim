@@ -1,86 +1,97 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" %>
 
+
 <!DOCTYPE html>
+<html lang="tr">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <style type="text/css">
-        body {
-            background-color: #f4f4f4;
-            color: #5a5656;
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            font-size: 16px;
-            line-height: 1.5em;
-        }
-        h1 { font-size: 1em; }
-        h1, p {
-            margin-bottom: 10px;
-            text-align:center;
-        }
-        h2{
-            font-size: 20px;
-            text-align: center;
-        }
-        strong {
-            font-weight: bold;
-        }
+<head>
 
-        #login {
-            margin: 10px auto;
-            width: 300px;
-        }
-        input[type="password"],input[type="text"]{
-            background-color: #e5e5e5;
-            border: none;
-            border-radius: 3px;
-            -moz-border-radius: 3px;
-            -webkit-border-radius: 3px;
-            color: #5a5656;
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            font-size: 14px;
-            height: 50px;
-            outline: none;
-            padding: 0px 10px;
-            width: 280px;
-            -webkit-appearance:none;
-        }
-        #btnGiris, #btnUyeOl {
-            background-color: #008dde;
-            border: none;
-            border-radius: 3px;
-            -moz-border-radius: 3px;
-            -webkit-border-radius: 3px;
-            color: #f4f4f4;
-            cursor: pointer;
-            font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-            height: 50px;
-            text-transform: uppercase;
-            width: 125px;
-            -webkit-appearance: none;
-        }
-    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin - Bootstrap Admin Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
-    <form id="form1" runat="server">
-        
-        <div id="login">
-            <h2>Üye Girişi</h2>
-            <h1><strong>Hoş Geldiniz.</strong> Giriş Yapınız...</h1>
-            <p><input name="username" type="text" value="Kullanıcı Adı" onblur="if(this.value=='')this.value='Kullanıcı Adı'" onfocus="if(this.value=='Kullanıcı Adı')this.value=''" /></p>
-            <p><input name="pass" type="password" value="Password" onblur="if(this.value=='')this.value='Password'" onfocus="if(this.value=='Password')this.value=''" /></p>
-            <table>
-                <tr>
-                    <td><p>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</p></td>
-                    <td style="width: 50px;"></td>
-                    <td> <p><asp:Button ID="btnGiris" runat="server" Text="Giriş" OnClick="btnGiris_Click" /></p>   </td>
-                </tr>
-            </table>
-            
-            
-            <p><asp:Label ID="Label1" runat="server" ForeColor="Red"></asp:Label></p>
+  <div class="container">    
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+            <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title">Sign In</div>
+                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body" >
+
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                            
+                        <form id="loginform" class="form-horizontal"  runat="server" >
+                                    
+                            <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">                                        
+                                    </div>
+                                
+                            <div style="margin-bottom: 25px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <input id="login-password" type="password" class="form-control" name="pass" placeholder="password">
+                                    </div>
+                                    
+
+                                
+                            <div class="input-group">
+                                      <div class="checkbox">
+                                        <label>
+
+                                          <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+                                        </label>
+                                      </div>
+                                    </div>
+
+
+                                <div style="margin-top:10px" class="form-group">
+                                    <!-- Button -->
+
+                                    <div class="col-sm-12 controls">
+                                        <asp:Button ID="btnGiris" runat="server" class="btn btn-success" Text="Giriş" OnClick="btnGiris_Click" />
+                                         <p><asp:Label ID="Label1" runat="server" ForeColor="Red"></asp:Label></p>
+                                  </div>
+                                </div>  
+                            </form>     
+
+
+
+                        </div>                     
+                    </div>  
         </div>
         
-    </form>
+    </div>
+
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
+
 </body>
+
 </html>
