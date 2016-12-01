@@ -17,23 +17,12 @@ public class DataBaglanti
         //
     }
 
-    public static string MSSqlConnectionString
-    {
-        get
-        {
-
-            string SqlServerName = ".\\sqlexpress";
-            string SqlServerDatabase = "TezDB";
-
-            return "Data Source=" + SqlServerName + ";Initial Catalog=" + SqlServerDatabase + ";Integrated Security=True";
-
-        }
-    }
+   
 
     public static DataTable QueryExecute(string Query_, SqlCommand MSSqlCommand_, bool IsStoredProcedure)
     {
         
-        SqlConnection con_ = new SqlConnection(MSSqlConnectionString);
+        SqlConnection con_ = new SqlConnection(DBLogin.MSSqlConnectionString);
         con_.Open();
         DataSet ds_ = new DataSet();
         if (IsStoredProcedure)
