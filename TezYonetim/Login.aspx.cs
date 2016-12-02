@@ -15,54 +15,27 @@ public partial class Login : System.Web.UI.Page
 
     protected void btnGiris_Click(object sender, EventArgs e)
     {
-        try
+        string username = Request["username"].Trim();
+        string pass = Request["pass"].Trim();
+
+        TezDBEntities db = new TezDBEntities();
+
+
+        var deneme = db.Ogrenci.FirstOrDefault(u => u.No == username && u.sifre == pass);
+        if (deneme != null)
         {
-            string username = Request["username"].Trim();
-            string pass = Request["pass"].Trim();
-            
-            DataTable dt_ = DataBaglanti.QueryExecute("SELECT * FROM Ogrenci WHERE No = '" + username + "' and sifre = '" + pass + "'");
-      
-            if (dt_ != null && dt_.Rows.Count > 0)
-            {
-                DataRow dr_ = dt_.Rows[0];
-                string s = dr_["Id"].ToString();
-                AppKontrol.CompanyID = Convert.ToInt32(s);
-                // bool.TryParse(dr_["UsrsIsAdmin"].ToString(), out AppKontrol.isOgrenci);
-                // if (!AppKontrol.isOgrenci) throw new Exception();
-                string d = dr_["derece"].ToString();
-                if (System.Convert.ToInt16(d) == 2)
-                {
-                    Response.Redirect(@"~/Admin.aspx");
-                }
-                else
-                {
-                    Response.Redirect(@"~/user.aspx");
-                }
+            string s = deneme.Id.ToString();
+            AppKontrol.CompanyID = Convert.ToInt32(s);
+           
+            Response.Redirect(@"~/user.aspx");
+        }
+        else
+        {
+            Label1.Text = "hatalı";
+        }
+                  
                 
-            }
-            /*admin kontrol admin değilse...
-           else
-           {
-
-               dt_ = DataBaglanti.QueryExecute("SELECT * FROM Ogrenci WHERE No = '" + username + "' and sifre = '" + pass + "'");
-               if (dt_ != null && dt_.Rows.Count > 0)
-               {
-                   DataRow dr_ = dt_.Rows[0];
-                   string s = dr_["Id"].ToString();
-                   AppKontrol.Id = Convert.ToInt32(s);
-                   AppKontrol.isOgrenci = true;
-                   Response.Redirect(@"~/Default.aspx");
-               }
-               else
-                   throw new Exception();
-           } */
-        }
-
-        catch (Exception ex)
-        {
-            Label1.Text = "HATALI GİRİŞ";
-        }
-       
+                
     }
 
 }
