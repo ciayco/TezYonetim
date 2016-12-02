@@ -16,7 +16,6 @@ public class DataBaglanti
         // TODO: Add constructor logic here
         //
     }
-
    
 
     public static DataTable QueryExecute(string Query_, SqlCommand MSSqlCommand_, bool IsStoredProcedure)
