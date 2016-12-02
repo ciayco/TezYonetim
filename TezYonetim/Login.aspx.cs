@@ -20,7 +20,7 @@ public partial class Login : System.Web.UI.Page
             string username = Request["username"].Trim();
             string pass = Request["pass"].Trim();
             DataTable dt_ = DataBaglanti.QueryExecute("SELECT * FROM Ogrenci WHERE No = '" + username + "' and sifre = '" + pass + "'");
-
+      
            
             if (dt_ != null && dt_.Rows.Count > 0)
             {
