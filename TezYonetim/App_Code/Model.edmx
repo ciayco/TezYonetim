@@ -10,10 +10,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
-          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
           <Property Name="No" Type="nvarchar" MaxLength="50" />
-          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="e-mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="bolum" Type="nvarchar" MaxLength="50" />
+          <Property Name="derece" Type="int" />
         </EntityType>
         <EntityContainer Name="TezDBModelStoreContainer">
           <EntitySet Name="Ogrenci" EntityType="Self.Ogrenci" Schema="dbo" store:Type="Tables" />
@@ -28,13 +30,15 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="e_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bolum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="derece" Type="Int32" />
         </EntityType>
         <EntityContainer Name="TezDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Ogrencis" EntityType="Self.Ogrenci" />
+          <EntitySet Name="Ogrenci" EntityType="Self.Ogrenci" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -42,14 +46,16 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TezDBModelStoreContainer" CdmEntityContainer="TezDBEntities">
-          <EntitySetMapping Name="Ogrencis">
+          <EntitySetMapping Name="Ogrenci">
             <EntityTypeMapping TypeName="TezDBModel.Ogrenci">
               <MappingFragment StoreEntitySet="Ogrenci">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Ad" ColumnName="Ad" />
-                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
                 <ScalarProperty Name="No" ColumnName="No" />
-                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="e_mail" ColumnName="e-mail" />
+                <ScalarProperty Name="bolum" ColumnName="bolum" />
+                <ScalarProperty Name="derece" ColumnName="derece" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -67,7 +73,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

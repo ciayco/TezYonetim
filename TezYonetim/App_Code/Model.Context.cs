@@ -23,5 +23,5 @@ public partial class TezDBEntities : DbContext
         throw new UnintentionalCodeFirstException();
     }
 
-    public virtual DbSet<Ogrenci> Ogrencis { get; set; }
+    public virtual DbSet<Ogrenci> Ogrenci { get; set; }
 }

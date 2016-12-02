@@ -13,8 +13,10 @@ using System.Collections.Generic;
 public partial class Ogrenci
 {
     public int Id { get; set; }
-    public string Ad { get; set; }
-    public string Soyad { get; set; }
     public string No { get; set; }
-    public string Sifre { get; set; }
+    public string sifre { get; set; }
+    public string name { get; set; }
+    public string e_mail { get; set; }
+    public string bolum { get; set; }
+    public Nullable<int> derece { get; set; }
 }

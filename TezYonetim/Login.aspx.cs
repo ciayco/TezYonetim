@@ -10,7 +10,7 @@ public partial class Login : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["Id"] != null)
-            Response.Redirect(@"~/Default.aspx");
+            Response.Redirect(@"~/user.aspx");
     }
 
     protected void btnGiris_Click(object sender, EventArgs e)
@@ -19,6 +19,7 @@ public partial class Login : System.Web.UI.Page
         {
             string username = Request["username"].Trim();
             string pass = Request["pass"].Trim();
+            
             DataTable dt_ = DataBaglanti.QueryExecute("SELECT * FROM Ogrenci WHERE No = '" + username + "' and sifre = '" + pass + "'");
       
             if (dt_ != null && dt_.Rows.Count > 0)
@@ -26,9 +27,18 @@ public partial class Login : System.Web.UI.Page
                 DataRow dr_ = dt_.Rows[0];
                 string s = dr_["Id"].ToString();
                 AppKontrol.CompanyID = Convert.ToInt32(s);
-               // bool.TryParse(dr_["UsrsIsAdmin"].ToString(), out AppKontrol.isOgrenci);
-               // if (!AppKontrol.isOgrenci) throw new Exception();
-                Response.Redirect(@"~/Default.aspx");
+                // bool.TryParse(dr_["UsrsIsAdmin"].ToString(), out AppKontrol.isOgrenci);
+                // if (!AppKontrol.isOgrenci) throw new Exception();
+                string d = dr_["derece"].ToString();
+                if (System.Convert.ToInt16(d) == 2)
+                {
+                    Response.Redirect(@"~/Admin.aspx");
+                }
+                else
+                {
+                    Response.Redirect(@"~/user.aspx");
+                }
+                
             }
             /*admin kontrol admin değilse...
            else
