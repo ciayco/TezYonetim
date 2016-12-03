@@ -19,10 +19,10 @@ public partial class SignUp : System.Web.UI.Page
         try
         {
             ogrenci.No = Request["No"].Trim();
-            ogrenci.name = Request["Name"].Trim();
-            ogrenci.sifre = Request["Sifre"].Trim();
-            ogrenci.e_mail = Request["E-mail"].Trim();
-            ogrenci.bolum = Request["Bolum"].Trim();
+            ogrenci.Ad = Request["Name"].Trim();
+            ogrenci.Sifre = Request["Sifre"].Trim();
+            ogrenci.Mail = Request["E-mail"].Trim();
+            ogrenci.Bolum = Request["Bolum"].Trim();
             db.Ogrenci.Add(ogrenci);
             db.SaveChanges();
 
