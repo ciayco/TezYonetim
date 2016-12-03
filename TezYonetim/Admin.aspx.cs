@@ -12,7 +12,7 @@ public partial class Admin : System.Web.UI.Page
         if (Session["Id"] != null)
         {
             
-            if ((int)Session["derece"] == 2)
+            if ((int)Session["derece"] == 2) //2 veritabanında öğrenci demek
             {
                 Response.Redirect(@"~/User.aspx");
             }

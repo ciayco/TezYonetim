@@ -23,14 +23,14 @@ public partial class Login : System.Web.UI.Page
         var deneme = db.Ogrenci.FirstOrDefault(u => u.No == username && u.sifre == pass);
         if (deneme != null)
         {
-            string s = deneme.derece.ToString();
-            AppKontrol.CompanyID = Convert.ToInt32(s);
-            Session["derece"] = deneme.derece; 
-           if (deneme.derece==2)
+            AppKontrol.CompanyID = (int)deneme.Id; //Id kontrolu           
+            AppKontrol.CompanyDerece = (int)deneme.derece;// derece kontrolü
+
+           if (deneme.derece==2) //öğrenci ise User page git
             {
                 Response.Redirect(@"~/User.aspx");
             }
-           if(deneme.derece==1)
+           if(deneme.derece==1)// admin/Hoca ise Admin page git
             {
                 Response.Redirect(@"~/Admin.aspx");
             }
