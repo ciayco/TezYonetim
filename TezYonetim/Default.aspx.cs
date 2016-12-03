@@ -9,7 +9,21 @@ public partial class Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-            
+
+        if (Session["Id"] != null)
+        {
+
+            if ((int)Session["derece"] == 1) //1 veritabanında Admin/Hoca demek
+            {
+                Response.Redirect(@"~/Admin.aspx");
+            }
+            if ((int)Session["derece"] == 2)
+            {
+                Response.Redirect(@"~/User.aspx");
+            }
+
+        }
+        
     }
 
     protected void btnGiris_Click(object sender, EventArgs e)
@@ -18,14 +32,15 @@ public partial class Login : System.Web.UI.Page
         string pass = Request["pass"].Trim();
 
         TezDBEntities db = new TezDBEntities();
-        var deneme = db.Ogrenci.FirstOrDefault(u => u.No == username && u.sifre == pass);
+
+        var deneme = db.Ogrenci.FirstOrDefault(u => u.No == username && u.sifre == pass  );
 
         if (deneme != null)
         {
             AppKontrol.CompanyID = (int)deneme.Id; //Id kontrolu           
             AppKontrol.CompanyDerece = (int)deneme.derece;// derece kontrolü
-
-           if (deneme.derece==2) //öğrenci ise User page git
+            
+            if (deneme.derece==2) //öğrenci ise User page git
             {
                 Response.Redirect(@"~/User.aspx");
             }

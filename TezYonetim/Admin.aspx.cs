@@ -22,5 +22,18 @@ public partial class Admin : System.Web.UI.Page
         {
             Response.Redirect(@"~/Default.aspx");
         }
+        TezDBEntities db = new TezDBEntities();
+        var Ogrenci = db.Ogrenci.ToList();
+        Repeater1.DataSource = Ogrenci;
+        Repeater1.DataBind();
+        if (Request.QueryString["Id"] != null)
+        {
+            int id = int.Parse(Request.QueryString["Id"]);
+            var silKayit = db.Ogrenci.Find(id);
+            db.Ogrenci.Remove(silKayit);
+            db.SaveChanges();
+            Repeater1.DataBind();
+            Response.Redirect(@"~/Admin.aspx");
+        }
     }
 }

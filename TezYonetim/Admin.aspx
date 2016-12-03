@@ -190,16 +190,36 @@
         <div id="page-wrapper">
             <br /> <h1>Admin Page</h1><br />
             <br /><br />
-            <br /><br />
-            <br /><br />
-            <br /><br />
-            <br /><br />
-            <br /><br />
-            <br /><br />
-            <br /><br />
-            <br /><br />
-            <br /><br />
-            <br /><br />
+            <table >
+                <tr >
+                    <th >No </th>
+                    <th>Numara </th>
+                    <th>Adı Soyadı </th>
+                    <th>Sifre </th>
+                    <th>E-Mail </th>
+                    <th>Bölüm </th>
+                    <th>Düzenle</th>
+                </tr>
+          
+            <asp:Repeater ID="Repeater1" runat="server">
+                <ItemTemplate>
+                    <tr>
+                        <td><%#Eval("Id") %></td>
+                        <td><%#Eval("No") %></td>
+                        <td><%#Eval("name") %></td>
+                        <td><%#Eval("sifre") %></td>
+                        <td><%#Eval("e_mail") %></td>
+                        <td><%#Eval("bolum") %></td>
+                        <td><a href="Duzenle.aspx?ID=<%#Eval("Id") %>">Güncelle</a><a href="Admin.aspx?ID=<%#Eval("Id") %>">Sil</a> </td>
+                        
+                    </tr>
+                </ItemTemplate>
+            </asp:Repeater>
+            
+            
+            
+            
+              </table>
             <br />
         </div>
         <!-- /#page-wrapper -->

@@ -58,7 +58,8 @@
                                       <div class="checkbox">
                                         <label>
 
-                                          <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+                                          <asp:CheckBox ID="CheckBox1" runat="server" />
+&nbsp;Remember me
                                         </label>
                                       </div>
                                     </div>
