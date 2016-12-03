@@ -9,7 +9,18 @@ public partial class User: System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["Id"] == null)
+        if (Session["Id"] != null)
+        {
+
+            if ((int)Session["derece"] == 1)
+            {
+                Response.Redirect(@"~/Admin.aspx");
+            }
+
+        }
+        else
+        {
             Response.Redirect(@"~/Login.aspx");
+        }
     }
 }

@@ -9,8 +9,7 @@ public partial class Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["Id"] != null)
-            Response.Redirect(@"~/user.aspx");
+            
     }
 
     protected void btnGiris_Click(object sender, EventArgs e)
@@ -24,10 +23,18 @@ public partial class Login : System.Web.UI.Page
         var deneme = db.Ogrenci.FirstOrDefault(u => u.No == username && u.sifre == pass);
         if (deneme != null)
         {
-            string s = deneme.Id.ToString();
+            string s = deneme.derece.ToString();
             AppKontrol.CompanyID = Convert.ToInt32(s);
-           
-            Response.Redirect(@"~/user.aspx");
+            Session["derece"] = deneme.derece; 
+           if (deneme.derece==2)
+            {
+                Response.Redirect(@"~/User.aspx");
+            }
+           if(deneme.derece==1)
+            {
+                Response.Redirect(@"~/Admin.aspx");
+            }
+            
         }
         else
         {
