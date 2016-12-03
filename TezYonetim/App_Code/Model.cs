@@ -10,13 +10,37 @@
 using System;
 using System.Collections.Generic;
 
+public partial class Hoca
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public Hoca()
+    {
+        this.Ogrenci = new HashSet<Ogrenci>();
+    }
+
+    public int Id { get; set; }
+    public string Ad { get; set; }
+    public byte[] Soyad { get; set; }
+    public string Sifre { get; set; }
+    public string Mail { get; set; }
+    public string Ders { get; set; }
+    public Nullable<int> Derece { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Ogrenci> Ogrenci { get; set; }
+}
+
 public partial class Ogrenci
 {
     public int Id { get; set; }
+    public Nullable<int> Hoca_Id { get; set; }
+    public string Ad { get; set; }
+    public string Soyad { get; set; }
     public string No { get; set; }
-    public string sifre { get; set; }
-    public string name { get; set; }
-    public string e_mail { get; set; }
-    public string bolum { get; set; }
-    public Nullable<int> derece { get; set; }
+    public string Sifre { get; set; }
+    public string Mail { get; set; }
+    public string Bolum { get; set; }
+    public Nullable<int> Derece { get; set; }
+
+    public virtual Hoca Hoca { get; set; }
 }

@@ -4,58 +4,136 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TezDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TezDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Hoca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyad" Type="varbinary" MaxLength="50" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ders" Type="nvarchar" MaxLength="50" />
+          <Property Name="Derece" Type="int" />
+        </EntityType>
         <EntityType Name="Ogrenci">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hoca Id" Type="int" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
           <Property Name="No" Type="nvarchar" MaxLength="50" />
-          <Property Name="sifre" Type="nvarchar" MaxLength="50" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" />
-          <Property Name="e-mail" Type="nvarchar" MaxLength="50" />
-          <Property Name="bolum" Type="nvarchar" MaxLength="50" />
-          <Property Name="derece" Type="int" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Bolum" Type="nvarchar" MaxLength="50" />
+          <Property Name="Derece" Type="int" />
         </EntityType>
+        <Association Name="FK_Ogrenci_Hoca">
+          <End Role="Hoca" Type="Self.Hoca" Multiplicity="0..1" />
+          <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ogrenci">
+              <PropertyRef Name="Hoca Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="TezDBModelStoreContainer">
+          <EntitySet Name="Hoca" EntityType="Self.Hoca" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ogrenci" EntityType="Self.Ogrenci" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Ogrenci_Hoca" Association="Self.FK_Ogrenci_Hoca">
+            <End Role="Hoca" EntitySet="Hoca" />
+            <End Role="Ogrenci" EntitySet="Ogrenci" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TezDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TezDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Hoca" EntityType="TezDBModel.Hoca" />
+          <EntitySet Name="Ogrenci" EntityType="TezDBModel.Ogrenci" />
+          <AssociationSet Name="FK_Ogrenci_Hoca" Association="TezDBModel.FK_Ogrenci_Hoca">
+            <End Role="Hoca" EntitySet="Hoca" />
+            <End Role="Ogrenci" EntitySet="Ogrenci" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Hoca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ders" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Derece" Type="Int32" />
+          <NavigationProperty Name="Ogrenci" Relationship="TezDBModel.FK_Ogrenci_Hoca" FromRole="Hoca" ToRole="Ogrenci" />
+        </EntityType>
         <EntityType Name="Ogrenci">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hoca_Id" Type="Int32" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="e_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="bolum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="derece" Type="Int32" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bolum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Derece" Type="Int32" />
+          <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Ogrenci_Hoca" FromRole="Ogrenci" ToRole="Hoca" />
         </EntityType>
-        <EntityContainer Name="TezDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Ogrenci" EntityType="Self.Ogrenci" />
-        </EntityContainer>
+        <Association Name="FK_Ogrenci_Hoca">
+          <End Type="TezDBModel.Hoca" Role="Hoca" Multiplicity="0..1" />
+          <End Type="TezDBModel.Ogrenci" Role="Ogrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ogrenci">
+              <PropertyRef Name="Hoca_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TezDBModelStoreContainer" CdmEntityContainer="TezDBEntities">
+          <EntitySetMapping Name="Hoca">
+            <EntityTypeMapping TypeName="TezDBModel.Hoca">
+              <MappingFragment StoreEntitySet="Hoca">
+                <ScalarProperty Name="Derece" ColumnName="Derece" />
+                <ScalarProperty Name="Ders" ColumnName="Ders" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Ogrenci">
             <EntityTypeMapping TypeName="TezDBModel.Ogrenci">
               <MappingFragment StoreEntitySet="Ogrenci">
-                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Derece" ColumnName="Derece" />
+                <ScalarProperty Name="Bolum" ColumnName="Bolum" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
                 <ScalarProperty Name="No" ColumnName="No" />
-                <ScalarProperty Name="sifre" ColumnName="sifre" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="e_mail" ColumnName="e-mail" />
-                <ScalarProperty Name="bolum" ColumnName="bolum" />
-                <ScalarProperty Name="derece" ColumnName="derece" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Hoca_Id" ColumnName="Hoca Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
