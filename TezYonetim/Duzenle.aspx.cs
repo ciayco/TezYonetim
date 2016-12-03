@@ -13,7 +13,7 @@ public partial class Duzenle : System.Web.UI.Page
             if (!Page.IsPostBack)
             {
                 TezDBEntities db = new TezDBEntities();
-                int idd = int.Parse(Request.QueryString["Id"]);
+                int idd = (int)Session["id"];
                 var guncelKayit = db.Ogrenci.Find(idd);
                 TextBox1.Text = guncelKayit.No;
                 TextBox2.Text = guncelKayit.Ad;
@@ -28,7 +28,7 @@ public partial class Duzenle : System.Web.UI.Page
     protected void btnGuncelle_Click(object sender, EventArgs e)
     {
         TezDBEntities db = new TezDBEntities();
-        int id = int.Parse(Request.QueryString["Id"]);
+        int id = (int)Session["id"];
         var guncelKayit = db.Ogrenci.Find(id);
         guncelKayit.No = TextBox1.Text;
         guncelKayit.Ad = TextBox2.Text;
