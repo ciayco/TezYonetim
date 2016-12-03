@@ -16,11 +16,10 @@ public class DataBaglanti
         // TODO: Add constructor logic here
         //
     }
-   
 
     public static DataTable QueryExecute(string Query_, SqlCommand MSSqlCommand_, bool IsStoredProcedure)
     {
-        
+
         SqlConnection con_ = new SqlConnection(DBLogin.MSSqlConnectionString);
         con_.Open();
         DataSet ds_ = new DataSet();

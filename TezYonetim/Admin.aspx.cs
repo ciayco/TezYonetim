@@ -20,7 +20,7 @@ public partial class Admin : System.Web.UI.Page
         }
         else
         {
-            Response.Redirect(@"~/Login.aspx");
+            Response.Redirect(@"~/Default.aspx");
         }
     }
 }

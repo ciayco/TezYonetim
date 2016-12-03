@@ -18,9 +18,8 @@ public partial class Login : System.Web.UI.Page
         string pass = Request["pass"].Trim();
 
         TezDBEntities db = new TezDBEntities();
-
-
         var deneme = db.Ogrenci.FirstOrDefault(u => u.No == username && u.sifre == pass);
+
         if (deneme != null)
         {
             AppKontrol.CompanyID = (int)deneme.Id; //Id kontrolu           
@@ -34,15 +33,10 @@ public partial class Login : System.Web.UI.Page
             {
                 Response.Redirect(@"~/Admin.aspx");
             }
-            
-        }
-        else
+        }else
         {
             Label1.Text = "hatalı";
-        }
-                  
-                
-                
+        }         
     }
 
 }

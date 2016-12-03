@@ -41,7 +41,7 @@
                             <div class="panel-title">Sign Up</div>
                         </div>  
                         <div class="panel-body" >
-                            <form id="signupform" class="form-horizontal" role="form" >
+                            <form id="signupform" runat="server" class="form-horizontal" role="form" >
                                 
                                 <div id="signupalert" style="display:none" class="alert alert-danger">
                                     <p>Error:</p>
@@ -49,42 +49,43 @@
                                 </div>
 
                                <div class="form-group">
-                                    <label for="email" class="col-md-3 control-label">Email</label>
+                                    <label for="no" class="col-md-3 control-label">Öğrenci No</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="email" placeholder="Email Address">
+                                        <input type="text" class="form-control" name="No" placeholder="Öğrenci No">
                                     </div>
                                 </div>
                                     
                                 <div class="form-group">
-                                    <label for="firstname" class="col-md-3 control-label">First Name</label>
+                                    <label for="name" class="col-md-3 control-label">Ad Soyad</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="firstname" placeholder="First Name">
+                                        <input type="text" class="form-control" name="Name" placeholder="First Name">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="lastname" class="col-md-3 control-label">Last Name</label>
+                                    <label for="sifre" class="col-md-3 control-label">Şifre</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+                                        <input type="password" class="form-control" name="Sifre" placeholder="Şifre">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="password" class="col-md-3 control-label">Password</label>
+                                    <label for="e-mail" class="col-md-3 control-label">E-Mail</label>
                                     <div class="col-md-9">
-                                        <input type="password" class="form-control" name="passwd" placeholder="Password">
+                                        <input type="email" class="form-control" name="E-mail" placeholder="E-Mail">
                                     </div>
                                 </div>
                                     
                                 <div class="form-group">
-                                    <label for="icode" class="col-md-3 control-label">Invitation Code</label>
+                                    <label for="bolum" class="col-md-3 control-label">Bölüm</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="icode" placeholder="">
+                                        <input type="text" class="form-control" name="Bolum" placeholder="Bölüm">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <!-- Button -->                                        
                                     <div class="col-md-offset-3 col-md-9">
-                                        <a id="btn-signup" type="button" class="btn btn-info" href="Default.aspx"><i class="icon-hand-right"></i> &nbsp Sign Up</a>
+                                        
+                                        <asp:Button ID="btnGiris" runat="server" Text="Kayit" class="btn btn-info" OnClick="btnGiris_Click"/>
                                         
                                     </div>
                                 </div>                         
@@ -93,7 +94,7 @@
                        </div> 
                     </div>
 
-
+            </div>
 
 <%--  Body  bitiş--%>
 
