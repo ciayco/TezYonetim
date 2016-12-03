@@ -212,3 +212,4 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/TezYonetim/App_Code/Model.Designer.cs
