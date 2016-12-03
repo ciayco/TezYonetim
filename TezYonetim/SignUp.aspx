@@ -56,9 +56,15 @@
                                 </div>
                                     
                                 <div class="form-group">
-                                    <label for="name" class="col-md-3 control-label">Ad Soyad</label>
+                                    <label for="name" class="col-md-3 control-label">Ad</label>
                                     <div class="col-md-9">
                                         <input type="text" class="form-control" name="Name" placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="surname" class="col-md-3 control-label">Soyad</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="Surname" placeholder="Last Name">
                                     </div>
                                 </div>
                                 <div class="form-group">

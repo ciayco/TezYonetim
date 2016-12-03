@@ -186,15 +186,16 @@
             </div>
             <!-- /.navbar-collapse -->
         </nav>
-
+        
         <div id="page-wrapper">
             <br /> <h1>Admin Page</h1><br />
             <br /><br />
             <table >
                 <tr >
-                    <th >No </th>
+                    <th >Id </th>
                     <th>Numara </th>
-                    <th>Adı Soyadı </th>
+                    <th>Adı </th>
+                    <th>Soyadı </th>
                     <th>Sifre </th>
                     <th>E-Mail </th>
                     <th>Bölüm </th>
@@ -206,10 +207,11 @@
                     <tr>
                         <td><%#Eval("Id") %></td>
                         <td><%#Eval("No") %></td>
-                        <td><%#Eval("name") %></td>
-                        <td><%#Eval("sifre") %></td>
-                        <td><%#Eval("e_mail") %></td>
-                        <td><%#Eval("bolum") %></td>
+                        <td><%#Eval("Ad") %></td>
+                        <td><%#Eval("Soyad") %></td>
+                        <td><%#Eval("Sifre") %></td>
+                        <td><%#Eval("Mail") %></td>
+                        <td><%#Eval("Bolum") %></td>
                         <td><a href="Duzenle.aspx?ID=<%#Eval("Id") %>">Güncelle</a><a href="Admin.aspx?ID=<%#Eval("Id") %>">Sil</a> </td>
                         
                     </tr>

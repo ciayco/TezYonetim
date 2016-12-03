@@ -30,10 +30,11 @@ public partial class Login : System.Web.UI.Page
     {
         string username = Request["username"].Trim();
         string pass = Request["pass"].Trim();
+        
 
         TezDBEntities db = new TezDBEntities();
 
-        var deneme = db.Ogrenci.FirstOrDefault(u => u.No == username && u.Sifre == pass  );
+        var deneme = db.Ogrenci.FirstOrDefault(u => u.No == username && u.Sifre == pass);
 
         if (deneme != null)
         {

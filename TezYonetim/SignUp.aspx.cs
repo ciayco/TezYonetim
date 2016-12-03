@@ -20,11 +20,13 @@ public partial class SignUp : System.Web.UI.Page
         {
             ogrenci.No = Request["No"].Trim();
             ogrenci.Ad = Request["Name"].Trim();
+            ogrenci.Soyad = Request["Surname"].Trim();
             ogrenci.Sifre = Request["Sifre"].Trim();
             ogrenci.Mail = Request["E-mail"].Trim();
             ogrenci.Bolum = Request["Bolum"].Trim();
             db.Ogrenci.Add(ogrenci);
             db.SaveChanges();
+            Response.Redirect(@"~/Default.aspx");
 
         }
         catch
