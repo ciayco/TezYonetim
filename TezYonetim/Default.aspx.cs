@@ -33,18 +33,18 @@ public partial class Login : System.Web.UI.Page
 
         TezDBEntities db = new TezDBEntities();
 
-        var deneme = db.Ogrenci.FirstOrDefault(u => u.No == username && u.sifre == pass  );
+        var deneme = db.Ogrenci.FirstOrDefault(u => u.No == username && u.Sifre == pass  );
 
         if (deneme != null)
         {
             AppKontrol.CompanyID = (int)deneme.Id; //Id kontrolu           
-            AppKontrol.CompanyDerece = (int)deneme.derece;// derece kontrolü
+            AppKontrol.CompanyDerece = (int)deneme.Derece;// derece kontrolü
             
-            if (deneme.derece==2) //öğrenci ise User page git
+            if (deneme.Derece==2) //öğrenci ise User page git
             {
                 Response.Redirect(@"~/User.aspx");
             }
-           if(deneme.derece==1)// admin/Hoca ise Admin page git
+           if(deneme.Derece==1)// admin/Hoca ise Admin page git
             {
                 Response.Redirect(@"~/Admin.aspx");
             }
