@@ -40,7 +40,16 @@ public partial class Login : System.Web.UI.Page
         {
             AppKontrol.CompanyID = (int)deneme.Id; //Id kontrolu           
             AppKontrol.CompanyDerece = (int)deneme.Derece;// derece kontrolü
-            
+
+            HttpCookie myCookie = new HttpCookie("MyCookie");
+
+            myCookie["Id"] = deneme.Id.ToString();
+            myCookie["No"] = deneme.No.ToString();
+            myCookie["Derece"] = deneme.Derece.ToString();
+            myCookie["Name"] = deneme.Ad.ToString();
+            myCookie.Expires = DateTime.Now.AddDays(1);
+            Response.Cookies.Add(myCookie);
+
             if (deneme.Derece==2) //öğrenci ise User page git
             {
                 Response.Redirect(@"~/User.aspx");

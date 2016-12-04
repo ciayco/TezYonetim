@@ -3,7 +3,6 @@
 
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
 
     <meta charset="utf-8">
@@ -139,7 +138,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                         <a  ID="ControlContainer" href="LogOut.aspx" runat="server"><i class="fa fa-fw fa-power-off"></i>Çıkış Yap</a>
                         </li>
                     </ul>
                 </li>
@@ -235,7 +234,9 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
+
+      <!-- Morris Charts JavaScript -->
+
     <script src="js/plugins/morris/raphael.min.js"></script>
     <script src="js/plugins/morris/morris.min.js"></script>
     <script src="js/plugins/morris/morris-data.js"></script>

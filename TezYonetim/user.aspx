@@ -140,7 +140,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                           <a  ID="ControlContainer" href="LogOut.aspx" runat="server"><i class="fa fa-fw fa-power-off"></i>Çıkış Yap</a>
                           
 
                         </li>
