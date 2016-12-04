@@ -43,9 +43,7 @@ public partial class Login : System.Web.UI.Page
 
             HttpCookie myCookie = new HttpCookie("MyCookie");
 
-            myCookie["Id"] = deneme.Id.ToString();
             myCookie["No"] = deneme.No.ToString();
-            myCookie["Derece"] = deneme.Derece.ToString();
             myCookie["Name"] = deneme.Ad.ToString();
             myCookie.Expires = DateTime.Now.AddDays(1);
             Response.Cookies.Add(myCookie);

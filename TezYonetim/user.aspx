@@ -28,7 +28,7 @@
 </head>
 
 <body>
-
+    <form runat="server">
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -140,9 +140,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                           <a  ID="ControlContainer" href="LogOut.aspx" runat="server"><i class="fa fa-fw fa-power-off"></i>Çıkış Yap</a>
-                          
-
+                           <asp:linkbutton runat="server" OnClick="LogOut_Click"><i class="fa fa-fw fa-power-off"></i> Çıkış Yap</asp:linkbutton>
                         </li>
                     </ul>
                 </li>
@@ -220,7 +218,7 @@
     <script src="js/plugins/morris/raphael.min.js"></script>
     <script src="js/plugins/morris/morris.min.js"></script>
     <script src="js/plugins/morris/morris-data.js"></script>
-
+    </form>
 </body>
 
 </html>

@@ -11,7 +11,7 @@ public partial class Admin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-     
+
         TezDBEntities db = new TezDBEntities();
         var Ogrenci = db.Ogrenci.ToList();
         if (Session["Id"] != null)
@@ -27,13 +27,11 @@ public partial class Admin : System.Web.UI.Page
             {
                 string name = Request.Cookies["MyCookie"]["Id"];
                 string No = Request.Cookies["MyCookie"]["No"];
-                string Id = Request.Cookies["MyCookie"]["Id"];
-                string derece = Request.Cookies["MyCookie"]["No"];
-                var deneme = db.Ogrenci.FirstOrDefault(u => u.No == No && u.Ad == name);
-                if (deneme != null)
+                var vt = db.Ogrenci.FirstOrDefault(u => u.No == No && u.Ad == name);
+                if (vt != null)
                 {
-                    AppKontrol.CompanyID = System.Convert.ToInt32(Id);
-                    AppKontrol.CompanyDerece = System.Convert.ToInt32(derece);
+                    AppKontrol.CompanyID = System.Convert.ToInt32(vt.Id);
+                    AppKontrol.CompanyDerece = System.Convert.ToInt32(vt.Derece);
                 }
                 else
                 {
@@ -59,5 +57,10 @@ public partial class Admin : System.Web.UI.Page
             Response.Redirect(@"~/Admin.aspx");
         }
     }
-  
+    protected void LogOut_Click(object sender, EventArgs e)
+    {
+        Response.Cookies["MyCookie"].Expires = DateTime.Now.AddDays(-1);
+        Session.RemoveAll();
+        Response.Redirect(@"~/Default.aspx");
+    } 
 }

@@ -9,7 +9,6 @@ public partial class Duzenle : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
         if (!Page.IsPostBack)
         {
             TezDBEntities db = new TezDBEntities();
