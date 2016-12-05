@@ -12,7 +12,7 @@ public partial class Login : System.Web.UI.Page
 
         if (Session["Id"] != null)
         {
-
+             
             if ((int)Session["derece"] == 1) //1 veritabanında Admin/Hoca demek
             {
                 Response.Redirect(@"~/Admin.aspx");
