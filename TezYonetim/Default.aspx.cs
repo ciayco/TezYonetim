@@ -34,7 +34,7 @@ public partial class Login : System.Web.UI.Page
 
         TezDBEntities db = new TezDBEntities();
 
-        var deneme = db.Ogrenci.FirstOrDefault(u => u.No == username && u.Sifre == pass);
+        Ogrenci deneme = db.Ogrenci.FirstOrDefault(u => u.No == username && u.Sifre == pass);
 
         if (deneme != null)
         {
