@@ -30,17 +30,18 @@ public partial class Login : System.Web.UI.Page
     {
         string username = Request["username"].Trim();
         string pass = Request["pass"].Trim();
-        
+       
 
         TezDBEntities db = new TezDBEntities();
 
         Ogrenci deneme = db.Ogrenci.FirstOrDefault(u => u.No == username && u.Sifre == pass);
-
+        
         if (deneme != null)
         {
-            AppKontrol.CompanyID = (int)deneme.Id; //Id kontrolu           
-            AppKontrol.CompanyDerece = (int)deneme.Derece;// derece kontrolü
-
+            string name = deneme.Ad + " " + deneme.Soyad;
+            AppKontrol.id = (int)deneme.Id; //Id kontrolu           
+            AppKontrol.derece = (int)deneme.Derece;// derece kontrolü
+            AppKontrol.name = name;// isim soyisim kontrolü
             HttpCookie myCookie = new HttpCookie("MyCookie");
 
             myCookie["No"] = deneme.No.ToString();

@@ -24,6 +24,7 @@ public partial class SignUp : System.Web.UI.Page
             ogrenci.Sifre = Request["Sifre"].Trim();
             ogrenci.Mail = Request["E-mail"].Trim();
             ogrenci.Bolum = Request["Bolum"].Trim();
+            ogrenci.Derece = 2;
             db.Ogrenci.Add(ogrenci);
             db.SaveChanges();
             Response.Redirect(@"~/Default.aspx");

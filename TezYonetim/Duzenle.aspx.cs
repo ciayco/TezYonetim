@@ -20,6 +20,7 @@ public partial class Duzenle : System.Web.UI.Page
                 TextBox3.Text = guncelKayit.Sifre;
                 TextBox4.Text = guncelKayit.Mail;
                 TextBox5.Text = guncelKayit.Bolum;
+                TextBox6.Text = guncelKayit.Soyad;
 
         }
 

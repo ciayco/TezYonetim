@@ -125,7 +125,8 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
+                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>  <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -206,10 +207,11 @@
                     <tr>
                         <td><%#Eval("Id") %></td>
                         <td><%#Eval("No") %></td>
-                        <td><%#Eval("name") %></td>
-                        <td><%#Eval("sifre") %></td>
-                        <td><%#Eval("e_mail") %></td>
-                        <td><%#Eval("bolum") %></td>
+                        <td><%#Eval("Ad") %></td>
+                        <td><%#Eval("Soyad") %></td>
+                        <td><%#Eval("Sifre") %></td>
+                        <td><%#Eval("Mail") %></td>
+                        <td><%#Eval("Bolum") %></td>
                         <td><a href="Duzenle.aspx?ID=<%#Eval("Id") %>">Güncelle</a><a href="Admin.aspx?ID=<%#Eval("Id") %>">Sil</a> </td>
                         
                     </tr>

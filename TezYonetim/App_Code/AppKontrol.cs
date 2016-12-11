@@ -10,7 +10,7 @@ public class AppKontrol
     {
        
     }
-    public static int CompanyDerece //Session["Derece"] ' yi kontrol eder
+    public static int derece //Session["Derece"] ' yi kontrol eder
     {
         get
         {
@@ -26,7 +26,7 @@ public class AppKontrol
             HttpContext.Current.Session["derece"] = value;
         }
     }
-    public static int CompanyID //Session["Id"] ' yi kontrol eder
+    public static int id //Session["Id"] ' yi kontrol eder
     {
         get
         {
@@ -41,5 +41,22 @@ public class AppKontrol
             HttpContext.Current.Session["ID"] = value;
         }
     }
+
+    public static string name //Session["name"] ' yi kontrol eder
+    {
+        get
+        {
+            if (HttpContext.Current.Session["name"] != null)
+                return HttpContext.Current.Session["name"].ToString();
+            else
+                return null;
+
+        }
+        set
+        {
+            HttpContext.Current.Session["name"] = value;
+        }
+    }
+
     public static bool isOgrenci;
 }

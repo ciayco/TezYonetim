@@ -20,18 +20,19 @@ public partial class Admin : System.Web.UI.Page
             {
                 Response.Redirect(@"~/User.aspx");
             }
+            Label1.Text= Session["name"].ToString();
         }
         else
         {
             if (Request.Cookies["MyCookie"] != null)
             {
-                string name = Request.Cookies["MyCookie"]["Id"];
+                string Id = Request.Cookies["MyCookie"]["Id"];
                 string No = Request.Cookies["MyCookie"]["No"];
-                var vt = db.Ogrenci.FirstOrDefault(u => u.No == No && u.Ad == name);
+                var vt = db.Ogrenci.FirstOrDefault(u => u.No == No && u.Ad == Id);
                 if (vt != null)
                 {
-                    AppKontrol.CompanyID = System.Convert.ToInt32(vt.Id);
-                    AppKontrol.CompanyDerece = System.Convert.ToInt32(vt.Derece);
+                    AppKontrol.id = System.Convert.ToInt32(vt.Id);
+                    AppKontrol.derece = System.Convert.ToInt32(vt.Derece);
                 }
                 else
                 {
