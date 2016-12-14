@@ -10,12 +10,22 @@
 using System;
 using System.Collections.Generic;
 
+public partial class Admin
+{
+    public int Id { get; set; }
+    public string KullanıcıAdi { get; set; }
+    public string Sifre { get; set; }
+    public string Mail { get; set; }
+    public Nullable<int> Derece { get; set; }
+}
+
 public partial class Hoca
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     public Hoca()
     {
         this.Ogrenci = new HashSet<Ogrenci>();
+        this.Tez = new HashSet<Tez>();
     }
 
     public int Id { get; set; }
@@ -28,19 +38,33 @@ public partial class Hoca
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Ogrenci> Ogrenci { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Tez> Tez { get; set; }
 }
 
 public partial class Ogrenci
 {
     public int Id { get; set; }
-    public Nullable<int> Hoca_Id { get; set; }
+    public Nullable<int> Hoca_ID { get; set; }
     public string Ad { get; set; }
     public string Soyad { get; set; }
     public string No { get; set; }
     public string Sifre { get; set; }
     public string Mail { get; set; }
     public string Bolum { get; set; }
-    public Nullable<int> Derece { get; set; }
+    public int Derece { get; set; }
+    public string Tez { get; set; }
+    public string Tez_Durum { get; set; }
+
+    public virtual Hoca Hoca { get; set; }
+}
+
+public partial class Tez
+{
+    public int Id { get; set; }
+    public Nullable<int> Hoca_ID { get; set; }
+    public string Tez_Konu { get; set; }
+    public string Tez_Durum { get; set; }
 
     public virtual Hoca Hoca { get; set; }
 }
