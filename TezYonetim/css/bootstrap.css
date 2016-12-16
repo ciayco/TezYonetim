@@ -63,6 +63,9 @@ h1 {
   margin: .67em 0;
   font-size: 2em;
 }
+#islam {
+   color: red;
+}
 mark {
   color: #000;
   background: #ff0;

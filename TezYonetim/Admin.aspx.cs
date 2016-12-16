@@ -44,8 +44,6 @@ public partial class Admin : System.Web.UI.Page
                 Response.Redirect(@"~/Default.aspx");
             }
         }
-
-
         Repeater1.DataSource = Ogrenci;
         Repeater1.DataBind();
         if (Request.QueryString["Id"] != null)
