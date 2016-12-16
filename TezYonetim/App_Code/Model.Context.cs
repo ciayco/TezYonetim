@@ -25,4 +25,6 @@ public partial class TezDBEntities : DbContext
 
     public virtual DbSet<Hoca> Hoca { get; set; }
     public virtual DbSet<Ogrenci> Ogrenci { get; set; }
+    public virtual DbSet<Tez> Tez { get; set; }
+    public virtual DbSet<Admin> Admin { get; set; }
 }

@@ -5,6 +5,18 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="TezDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="KullanıcıAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Derece" Type="int" />
+        </EntityType>
         <EntityType Name="Hoca">
           <Key>
             <PropertyRef Name="Id" />
@@ -22,16 +34,27 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Hoca Id" Type="int" />
+          <Property Name="Hoca_ID" Type="int" />
           <Property Name="Ad" Type="nvarchar" MaxLength="50" />
           <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
           <Property Name="No" Type="nvarchar" MaxLength="50" />
           <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
           <Property Name="Mail" Type="nvarchar" MaxLength="50" />
           <Property Name="Bolum" Type="nvarchar" MaxLength="50" />
-          <Property Name="Derece" Type="int" />
+          <Property Name="Derece" Type="int" Nullable="false" />
+          <Property Name="Tez" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tez_Durum" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Ogrenci_Hoca">
+        <EntityType Name="Tez">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Hoca_ID" Type="int" />
+          <Property Name="Tez_Konu" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tez_Durum" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_Ogrenci_Hoca1">
           <End Role="Hoca" Type="Self.Hoca" Multiplicity="0..1" />
           <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="*" />
           <ReferentialConstraint>
@@ -39,16 +62,42 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Ogrenci">
-              <PropertyRef Name="Hoca Id" />
+              <PropertyRef Name="Hoca_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tez_Hoca">
+          <End Role="Hoca" Type="Self.Hoca" Multiplicity="0..1" />
+          <End Role="Tez" Type="Self.Tez" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tez">
+              <PropertyRef Name="Hoca_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="TezDBModelStoreContainer">
           <EntitySet Name="Hoca" EntityType="Self.Hoca" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ogrenci" EntityType="Self.Ogrenci" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Ogrenci_Hoca" Association="Self.FK_Ogrenci_Hoca">
+          <EntitySet Name="Tez" EntityType="Self.Tez" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Admin].[Id] AS [Id], 
+    [Admin].[KullanıcıAdi] AS [KullanıcıAdi], 
+    [Admin].[Sifre] AS [Sifre], 
+    [Admin].[Mail] AS [Mail], 
+    [Admin].[Derece] AS [Derece]
+    FROM [dbo].[Admin] AS [Admin]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Ogrenci_Hoca1" Association="Self.FK_Ogrenci_Hoca1">
             <End Role="Hoca" EntitySet="Hoca" />
             <End Role="Ogrenci" EntitySet="Ogrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tez_Hoca" Association="Self.FK_Tez_Hoca">
+            <End Role="Hoca" EntitySet="Hoca" />
+            <End Role="Tez" EntitySet="Tez" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -58,9 +107,15 @@
         <EntityContainer Name="TezDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Hoca" EntityType="TezDBModel.Hoca" />
           <EntitySet Name="Ogrenci" EntityType="TezDBModel.Ogrenci" />
-          <AssociationSet Name="FK_Ogrenci_Hoca" Association="TezDBModel.FK_Ogrenci_Hoca">
+          <EntitySet Name="Tez" EntityType="TezDBModel.Tez" />
+          <EntitySet Name="Admin" EntityType="TezDBModel.Admin" />
+          <AssociationSet Name="FK_Ogrenci_Hoca1" Association="TezDBModel.FK_Ogrenci_Hoca1">
             <End Role="Hoca" EntitySet="Hoca" />
             <End Role="Ogrenci" EntitySet="Ogrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tez_Hoca" Association="TezDBModel.FK_Tez_Hoca">
+            <End Role="Hoca" EntitySet="Hoca" />
+            <End Role="Tez" EntitySet="Tez" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Hoca">
@@ -74,24 +129,47 @@
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Ders" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Derece" Type="Int32" />
-          <NavigationProperty Name="Ogrenci" Relationship="TezDBModel.FK_Ogrenci_Hoca" FromRole="Hoca" ToRole="Ogrenci" />
+          <NavigationProperty Name="Ogrenci" Relationship="TezDBModel.FK_Ogrenci_Hoca1" FromRole="Hoca" ToRole="Ogrenci" />
+          <NavigationProperty Name="Tez" Relationship="TezDBModel.FK_Tez_Hoca" FromRole="Hoca" ToRole="Tez" />
         </EntityType>
         <EntityType Name="Ogrenci">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Hoca_Id" Type="Int32" />
+          <Property Name="Hoca_ID" Type="Int32" />
           <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Bolum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Derece" Type="Int32" />
-          <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Ogrenci_Hoca" FromRole="Ogrenci" ToRole="Hoca" />
+          <Property Name="Derece" Type="Int32" Nullable="false" />
+          <Property Name="Tez" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tez_Durum" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Ogrenci_Hoca1" FromRole="Ogrenci" ToRole="Hoca" />
         </EntityType>
-        <Association Name="FK_Ogrenci_Hoca">
+        <EntityType Name="Tez">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Hoca_ID" Type="Int32" />
+          <Property Name="Tez_Konu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tez_Durum" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Tez_Hoca" FromRole="Tez" ToRole="Hoca" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="KullanıcıAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Derece" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Ogrenci_Hoca1">
           <End Type="TezDBModel.Hoca" Role="Hoca" Multiplicity="0..1" />
           <End Type="TezDBModel.Ogrenci" Role="Ogrenci" Multiplicity="*" />
           <ReferentialConstraint>
@@ -99,7 +177,19 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Ogrenci">
-              <PropertyRef Name="Hoca_Id" />
+              <PropertyRef Name="Hoca_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tez_Hoca">
+          <End Type="TezDBModel.Hoca" Role="Hoca" Multiplicity="0..1" />
+          <End Type="TezDBModel.Tez" Role="Tez" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tez">
+              <PropertyRef Name="Hoca_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -125,6 +215,8 @@
           <EntitySetMapping Name="Ogrenci">
             <EntityTypeMapping TypeName="TezDBModel.Ogrenci">
               <MappingFragment StoreEntitySet="Ogrenci">
+                <ScalarProperty Name="Tez_Durum" ColumnName="Tez_Durum" />
+                <ScalarProperty Name="Tez" ColumnName="Tez" />
                 <ScalarProperty Name="Derece" ColumnName="Derece" />
                 <ScalarProperty Name="Bolum" ColumnName="Bolum" />
                 <ScalarProperty Name="Mail" ColumnName="Mail" />
@@ -132,7 +224,28 @@
                 <ScalarProperty Name="No" ColumnName="No" />
                 <ScalarProperty Name="Soyad" ColumnName="Soyad" />
                 <ScalarProperty Name="Ad" ColumnName="Ad" />
-                <ScalarProperty Name="Hoca_Id" ColumnName="Hoca Id" />
+                <ScalarProperty Name="Hoca_ID" ColumnName="Hoca_ID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tez">
+            <EntityTypeMapping TypeName="TezDBModel.Tez">
+              <MappingFragment StoreEntitySet="Tez">
+                <ScalarProperty Name="Tez_Durum" ColumnName="Tez_Durum" />
+                <ScalarProperty Name="Tez_Konu" ColumnName="Tez_Konu" />
+                <ScalarProperty Name="Hoca_ID" ColumnName="Hoca_ID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="TezDBModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Derece" ColumnName="Derece" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="KullanıcıAdi" ColumnName="KullanıcıAdi" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
