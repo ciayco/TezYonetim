@@ -62,12 +62,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="surname" class="col-md-3 control-label">Soyad</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" name="Surname" placeholder="Last Name">
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <label for="sifre" class="col-md-3 control-label">Şifre</label>
                                     <div class="col-md-9">
                                         <input type="password" class="form-control" name="Sifre" placeholder="Şifre">

@@ -198,8 +198,6 @@
                 <tr >
                     <th >Id </th>
                     <th>Numara </th>
-                    <th>Adı </th>
-                    <th>Soyadı </th>
                     <th>Sifre </th>
                     <th>E-Mail </th>
                     <th>Bölüm </th>
@@ -212,7 +210,6 @@
                         <td><%#Eval("Id") %></td>
                         <td><%#Eval("No") %></td>
                         <td><%#Eval("Ad") %></td>
-                        <td><%#Eval("Soyad") %></td>
                         <td><%#Eval("Sifre") %></td>
                         <td><%#Eval("Mail") %></td>
                         <td><%#Eval("Bolum") %></td>

@@ -11,9 +11,9 @@ public partial class Admin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
         TezDBEntities db = new TezDBEntities();
         var Ogrenci = db.Ogrenci.ToList();
+       
         if (Session["Id"] != null)
         {
             if ((int)Session["derece"] == 2) //2 veritabanında öğrenci demek
@@ -26,6 +26,7 @@ public partial class Admin : System.Web.UI.Page
         {
             if (Request.Cookies["MyCookie"] != null)
             {
+                
                 string Id = Request.Cookies["MyCookie"]["Id"];
                 string No = Request.Cookies["MyCookie"]["No"];
                 var vt = db.Ogrenci.FirstOrDefault(u => u.No == No && u.Ad == Id);

@@ -34,11 +34,11 @@ public partial class Login : System.Web.UI.Page
 
         TezDBEntities db = new TezDBEntities();
 
-        Ogrenci deneme = db.Ogrenci.FirstOrDefault(u => u.No == username && u.Sifre == pass);
+        var deneme = db.Ogrenci.FirstOrDefault(u => u.No == username && u.Sifre == pass);
         
         if (deneme != null)
         {
-            string name = deneme.Ad + " " + deneme.Soyad;
+            string name = deneme.Ad ;
             AppKontrol.id = (int)deneme.Id; //Id kontrolu           
             AppKontrol.derece = (int)deneme.Derece;// derece kontrolü
             AppKontrol.name = name;// isim soyisim kontrolü

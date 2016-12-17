@@ -20,8 +20,6 @@ public partial class Duzenle : System.Web.UI.Page
                 TextBox3.Text = guncelKayit.Sifre;
                 TextBox4.Text = guncelKayit.Mail;
                 TextBox5.Text = guncelKayit.Bolum;
-                TextBox6.Text = guncelKayit.Soyad;
-
         }
 
 
@@ -29,11 +27,10 @@ public partial class Duzenle : System.Web.UI.Page
     protected void btnGuncelle_Click(object sender, EventArgs e)
     {
         TezDBEntities db = new TezDBEntities();
-        int id = (int)Session["id"];
-        var guncelKayit = db.Ogrenci.Find(id);
+        int idd = int.Parse(Request.QueryString["Id"]);
+        var guncelKayit = db.Ogrenci.Find(idd);
         guncelKayit.No = TextBox1.Text;
         guncelKayit.Ad = TextBox2.Text;
-        guncelKayit.Soyad = TextBox6.Text;
         guncelKayit.Sifre = TextBox3.Text;
         guncelKayit.Mail = TextBox4.Text;
         guncelKayit.Bolum = TextBox5.Text;

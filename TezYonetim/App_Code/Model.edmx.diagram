@@ -4,13 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3f57dd0aff0448f29c1ab4fdfd925636" Name="Diagram1">
-        <EntityTypeShape EntityType="TezDBModel.Hoca" Width="1.5" PointX="1.125" PointY="3.25" />
-        <EntityTypeShape EntityType="TezDBModel.Ogrenci" Width="1.5" PointX="3.875" PointY="4.75" />
-        <EntityTypeShape EntityType="TezDBModel.Tez" Width="1.5" PointX="3.875" PointY="2.5" />
-        <EntityTypeShape EntityType="TezDBModel.Admin" Width="1.5" PointX="1.125" PointY="0.875" />
-        <AssociationConnector Association="TezDBModel.FK_Ogrenci_Hoca1" />
-        <AssociationConnector Association="TezDBModel.FK_Tez_Hoca" />
+      <Diagram DiagramId="8bb66e8b85644c69a4bbd1ba3eafeaa0" Name="Diagram1">
+        <EntityTypeShape EntityType="TezDBModel.Hoca" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TezDBModel.Ogrenci" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TezDBModel.Rapor" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TezDBModel.Tez" Width="1.5" PointX="8.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TezDBModel.Admin" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="TezDBModel.FK_Ogrenci_Hoca1" ManuallyRouted="false" />
+        <AssociationConnector Association="TezDBModel.FK_Rapor_Hoca" ManuallyRouted="false" />
+        <AssociationConnector Association="TezDBModel.FK_Tez_Hoca" ManuallyRouted="false" />
+        <AssociationConnector Association="TezDBModel.FK_Rapor_Ogrenci" ManuallyRouted="false" />
+        <AssociationConnector Association="TezDBModel.FK_Tez_Ogrenci" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
