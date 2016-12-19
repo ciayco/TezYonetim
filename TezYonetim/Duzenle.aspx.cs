@@ -17,7 +17,7 @@ public partial class Duzenle : System.Web.UI.Page
                 var guncelKayit = db.Ogrenci.Find(idd);
                 TextBox1.Text = guncelKayit.No;
                 TextBox2.Text = guncelKayit.Ad;
-                TextBox3.Text = guncelKayit.Sifre;
+                TextBox3.Text = Sifreleme.TextSifreCoz(guncelKayit.Sifre);
                 TextBox4.Text = guncelKayit.Mail;
                 TextBox5.Text = guncelKayit.Bolum;
         }
@@ -31,7 +31,7 @@ public partial class Duzenle : System.Web.UI.Page
         var guncelKayit = db.Ogrenci.Find(idd);
         guncelKayit.No = TextBox1.Text;
         guncelKayit.Ad = TextBox2.Text;
-        guncelKayit.Sifre = TextBox3.Text;
+        guncelKayit.Sifre = Sifreleme.TextSifrele(TextBox3.Text);
         guncelKayit.Mail = TextBox4.Text;
         guncelKayit.Bolum = TextBox5.Text;
         db.SaveChanges();

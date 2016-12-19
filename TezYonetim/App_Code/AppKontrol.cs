@@ -41,7 +41,6 @@ public class AppKontrol
             HttpContext.Current.Session["ID"] = value;
         }
     }
-
     public static string name //Session["name"] ' yi kontrol eder
     {
         get

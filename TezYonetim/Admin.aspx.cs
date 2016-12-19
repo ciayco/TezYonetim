@@ -10,6 +10,7 @@ public partial class Admin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+       // Session.RemoveAll();
         TezDBEntities db = new TezDBEntities();
         var Ogrenci = db.Ogrenci.ToList();
        
@@ -26,9 +27,9 @@ public partial class Admin : System.Web.UI.Page
             if (Request.Cookies["MyCookie"] != null)
             {
                 
-                string Id = Request.Cookies["MyCookie"]["Id"];
                 string No = Request.Cookies["MyCookie"]["No"];
-                var vt = db.Ogrenci.FirstOrDefault(u => u.No == No && u.Ad == Id);
+                string Name = Request.Cookies["MyCookie"]["Name"];
+                var vt = db.Ogrenci.FirstOrDefault(u => u.No == No && u.Ad == Name);
                 if (vt != null)
                 {
                     AppKontrol.id = System.Convert.ToInt32(vt.Id);

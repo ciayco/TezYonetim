@@ -17,12 +17,11 @@ public partial class SignUp : System.Web.UI.Page
     {
         TezDBEntities db = new TezDBEntities();
         Ogrenci ogrenci = new Ogrenci();
-        string sifrem=Sifreleme.Sifrele(Request["Sifre"].Trim());
         try
         {
             ogrenci.No = Request["No"].Trim();
             ogrenci.Ad = Request["Name"].Trim();
-            ogrenci.Sifre =sifrem;
+            ogrenci.Sifre = Sifreleme.TextSifrele(Request["Sifre"].Trim());
             ogrenci.Mail = Request["E-mail"].Trim();
             ogrenci.Bolum = Request["Bolum"].Trim();
             ogrenci.Derece = 2;
