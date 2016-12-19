@@ -63,12 +63,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="sifre" class="col-md-3 control-label">Şifre</label>
-                                    <div class="col-md-9">
-                                        <asp:TextBox id="TextBox3" runat="server"  ></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <label for="e-mail" class="col-md-3 control-label">E-Mail</label>
                                     <div class="col-md-9">
                                          <asp:TextBox id="TextBox4" runat="server"  ></asp:TextBox>
@@ -81,7 +75,11 @@
                                          <asp:TextBox id="TextBox5" runat="server"  ></asp:TextBox>
                                     </div>
                                 </div>
-
+                                <div class="form-group">
+                                    <div class="col-md-9">
+                                        <p><asp:Label ID="LabelGuncelle" runat="server" ForeColor="Red"></asp:Label></p>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <!-- Button -->                                        
                                     <div class="col-md-offset-3 col-md-9">
