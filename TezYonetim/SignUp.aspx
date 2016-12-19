@@ -80,6 +80,11 @@
                                         <input type="text" class="form-control" name="Bolum" placeholder="Bölüm">
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <div class="col-md-9">
+                                        <p><asp:Label ID="LabelSignUP" runat="server" ForeColor="Red"></asp:Label></p>
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <!-- Button -->                                        

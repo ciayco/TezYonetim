@@ -16,25 +16,29 @@ public partial class SignUp : System.Web.UI.Page
     protected void btnGiris_Click(object sender, EventArgs e)
     {
         TezDBEntities db = new TezDBEntities();
-        Ogrenci ogrenci = new Ogrenci();
-        try
+        
+        string sifrem=Sifreleme.Sifrele(Request["Sifre"].Trim());
+        string no = Request["No"].Trim();
+
+        if(db.Ogrenci.Where(w => w.No == no).Any())
         {
+            LabelSignUP.Text = "Bu Kullanıcı Sistemde Mevcut";
+        }
+        else
+        {
+            Ogrenci ogrenci = new Ogrenci();
+
             ogrenci.No = Request["No"].Trim();
             ogrenci.Ad = Request["Name"].Trim();
-            ogrenci.Sifre = Sifreleme.TextSifrele(Request["Sifre"].Trim());
+            ogrenci.Sifre = sifrem;
             ogrenci.Mail = Request["E-mail"].Trim();
             ogrenci.Bolum = Request["Bolum"].Trim();
             ogrenci.Derece = 2;
             db.Ogrenci.Add(ogrenci);
             db.SaveChanges();
             Response.Redirect(@"~/Default.aspx");
+        }
 
-        }
-        catch
-        {
-            Response.Write("<script LANGUAGE='JavaScript' >alert('mesaj')</script>");
-        }
-       
 
     }
 }

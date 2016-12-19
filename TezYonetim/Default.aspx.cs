@@ -27,15 +27,15 @@ public partial class Login : System.Web.UI.Page
         TezDBEntities db = new TezDBEntities();
         if (db.Ogrenci.Where(w => w.No == username).Any())
         {
-            string sifre = Sifreleme.TextSifrele(Request["pass"].Trim());
+            string sifre = Sifreleme.Sifrele(Request["pass"].Trim());
             Ogrenci Ogrenci = db.Ogrenci.Where(w => w.No == username && w.Sifre == sifre).FirstOrDefault();       
         if (Ogrenci != null)
         {
-            string name = Ogrenci.Ad ;
             AppKontrol.id = (int)Ogrenci.Id; //Id kontrolu           
             AppKontrol.derece = (int)Ogrenci.Derece;// derece kontrolü
-            AppKontrol.name = name;// isim soyisim kontrolü
-            Response.Cookies.Add(cookie.Cookie(Ogrenci.No, Ogrenci.Ad));
+            AppKontrol.name = Ogrenci.Ad;// isim soyisim kontrolü
+            Response.Cookies.Add(cookie.Cookie(Ogrenci.No, Ogrenci.Sifre));
+
             if (Ogrenci.Derece==2) //öğrenci ise User page git
             {
                 Response.Redirect(@"~/User.aspx");
@@ -46,7 +46,7 @@ public partial class Login : System.Web.UI.Page
             }
         }else
         {
-            Label1.Text = "hatalı";
+            Label1.Text = "Kullanıcı adı veya Şifre Uyuşmadı!";
         }
         }
     }

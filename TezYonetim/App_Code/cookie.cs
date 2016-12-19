@@ -18,7 +18,7 @@ public class cookie
     {
         HttpCookie myCookie = new HttpCookie("MyCookie");
         myCookie["No"] = no.ToString();
-        myCookie["Name"] = ad.ToString();
+        myCookie["sifre"] = ad.ToString();
         myCookie.Expires = DateTime.Now.AddDays(1);
         return myCookie;
        
