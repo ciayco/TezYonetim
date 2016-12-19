@@ -4,8 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
-
+using System.Security.Cryptography;
 
 public partial class Admin : System.Web.UI.Page
 {

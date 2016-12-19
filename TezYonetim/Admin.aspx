@@ -198,7 +198,7 @@
                 <tr >
                     <th >Id </th>
                     <th>Numara </th>
-                    <th>Sifre </th>
+                    <th>İsim Soyisim </th>
                     <th>E-Mail </th>
                     <th>Bölüm </th>
                     <th>Düzenle</th>
@@ -210,7 +210,6 @@
                         <td><%#Eval("Id") %></td>
                         <td><%#Eval("No") %></td>
                         <td><%#Eval("Ad") %></td>
-                        <td><%#Eval("Sifre") %></td>
                         <td><%#Eval("Mail") %></td>
                         <td><%#Eval("Bolum") %></td>
                         <td><a href="Duzenle.aspx?ID=<%#Eval("Id") %>">Güncelle</a><a href="Admin.aspx?ID=<%#Eval("Id") %>">Sil</a> </td>

@@ -33,34 +33,37 @@ public partial class Login : System.Web.UI.Page
        
 
         TezDBEntities db = new TezDBEntities();
-
-        var deneme = db.Ogrenci.FirstOrDefault(u => u.No == username && u.Sifre == pass);
-        
-        if (deneme != null)
+        if (db.Ogrenci.Where(w => w.No == username).Any())
         {
-            string name = deneme.Ad ;
-            AppKontrol.id = (int)deneme.Id; //Id kontrolu           
-            AppKontrol.derece = (int)deneme.Derece;// derece kontrolü
+            string sifre = Sifreleme.Sifrele(pass);
+            Ogrenci Ogrenci = db.Ogrenci.Where(w => w.No == username && w.Sifre == sifre).FirstOrDefault();
+        
+        
+        if (Ogrenci != null)
+        {
+            string name = Ogrenci.Ad ;
+            AppKontrol.id = (int)Ogrenci.Id; //Id kontrolu           
+            AppKontrol.derece = (int)Ogrenci.Derece;// derece kontrolü
             AppKontrol.name = name;// isim soyisim kontrolü
             HttpCookie myCookie = new HttpCookie("MyCookie");
 
-            myCookie["No"] = deneme.No.ToString();
-            myCookie["Name"] = deneme.Ad.ToString();
+            myCookie["No"] = Ogrenci.No.ToString();
+            myCookie["Name"] = Ogrenci.Ad.ToString();
             myCookie.Expires = DateTime.Now.AddDays(1);
             Response.Cookies.Add(myCookie);
 
-            if (deneme.Derece==2) //öğrenci ise User page git
+            if (Ogrenci.Derece==2) //öğrenci ise User page git
             {
                 Response.Redirect(@"~/User.aspx");
             }
-           if(deneme.Derece==1)// admin/Hoca ise Admin page git
+           if(Ogrenci.Derece==1)// admin/Hoca ise Admin page git
             {
                 Response.Redirect(@"~/Admin.aspx");
             }
         }else
         {
             Label1.Text = "hatalı";
-        }         
+        }
+        }
     }
-
 }
