@@ -167,7 +167,7 @@
                            <a href="javascript:;" data-toggle="collapse" data-target="#demo2"> Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo2" class="collapse">
                             <li>
-                                <a href="Admin.aspx">Danışman onayı</a>
+                                <asp:linkbutton runat="server" OnClick="ListeleClick"> Öğrencileri listele</asp:linkbutton>
                             </li>
                             
                         </ul>
@@ -212,7 +212,7 @@
                         <td><%#Eval("Ad") %></td>
                         <td><%#Eval("Mail") %></td>
                         <td><%#Eval("Bolum") %></td>
-                        <td><a href="Duzenle.aspx?ID=<%#Eval("Id") %>">Güncelle</a><a href="Admin.aspx?ID=<%#Eval("Id") %>">Sil</a> </td>
+                        <td><a href="Duzenle.aspx?ID=<%#Eval("Id") %>">Güncelle  </a><a href="Admin.aspx?ID=<%#Eval("Id") %>">Sil</a> </td>
                         
                     </tr>
                 </ItemTemplate>
@@ -222,6 +222,7 @@
             
             
               </table>
+
             <br />
         </div>
         <!-- /#page-wrapper -->

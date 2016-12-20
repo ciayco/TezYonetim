@@ -32,10 +32,8 @@ public partial class Duzenle : System.Web.UI.Page
                 else
                 {
                     Response.Redirect(@"~/Default.aspx");
-                }
-                
+                }               
             }
-
         }
         else {
             Response.Redirect(@"~/Default.aspx");
