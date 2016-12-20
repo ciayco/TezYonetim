@@ -195,15 +195,15 @@
             <table class="table table-striped">
                  <thead>
                     <tr>
-                            <th>Id </th>
-                            <th>İsim Soyisim </th>
-                            <th>Ders </th>
-                            <th>Seç</th>                 
-                            <th>Sil</th>
+                            <th style="text-align:center;">Id </th>
+                            <th style="text-align:center;">İsim Soyisim </th>
+                            <th style="text-align:center;">Ders </th>
+                            <th style="text-align:center;">Seç</th>                 
+                            <th style="text-align:center;">Sil</th>
                     </tr>
                       </thead>
                         <asp:Repeater ID="Repeater1" runat="server">
-                                       <ItemTemplate>
+                        <ItemTemplate>
                       <tbody>
                         <tr>
                             <td><%#Eval("Id") %></td>

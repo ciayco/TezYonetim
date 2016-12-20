@@ -192,15 +192,15 @@
         </nav>       
         <div id="page-wrapper">
             <br /><br />
-            <table class="table table-striped">
+            <table class="table table-hover table-striped">
                  <thead>
                     <tr>
-                            <th >Id </th>
-                            <th>Numara </th>
-                            <th>İsim Soyisim </th>
-                            <th>E-Mail </th>
-                            <th>Bölüm </th>
-                            <th>Düzenle</th>
+                            <th style="text-align:center;" >Id </th>
+                            <th style="text-align:center;">Numara </th>
+                            <th style="text-align:center;">İsim Soyisim </th>
+                            <th style="text-align:center;">E-Mail </th>
+                            <th style="text-align:center;">Bölüm </th>
+                            <th style="text-align:center;">Düzenle</th>
                     </tr>
                       </thead>
                         <asp:Repeater ID="Repeater1" runat="server">
