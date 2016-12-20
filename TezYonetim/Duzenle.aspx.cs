@@ -51,6 +51,10 @@ public partial class Duzenle : System.Web.UI.Page
         guncelKayit.Ad = TextBox2.Text;
         guncelKayit.Mail = TextBox4.Text;
         guncelKayit.Bolum = TextBox5.Text;
+        if ((int)Session["id"] == idd)
+        {
+            AppKontrol.name = TextBox2.Text;
+        }
         db.SaveChanges();
         Response.Redirect(@"~/Admin.aspx");
     }
