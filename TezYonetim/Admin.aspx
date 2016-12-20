@@ -189,40 +189,36 @@
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
-        </nav>
-        
+        </nav>       
         <div id="page-wrapper">
-            <br /> <h1>Admin Page</h1><br />
             <br /><br />
-            <table >
-                <tr >
-                    <th >Id </th>
-                    <th>Numara </th>
-                    <th>İsim Soyisim </th>
-                    <th>E-Mail </th>
-                    <th>Bölüm </th>
-                    <th>Düzenle</th>
-                </tr>
-          
-            <asp:Repeater ID="Repeater1" runat="server">
-                <ItemTemplate>
+            <table class="table table-striped">
+                 <thead>
                     <tr>
-                        <td><%#Eval("Id") %></td>
-                        <td><%#Eval("No") %></td>
-                        <td><%#Eval("Ad") %></td>
-                        <td><%#Eval("Mail") %></td>
-                        <td><%#Eval("Bolum") %></td>
-                        <td><a href="Duzenle.aspx?ID=<%#Eval("Id") %>">Güncelle  </a><a href="Admin.aspx?ID=<%#Eval("Id") %>">Sil</a> </td>
-                        
+                            <th >Id </th>
+                            <th>Numara </th>
+                            <th>İsim Soyisim </th>
+                            <th>E-Mail </th>
+                            <th>Bölüm </th>
+                            <th>Düzenle</th>
                     </tr>
-                </ItemTemplate>
-            </asp:Repeater>
-            
-            
-            
-            
-              </table>
-
+                      </thead>
+                        <asp:Repeater ID="Repeater1" runat="server">
+                                       <ItemTemplate>
+                      <tbody>
+                        <tr>
+                            <td><%#Eval("Id") %></td>
+                            <td><%#Eval("No") %></td>
+                            <td><%#Eval("Ad") %></td>
+                            <td><%#Eval("Mail") %></td>
+                            <td><%#Eval("Bolum") %></td>
+                            <td><a href="Duzenle.aspx?ID=<%#Eval("Id") %>">Güncelle  </a><a href="Admin.aspx?ID=<%#Eval("Id") %>">Sil</a> </td>
+                       </tr>
+    
+                      </tbody>
+                            </ItemTemplate>
+                              </asp:Repeater>
+                    </table>
             <br />
         </div>
         <!-- /#page-wrapper -->

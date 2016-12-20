@@ -190,35 +190,33 @@
         </nav>
         
       <div id="page-wrapper">
-            <br /> <h1>User Page</h1><br />
-            <br /><br />
-            <table >
-                <tr >
-                    <th>Id </th>
-                    <th>İsim Soyisim </th>
-                    <th>Ders </th>
-                    <th>Seç</th>                 
-                    <th>Sil</th>
-                </tr>
-          
-            <asp:Repeater ID="Repeater1" runat="server">
-                <ItemTemplate>
-                    <tr>
-                        <td><%#Eval("Id") %></td>
-                        <td><%#Eval("Ad") %></td>
-                        <td><%#Eval("Ders") %></td>
-                        <td><a href="User.aspx?ID=<%#Eval("Id")%>&Sec=true">Seç  </a>  </td>
-                        <td><a href="User.aspx?ID=<%#Eval("Id")%>&Sil=true">Sil</a> </td>
-                        
-                    </tr>
-                </ItemTemplate>
-            </asp:Repeater>
-            
-            
-            
-            
-              </table>
 
+          <br /><br />
+            <table class="table table-striped">
+                 <thead>
+                    <tr>
+                            <th>Id </th>
+                            <th>İsim Soyisim </th>
+                            <th>Ders </th>
+                            <th>Seç</th>                 
+                            <th>Sil</th>
+                    </tr>
+                      </thead>
+                        <asp:Repeater ID="Repeater1" runat="server">
+                                       <ItemTemplate>
+                      <tbody>
+                        <tr>
+                            <td><%#Eval("Id") %></td>
+                            <td><%#Eval("Ad") %></td>
+                            <td><%#Eval("Ders") %></td>
+                            <td><a href="User.aspx?ID=<%#Eval("Id")%>&Sec=true">Seç  </a>  </td>
+                            <td><a href="User.aspx?ID=<%#Eval("Id")%>&Sil=true">Sil</a> </td>
+                       </tr>
+    
+                      </tbody>
+                            </ItemTemplate>
+                              </asp:Repeater>
+                    </table>
             <br />
         </div>
         <!-- /#page-wrapper -->
