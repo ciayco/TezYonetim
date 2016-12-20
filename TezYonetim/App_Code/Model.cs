@@ -50,7 +50,7 @@ public partial class Ogrenci
     public Ogrenci()
     {
         this.Rapor = new HashSet<Rapor>();
-        this.Tez1 = new HashSet<Tez>();
+        this.Tez = new HashSet<Tez>();
     }
 
     public int Id { get; set; }
@@ -61,14 +61,12 @@ public partial class Ogrenci
     public string Mail { get; set; }
     public string Bolum { get; set; }
     public Nullable<int> Derece { get; set; }
-    public string Tez { get; set; }
-    public Nullable<int> Tez_Durum { get; set; }
 
     public virtual Hoca Hoca { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Rapor> Rapor { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<Tez> Tez1 { get; set; }
+    public virtual ICollection<Tez> Tez { get; set; }
 }
 
 public partial class Rapor
