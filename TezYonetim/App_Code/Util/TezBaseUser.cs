@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for TezBase
+/// Summary description for TezBaseUser
 /// </summary>
-public class TezBase : System.Web.UI.Page
+public class TezBaseUser : System.Web.UI.Page
 {
-    public TezBase()
-    {        
+    public TezBaseUser()
+    {
     }
     protected override void OnInit(EventArgs e)
     {
@@ -17,9 +17,9 @@ public class TezBase : System.Web.UI.Page
         var Ogrenci = db.Ogrenci.ToList();
         if (Session["Id"] != null)
         {
-            if ((int)Session["derece"] == 2) //2 veritabanında Admin demek
+            if ((int)Session["derece"] == 1) //1 veritabanında öğrenci demek
             {
-                Response.Redirect(@"~/User.aspx");
+                Response.Redirect(@"~/Admin.aspx");
             }
         }
         else
@@ -40,7 +40,7 @@ public class TezBase : System.Web.UI.Page
             else
             {
                Response.Redirect(@"~/Default.aspx");
-            }
+            }           
         }
         base.OnInit(e);
     }

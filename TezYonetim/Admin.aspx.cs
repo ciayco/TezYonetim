@@ -10,11 +10,6 @@ public partial class Admin : TezBase
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if ((int)Session["derece"] == 2) //2 veritabanında öğrenci demek
-        {
-            Response.Redirect(@"~/User.aspx");
-        }
-
         TezDBEntities db = new TezDBEntities();
         var Ogrenci = db.Ogrenci.ToList();
         Label1.Text = Session["name"].ToString();
