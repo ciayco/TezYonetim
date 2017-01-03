@@ -12,7 +12,7 @@ public partial class Admin : TezBase
     {
         TezDBEntities db = new TezDBEntities();
         var Ogrenci = db.Ogrenci.ToList();
-        Label1.Text = Session["name"].ToString();
+       
         Repeater1.DataSource = Ogrenci;
         Repeater1.DataBind();
             if (Request.QueryString["Id"] != null)
@@ -25,15 +25,5 @@ public partial class Admin : TezBase
                 Response.Redirect(@"~/Admin.aspx");
             }
     }
-    protected void LogOut_Click(object sender, EventArgs e)
-    {
-        Response.Cookies["MyCookie"].Expires = DateTime.Now.AddDays(-1);
-        Session.RemoveAll();
-        Response.Redirect(@"~/Default.aspx");
-    }
-
-    protected void ListeleClick(object sender, EventArgs e)
-    {
-
-    }
+    
 }
