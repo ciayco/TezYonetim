@@ -1,18 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageAdmin.master.cs" Inherits="MasterPageAdmin" %>
-
-<%--<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <asp:ContentPlaceHolder id="head" runat="server">
-    </asp:ContentPlaceHolder>
-</head>
-<body>
-   
-</body>
-</html>--%>
-
 <!DOCTYPE html>
 <html lang="tr">
 <head runat="server">
@@ -22,13 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+     
     <asp:ContentPlaceHolder ID="head" runat="server">
+       
     </asp:ContentPlaceHolder>
-
+<title></title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.10.13/datatables.min.css" />
     
-        <script src="js/jquery.js"></script>
+       <script src="js/jquery.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json"></script>
 
@@ -172,6 +159,9 @@
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="glyphicon glyphicon-text-background"></i>&nbsp;&nbsp;&nbsp;Tez İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo1" class="collapse">
+                                <li>
+                                    <a href="hocakayit.aspx">Hoca Ekle</a>
+                                </li>
                                 <li>
                                     <a href="Admin.aspx">Onay Bekleyen Tezler</a>
                                 </li>
