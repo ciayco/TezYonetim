@@ -28,27 +28,38 @@ public partial class Login : System.Web.UI.Page
         if (db.Ogrenci.Where(w => w.No == username).Any())
         {
             string sifre = Sifreleme.Sifrele(Request["pass"].Trim());
-            Ogrenci Ogrenci = db.Ogrenci.Where(w => w.No == username && w.Sifre == sifre).FirstOrDefault();       
-        if (Ogrenci != null)
-        {
-            AppKontrol.id = (int)Ogrenci.Id; //Id kontrolu           
-            AppKontrol.derece = (int)Ogrenci.Derece;// derece kontrolü
-            AppKontrol.name = Ogrenci.Ad;// isim soyisim kontrolü
-            Response.Cookies.Add(cookie.Cookie(Ogrenci.No, Ogrenci.Sifre));
-
-            if (Ogrenci.Derece==2) //öğrenci ise User page git
+            Ogrenci Ogrenci = db.Ogrenci.Where(w => w.No == username && w.Sifre == sifre).FirstOrDefault();
+            if (Ogrenci != null)
             {
-                Response.Redirect(@"~/User.aspx");
+                AppKontrol.id = (int)Ogrenci.Id; //Id kontrolu           
+                AppKontrol.derece = (int)Ogrenci.Derece;// derece kontrolü
+                AppKontrol.name = Ogrenci.Ad;// isim soyisim kontrolü
+                Response.Cookies.Add(cookie.Cookie(Ogrenci.No, Ogrenci.Sifre));             
+                Response.Redirect(@"~/User.aspx");                           
+            }else
+            {
+                Label1.Text = "Kullanıcı adı veya Şifre Uyuşmadı!";
             }
-           if(Ogrenci.Derece==1)// admin/Hoca ise Admin page git
+        }
+        else if (db.Hoca.Where(w => w.Mail == username).Any())
+        {
+            string sifre = Sifreleme.Sifrele(Request["pass"].Trim());
+            Hoca hoca = db.Hoca.Where(w => w.Mail == username && w.Sifre == sifre).FirstOrDefault();
+            if (hoca != null)
             {
+                AppKontrol.id = (int)hoca.Id; //Id kontrolu           
+                AppKontrol.derece = (int)hoca.Derece;// derece kontrolü
+                AppKontrol.name = hoca.Ad;// isim soyisim kontrolü
+                Response.Cookies.Add(cookie.Cookie(hoca.Mail, hoca.Sifre));   
                 Response.Redirect(@"~/Admin.aspx");
+                
+             }
+            else
+            {
+                Label1.Text = "Kullanıcı adı veya Şifre Uyuşmadı!";
             }
-        }else
-        {
-            Label1.Text = "Kullanıcı adı veya Şifre Uyuşmadı!";
         }
-        }
+
         else
         {
             Label1.Text = "Kullanıcı adı veya Şifre Uyuşmadı!";
