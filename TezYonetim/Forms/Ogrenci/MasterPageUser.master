@@ -149,7 +149,7 @@
                 <ul class="nav navbar-nav side-nav">
                                       
                     <li>
-                           <a href="javascript:;" data-toggle="collapse" data-target="#demo1"> Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
+                           <a href="javascript:;" data-toggle="collapse" data-target="#demo1"> <i class="glyphicon glyphicon-text-background"></i>&nbsp;&nbsp;&nbsp;Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo1" class="collapse">
                             <li>
                                 <a href="TezHocaSec.aspx"> Danışman Hoca Seçimi</a>
@@ -164,7 +164,7 @@
                     </li>
                     
                     <li>
-                           <a href="javascript:;" data-toggle="collapse" data-target="#demo2"> Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
+                           <a href="javascript:;" data-toggle="collapse" data-target="#demo2"> <i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo2" class="collapse">
                             <li>
                                 <a href="Admin.aspx">Danışman onayı</a>
@@ -174,13 +174,13 @@
                     </li>
                     
                     <li>
-                           <a href="javascript:;" data-toggle="collapse" data-target="#demo3"> Raporlar <i class="fa fa-fw fa-caret-down"></i></a>
+                           <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="glyphicon glyphicon-save-file"></i>&nbsp;&nbsp;&nbsp; Raporlar <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo3" class="collapse">
                             <li>
-                                <a href="Admin.aspx">Periyod</a>
+                                <a href="Admin.aspx">Rapor periyodu</a>
                             </li>
                             <li>
-                                <a href="User.aspx">Dropdown Item</a>
+                                <a href="User.aspx">Raporları Görüntüle</a>
                             </li>
                         </ul>
                     </li>
