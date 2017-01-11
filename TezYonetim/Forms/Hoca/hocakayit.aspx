@@ -14,7 +14,6 @@
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <div class="panel-title">Kayıt Ol</div>
-                            <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="Default.aspx">Kullanıcı Girişi</a></div>
                         </div>  
                         <div class="panel-body" >
                             <form id="signupform" class="form-horizontal" role="form" >
