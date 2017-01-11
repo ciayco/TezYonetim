@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="User.aspx.cs" Inherits="User" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TezHocaSec.aspx.cs" Inherits="User" %>
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -12,16 +12,16 @@
     <title>SB Admin - Bootstrap Admin Template</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="../../css/sb-admin.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
+    <link href="../../css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -38,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="images/logo.png" width="50" height="50" /><span class="renk"> <a href="/" class="renk"> Tez Yönetim Sistemi </a></span>
+                <img src="../../images/logo.png" width="50" height="50" /><span class="renk"> <a href="/" class="renk"> Tez Yönetim Sistemi </a></span>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -150,7 +150,7 @@
                            <a href="javascript:;" data-toggle="collapse" data-target="#demo1"> Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo1" class="collapse">
                             <li>
-                                <a href="Forms/Ogrenci/TezHocaSec.aspx"> Danışman Hoca Seçimi</a>
+                                <a href="User.aspx"> Danışman Hoca Seçimi</a>
                             </li>
                             <li>
                                 <a href="User.aspx">Tez Seçimi</a>
@@ -193,7 +193,30 @@
 
           <br /><br />
             <table class="table table-striped">
-               
+                 <thead>
+                    <tr>
+                            <th style="text-align:center;">Id </th>
+                            <th style="text-align:center;">İsim Soyisim </th>
+                            <th style="text-align:center;">Ders </th>
+                            <th style="text-align:center;">Seç</th>                 
+                            <th style="text-align:center;">Sil</th>
+                    </tr>
+                      </thead>
+                        <asp:Repeater ID="Repeater1" runat="server">
+                        <ItemTemplate>
+                      <tbody>
+                        <tr>
+                            <td><%#Eval("Id") %></td>
+                            <td><%#Eval("Ad") %></td>
+                            <td><%#Eval("Ders") %></td>
+                            <td><a href="TezHocaSec.aspx?ID=<%#Eval("Id")%>&Sec=true">Seç  </a>  </td>
+                            <td><a href="TezHocaSec.aspx?ID=<%#Eval("Id")%>&Sil=true">Sil</a> </td>
+                       </tr>
+    
+                      </tbody>
+                            </ItemTemplate>
+                              </asp:Repeater>
+                    </table>
             <br />
         </div>
         <!-- /#page-wrapper -->
@@ -202,17 +225,17 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="../../js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
 
 
       <!-- Morris Charts JavaScript -->
 
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
+    <script src="../../js/plugins/morris/raphael.min.js"></script>
+    <script src="../../js/plugins/morris/morris.min.js"></script>
+    <script src="../../js/plugins/morris/morris-data.js"></script>
     </form>
 </body>
 

@@ -41,6 +41,7 @@
             RouteCollection_.MapPageRoute("Duzenle", "Duzenle", @"~/Duzenle.aspx");
             RouteCollection_.MapPageRoute("SignUp", "SignUp", @"~/SignUp.aspx");
             RouteCollection_.MapPageRoute("User", "User", @"~/User.aspx");
+            RouteCollection_.MapPageRoute("TezHocaSec", "TezHocaSec", @"~/Forms/Ogrenci/TezHocaSex.aspx");
          
             
         }
