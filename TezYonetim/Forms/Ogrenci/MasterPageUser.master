@@ -1,7 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="User.aspx.cs" Inherits="User" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Forms/Ogrenci/MasterPageUser.master.cs" Inherits="MasterPageUser" %>
 <!DOCTYPE html>
 <html lang="tr">
-<head>
+<head runat="server">
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,19 +9,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+   <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="../../css/sb-admin.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
+    <link href="../../css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -38,7 +40,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="images/logo.png" width="50" height="50" /><span class="renk"> <a href="/" class="renk"> Tez Yönetim Sistemi </a></span>
+                <img src="../../images/logo.png" width="50" height="50" /><span class="renk"> <a href="/" class="renk"> Tez Yönetim Sistemi </a></span>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -150,7 +152,7 @@
                            <a href="javascript:;" data-toggle="collapse" data-target="#demo1"> Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo1" class="collapse">
                             <li>
-                                <a href="Forms/Ogrenci/TezHocaSec.aspx"> Danışman Hoca Seçimi</a>
+                                <a href="TezHocaSec.aspx"> Danışman Hoca Seçimi</a>
                             </li>
                             <li>
                                 <a href="User.aspx">Tez Seçimi</a>
@@ -190,31 +192,31 @@
         </nav>
         
       <div id="page-wrapper">
-
-          <br /><br />
-            <table class="table table-striped">
-               
-            <br />
-        </div>
+              <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+          
+     </div>
         <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="../../js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
 
 
       <!-- Morris Charts JavaScript -->
 
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
+    <script src="../../js/plugins/morris/raphael.min.js"></script>
+    <script src="../../js/plugins/morris/morris.min.js"></script>
+    <script src="../../js/plugins/morris/morris-data.js"></script>
     </form>
 </body>
 
 </html>
-

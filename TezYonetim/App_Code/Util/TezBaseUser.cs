@@ -19,7 +19,7 @@ public class TezBaseUser : System.Web.UI.Page
         {
             if ((int)Session["derece"] == 1) //1 veritabanında öğrenci demek
             {
-                Response.Redirect(@"~/Admin.aspx");
+                Response.Redirect(@"~/Forms/Hoca/Admin.aspx");
             }
         }
         else

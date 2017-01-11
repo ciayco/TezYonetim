@@ -11,17 +11,19 @@ public partial class User : TezBaseUser
     TezDBEntities db;
     Ogrenci Ogrenci;
     protected void Page_Load(object sender, EventArgs e)
-    {
-      
-        Label1.Text = Session["name"].ToString();
+    {      
         fnk = new TezFonk();
         db = new TezDBEntities();
         var Hoca = db.Hoca.ToList();
         Ogrenci = db.Ogrenci.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
         if (!IsPostBack)
-        {          
-            Repeater1.DataSource = Hoca;
-            Repeater1.DataBind();
+        {
+            if (Ogrenci.Hoca_ID == null)
+            {
+                Repeater1.DataSource = Hoca;
+                Repeater1.DataBind();
+            }
+            
         }
     }
 

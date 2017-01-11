@@ -1,18 +1,18 @@
 ﻿
-<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageAdmin.master" AutoEventWireup="true" EnableEventValidation="false" CodeFile="Duzenle.aspx.cs" Inherits="Duzenle"%>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Hoca/MasterPageAdmin.master" AutoEventWireup="true" EnableEventValidation="false" CodeFile="Duzenle.aspx.cs" Inherits="Duzenle"%>
 
   
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
-    <title>Kullanıcı Görüntüle</title>
+    <title>Kullanıcı Düzenle</title>
       <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="~/css/sb-admin.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
+    <link href="~/css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
