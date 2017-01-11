@@ -170,7 +170,7 @@
                     <ul class="nav navbar-nav side-nav" >
 
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-wrench fa-fw"></i> Tez İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="glyphicon glyphicon-text-background"></i>&nbsp;&nbsp;&nbsp;Tez İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo1" class="collapse">
                                 <li>
                                     <a href="Admin.aspx">Onay Bekleyen Tezler</a>
@@ -185,7 +185,7 @@
                         </li>
 
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-wrench fa-fw"></i> Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo2" class="collapse">
                                 <li>
                                     <asp:LinkButton runat="server" OnClick="ListeleClick"> Öğrencileri listele</asp:LinkButton>
@@ -195,7 +195,7 @@
                         </li>
 
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-wrench fa-fw"></i> Raporlar <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="glyphicon glyphicon-duplicate"></i>&nbsp;&nbsp;&nbsp;Raporlar <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo3" class="collapse">
                                 <li>
                                     <a href="Admin.aspx">Periyod</a>
