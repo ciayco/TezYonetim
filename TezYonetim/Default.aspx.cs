@@ -13,11 +13,11 @@ public partial class Login : System.Web.UI.Page
         {
             if ((int)Session["derece"] == 1) //1 veritabanında Admin/Hoca demek
             {
-                Response.Redirect(@"~/Forms/Hoca/Admin.aspx");
+                Response.Redirect(@"~/Forms/Hoca/index.aspx");
             }
             if ((int)Session["derece"] == 2)
             {
-                Response.Redirect(@"~/Forms/Ogrenci/User.aspx");
+                Response.Redirect(@"~/Forms/Ogrenci/index.aspx");
             }
         }
     }
@@ -38,7 +38,7 @@ public partial class Login : System.Web.UI.Page
                     AppKontrol.derece = (int)Ogrenci.Derece;// derece kontrolü
                     AppKontrol.name = Ogrenci.Ad;// isim  kontrolü
                     Response.Cookies.Add(cookie.Cookie(Ogrenci.No, Ogrenci.Sifre));
-                    Response.Redirect(@"~/Forms/Ogrenci/User.aspx");
+                    Response.Redirect(@"~/Forms/Ogrenci/index.aspx");
                 }
                 else
                 {
@@ -57,7 +57,7 @@ public partial class Login : System.Web.UI.Page
                     AppKontrol.derece = (int)hoca.Derece;// derece kontrolü
                     AppKontrol.name = hoca.Ad;// isim soyisim kontrolü
                     Response.Cookies.Add(cookie.Cookie(hoca.Mail, hoca.Sifre));
-                    Response.Redirect(@"~/Forms/Hoca/Admin.aspx");
+                    Response.Redirect(@"~/Forms/Hoca/index.aspx");
 
                 }
                 else

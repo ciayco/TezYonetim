@@ -163,13 +163,13 @@
                                     <a href="hocakayit.aspx">Hoca Ekle</a>
                                 </li>
                                 <li>
-                                    <a href="Admin.aspx">Onay Bekleyen Tezler</a>
+                                    <a href="#">Onay Bekleyen Tezler</a>
                                 </li>
                                 <li>
-                                    <a href="User.aspx">Tez Önerisi Yap</a>
+                                    <a href="#">Tez Önerisi Yap</a>
                                 </li>
                                 <li>
-                                    <a href="User.aspx">Tez Önerilerim</a>
+                                    <a href="#">Tez Önerilerim</a>
                                 </li>
                             </ul>
                         </li>
@@ -188,10 +188,10 @@
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="glyphicon glyphicon-duplicate"></i>&nbsp;&nbsp;&nbsp;Raporlar <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo3" class="collapse">
                                 <li>
-                                    <a href="Admin.aspx">Periyod</a>
+                                    <a href="#">Periyod</a>
                                 </li>
                                 <li>
-                                    <a href="User.aspx">Dropdown Item</a>
+                                    <a href="#">Dropdown Item</a>
                                 </li>
                             </ul>
                         </li>

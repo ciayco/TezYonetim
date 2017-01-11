@@ -5,17 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Duzenle : System.Web.UI.Page
+public partial class Duzenle : TezBase
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["Id"] != null && Request.QueryString["Id"] != null )
         {
-            if ((int)Session["derece"] == 2) //2 veritabanında öğrenci demek
-            {
-                Response.Redirect(@"~/User.aspx");
-            }
-        
+                 
 
         if (!Page.IsPostBack)
             {
