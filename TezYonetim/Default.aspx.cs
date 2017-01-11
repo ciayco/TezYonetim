@@ -49,5 +49,9 @@ public partial class Login : System.Web.UI.Page
             Label1.Text = "Kullanıcı adı veya Şifre Uyuşmadı!";
         }
         }
+        else
+        {
+            Label1.Text = "Kullanıcı adı veya Şifre Uyuşmadı!";
+        }
     }
 }

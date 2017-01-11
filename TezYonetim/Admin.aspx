@@ -30,7 +30,10 @@
                         <td><%#Eval("Ad") %></td>
                         <td><%#Eval("Mail") %></td>
                         <td><%#Eval("Bolum") %></td>
-                        <td><a href="Duzenle.aspx?ID=<%#Eval("Id") %>">Güncelle  </a><a href="Admin.aspx?ID=<%#Eval("Id") %>">Sil</a> </td>
+                        <td><a href="Duzenle.aspx?ID=<%#Eval("Id") %>" class="btn btn-primary btn-xs btn-round"> <span class="glyphicon glyphicon-edit"></span>  </a>
+                            <a href="Admin.aspx?ID=<%#Eval("Id") %>" class="btn btn-danger btn-xs btn-round"> <span class="glyphicon glyphicon-remove"></span></a> 
+
+                        </td>
                     </tr>
 
                 
