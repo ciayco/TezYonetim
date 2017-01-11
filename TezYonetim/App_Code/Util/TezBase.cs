@@ -19,7 +19,7 @@ public class TezBase : System.Web.UI.Page
         {
             if ((int)Session["derece"] == 2) //2 veritabanında Admin demek
             {
-                Response.Redirect(@"~/Forms/Ogrenci/User.aspx");
+                Response.Redirect(@"~/Forms/Ogrenci/index.aspx");
             }
         }
         else
