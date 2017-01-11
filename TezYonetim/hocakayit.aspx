@@ -53,7 +53,6 @@
                                         <p><asp:Label ID="LabelSignUP" runat="server" ForeColor="Red"></asp:Label></p>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <!-- Button -->                                        
                                     <div class="col-md-offset-3 col-md-9">
