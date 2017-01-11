@@ -150,7 +150,7 @@
                            <a href="javascript:;" data-toggle="collapse" data-target="#demo1"> Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo1" class="collapse">
                             <li>
-                                <a href="User.aspx"> Danışman Hoca Seçimi</a>
+                                <a href="TezHocaSec.aspx"> Danışman Hoca Seçimi</a>
                             </li>
                             <li>
                                 <a href="User.aspx">Tez Seçimi</a>
@@ -192,31 +192,44 @@
       <div id="page-wrapper">
 
           <br /><br />
-            <table class="table table-striped">
-                 <thead>
-                    <tr>
-                            <th style="text-align:center;">Id </th>
-                            <th style="text-align:center;">İsim Soyisim </th>
-                            <th style="text-align:center;">Ders </th>
-                            <th style="text-align:center;">Seç</th>                 
-                            <th style="text-align:center;">Sil</th>
-                    </tr>
-                      </thead>
-                        <asp:Repeater ID="Repeater1" runat="server">
-                        <ItemTemplate>
-                      <tbody>
-                        <tr>
-                            <td><%#Eval("Id") %></td>
-                            <td><%#Eval("Ad") %></td>
-                            <td><%#Eval("Ders") %></td>
-                            <td><a href="TezHocaSec.aspx?ID=<%#Eval("Id")%>&Sec=true">Seç  </a>  </td>
-                            <td><a href="TezHocaSec.aspx?ID=<%#Eval("Id")%>&Sil=true">Sil</a> </td>
-                       </tr>
-    
-                      </tbody>
-                            </ItemTemplate>
-                              </asp:Repeater>
-                    </table>
+
+
+          <!--Repeater -->
+          <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+          <HeaderTemplate>
+          <table class="table table-striped">
+               <thead>
+                  <tr>
+                          <th style="text-align:center;">Id </th>
+                          <th style="text-align:center;">İsim Soyisim </th>
+                          <th style="text-align:center;">Ders </th>
+                          <th style="text-align:center;">Seç</th>                 
+                          <th style="text-align:center;">Sil</th>
+                  </tr>
+                    </thead>
+                <tbody>
+        </HeaderTemplate>
+        <ItemTemplate>
+            <tr>
+                <td><%#Eval("Id") %></td>
+                <td><%#Eval("Ad") %></td>
+                <td><%#Eval("Ders") %></td>
+                 <td>
+                    <asp:Button ID="SecBut" CommandName="Sec" Text="Seç" runat="server" CommandArgument='<%# Eval("Id") %>' />
+                </td>
+                <td>
+                    <asp:Button ID="SilBut" CommandName="Click" Text="Sil" runat="server" CommandArgument='<%# Eval("Id") %>' />
+                </td>
+            </tr>
+        </ItemTemplate>
+        <FooterTemplate>
+            </tbody> </table>
+        </FooterTemplate>
+    </asp:Repeater>
+           <!--Repeater -->
+
+
+
             <br />
         </div>
         <!-- /#page-wrapper -->
