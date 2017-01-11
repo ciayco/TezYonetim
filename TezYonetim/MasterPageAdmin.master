@@ -160,17 +160,17 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <asp:LinkButton runat="server" OnClick="LogOut_Click"><i class="fa fa-fw fa-power-off"></i> Çıkış Yap</asp:LinkButton>
+                                <asp:LinkButton runat="server" OnClick="LogOut_Click"><i class="fa fa-fw fa-power-off"></i> Çıkış Yap </asp:LinkButton>
                             </li>
                         </ul>
                     </li>
                 </ul>
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav side-nav">
+                <div class="collapse navbar-collapse navbar-ex1-collapse" role="navigation">
+                    <ul class="nav navbar-nav side-nav" >
 
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo1">Tez İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa fa-wrench fa-fw"></i> Tez İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo1" class="collapse">
                                 <li>
                                     <a href="Admin.aspx">Onay Bekleyen Tezler</a>
@@ -185,7 +185,7 @@
                         </li>
 
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo2">Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-wrench fa-fw"></i> Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo2" class="collapse">
                                 <li>
                                     <asp:LinkButton runat="server" OnClick="ListeleClick"> Öğrencileri listele</asp:LinkButton>
@@ -195,7 +195,7 @@
                         </li>
 
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo3">Raporlar <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-wrench fa-fw"></i> Raporlar <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo3" class="collapse">
                                 <li>
                                     <a href="Admin.aspx">Periyod</a>

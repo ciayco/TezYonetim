@@ -32,8 +32,8 @@
         <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
             <div class="panel panel-info" >
                     <div class="panel-heading">
-                        <div class="panel-title">Sign In</div>
-                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+                        <div class="panel-title">Kullanıcı Girişi</div>
+                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="SignUp.aspx">Kayıt Ol</a></div>
                     </div>     
 
                     <div style="padding-top:30px" class="panel-body" >
@@ -56,11 +56,7 @@
                                 
                             <div class="input-group">
                                       <div class="checkbox">
-                                        <label>
-
-                                          <asp:CheckBox ID="CheckBox1" runat="server" />
-&nbsp;Remember me
-                                        </label>
+                                        <label><asp:CheckBox ID="CheckBox1" runat="server" />&nbsp;Remember me</label>
                                       </div>
                                     </div>
 
