@@ -153,7 +153,7 @@
                                 <a href="TezHocaSec.aspx"> Danışman Hoca Seçimi</a>
                             </li>
                             <li>
-                                <a href="User.aspx">Tez Seçimi</a>
+                                <a href="TezSec.aspx">Tez Seçimi</a>
                             </li>
                             <li>
                                 <a href="User.aspx">Tezim</a>
