@@ -18,8 +18,5 @@ public partial class MasterPageAdmin : System.Web.UI.MasterPage
         Response.Redirect(@"~/Default.aspx");
     }
 
-    protected void ListeleClick(object sender, EventArgs e)
-    {
-
-    }
+   
 }

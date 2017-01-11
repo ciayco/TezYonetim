@@ -188,7 +188,7 @@
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo2" class="collapse">
                                 <li>
-                                    <asp:LinkButton runat="server" OnClick="ListeleClick"> Öğrencileri listele</asp:LinkButton>
+                                    <a href="Admin.aspx">Öğrencileri listele</a>
                                 </li>
 
                             </ul>
