@@ -1,21 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Duzenle.aspx.cs" Inherits="Duzenle" %>
+﻿
+<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageAdmin.master" AutoEventWireup="true" EnableEventValidation="false" CodeFile="Duzenle.aspx.cs" Inherits="Duzenle"%>
 
+  
 
-
-<!DOCTYPE html>
-<html lang="tr">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SB Admin - Bootstrap Admin Template</title>
-
-    <!-- Bootstrap Core CSS -->
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
+    <title>Kullanıcı Görüntüle</title>
+      <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
@@ -26,14 +16,13 @@
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-</head>
-
-<body>
- 
-<%-- Body  başlangıc  --%>
+</asp:Content>
 
 
 
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <br />
+    <br />
         <div class="container">    
         <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                     <div class="panel panel-info">
@@ -41,7 +30,7 @@
                             <div class="panel-title">Sign Up</div>
                         </div>  
                         <div class="panel-body" >
-                            <form id="signupform" runat="server" class="form-horizontal" role="form" >
+                            <form id="signupform" class="form-horizontal" role="form" >
                                 
                                 <div id="signupalert" style="display:none" class="alert alert-danger">
                                     <p>Error:</p>
@@ -92,22 +81,5 @@
                          </div>
                        </div> 
                     </div>
-
             </div>
-
-<%--  Body  bitiş--%>
-
- <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
-
-</body>
-
-</html>
-
+</asp:Content>
