@@ -11,17 +11,31 @@ public partial class User : TezBaseUser
     TezDBEntities db;
     Ogrenci Ogrenci;
     Tez tez;
+    
     protected void Page_Load(object sender, EventArgs e)
-    {      
+    {
+        
+
+
+
+
         fnk = new TezFonk();
         db = new TezDBEntities();
         Ogrenci = db.Ogrenci.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
         var Tezdb = db.Tez.Where(t => t.Hoca_ID == Ogrenci.Hoca_ID && t.Durum == 0).ToList();
-        
-        
+
+        //tarih kontrol
+        DateTime tarih = DateTime.Now;
+        Tarih trh = db.Tarih.Where(q => q.Hoca_ID == Ogrenci.Hoca_ID).FirstOrDefault();
+       
+        if(tarih>=trh.TezSBas && tarih <= trh.TezSBit)
+        {
+            //sayfa işlemleri
+        }
+        //tarih kontrol
+
         if (!IsPostBack)
         {
-            //if (Ogrenci.Hoca_ID == null)
             {
                 Repeater1.DataSource = Tezdb;
                 Repeater1.DataBind();
