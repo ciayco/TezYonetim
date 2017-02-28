@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Hoca/MasterPageAdmin.master" AutoEventWireup="true" EnableEventValidation="false" CodeFile="hocakayit.aspx.cs" Inherits="SignUp" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Hoca/MasterPageAdmin.master" AutoEventWireup="true" EnableEventValidation="false" CodeFile="TezEkle.aspx.cs" Inherits="TezEkle" %>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
-    <title>Hoca Ekle</title>
+    <title>Tez Ekle</title>
 
 </asp:Content>
 
@@ -26,29 +26,17 @@
                         <div class="form-group">
                             <label for="name" class="col-md-3 control-label">Ad</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="Name" placeholder="Ad">
+                                <input type="text" class="form-control" name="Konu" placeholder="Ad">
                             </div>
                         </div>
+                        <br> <br> <br>
                         <div class="form-group">
-                            <label for="sifre" class="col-md-3 control-label">Şifre</label>
+                              <label for="comment" class="col-md-3 control-label">Comment:</label>
                             <div class="col-md-9">
-                                <input type="password" class="form-control" name="Sifre" placeholder="Şifre">
+                              <textarea class="form-control" rows="5" id="comment" name="Aciklama"></textarea>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="e-mail" class="col-md-3 control-label">E-Mail</label>
-                            <div class="col-md-9">
-                                <input type="email" class="form-control" name="E-mail" placeholder="E-Mail">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="bolum" class="col-md-3 control-label">Ders</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" name="Ders" placeholder="Bölüm">
-                            </div>
-                        </div>
-                        <div class="form-group">
+                              <div class="form-group">
                             <div class="col-md-9">
                                 <p>
                                     <asp:Label ID="LabelSignUP" runat="server" ForeColor="Red"></asp:Label>

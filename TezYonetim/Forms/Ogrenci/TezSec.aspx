@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Forms/Ogrenci/MasterPageUser.master" EnableEventValidation="false"  CodeFile="TezSec.aspx.cs" Inherits="User" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Forms/Ogrenci/MasterPageUser.master" EnableEventValidation="false"  CodeFile="TezSec.aspx.cs" Inherits="TezSec" %>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">

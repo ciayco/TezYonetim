@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Security.Cryptography;
 
-public partial class SignUp : System.Web.UI.Page
+public partial class SignUp :TezBase
 {
 
     protected void Page_Load(object sender, EventArgs e)

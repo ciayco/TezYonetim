@@ -50,6 +50,7 @@
                     <img src="../../images/logo.png" width="50" height="50" /><span class="renk"> <a href="/" class="renk">Tez Yönetim Sistemi </a></span>
                 </div>
                 <!-- Top Menu Items -->
+
                 <ul class="nav navbar-right top-nav">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i><b class="caret"></b></a>
@@ -166,7 +167,7 @@
                                     <a href="#">Onay Bekleyen Tezler</a>
                                 </li>
                                 <li>
-                                    <a href="#">Tez Önerisi Yap</a>
+                                    <a href="TezEkle.aspx">Tez Önerisi Yap</a>
                                 </li>
                                 <li>
                                     <a href="#">Tez Önerilerim</a>
@@ -178,9 +179,11 @@
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo2" class="collapse">
                                 <li>
-                                    <a href="OgrenciOnay.aspx">Öğrencileri listele</a>
+                                    <a href="Admin.aspx">Öğrencileri listele</a>
                                 </li>
-
+                                <li>
+                                    <a href="OgrenciOnay.aspx">Öğrenci Onay</a>
+                                </li>
                             </ul>
                         </li>
 

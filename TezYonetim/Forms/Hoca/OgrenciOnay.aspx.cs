@@ -38,7 +38,7 @@ public partial class Admin : TezBase
             case "Sil":
                 id = e.CommandArgument.ToString();
                 ogid = Convert.ToInt32(id);
-                Ogrenci = db.Ogrenci.Where(o => o.Id == 3).FirstOrDefault();              
+                Ogrenci = db.Ogrenci.Where(o => o.Id == ogid).FirstOrDefault();
                 Ogrenci.Hoca_ID = null;
                 db.SaveChanges();
                 Repeater1.DataBind();

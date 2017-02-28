@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class User : TezBaseUser
+public partial class TezSec : TezBaseUser
 {
     TezFonk fnk;
     TezDBEntities db;
@@ -21,7 +21,7 @@ public partial class User : TezBaseUser
         
         if (!IsPostBack)
         {
-            //if (Ogrenci.Hoca_ID == null)
+          //  if (Ogrenci.Hoca_ID == null)
             {
                 Repeater1.DataSource = Tezdb;
                 Repeater1.DataBind();
