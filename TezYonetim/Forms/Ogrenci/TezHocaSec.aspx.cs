@@ -16,6 +16,18 @@ public partial class User : TezBaseUser
         db = new TezDBEntities();
         var Hoca = db.Hoca.ToList();
         Ogrenci = db.Ogrenci.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
+
+        //tarih kontrol
+        DateTime tarih = DateTime.Now;
+        Tarih trh = db.Tarih.Where(q => q.Hoca_ID == Ogrenci.Hoca_ID).FirstOrDefault();
+
+        if (tarih >= trh.DanismanSBas && tarih <= trh.DanismanSBit)
+        {
+            //sayfa işlemleri
+        }
+        //tarih kontrol
+
+
         if (!IsPostBack)
         {
             if (Ogrenci.Hoca_ID == null)

@@ -63,6 +63,7 @@ public partial class Ogrenci
     public Nullable<int> Derece { get; set; }
 
     public virtual Hoca Hoca { get; set; }
+    public virtual Tarih Tarih { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Rapor> Rapor { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -80,6 +81,24 @@ public partial class Rapor
 
     public virtual Hoca Hoca { get; set; }
     public virtual Ogrenci Ogrenci { get; set; }
+}
+
+public partial class Tarih
+{
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public Tarih()
+    {
+        this.Ogrenci = new HashSet<Ogrenci>();
+    }
+
+    public int Hoca_ID { get; set; }
+    public Nullable<System.DateTime> DanismanSBas { get; set; }
+    public Nullable<System.DateTime> DanismanSBit { get; set; }
+    public Nullable<System.DateTime> TezSBas { get; set; }
+    public Nullable<System.DateTime> TezSBit { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Ogrenci> Ogrenci { get; set; }
 }
 
 public partial class Tez
