@@ -40,9 +40,19 @@ public partial class Admin : TezBase
                 ogid = Convert.ToInt32(id);
                 Ogrenci = db.Ogrenci.Where(o => o.Id == ogid).FirstOrDefault();
                 Ogrenci.Hoca_ID = null;
+                Ogrenci.Hoca_Onay = false;
                 db.SaveChanges();
                 Repeater1.DataBind();
+                break;
 
+            case "Sec":
+                id = e.CommandArgument.ToString();
+                ogid = Convert.ToInt32(id);
+                Ogrenci = db.Ogrenci.Where(o => o.Id == ogid).FirstOrDefault();
+                Ogrenci.Hoca_ID = AppKontrol.id;
+                Ogrenci.Hoca_Onay = true;
+                db.SaveChanges();
+                Repeater1.DataBind();
                 break;
         }
 

@@ -61,6 +61,7 @@ public partial class Ogrenci
     public string Mail { get; set; }
     public string Bolum { get; set; }
     public Nullable<int> Derece { get; set; }
+    public Nullable<bool> Hoca_Onay { get; set; }
 
     public virtual Hoca Hoca { get; set; }
     public virtual Tarih Tarih { get; set; }

@@ -34,6 +34,7 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Hoca_ID" Type="int" />
+          <Property Name="Hoca_Onay" Type="bit" />
           <Property Name="Ad" Type="nvarchar" MaxLength="50" />
           <Property Name="No" Type="nvarchar" MaxLength="50" />
           <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
@@ -252,6 +253,7 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
           <NavigationProperty Name="Tarih" Relationship="TezDBModel.FK_Ogrenci_Tarih" FromRole="Ogrenci" ToRole="Tarih" />
           <NavigationProperty Name="Rapor" Relationship="TezDBModel.FK_Rapor_Ogrenci" FromRole="Ogrenci" ToRole="Rapor" />
           <NavigationProperty Name="Tez" Relationship="TezDBModel.FK_Tez_Ogrenci" FromRole="Ogrenci" ToRole="Tez" />
+          <Property Name="Hoca_Onay" Type="Boolean" />
         </EntityType>
         <EntityType Name="Rapor">
           <Key>
@@ -394,6 +396,7 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
           <EntitySetMapping Name="Ogrenci">
             <EntityTypeMapping TypeName="TezDBModel.Ogrenci">
               <MappingFragment StoreEntitySet="Ogrenci">
+                <ScalarProperty Name="Hoca_Onay" ColumnName="Hoca_Onay" />
                 <ScalarProperty Name="Derece" ColumnName="Derece" />
                 <ScalarProperty Name="Bolum" ColumnName="Bolum" />
                 <ScalarProperty Name="Mail" ColumnName="Mail" />
