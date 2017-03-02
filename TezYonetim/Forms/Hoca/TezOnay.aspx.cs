@@ -8,22 +8,21 @@ using System.Security.Cryptography;
 
 public partial class Admin : TezBase
 {
-    TezFonk fnk;
     TezDBEntities db;
     Ogrenci Ogrenci;
+    Tez Tez;
     protected void Page_Load(object sender, EventArgs e)
     {
-        fnk = new TezFonk();
         db = new TezDBEntities();
-       
+
         var Ogrdb = db.Ogrenci.Where(t => t.Hoca_ID == AppKontrol.id && t.Tez_ID != null || t.Tez_Onay == false).ToList();
 
         if (!IsPostBack)
         {
-           
-                Repeater1.DataSource = Ogrdb;
-                Repeater1.DataBind();
-           
+
+            Repeater1.DataSource = Ogrdb;
+            Repeater1.DataBind();
+
 
         }
     }
@@ -50,6 +49,20 @@ public partial class Admin : TezBase
                 ogid = Convert.ToInt32(id);
                 Ogrenci = db.Ogrenci.Where(o => o.Id == ogid).FirstOrDefault();
                 Ogrenci.Tez_Onay = true;
+                Tez = db.Tez.Where(oo => oo.Id == Ogrenci.Tez_ID).FirstOrDefault();
+                //Tezdeki boş yer kontrolü
+                if (Tez.Og_ID != null)
+                {
+                    Tez.Og_ID = ogid;
+                }
+                else if (Tez.Og2_ID != null)
+                {
+                    Tez.Og2_ID = ogid;
+                }
+                else
+                {
+                    //Uyarı
+                }
                 db.SaveChanges();
                 Repeater1.DataBind();
                 break;
