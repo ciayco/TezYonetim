@@ -25,8 +25,6 @@
                           <th style="text-align:center;">Ogr Id </th>
                           <th style="text-align:center;">Konu </th>
                           <th style="text-align:center;">Aciklama</th>    
-                          <th style="text-align:center;">Durum</th>                 
-                          <th style="text-align:center;">Onay</th>
                   </tr>
                     </thead>
                 <tbody>
@@ -38,8 +36,6 @@
                 <td><%#Eval("Og_ID") %></td>
                 <td><%#Eval("Konu") %></td>
                 <td><%#Eval("Aciklama") %></td>
-                <td><%#Eval("Durum") %></td>
-                <td><%#Eval("Onay") %></td>
                  <td>
                     <asp:Button ID="SecBut" CommandName="Sec" Text="Seç" runat="server" CommandArgument='<%# Eval("Id") %>' />
                 </td>

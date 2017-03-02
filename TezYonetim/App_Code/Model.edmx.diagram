@@ -5,18 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="8bb66e8b85644c69a4bbd1ba3eafeaa0" Name="Diagram1">
-        <EntityTypeShape EntityType="TezDBModel.Hoca" Width="1.5" PointX="1.125" PointY="4.5" />
-        <EntityTypeShape EntityType="TezDBModel.Ogrenci" Width="1.5" PointX="3.625" PointY="4.125" />
-        <EntityTypeShape EntityType="TezDBModel.Rapor" Width="1.5" PointX="6.5" PointY="4.5" />
-        <EntityTypeShape EntityType="TezDBModel.Tarih" Width="1.5" PointX="5.75" PointY="1.25" />
-        <EntityTypeShape EntityType="TezDBModel.Tez" Width="1.5" PointX="8.625" PointY="5.5" />
-        <EntityTypeShape EntityType="TezDBModel.Admin" Width="1.5" PointX="1.125" PointY="1.125" />
+        <EntityTypeShape EntityType="TezDBModel.Hoca" Width="1.5" PointX="0.5" PointY="4.25" />
+        <EntityTypeShape EntityType="TezDBModel.Ogrenci" Width="1.5" PointX="8" PointY="4.5" />
+        <EntityTypeShape EntityType="TezDBModel.Rapor" Width="1.5" PointX="4.625" PointY="2.25" />
+        <EntityTypeShape EntityType="TezDBModel.Tarih" Width="1.5" PointX="8" PointY="1.25" />
+        <EntityTypeShape EntityType="TezDBModel.Tez" Width="1.5" PointX="4.625" PointY="6.375" />
+        <EntityTypeShape EntityType="TezDBModel.Admin" Width="1.5" PointX="0.5" PointY="0.875" />
         <AssociationConnector Association="TezDBModel.FK_Ogrenci_Hoca1" />
         <AssociationConnector Association="TezDBModel.FK_Rapor_Hoca" />
         <AssociationConnector Association="TezDBModel.FK_Tez_Hoca" />
         <AssociationConnector Association="TezDBModel.FK_Ogrenci_Tarih" />
         <AssociationConnector Association="TezDBModel.FK_Rapor_Ogrenci" />
         <AssociationConnector Association="TezDBModel.FK_Tez_Ogrenci" />
+        <AssociationConnector Association="TezDBModel.FK_Rapor_Tez" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

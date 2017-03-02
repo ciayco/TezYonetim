@@ -41,6 +41,8 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
           <Property Name="Mail" Type="nvarchar" MaxLength="50" />
           <Property Name="Bolum" Type="nvarchar" MaxLength="50" />
           <Property Name="Derece" Type="int" />
+          <Property Name="Tez_ID" Type="int" />
+          <Property Name="Tez_Onay" Type="bit" />
         </EntityType>
         <EntityType Name="Rapor">
           <Key>
@@ -49,6 +51,7 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Hoca_Id" Type="int" />
           <Property Name="Ogrenci_Id" Type="int" />
+          <Property Name="Tez_Id" Type="int" />
           <Property Name="Ad" Type="nchar" MaxLength="10" />
           <Property Name="Tarih" Type="nchar" MaxLength="10" />
           <Property Name="Aciklama" Type="nvarchar" MaxLength="50" />
@@ -70,10 +73,9 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Hoca_ID" Type="int" />
           <Property Name="Og_ID" Type="int" />
+          <Property Name="Og2_ID" Type="int" />
           <Property Name="Konu" Type="nvarchar" MaxLength="50" />
           <Property Name="Aciklama" Type="nvarchar(max)" />
-          <Property Name="Durum" Type="int" />
-          <Property Name="Onay" Type="int" />
         </EntityType>
         <Association Name="FK_Ogrenci_Hoca1">
           <End Role="Hoca" Type="Self.Hoca" Multiplicity="0..1" />
@@ -120,6 +122,18 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
             </Principal>
             <Dependent Role="Rapor">
               <PropertyRef Name="Ogrenci_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rapor_Tez">
+          <End Role="Tez" Type="Self.Tez" Multiplicity="0..1" />
+          <End Role="Rapor" Type="Self.Rapor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tez">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rapor">
+              <PropertyRef Name="Tez_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -178,6 +192,10 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
             <End Role="Ogrenci" EntitySet="Ogrenci" />
             <End Role="Rapor" EntitySet="Rapor" />
           </AssociationSet>
+          <AssociationSet Name="FK_Rapor_Tez" Association="Self.FK_Rapor_Tez">
+            <End Role="Tez" EntitySet="Tez" />
+            <End Role="Rapor" EntitySet="Rapor" />
+          </AssociationSet>
           <AssociationSet Name="FK_Tez_Hoca" Association="Self.FK_Tez_Hoca">
             <End Role="Hoca" EntitySet="Hoca" />
             <End Role="Tez" EntitySet="Tez" />
@@ -222,6 +240,10 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
             <End Role="Ogrenci" EntitySet="Ogrenci" />
             <End Role="Tez" EntitySet="Tez" />
           </AssociationSet>
+          <AssociationSet Name="FK_Rapor_Tez" Association="TezDBModel.FK_Rapor_Tez">
+            <End Role="Tez" EntitySet="Tez" />
+            <End Role="Rapor" EntitySet="Rapor" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Hoca">
           <Key>
@@ -243,17 +265,19 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Hoca_ID" Type="Int32" />
+          <Property Name="Hoca_Onay" Type="Boolean" />
           <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Bolum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Derece" Type="Int32" />
+          <Property Name="Tez_ID" Type="Int32" />
+          <Property Name="Tez_Onay" Type="Boolean" />
           <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Ogrenci_Hoca1" FromRole="Ogrenci" ToRole="Hoca" />
           <NavigationProperty Name="Tarih" Relationship="TezDBModel.FK_Ogrenci_Tarih" FromRole="Ogrenci" ToRole="Tarih" />
           <NavigationProperty Name="Rapor" Relationship="TezDBModel.FK_Rapor_Ogrenci" FromRole="Ogrenci" ToRole="Rapor" />
           <NavigationProperty Name="Tez" Relationship="TezDBModel.FK_Tez_Ogrenci" FromRole="Ogrenci" ToRole="Tez" />
-          <Property Name="Hoca_Onay" Type="Boolean" />
         </EntityType>
         <EntityType Name="Rapor">
           <Key>
@@ -262,11 +286,13 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Hoca_Id" Type="Int32" />
           <Property Name="Ogrenci_Id" Type="Int32" />
+          <Property Name="Tez_Id" Type="Int32" />
           <Property Name="Ad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Tarih" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Aciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Rapor_Hoca" FromRole="Rapor" ToRole="Hoca" />
           <NavigationProperty Name="Ogrenci" Relationship="TezDBModel.FK_Rapor_Ogrenci" FromRole="Rapor" ToRole="Ogrenci" />
+          <NavigationProperty Name="Tez" Relationship="TezDBModel.FK_Rapor_Tez" FromRole="Rapor" ToRole="Tez" />
         </EntityType>
         <EntityType Name="Tarih">
           <Key>
@@ -286,12 +312,12 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Hoca_ID" Type="Int32" />
           <Property Name="Og_ID" Type="Int32" />
+          <Property Name="Og2_ID" Type="Int32" />
           <Property Name="Konu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Durum" Type="Int32" />
-          <Property Name="Onay" Type="Int32" />
           <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Tez_Hoca" FromRole="Tez" ToRole="Hoca" />
           <NavigationProperty Name="Ogrenci" Relationship="TezDBModel.FK_Tez_Ogrenci" FromRole="Tez" ToRole="Ogrenci" />
+          <NavigationProperty Name="Rapor" Relationship="TezDBModel.FK_Rapor_Tez" FromRole="Tez" ToRole="Rapor" />
         </EntityType>
         <EntityType Name="Admin">
           <Key>
@@ -375,6 +401,18 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Rapor_Tez">
+          <End Type="TezDBModel.Tez" Role="Tez" Multiplicity="0..1" />
+          <End Type="TezDBModel.Rapor" Role="Rapor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tez">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rapor">
+              <PropertyRef Name="Tez_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -396,13 +434,15 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
           <EntitySetMapping Name="Ogrenci">
             <EntityTypeMapping TypeName="TezDBModel.Ogrenci">
               <MappingFragment StoreEntitySet="Ogrenci">
-                <ScalarProperty Name="Hoca_Onay" ColumnName="Hoca_Onay" />
+                <ScalarProperty Name="Tez_Onay" ColumnName="Tez_Onay" />
+                <ScalarProperty Name="Tez_ID" ColumnName="Tez_ID" />
                 <ScalarProperty Name="Derece" ColumnName="Derece" />
                 <ScalarProperty Name="Bolum" ColumnName="Bolum" />
                 <ScalarProperty Name="Mail" ColumnName="Mail" />
                 <ScalarProperty Name="Sifre" ColumnName="Sifre" />
                 <ScalarProperty Name="No" ColumnName="No" />
                 <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Hoca_Onay" ColumnName="Hoca_Onay" />
                 <ScalarProperty Name="Hoca_ID" ColumnName="Hoca_ID" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -414,6 +454,7 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
                 <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
                 <ScalarProperty Name="Tarih" ColumnName="Tarih" />
                 <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Tez_Id" ColumnName="Tez_Id" />
                 <ScalarProperty Name="Ogrenci_Id" ColumnName="Ogrenci_Id" />
                 <ScalarProperty Name="Hoca_Id" ColumnName="Hoca_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -434,10 +475,9 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
           <EntitySetMapping Name="Tez">
             <EntityTypeMapping TypeName="TezDBModel.Tez">
               <MappingFragment StoreEntitySet="Tez">
-                <ScalarProperty Name="Onay" ColumnName="Onay" />
-                <ScalarProperty Name="Durum" ColumnName="Durum" />
                 <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
                 <ScalarProperty Name="Konu" ColumnName="Konu" />
+                <ScalarProperty Name="Og2_ID" ColumnName="Og2_ID" />
                 <ScalarProperty Name="Og_ID" ColumnName="Og_ID" />
                 <ScalarProperty Name="Hoca_ID" ColumnName="Hoca_ID" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

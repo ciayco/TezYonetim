@@ -55,13 +55,15 @@ public partial class Ogrenci
 
     public int Id { get; set; }
     public Nullable<int> Hoca_ID { get; set; }
+    public Nullable<bool> Hoca_Onay { get; set; }
     public string Ad { get; set; }
     public string No { get; set; }
     public string Sifre { get; set; }
     public string Mail { get; set; }
     public string Bolum { get; set; }
     public Nullable<int> Derece { get; set; }
-    public Nullable<bool> Hoca_Onay { get; set; }
+    public Nullable<int> Tez_ID { get; set; }
+    public Nullable<bool> Tez_Onay { get; set; }
 
     public virtual Hoca Hoca { get; set; }
     public virtual Tarih Tarih { get; set; }
@@ -76,12 +78,14 @@ public partial class Rapor
     public int Id { get; set; }
     public Nullable<int> Hoca_Id { get; set; }
     public Nullable<int> Ogrenci_Id { get; set; }
+    public Nullable<int> Tez_Id { get; set; }
     public string Ad { get; set; }
     public string Tarih { get; set; }
     public string Aciklama { get; set; }
 
     public virtual Hoca Hoca { get; set; }
     public virtual Ogrenci Ogrenci { get; set; }
+    public virtual Tez Tez { get; set; }
 }
 
 public partial class Tarih
@@ -104,14 +108,21 @@ public partial class Tarih
 
 public partial class Tez
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public Tez()
+    {
+        this.Rapor = new HashSet<Rapor>();
+    }
+
     public int Id { get; set; }
     public Nullable<int> Hoca_ID { get; set; }
     public Nullable<int> Og_ID { get; set; }
+    public Nullable<int> Og2_ID { get; set; }
     public string Konu { get; set; }
     public string Aciklama { get; set; }
-    public Nullable<int> Durum { get; set; }
-    public Nullable<int> Onay { get; set; }
 
     public virtual Hoca Hoca { get; set; }
     public virtual Ogrenci Ogrenci { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Rapor> Rapor { get; set; }
 }

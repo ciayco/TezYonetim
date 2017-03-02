@@ -16,7 +16,7 @@ public partial class TezSec : TezBaseUser
         fnk = new TezFonk();
         db = new TezDBEntities();
         Ogrenci = db.Ogrenci.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
-        var Tezdb = db.Tez.Where(t => t.Hoca_ID == Ogrenci.Hoca_ID && t.Durum == 0).ToList();
+        var Tezdb = db.Tez.Where(t => t.Hoca_ID == Ogrenci.Hoca_ID && (t.Og_ID==null || t.Og2_ID==null)).ToList();
         
         
         if (!IsPostBack)
@@ -39,14 +39,13 @@ public partial class TezSec : TezBaseUser
 
                 case "Sec":
                     id = e.CommandArgument.ToString();
-                    tezid = Convert.ToInt32(id);
-                    tez = db.Tez.Where(t => t.Id == tezid).FirstOrDefault();
-                    tez.Og_ID = AppKontrol.id;
-                    tez.Durum = 1;
+                    tezid = Convert.ToInt32(id);                  
+                    Ogrenci.Tez_ID = Convert.ToInt32(id);
+                    Ogrenci.Tez_Onay = false;
                     db.SaveChanges();
                     Repeater1.DataBind();
-    
-                    break;
+
+                break;
         }
         
     }

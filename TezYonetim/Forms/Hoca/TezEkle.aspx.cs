@@ -19,8 +19,6 @@ public partial class TezEkle :TezBase
         Tez tez = new Tez();
         tez.Konu = Request["Konu"].Trim();
         tez.Aciklama = Request["Aciklama"].Trim();
-        tez.Durum = 0;
-        tez.Onay = 0;
         tez.Hoca_ID = AppKontrol.id;
         db.Tez.Add(tez);
         db.SaveChanges();
