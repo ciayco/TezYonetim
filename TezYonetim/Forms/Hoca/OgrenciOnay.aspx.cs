@@ -16,7 +16,7 @@ public partial class Admin : TezBase
         fnk = new TezFonk();
         db = new TezDBEntities();
        
-        var Ogrdb = db.Ogrenci.Where(t => t.Hoca_ID == AppKontrol.id).ToList();
+        var Ogrdb = db.Ogrenci.Where(t => t.Hoca_ID == AppKontrol.id && t.Hoca_Onay==false).ToList();
 
         if (!IsPostBack)
         {

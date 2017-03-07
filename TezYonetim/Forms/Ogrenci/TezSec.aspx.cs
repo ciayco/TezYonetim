@@ -21,12 +21,20 @@ public partial class TezSec : TezBaseUser
         
         if (!IsPostBack)
         {
-          //  if (Ogrenci.Hoca_ID == null)
+          if(Ogrenci.Tez_ID==null)
             {
                 Repeater1.DataSource = Tezdb;
                 Repeater1.DataBind();
             }
-            
+            else if (Ogrenci.Tez_Onay == false)
+            {
+                Response.Write("<script>alert('Tez onay beklemede')</script>");
+            }
+            else
+            {
+                Response.Write("<script>alert('Tez seçimi yapıldı tezıne bak')</script>");
+            }
+
         }
     }
 

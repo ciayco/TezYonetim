@@ -19,7 +19,7 @@ public partial class User : TezBaseUser
 
         //tarih kontrol
         DateTime tarih = DateTime.Now;
-        Tarih trh = db.Tarih.Where(q => q.Hoca_ID == Ogrenci.Hoca_ID).FirstOrDefault();
+        Tarih trh = db.Tarih.Where(q => q.Hoca_ID ==2).FirstOrDefault();
 
         if (tarih >= trh.DanismanSBas && tarih <= trh.DanismanSBit)
         {
@@ -34,6 +34,14 @@ public partial class User : TezBaseUser
             {
                 Repeater1.DataSource = Hoca;
                 Repeater1.DataBind();
+            }
+            else if(Ogrenci.Hoca_Onay==false)
+            {
+                Response.Write("<script>alert('hoca onay beklemede')</script>");
+            }
+            else
+            {
+                Response.Write("<script>alert('Tez seçimi yapınız')</script>");
             }
             
         }

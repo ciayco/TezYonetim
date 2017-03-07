@@ -164,7 +164,7 @@
                                     <a href="hocakayit.aspx">Hoca Ekle</a>
                                 </li>
                                 <li>
-                                    <a href="#">Onay Bekleyen Tezler</a>
+                                    <a href="TezOnay.aspx">Onay Bekleyen Tezler</a>
                                 </li>
                                 <li>
                                     <a href="TezEkle.aspx">Tez Önerisi Yap</a>
