@@ -17,25 +17,37 @@ public partial class TezSec : TezBaseUser
         db = new TezDBEntities();
         Ogrenci = db.Ogrenci.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
         var Tezdb = db.Tez.Where(t => t.Hoca_ID == Ogrenci.Hoca_ID && (t.Og_ID==null || t.Og2_ID==null)).ToList();
-        
-        
-        if (!IsPostBack)
-        {
-          if(Ogrenci.Tez_ID==null)
-            {
-                Repeater1.DataSource = Tezdb;
-                Repeater1.DataBind();
-            }
-            else if (Ogrenci.Tez_Onay == false)
-            {
-                Response.Write("<script>alert('Tez onay beklemede')</script>");
-            }
-            else
-            {
-                Response.Write("<script>alert('Tez seçimi yapıldı tezıne bak')</script>");
-            }
 
+        //tarih kontrol
+        DateTime tarih = DateTime.Now;
+        Tarih trh = db.Tarih.Where(q => q.Hoca_ID == 2).FirstOrDefault();
+
+        if (tarih >= trh.DanismanSBas && tarih <= trh.DanismanSBit)
+        {
+            if (!IsPostBack)
+            {
+              if(Ogrenci.Tez_ID==null)
+                {
+                    Repeater1.DataSource = Tezdb;
+                    Repeater1.DataBind();
+                }
+                else if (Ogrenci.Tez_Onay == false)
+                {
+                    Response.Write("<script>alert('Tez onay beklemede')</script>");
+                }
+                else
+                {
+                    Response.Write("<script>alert('Tez seçimi yapıldı tezıne bak')</script>");
+                }
+
+            }
         }
+        else
+        {
+            Response.Write("<script>alert('Tarih aralık dışı')</script>");
+        }
+        //tarih kontrol
+
     }
 
     protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)

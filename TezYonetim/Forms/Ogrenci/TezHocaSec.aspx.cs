@@ -24,27 +24,32 @@ public partial class User : TezBaseUser
         if (tarih >= trh.DanismanSBas && tarih <= trh.DanismanSBit)
         {
             //sayfa işlemleri
+            if (!IsPostBack)
+            {
+                if (Ogrenci.Hoca_ID == null)
+                {
+                    Repeater1.DataSource = Hoca;
+                    Repeater1.DataBind();
+                }
+                else if (Ogrenci.Hoca_Onay == false)
+                {
+                    Response.Write("<script>alert('hoca onay beklemede')</script>");
+                }
+                else
+                {
+                    Response.Write("<script>alert('Tez seçimi yapınız')</script>");
+                }
+
+            }
+        }
+        else
+        {
+            Response.Write("<script>alert('Tarih aralık dışı')</script>");
         }
         //tarih kontrol
 
 
-        if (!IsPostBack)
-        {
-            if (Ogrenci.Hoca_ID == null)
-            {
-                Repeater1.DataSource = Hoca;
-                Repeater1.DataBind();
-            }
-            else if(Ogrenci.Hoca_Onay==false)
-            {
-                Response.Write("<script>alert('hoca onay beklemede')</script>");
-            }
-            else
-            {
-                Response.Write("<script>alert('Tez seçimi yapınız')</script>");
-            }
-            
-        }
+  
     }
 
     protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
