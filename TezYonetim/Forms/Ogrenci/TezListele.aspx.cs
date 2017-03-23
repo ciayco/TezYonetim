@@ -10,7 +10,19 @@ public partial class TezListele : TezBaseUser
     protected void Page_Load(object sender, EventArgs e)
     {
         Tez tez = new Tez();
-       TezDBEntities db = new TezDBEntities();
+        TezDBEntities db = new TezDBEntities();
+        Ogrenci Ogrenci = db.Ogrenci.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
+
+        if (Ogrenci.Tez_ID == null)
+        {
+            Response.Write("<script>alert('Tez bulunamadı')</script>");
+        }
+        else if (Ogrenci.Tez_Onay == false)
+        {
+            Response.Write("<script>alert('Tez onay beklemede')</script>");
+        }
+
+        
         var tezim2 = db.Tez.Where(w => w.Og_ID ==AppKontrol.id).FirstOrDefault();
 
         Label1.Text = tezim2.Konu;
