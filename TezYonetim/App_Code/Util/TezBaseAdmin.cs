@@ -4,26 +4,26 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for TezBaseUser
+/// Summary description for TezBaseAdmin
 /// </summary>
-public class TezBaseUser : System.Web.UI.Page
+public class TezBaseAdmin : System.Web.UI.Page
 {
-    public TezBaseUser()
+    public TezBaseAdmin()
     {
     }
     protected override void OnInit(EventArgs e)
     {
         TezDBEntities db = new TezDBEntities();
-        var Ogrenci = db.Ogrenci.ToList();
+        var Admin = db.Admin.ToList();
         if (Session["Id"] != null)
         {
-            if ((int)Session["derece"] == 1) //1 veritabanında Hoca demek
+            if ((int)Session["derece"] == 1) //0 veritabanında Admin demek
             {
                 Response.Redirect(@"~/Forms/Hoca/index.aspx");
             }
-            if ((int)Session["derece"] == 0)
+            if ((int)Session["derece"] == 2)
             {
-                Response.Redirect(@"~/Forms/Admin/index.aspx");
+                Response.Redirect(@"~/Forms/Ogrenci/index.aspx");
             }
         }
         else
@@ -32,19 +32,19 @@ public class TezBaseUser : System.Web.UI.Page
             {
                 string No = Request.Cookies["MyCookie"]["No"];
                 string sifre = Request.Cookies["MyCookie"]["sifre"];
-                Ogrenci ogrenci = db.Ogrenci.Where(u => u.No == No && u.Sifre == sifre).FirstOrDefault();
-                if (ogrenci != null)
+                Admin admin = db.Admin.Where(u => u.Mail == No && u.Sifre == sifre).FirstOrDefault();
+                if (admin != null)
                 {
-                    AppKontrol.id = ogrenci.Id;
-                    AppKontrol.name = ogrenci.Ad;
-                    AppKontrol.derece = Convert.ToInt32(ogrenci.Derece);
+                    AppKontrol.id = admin.Id;
+                    AppKontrol.name = admin.KullanıcıAdi;
+                    AppKontrol.derece = Convert.ToInt32(admin.Derece);
                     Response.Redirect(@"~/Default.aspx");
                 }
             }
             else
             {
-               Response.Redirect(@"~/Default.aspx");
-            }           
+                Response.Redirect(@"~/Default.aspx");
+            }
         }
         base.OnInit(e);
     }

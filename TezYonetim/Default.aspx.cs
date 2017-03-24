@@ -11,13 +11,17 @@ public partial class Login : System.Web.UI.Page
     {
         if (Session["Id"] != null)
         {
-            if ((int)Session["derece"] == 1) //1 veritabanında Admin/Hoca demek
+            if ((int)Session["derece"] == 1) //1 veritabanında Hoca demek
             {
                 Response.Redirect(@"~/Forms/Hoca/index.aspx");
             }
-            if ((int)Session["derece"] == 2)
+            if ((int)Session["derece"] == 2)//2 veritabanında Öğrencis demek
             {
                 Response.Redirect(@"~/Forms/Ogrenci/index.aspx");
+            }
+            if ((int)Session["derece"] == 0)//0 veritabanında Admin demek
+            {
+                Response.Redirect(@"~/Forms/Admin/index.aspx");
             }
         }
     }
@@ -64,7 +68,29 @@ public partial class Login : System.Web.UI.Page
                 {
                     Label1.Text = "Kullanıcı adı veya Şifre Uyuşmadı!";
                 }
-            }             
-        Label1.Text = "Kullanıcı adı veya Şifre Uyuşmadı!";
+            }
+        else if (db.Admin.Where(w => w.Mail == username).Any())
+        {
+            string sifre = Sifreleme.Sifrele(Request["pass"].Trim());
+            Admin admin = db.Admin.Where(w => w.Mail == username && w.Sifre == sifre).FirstOrDefault();
+            if (admin != null)
+            {
+                AppKontrol.id = (int)admin.Id; //Id kontrolu           
+                AppKontrol.derece = (int)admin.Derece;// derece kontrolü
+                AppKontrol.name = admin.KullanıcıAdi;// isim soyisim kontrolü
+                Response.Cookies.Add(cookie.Cookie(admin.Mail, admin.Sifre));
+                Response.Redirect(@"~/Forms/Admin/index.aspx");
+
+            }
+            else
+            {
+                Label1.Text = "Kullanıcı adı veya Şifre Uyuşmadı!";
+            }
+        }
+        else
+        {
+            Label1.Text = "Kullanıcı adı veya Şifre Uyuşmadı!";
+        }
+       
     }
 }

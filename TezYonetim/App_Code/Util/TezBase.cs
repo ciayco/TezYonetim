@@ -14,26 +14,31 @@ public class TezBase : System.Web.UI.Page
     protected override void OnInit(EventArgs e)
     {
         TezDBEntities db = new TezDBEntities();
-        var Ogrenci = db.Ogrenci.ToList();
+        var Hoca = db.Hoca.ToList();
         if (Session["Id"] != null)
         {
-            if ((int)Session["derece"] == 2) //2 veritabanında Admin demek
+            if ((int)Session["derece"] == 2) //2 veritabanında öğrenci demek
             {
                 Response.Redirect(@"~/Forms/Ogrenci/index.aspx");
             }
+            if((int)Session["derece"] == 0)
+            {
+                Response.Redirect(@"~/Forms/Admin/index.aspx");
+            }
         }
+       
         else
         {
             if (Request.Cookies["MyCookie"] != null)
             {
                 string No = Request.Cookies["MyCookie"]["No"];
                 string sifre = Request.Cookies["MyCookie"]["sifre"];
-                Ogrenci ogrenci = db.Ogrenci.Where(u => u.No == No && u.Sifre == sifre).FirstOrDefault();
-                if (ogrenci != null)
+                Hoca hoca = db.Hoca.Where(u => u.Mail == No && u.Sifre == sifre).FirstOrDefault();
+                if (hoca != null)
                 {
-                    AppKontrol.id = ogrenci.Id;
-                    AppKontrol.name = ogrenci.Ad;
-                    AppKontrol.derece = Convert.ToInt32(ogrenci.Derece);
+                    AppKontrol.id = hoca.Id;
+                    AppKontrol.name = hoca.Ad;
+                    AppKontrol.derece = Convert.ToInt32(hoca.Derece);
                     Response.Redirect(@"~/Default.aspx");
                 }
             }
