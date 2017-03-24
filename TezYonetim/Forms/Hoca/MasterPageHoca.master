@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Forms/Hoca/MasterPageAdmin.master.cs" Inherits="MasterPageAdmin" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Forms/Hoca/MasterPageHoca.master.cs" Inherits="MasterPageHoca" %>
 <!DOCTYPE html>
 <html lang="tr">
 <head runat="server">

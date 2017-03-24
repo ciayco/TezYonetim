@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Hoca/MasterPageAdmin.master" AutoEventWireup="true" EnableEventValidation="false" CodeFile="TezEkle.aspx.cs" Inherits="TezEkle" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Hoca/MasterPageHoca.master" AutoEventWireup="true" EnableEventValidation="false" CodeFile="TezEkle.aspx.cs" Inherits="TezEkle" %>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Forms/Hoca/MasterPageAdmin.master" EnableEventValidation="false"  CodeFile="index.aspx.cs" Inherits="index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Forms/Hoca/MasterPageHoca.master" EnableEventValidation="false"  CodeFile="index.aspx.cs" Inherits="index" %>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">

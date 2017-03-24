@@ -1,5 +1,5 @@
 ﻿
-<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Hoca/MasterPageAdmin.master" AutoEventWireup="true" EnableEventValidation="false" CodeFile="Duzenle.aspx.cs" Inherits="Duzenle"%>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Hoca/MasterPageHoca.master" AutoEventWireup="true" EnableEventValidation="false" CodeFile="Duzenle.aspx.cs" Inherits="Duzenle"%>
 
   
 
