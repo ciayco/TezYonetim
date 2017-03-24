@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Forms/Admin/MasterPageAdmin.master.cs" Inherits="Forms_Admin_MasterPageAdmin" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true"  CodeFile="~/Forms/Admin/MasterPageAdmin.master.cs" Inherits="Forms_Admin_MasterPageAdmin" %>
 <!DOCTYPE html>
 <html lang="tr">
 <head runat="server">
