@@ -170,7 +170,7 @@
                                     <a href="TezEkle.aspx">Tez Önerisi Yap</a>
                                 </li>
                                 <li>
-                                    <a href="#">Tez Önerilerim</a>
+                                    <a href="TezListele.aspx">Tez Önerilerim</a>
                                 </li>
                             </ul>
                         </li>
