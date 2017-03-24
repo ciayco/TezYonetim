@@ -9,7 +9,6 @@ public partial class User : TezBaseUser
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       
     }        
 
     protected void LogOut_Click(object sender, EventArgs e)

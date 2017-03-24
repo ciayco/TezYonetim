@@ -12,7 +12,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
     <br />
-            <h3>Öğrenci Anasayfa</h3>
+   <h3>Öğrenci Anasayfa</h3>
            
        
 </asp:Content>
