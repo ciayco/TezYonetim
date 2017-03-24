@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageAdmin.master.cs" Inherits="Forms_Admin_MasterPageAdmin" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Forms/Admin/MasterPageAdmin.master.cs" Inherits="Forms_Admin_MasterPageAdmin" %>
 <!DOCTYPE html>
 <html lang="tr">
 <head runat="server">
@@ -8,11 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-     
+     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
        
     </asp:ContentPlaceHolder>
-<title></title>
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.10.13/datatables.min.css" />
     
        <script src="../../js/jquery.js"></script>
@@ -158,43 +158,37 @@
                     <ul class="nav navbar-nav side-nav" >
 
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="glyphicon glyphicon-text-background"></i>&nbsp;&nbsp;&nbsp;Tez İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="glyphicon glyphicon-text-background"></i>&nbsp;&nbsp;&nbsp;Tarih İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo1" class="collapse">
                                 <li>
-                                    <a href="hocakayit.aspx">Hoca Ekle</a>
+                                    <a href="TezTarih.aspx">Tez Tarih Ekle</a>
                                 </li>
                                 <li>
-                                    <a href="TezOnay.aspx">Onay Bekleyen Tezler</a>
-                                </li>
-                                <li>
-                                    <a href="TezEkle.aspx">Tez Önerisi Yap</a>
-                                </li>
-                                <li>
-                                    <a href="#">Tez Önerilerim</a>
+                                    <a href="DanismanTarih.aspx">Danışman Secim Tarihi Ekle</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;BOŞ <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo2" class="collapse">
                                 <li>
-                                    <a href="Admin.aspx">Öğrencileri listele</a>
+                                    <a href="#">Boş</a>
                                 </li>
                                 <li>
-                                    <a href="OgrenciOnay.aspx">Öğrenci Onay</a>
+                                    <a href="#">Boş</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="glyphicon glyphicon-duplicate"></i>&nbsp;&nbsp;&nbsp;Raporlar <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="glyphicon glyphicon-duplicate"></i>&nbsp;&nbsp;&nbsp;Boş <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo3" class="collapse">
                                 <li>
-                                    <a href="#">Periyod</a>
+                                    <a href="#">Boş</a>
                                 </li>
                                 <li>
-                                    <a href="#">Dropdown Item</a>
+                                    <a href="#">Boş</a>
                                 </li>
                             </ul>
                         </li>
