@@ -36,10 +36,10 @@
                 <td><%#Eval("Mail") %></td>
                 <td><%#Eval("Bolum") %></td>
                 <td>
-                    <asp:Button ID="SilBut" CommandName="Sil" Text="Sil" runat="server" CommandArgument='<%# Eval("Id") %>' />
+                    <asp:Button ID="SilBut" CommandName="Sil" Text="Sil" class="btn btn-danger btn-xs btn-round" runat="server" CommandArgument='<%# Eval("Id") %>' />
                 </td>
                 <td>
-                    <asp:Button ID="SecBut" CommandName="Sec" Text="Sec" runat="server" CommandArgument='<%# Eval("Id") %>' />
+                    <asp:Button ID="SecBut" CommandName="Sec" Text="Sec" class="btn btn-primary btn-xs btn-round" runat="server" CommandArgument='<%# Eval("Id") %>' />
                 </td>
             </tr>
         </ItemTemplate>

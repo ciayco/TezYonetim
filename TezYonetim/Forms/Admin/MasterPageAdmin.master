@@ -170,13 +170,16 @@
                         </li>
 
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;BOŞ <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;Kullanıcı İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo2" class="collapse">
                                 <li>
-                                    <a href="#">Boş</a>
+                                    <a href="AdminEkle.aspx">Admin Ekleme</a>
                                 </li>
                                 <li>
-                                    <a href="#">Boş</a>
+                                    <a href="HocaListele.aspx">Hoca İşlemleri</a>
+                                </li>
+                                <li>
+                                    <a href="OgrenciListele.aspx">Öğrenci İşlemleri</a>
                                 </li>
                             </ul>
                         </li>

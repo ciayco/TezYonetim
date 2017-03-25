@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Forms_Admin_TezTarih : System.Web.UI.Page
+public partial class Forms_Admin_TezTarih : TezBaseAdmin
 {
     TezDBEntities db;
     Sistem trh;
