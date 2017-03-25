@@ -61,6 +61,7 @@ public partial class User : TezBaseUser
                 case "Sec":
                     id = e.CommandArgument.ToString();                                    
                     Ogrenci.Hoca_ID = Convert.ToInt32(id);
+                    Ogrenci.Hoca_Onay = false;
                     db.SaveChanges();
                     Repeater1.DataBind();
     

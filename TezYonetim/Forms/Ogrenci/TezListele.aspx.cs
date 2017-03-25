@@ -15,22 +15,22 @@ public partial class TezListele : TezBaseUser
 
         if (Ogrenci.Tez_ID == null)
         {
-            Response.Write("<script>alert('Tez bulunamadı')</script>");
+            Label1.Text = "Tez Seçimi yapınız";
         }
         else if (Ogrenci.Tez_Onay == false)
         {
-            Response.Write("<script>alert('Tez onay beklemede')</script>");
+            Label1.Text = "Tez onay beklemede";
         }
+        else
+        {
 
+            var tezim2 = db.Tez.Where(w => w.Og_ID == AppKontrol.id).FirstOrDefault();
+
+            Label1.Text = tezim2.Konu;
+            Label2.Text = tezim2.Aciklama;
+        }
+       
         
-        var tezim2 = db.Tez.Where(w => w.Og_ID ==AppKontrol.id).FirstOrDefault();
-
-        Label1.Text = tezim2.Konu;
-        Label2.Text = tezim2.Aciklama;
-        Label3.Text = tezim2.Konu;
-        Label4.Text = tezim2.Aciklama;
-        Label5.Text = tezim2.Konu;
-        Label6.Text = tezim2.Aciklama;
 
     }
 
