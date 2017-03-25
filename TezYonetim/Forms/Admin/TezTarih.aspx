@@ -23,14 +23,14 @@
                         <div class="form-group">
                             <label for="name" class="col-md-3 control-label">Başlangıç</label>
                             <div class="col-md-9">
-                                <input type="datetime-local" class="form-control" name="TBas" >
+                                <asp:TextBox id="TBas" type="datetime-local" class="form-control" name="TBas"  runat="server" ></asp:TextBox>    
                             </div>
                         </div>
                         <br> <br> <br>
                         <div class="form-group">
                               <label for="comment" class="col-md-3 control-label">Bitiş</label>
                             <div class="col-md-9">
-                              <input type="datetime-local" class="form-control" name="Tbit" >
+                              <asp:TextBox id="TBit" type="datetime-local" class="form-control" name="TBit"  runat="server" ></asp:TextBox>   
                             </div>
                         </div>
                               <div class="form-group">

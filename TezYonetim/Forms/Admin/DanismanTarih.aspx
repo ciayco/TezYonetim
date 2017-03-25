@@ -19,18 +19,18 @@
                         <div id="signupalert" style="display: none" class="alert alert-danger">
                             <p>Error:</p>
                             <span></span>
-                        </div>
+                        </div> <br>
                         <div class="form-group">
                             <label for="name" class="col-md-3 control-label">Başlangıç</label>
                             <div class="col-md-9">
-                                <input type="datetime-local" class="form-control" name="DBas" >
+                                <asp:TextBox id="DBas" type="datetime-local" class="form-control" name="DBas"  runat="server" ></asp:TextBox>                               
                             </div>
                         </div>
                         <br> <br> <br>
                         <div class="form-group">
                               <label for="comment" class="col-md-3 control-label">Bitiş</label>
                             <div class="col-md-9">
-                              <input type="datetime-local" class="form-control" name="Dbit" >
+                             <asp:TextBox id="DBit" type="datetime-local" class="form-control" name="DBit"  runat="server" ></asp:TextBox>    
                             </div>
                         </div>
                               <div class="form-group">
@@ -44,16 +44,17 @@
                             <!-- Button -->
                             <div class="col-md-offset-3 col-md-9">
 
-                                <asp:Button ID="btnGiris" runat="server" Text="Kayit" class="btn btn-info" OnClick="btnGiris_Click" />
+                                <asp:Button ID="btnGiris" runat="server" Text=" Kayit " class="btn btn-info" OnClick="btnGiris_Click" />
 
                             </div>
                         </div>
-
+                        
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
+<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label><br /><br />
+    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
 </asp:Content>
 
