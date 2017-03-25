@@ -88,6 +88,15 @@ public partial class Rapor
     public virtual Tez Tez { get; set; }
 }
 
+public partial class Sistem
+{
+    public int Id { get; set; }
+    public Nullable<System.DateTime> DanismanSBas { get; set; }
+    public Nullable<System.DateTime> DanismanSBit { get; set; }
+    public Nullable<System.DateTime> TezSBas { get; set; }
+    public Nullable<System.DateTime> TezSBit { get; set; }
+}
+
 public partial class Tarih
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -97,10 +106,8 @@ public partial class Tarih
     }
 
     public int Hoca_ID { get; set; }
-    public Nullable<System.DateTime> DanismanSBas { get; set; }
-    public Nullable<System.DateTime> DanismanSBit { get; set; }
-    public Nullable<System.DateTime> TezSBas { get; set; }
-    public Nullable<System.DateTime> TezSBit { get; set; }
+    public Nullable<System.DateTime> RaporBas { get; set; }
+    public Nullable<System.DateTime> RaporBit { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Ogrenci> Ogrenci { get; set; }

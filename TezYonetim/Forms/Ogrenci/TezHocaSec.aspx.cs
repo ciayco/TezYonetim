@@ -19,7 +19,7 @@ public partial class User : TezBaseUser
 
         //tarih kontrol
         DateTime tarih = DateTime.Now;
-        Tarih trh = db.Tarih.Where(q => q.Hoca_ID ==2).FirstOrDefault();
+        Sistem trh = db.Sistem.Where(q => q.Id ==1).FirstOrDefault();
 
         if (tarih >= trh.DanismanSBas && tarih <= trh.DanismanSBit)
         {

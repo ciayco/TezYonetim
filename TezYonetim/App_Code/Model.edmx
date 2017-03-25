@@ -56,15 +56,23 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
           <Property Name="Tarih" Type="nchar" MaxLength="10" />
           <Property Name="Aciklama" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Sistem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="DanismanSBas" Type="datetime" />
+          <Property Name="DanismanSBit" Type="datetime" />
+          <Property Name="TezSBas" Type="datetime" />
+          <Property Name="TezSBit" Type="datetime" />
+        </EntityType>
         <EntityType Name="Tarih">
           <Key>
             <PropertyRef Name="Hoca_ID" />
           </Key>
           <Property Name="Hoca_ID" Type="int" Nullable="false" />
-          <Property Name="DanismanSBas" Type="datetime" />
-          <Property Name="DanismanSBit" Type="datetime" />
-          <Property Name="TezSBas" Type="datetime" />
-          <Property Name="TezSBit" Type="datetime" />
+          <Property Name="RaporBas" Type="datetime" />
+          <Property Name="RaporBit" Type="datetime" />
         </EntityType>
         <EntityType Name="Tez">
           <Key>
@@ -165,6 +173,7 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
           <EntitySet Name="Hoca" EntityType="Self.Hoca" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ogrenci" EntityType="Self.Ogrenci" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rapor" EntityType="Self.Rapor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sistem" EntityType="Self.Sistem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tarih" EntityType="Self.Tarih" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tez" EntityType="Self.Tez" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Admin" EntityType="Self.Admin" store:Type="Tables" store:Schema="dbo">
@@ -213,6 +222,7 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
           <EntitySet Name="Hoca" EntityType="TezDBModel.Hoca" />
           <EntitySet Name="Ogrenci" EntityType="TezDBModel.Ogrenci" />
           <EntitySet Name="Rapor" EntityType="TezDBModel.Rapor" />
+          <EntitySet Name="Sistem" EntityType="TezDBModel.Sistem" />
           <EntitySet Name="Tarih" EntityType="TezDBModel.Tarih" />
           <EntitySet Name="Tez" EntityType="TezDBModel.Tez" />
           <EntitySet Name="Admin" EntityType="TezDBModel.Admin" />
@@ -294,15 +304,23 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
           <NavigationProperty Name="Ogrenci" Relationship="TezDBModel.FK_Rapor_Ogrenci" FromRole="Rapor" ToRole="Ogrenci" />
           <NavigationProperty Name="Tez" Relationship="TezDBModel.FK_Rapor_Tez" FromRole="Rapor" ToRole="Tez" />
         </EntityType>
+        <EntityType Name="Sistem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="DanismanSBas" Type="DateTime" Precision="3" />
+          <Property Name="DanismanSBit" Type="DateTime" Precision="3" />
+          <Property Name="TezSBas" Type="DateTime" Precision="3" />
+          <Property Name="TezSBit" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityType Name="Tarih">
           <Key>
             <PropertyRef Name="Hoca_ID" />
           </Key>
           <Property Name="Hoca_ID" Type="Int32" Nullable="false" />
-          <Property Name="DanismanSBas" Type="DateTime" Precision="3" />
-          <Property Name="DanismanSBit" Type="DateTime" Precision="3" />
-          <Property Name="TezSBas" Type="DateTime" Precision="3" />
-          <Property Name="TezSBit" Type="DateTime" Precision="3" />
+          <Property Name="RaporBas" Type="DateTime" Precision="3" />
+          <Property Name="RaporBit" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Ogrenci" Relationship="TezDBModel.FK_Ogrenci_Tarih" FromRole="Tarih" ToRole="Ogrenci" />
         </EntityType>
         <EntityType Name="Tez">
@@ -461,13 +479,22 @@ warning 6002: The table/view 'TezDB.dbo.Admin' does not have a primary key defin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tarih">
-            <EntityTypeMapping TypeName="TezDBModel.Tarih">
-              <MappingFragment StoreEntitySet="Tarih">
+          <EntitySetMapping Name="Sistem">
+            <EntityTypeMapping TypeName="TezDBModel.Sistem">
+              <MappingFragment StoreEntitySet="Sistem">
                 <ScalarProperty Name="TezSBit" ColumnName="TezSBit" />
                 <ScalarProperty Name="TezSBas" ColumnName="TezSBas" />
                 <ScalarProperty Name="DanismanSBit" ColumnName="DanismanSBit" />
                 <ScalarProperty Name="DanismanSBas" ColumnName="DanismanSBas" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarih">
+            <EntityTypeMapping TypeName="TezDBModel.Tarih">
+              <MappingFragment StoreEntitySet="Tarih">
+                <ScalarProperty Name="RaporBit" ColumnName="RaporBit" />
+                <ScalarProperty Name="RaporBas" ColumnName="RaporBas" />
                 <ScalarProperty Name="Hoca_ID" ColumnName="Hoca_ID" />
               </MappingFragment>
             </EntityTypeMapping>
