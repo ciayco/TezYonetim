@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-     <title></title>
+  
     <asp:ContentPlaceHolder ID="head" runat="server">
-       
+          <title></title>
     </asp:ContentPlaceHolder>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.10.13/datatables.min.css" />
@@ -176,10 +176,16 @@
                                     <a href="AdminEkle.aspx">Admin Ekleme</a>
                                 </li>
                                 <li>
-                                    <a href="HocaListele.aspx">Hoca İşlemleri</a>
+                                    <a href="AdminListele.aspx">Admin Görüntüle</a>
                                 </li>
                                 <li>
-                                    <a href="OgrenciListele.aspx">Öğrenci İşlemleri</a>
+                                    <a href="HocaEkle.aspx">Hoca Ekleme</a>
+                                </li>
+                                <li>
+                                    <a href="HocaListele.aspx">Hoca Görüntüle</a>
+                                </li>
+                                <li>
+                                    <a href="OgrenciListele.aspx">Öğrenci Görüntüle</a>
                                 </li>
                             </ul>
                         </li>

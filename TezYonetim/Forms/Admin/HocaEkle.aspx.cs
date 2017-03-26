@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Forms_Admin_AdminEkle : TezBaseAdmin
+public partial class Forms_Admin_HocaEkle : TezBaseAdmin
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -16,25 +16,26 @@ public partial class Forms_Admin_AdminEkle : TezBaseAdmin
         TezDBEntities db = new TezDBEntities();
 
         string sifrem = Sifreleme.Sifrele(Request["Sifre"].Trim());
-        string mail = Request["E-mail"].Trim();
+        string no = Request["E-mail"].Trim();
 
-        if (db.Admin.Where(w => w.Mail == mail).Any())
+        if (db.Hoca.Where(w => w.Mail == no).Any())
         {
             LabelSignUP.Text = "Bu Kullanıcı Sistemde Mevcut";
         }
         else
         {
-            Admin admin = new Admin();
+            Hoca hoca = new Hoca();
 
-            admin.KullanıcıAdi = Request["Name"].Trim();
-            admin.Sifre = sifrem;
-            admin.Mail = Request["E-mail"].Trim();
-            admin.Derece = 0;
-            db.Admin.Add(admin);
+            hoca.Ad = Request["Name"].Trim();
+            hoca.Sifre = sifrem;
+            hoca.Mail = Request["E-mail"].Trim();
+            hoca.Ders = Request["Ders"].Trim();
+            hoca.Derece = 1;
+            db.Hoca.Add(hoca);
             db.SaveChanges();
-            Response.Redirect(@"~/Forms/Admin/AdminEkle.aspx");
+            Response.Redirect(@"~/Default.aspx");
         }
-        
+
 
     }
 }
