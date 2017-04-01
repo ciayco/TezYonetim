@@ -9,6 +9,10 @@ public partial class MasterPageUser : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["id"] == null)
+        {
+            Response.Redirect(@"~/Default.aspx");
+        }
         Label1.Text = Session["name"].ToString();
     }
     protected void LogOut_Click(object sender, EventArgs e)
