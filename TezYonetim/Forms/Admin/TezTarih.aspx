@@ -19,7 +19,7 @@
                         <div id="signupalert" style="display: none" class="alert alert-danger">
                             <p>Error:</p>
                             <span></span>
-                        </div>
+                        </div><br>
                         <div class="form-group">
                             <label for="name" class="col-md-3 control-label">Başlangıç</label>
                             <div class="col-md-9">
