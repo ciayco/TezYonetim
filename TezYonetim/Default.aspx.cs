@@ -7,7 +7,8 @@ using System.Web.UI.WebControls;
 using System.Data;
 public partial class Login : System.Web.UI.Page
 {
-    bool kontrol = false;
+    TezDBEntities db = new TezDBEntities();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["Id"] != null)
@@ -28,87 +29,71 @@ public partial class Login : System.Web.UI.Page
     }
     protected void btnGiris_Click(object sender, EventArgs e)
     {
-        string username = Request["username"].Trim();      
-        TezDBEntities db = new TezDBEntities();
-        for (int i = 0; i < username.Length; i++)
-            {
-                if(username.Substring(i, 1) == "@")
-                {
-                    kontrol = true;
-                }
-            }
-        if(username!="")
-            {
-            if (kontrol == true)
-            {
-                if (db.Hoca.Where(w => w.Mail == username).Any())
-                {
-                    string sifre = Sifreleme.Sifrele(Request["pass"].Trim());
-                    Hoca hoca = db.Hoca.Where(w => w.Mail == username && w.Sifre == sifre).FirstOrDefault();
-                    if (hoca != null)
-                    {
-                        AppKontrol.id = (int)hoca.Id; //Id kontrolu           
-                        AppKontrol.derece = (int)hoca.Derece;// derece kontrolü
-                        AppKontrol.name = hoca.Ad;// isim soyisim kontrolü
-                        Response.Cookies.Add(cookie.Cookie(hoca.Mail, hoca.Sifre));
-                        Response.Redirect(@"~/Forms/Hoca/index.aspx");
+        string username = Request["username"].Trim();
 
-                    }
-                    else
-                    {
-                        Label1.Text = "Kullanıcı adı ya da şifre hatalı!";
-                    }
-                }
-                else if (db.Admin.Where(w => w.Mail == username).Any())
-                {
-                    string sifre = Sifreleme.Sifrele(Request["pass"].Trim());
-                    Admin admin = db.Admin.Where(w => w.Mail == username && w.Sifre == sifre).FirstOrDefault();
-                    if (admin != null)
-                    {
-                        AppKontrol.id = (int)admin.Id; //Id kontrolu           
-                        AppKontrol.derece = (int)admin.Derece;// derece kontrolü
-                        AppKontrol.name = admin.KullanıcıAdi;// isim soyisim kontrolü
-                        Response.Cookies.Add(cookie.Cookie(admin.Mail, admin.Sifre));
-                        Response.Redirect(@"~/Forms/Admin/index.aspx");
-                    }
-                    else
-                    {
-                        Label1.Text = "Kullanıcı adı ya da şifre hatalı!";
-                    }
-                }
-                else
-                {
-                    Label1.Text = "Kullanıcı adı ya da şifre hatalı!";
-                }
-            }
-            else
-            {
-                if (db.Ogrenci.Where(w => w.No == username).Any())
-                {
-                    string sifre = Sifreleme.Sifrele(Request["pass"].Trim());
-                    Ogrenci Ogrenci = db.Ogrenci.Where(w => w.No == username && w.Sifre == sifre).FirstOrDefault();
-                    if (Ogrenci != null)
-                    {
-                        AppKontrol.id = (int)Ogrenci.Id; //Id kontrolu           
-                        AppKontrol.derece = (int)Ogrenci.Derece;// derece kontrolü
-                        AppKontrol.name = Ogrenci.Ad;// isim  kontrolü
-                        Response.Cookies.Add(cookie.Cookie(Ogrenci.No, Ogrenci.Sifre));
-                        Response.Redirect(@"~/Forms/Ogrenci/index.aspx");
-                    }
-                    else
-                    {
-                        Label1.Text = "Kullanıcı Adı Veya Şifresi Hatalı!";
-                    }
-                }
-                else
-                {
-                    Label1.Text = "Kullanıcı adı ya da şifre hatalı!";
-                }
-            }
+        CheckUser(username, Request["pass"].Trim());
+
+    }
+
+    public bool IsAdmin(string Mail)
+    {
+        return db.Admin.Where(u => u.Mail == Mail).Any();
+    }
+
+    public void CheckUser(string UserName, string Password = null)
+    {
+
+        if (string.IsNullOrEmpty(UserName))
+        {
+            Label1.Text = "Lütfen Kullanıcı Adı Ve Şifre Giriniz!";
+            return; // buraya tekrar bak.
         }
         else
-            {
-            Label1.Text = "Lütfen Kullanıcı Adı Ve Şifre Giriniz!";
+        {
+            Password = Sifreleme.Sifrele(Password);
         }
-     }
+
+
+        if (!UserName.Contains("@"))
+        {
+            Ogrenci user = db.Ogrenci.Where(w => w.No == UserName && w.Sifre == Password).FirstOrDefault();
+
+            if (user != null)
+                AuthenticateUser(user.Id, user.Derece, user.Ad, user.Sifre, "Ogrenci");
+            else
+                Label1.Text = "Kullanıcı Adı Veya Şifresi Hatalı! ogrenci";
+        }
+        else if (IsAdmin(UserName))
+        {
+            Admin user = db.Admin.Where(w => w.Mail == UserName && w.Sifre == Password).FirstOrDefault();
+
+            if (user != null)
+                AuthenticateUser(user.Id, user.Derece, user.KullanıcıAdi, user.Sifre, "Admin");
+            else
+                Label1.Text = "Kullanıcı Adı Veya Şifresi Hatalı! admin";
+
+        }
+        else
+        {
+            Hoca user = db.Hoca.Where(w => w.Mail == UserName && w.Sifre == Password).FirstOrDefault();
+
+            if (user != null)
+                AuthenticateUser(user.Id, user.Derece, user.Ad, user.Sifre, "Hoca");
+            else
+                Label1.Text = "Kullanıcı Adı Veya Şifresi Hatalı! hoca";
+        }
+
+    }
+
+    public void AuthenticateUser(int Id, int? Derece, string UserName, string Password, string Page)
+    {
+        AppKontrol.id = Id; //Id kontrolu           
+        AppKontrol.derece = (int)Derece;// derece kontrolü
+        AppKontrol.name = UserName;// isim soyisim kontrolü
+        Response.Cookies.Add(cookie.Cookie(UserName, Password));
+        Response.Redirect(@"~/Forms/" + Page + "/index.aspx");
+    }
+
+
+
 }
