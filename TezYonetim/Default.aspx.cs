@@ -46,7 +46,7 @@ public partial class Login : System.Web.UI.Page
         if (string.IsNullOrEmpty(UserName))
         {
             Label1.Text = "Lütfen Kullanıcı Adı Ve Şifre Giriniz!";
-            return; // buraya tekrar bak.
+            return; 
         }
         else
         {
@@ -61,7 +61,7 @@ public partial class Login : System.Web.UI.Page
             if (user != null)
                 AuthenticateUser(user.Id, user.Derece, user.Ad, user.Sifre, "Ogrenci");
             else
-                Label1.Text = "Kullanıcı Adı Veya Şifresi Hatalı! ogrenci";
+                Label1.Text = "Kullanıcı Adı Veya Şifresi Hatalı!";
         }
         else if (IsAdmin(UserName))
         {
@@ -70,7 +70,7 @@ public partial class Login : System.Web.UI.Page
             if (user != null)
                 AuthenticateUser(user.Id, user.Derece, user.KullanıcıAdi, user.Sifre, "Admin");
             else
-                Label1.Text = "Kullanıcı Adı Veya Şifresi Hatalı! admin";
+                Label1.Text = "Kullanıcı Adı Veya Şifresi Hatalı!";
 
         }
         else
@@ -80,7 +80,7 @@ public partial class Login : System.Web.UI.Page
             if (user != null)
                 AuthenticateUser(user.Id, user.Derece, user.Ad, user.Sifre, "Hoca");
             else
-                Label1.Text = "Kullanıcı Adı Veya Şifresi Hatalı! hoca";
+                Label1.Text = "Kullanıcı Adı Veya Şifresi Hatalı!";
         }
 
     }
