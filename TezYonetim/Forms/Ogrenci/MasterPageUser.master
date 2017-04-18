@@ -152,7 +152,7 @@
                         <ul id="demo1" class="collapse">
                            <div id="TezHocaSec" runat="server" visible="true" data-toggle="collapse" data-target="#demo1">
                              <li>                                
-                                <a href="TezHocaSec.aspx"> Danışman Hoca Seçimi</a>                               
+                                <a href="TezHocaSec.aspx"> Danışman Hoca Seçimi </a>                               
                             </li>
                              </div> 
                             <div id="TezSec" runat="server" visible="true">
