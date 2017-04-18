@@ -19,25 +19,32 @@ public partial class SignUp : System.Web.UI.Page
         
         string sifrem=Sifreleme.Sifrele(Request["Sifre"].Trim());
         string no = Request["No"].Trim();
-
-        if(db.Ogrenci.Where(w => w.No == no).Any())
+        if (Request["No"].Trim() == "" || Request["Name"].Trim() == "" || Request["Sifre"].Trim() == "" || Request["E-mail"].Trim() == "" || Request["Bolum"].Trim() == "")
         {
-            LabelSignUP.Text = "Bu Kullanıcı Sistemde Mevcut";
+            LabelSignUP.Text = "Lütfen Boş Geçmeyiniz";
         }
         else
-        {
-            Ogrenci ogrenci = new Ogrenci();
+        { 
+            if (db.Ogrenci.Where(w => w.No == no).Any())
+            {
+                LabelSignUP.Text = "Bu Kullanıcı Sistemde Mevcut";
+            }
+            else
+            {
+                Ogrenci ogrenci = new Ogrenci();
 
-            ogrenci.No = Request["No"].Trim();
-            ogrenci.Ad = Request["Name"].Trim();
-            ogrenci.Sifre = sifrem;
-            ogrenci.Mail = Request["E-mail"].Trim();
-            ogrenci.Bolum = Request["Bolum"].Trim();
-            ogrenci.Derece = 2;
-            db.Ogrenci.Add(ogrenci);
-            db.SaveChanges();
-            Response.Redirect(@"~/Default.aspx");
+                ogrenci.No = Request["No"].Trim();
+                ogrenci.Ad = Request["Name"].Trim();
+                ogrenci.Sifre = sifrem;
+                ogrenci.Mail = Request["E-mail"].Trim();
+                ogrenci.Bolum = Request["Bolum"].Trim();
+                ogrenci.Derece = 2;
+                db.Ogrenci.Add(ogrenci);
+                db.SaveChanges();
+                Response.Redirect(@"~/Default.aspx");
+            }
         }
+        
 
 
     }

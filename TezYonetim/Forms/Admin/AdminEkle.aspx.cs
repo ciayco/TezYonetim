@@ -17,24 +17,29 @@ public partial class Forms_Admin_AdminEkle : TezBaseAdmin
 
         string sifrem = Sifreleme.Sifrele(Request["Sifre"].Trim());
         string mail = Request["E-mail"].Trim();
-
-        if (db.Admin.Where(w => w.Mail == mail).Any())
+        if (Request["Name"].Trim() == "" || Request["Sifre"].Trim() == "" || Request["E-mail"].Trim() == "")
         {
-            LabelSignUP.Text = "Bu Kullanıcı Sistemde Mevcut";
+            LabelSignUP.Text = "Lütfen Boş Geçmeyiniz";
         }
         else
         {
-            Admin admin = new Admin();
+            if (db.Admin.Where(w => w.Mail == mail).Any())
+            {
+                LabelSignUP.Text = "Bu Kullanıcı Sistemde Mevcut";
+            }
+            else
+            {
+                Admin admin = new Admin();
 
-            admin.KullanıcıAdi = Request["Name"].Trim();
-            admin.Sifre = sifrem;
-            admin.Mail = Request["E-mail"].Trim();
-            admin.Derece = 0;
-            db.Admin.Add(admin);
-            db.SaveChanges();
-            Response.Redirect(@"~/Forms/Admin/AdminEkle.aspx");
+                admin.KullanıcıAdi = Request["Name"].Trim();
+                admin.Sifre = sifrem;
+                admin.Mail = Request["E-mail"].Trim();
+                admin.Derece = 0;
+                db.Admin.Add(admin);
+                db.SaveChanges();
+                Response.Redirect(@"~/Forms/Admin/AdminEkle.aspx");
+            }
+
         }
-        
-
     }
 }
