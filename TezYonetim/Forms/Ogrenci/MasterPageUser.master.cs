@@ -28,9 +28,12 @@ public partial class MasterPageUser : System.Web.UI.MasterPage
         TezDBEntities db = new TezDBEntities();
         DateTime tarih = DateTime.Now;
         Sistem trh = db.Sistem.Where(q => q.Id == 1).FirstOrDefault();
-        if (tarih >= trh.DanismanSBas && tarih <= trh.DanismanSBit)
+        if (!(tarih >= trh.DanismanSBas && tarih <= trh.DanismanSBit))
         {
-            TezHocaSec.Visible = false;
+            TezHocaSec.Visible = false;        
+        }
+        if (!(tarih >= trh.TezSBas && tarih <= trh.TezSBit))
+        {
             TezSec.Visible = false;
         }
 
