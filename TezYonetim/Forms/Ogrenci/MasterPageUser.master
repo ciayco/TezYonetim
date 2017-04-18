@@ -150,7 +150,7 @@
                      <li>
                            <a href="javascript:;" data-toggle="collapse" data-target="#demo1"> <i class="glyphicon glyphicon-text-background"></i>&nbsp;&nbsp;&nbsp;Tez İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo1" class="collapse">
-                           <div id="TezHocaSec" runat="server" visible="true" data-toggle="collapse" data-target="#demo1">
+                           <div id="TezHocaSec" runat="server" visible="true" >
                              <li>                                
                                 <a href="TezHocaSec.aspx"> Danışman Hoca Seçimi </a>                               
                             </li>
