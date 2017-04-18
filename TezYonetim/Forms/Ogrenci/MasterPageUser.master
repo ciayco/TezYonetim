@@ -147,22 +147,25 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                                      
-                    <li>
+                     <li>
                            <a href="javascript:;" data-toggle="collapse" data-target="#demo1"> <i class="glyphicon glyphicon-text-background"></i>&nbsp;&nbsp;&nbsp;Tez İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo1" class="collapse">
-                            <li>
-                                <a href="TezHocaSec.aspx"> Danışman Hoca Seçimi</a>
+                           <div id="TezHocaSec" runat="server" visible="true">
+                             <li>                                
+                                <a href="TezHocaSec.aspx"> Danışman Hoca Seçimi</a>                               
                             </li>
+                             </div> 
+                            <div id="TezSec" runat="server" visible="true">
                             <li>
                                 <a href="TezSec.aspx">Tez Seçimi</a>
                             </li>
+                            </div> 
                             <li>
                                 <a href="TezListele.aspx">Tezim</a>
                             </li>
                         </ul>
                     </li>
-                    
+                   
                     <li>
                            <a href="javascript:;" data-toggle="collapse" data-target="#demo2"> <i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo2" class="collapse">
