@@ -23,17 +23,11 @@ public partial class TezListele : TezBaseUser
         }
         else
         {
-
-            var tezim2 = db.Tez.Where(w => w.Og_ID == AppKontrol.id).FirstOrDefault();
-
+            var tezim2 = db.Tez.Where(w => w.Og_ID == AppKontrol.id || w.Og2_ID==AppKontrol.id ).FirstOrDefault();
             Label1.Text = tezim2.Konu;
             Label2.Text = tezim2.Aciklama;
-        }
-       
-        
-
+        }             
     }
-
     protected void LogOut_Click(object sender, EventArgs e)
     {
         Response.Cookies["MyCookie"].Expires = DateTime.Now.AddDays(-1);
