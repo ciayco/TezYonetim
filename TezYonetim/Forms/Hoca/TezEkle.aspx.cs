@@ -19,12 +19,11 @@ public partial class TezEkle :TezBase
         Tez tez = new Tez();
         tez.Konu = Request["Konu"].Trim();
         tez.Aciklama = Request["Aciklama"].Trim();
+        //tez.Ogrsayi = Request["TezAdet"].Trim(); //vt düzeldiğinde aktif edilecek
         tez.Hoca_ID = AppKontrol.id;
         db.Tez.Add(tez);
         db.SaveChanges();
         Response.Redirect(@"~/Default.aspx");
-        
-
 
     }
 }

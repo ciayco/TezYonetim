@@ -17,25 +17,29 @@
                 </div>
                 <form id="signupform" class="form-horizontal" role="form">
                     <div class="panel-body">
-
-
                         <div id="signupalert" style="display: none" class="alert alert-danger">
                             <p>Error:</p>
                             <span></span>
                         </div>
                         <div class="form-group">
-                            <label for="name" class="col-md-3 control-label">Ad</label>
+                            <label for="name" class="col-md-3 control-label">Konu: </label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="Konu" placeholder="Ad">
+                                <input type="text" class="form-control" name="Konu" placeholder="Tez Konu Başlığı">
                             </div>
                         </div>
                         <br> <br> <br>
                         <div class="form-group">
-                              <label for="comment" class="col-md-3 control-label">Comment:</label>
+                              <label for="comment" class="col-md-3 control-label">Açıklama: </label>
                             <div class="col-md-9">
-                              <textarea class="form-control" rows="5" id="comment" name="Aciklama"></textarea>
+                              <textarea class="form-control" rows="5" id="comment" name="Aciklama" placeholder="Tez Açıklama"></textarea>
                             </div>
-                        </div>
+                        </div><br /><br /><br />
+                         <div class="form-group">
+                            <label for="name" class="col-md-3 control-label">Öğrenci Sayısı: </label>
+                            <div class="col-md-9">
+                                <input type="number" value="1" class="form-control" name="TezAdet">
+                            </div>
+                        </div>                    
                               <div class="form-group">
                             <div class="col-md-9">
                                 <p>
