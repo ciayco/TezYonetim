@@ -11,18 +11,17 @@ public partial class User : TezBaseUser
     TezDBEntities db;
     Ogrenci Ogrenci;
     protected void Page_Load(object sender, EventArgs e)
-    {      
-        fnk = new TezFonk();
+    {
         db = new TezDBEntities();
-        var Hoca = db.Hoca.ToList();
-        Ogrenci = db.Ogrenci.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
-
         //tarih kontrol
         DateTime tarih = DateTime.Now;
         Sistem trh = db.Sistem.Where(q => q.Id ==1).FirstOrDefault();
-
         if (tarih >= trh.DanismanSBas && tarih <= trh.DanismanSBit)
         {
+            fnk = new TezFonk();           
+            var Hoca = db.Hoca.ToList();
+            Ogrenci = db.Ogrenci.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
+            var hoca2 = db.Hoca.Where(w => w.Id == Ogrenci.Hoca_ID).FirstOrDefault();
             //sayfa işlemleri
             if (!IsPostBack)
             {
@@ -33,49 +32,43 @@ public partial class User : TezBaseUser
                 }
                 else if (Ogrenci.Hoca_Onay == false)
                 {
-                    Response.Write("<script>alert('hoca onay beklemede')</script>");
+                    bekleme.Visible = true;
+                    DurumBekleme1.Text = hoca2.Ad;
+                    DurumBekleme.Text = "Onay Beklemede";
                 }
                 else
                 {
-                    Response.Write("<script>alert('Tez seçimi yapınız')</script>");
+                    onay.Visible = true;
+                    DurumOnay1.Text = hoca2.Ad;
+                    DurumOnay.Text = "Onaylandı";
                 }
-
             }
         }
         else
         {
-            Response.Write("<script>alert('Tarih aralık dışı')</script>");
+            Response.Redirect(@"~/Default.aspx");
         }
         //tarih kontrol
-
-
-  
     }
-
     protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
         string id;
             switch (e.CommandName)
             {
-
                 case "Sec":
                     id = e.CommandArgument.ToString();                                    
                     Ogrenci.Hoca_ID = Convert.ToInt32(id);
                     Ogrenci.Hoca_Onay = false;
                     db.SaveChanges();
-                    Repeater1.DataBind();
-    
+                    Repeater1.DataBind();   
                     break;
-
                 case "Sil":
                      id = e.CommandArgument.ToString();
                      Ogrenci.Hoca_ID = null;
                      db.SaveChanges();
-                     Repeater1.DataBind();
-                 
+                     Repeater1.DataBind();                 
                      break;
-        }
-        
+        }        
     }
     protected void LogOut_Click(object sender, EventArgs e)
     {

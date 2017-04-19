@@ -12,8 +12,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
     <br />
-    
-
+   
+    <!--Tez Seçimi -->
+     <div runat="server" id="sec" visible="false">
           <!--Repeater -->
           <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
           <HeaderTemplate>
@@ -46,6 +47,40 @@
             </tbody> </table>
         </FooterTemplate>
     </asp:Repeater>
-
+        </div>
+    <!--Tez Seçimi -->
+    <!--Onay bekleme -->
+    <div id="bekleme" runat="server" visible="false">
+         <table class="table table-striped">
+             
+            <tr>                
+                <th style="text-align:center;">Adı & Soyadı </th>
+                <th style="text-align:center;">Durum</th>    
+            </tr>                 
+            <tr>           
+                <td><asp:Label ID="DurumBekleme1" runat="server"></asp:Label></td>
+                <td><asp:Label ID="DurumBekleme" runat="server"></asp:Label></td>
+                
+            </tr>
+        </table>
+    </div>
+     <!--Onay bekleme-->
     
+    <!--Onaylanmış-->
+    <div id="onay" runat="server" visible="false">
+
+        <table class="table table-striped">
+             
+            <tr>                
+                <th style="text-align:center;">Adı & Soyadı </th>
+                <th style="text-align:center;">Durum</th>    
+            </tr>                 
+            <tr>           
+                <td><asp:Label ID="DurumOnay1" runat="server"></asp:Label></td>
+                <td><asp:Label ID="DurumOnay" runat="server"></asp:Label></td>
+                
+            </tr>
+        </table>
+    </div>
+ <!--Onaylanmış-->
 </asp:Content>

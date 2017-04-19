@@ -10,21 +10,10 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <br />
-    <br />
-    
-    
-        
-      
+    <br />   
               <div class="panel panel-primary">
                 <div class="panel-heading">Tezim</div>
                 <div class="panel-body"><asp:Label ID="Label2" runat="server" ></asp:Label></div>
                 <div class="panel-body"><asp:Label ID="Label1" runat="server" ></asp:Label></div>
                 </div>
-               
-  
-     
-
-           
-       
 </asp:Content>

@@ -12,8 +12,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
     <br />
-    
-
+    <div runat="server" id="sec" visible="false">
+              <!--Tez Seçimi -->
           <!--Repeater -->
           <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
           <HeaderTemplate>
@@ -46,6 +46,46 @@
         </FooterTemplate>
     </asp:Repeater>
            <!--Repeater -->
+    </div>
+    <!--Tez Seçimi -->
+     <!--Onay bekleme -->
+    <div id="bekleme" runat="server" visible="false">
+         <table class="table table-striped">
+             
+            <tr>                
+                <th style="text-align:center;">Konu </th>
+                <th style="text-align:center;">Aciklama</th>
+                <th style="text-align:center;">Durum</th>    
+            </tr>                 
+            <tr>           
+                <td><asp:Label ID="DurumBekleme1" runat="server"></asp:Label></td>
+                <td><asp:Label ID="DurumBekleme2" runat="server"></asp:Label></td>
+                <td><asp:Label ID="DurumBekleme" runat="server"></asp:Label></td>
+                
+            </tr>
+        </table>
+    </div>
+     <!--Onay bekleme-->
+    
+    <!--Onaylanmış-->
+    <div id="onay" runat="server" visible="false">
+
+        <table class="table table-striped">
+             
+            <tr>                
+                <th style="text-align:center;">Konu </th>
+                <th style="text-align:center;">Aciklama</th>
+                <th style="text-align:center;">Durum</th>    
+            </tr>                 
+            <tr>           
+                <td><asp:Label ID="DurumOnay1" runat="server"></asp:Label></td>
+                <td><asp:Label ID="DurumOnay2" runat="server"></asp:Label></td>
+                <td><asp:Label ID="DurumOnay" runat="server"></asp:Label></td>
+                
+            </tr>
+        </table>
+    </div>
+ <!--Onaylanmış-->
 
     <script src="js/jquery.js"></script>
 

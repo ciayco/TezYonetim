@@ -12,42 +12,46 @@ public partial class TezSec : TezBaseUser
     Ogrenci Ogrenci;
     Tez tez;
     protected void Page_Load(object sender, EventArgs e)
-    {      
-        fnk = new TezFonk();
+    {
         db = new TezDBEntities();
-        Ogrenci = db.Ogrenci.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
-        var Tezdb = db.Tez.Where(t => t.Hoca_ID == Ogrenci.Hoca_ID && (t.Og_ID==null || t.Og2_ID==null)).ToList();
-
         //tarih kontrol
         DateTime tarih = DateTime.Now;
         Sistem trh = db.Sistem.Where(q => q.Id ==1).FirstOrDefault();
-
         if (tarih >= trh.DanismanSBas && tarih <= trh.DanismanSBit)
         {
+            fnk = new TezFonk();            
+            Ogrenci = db.Ogrenci.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
+            var Tezdb = db.Tez.Where(t => t.Hoca_ID == Ogrenci.Hoca_ID && (t.Og_ID == null || t.Og2_ID == null)).ToList();
+            var Tezdb2 = db.Tez.Where(w => w.Og_ID == AppKontrol.id || w.Og2_ID == AppKontrol.id).FirstOrDefault();
             if (!IsPostBack)
             {
               if(Ogrenci.Tez_ID==null)
                 {
+                    sec.Visible = true;
                     Repeater1.DataSource = Tezdb;
                     Repeater1.DataBind();
                 }
                 else if (Ogrenci.Tez_Onay == false)
                 {
-                    Response.Write("<script>alert('Tez onay beklemede')</script>");
+                    bekleme.Visible = true;
+                    DurumBekleme1.Text = Tezdb2.Konu;
+                    DurumBekleme2.Text = Tezdb2.Aciklama;
+                    DurumBekleme.Text = "Onay Beklemede";
                 }
                 else
                 {
-                    Response.Write("<script>alert('Tez seçimi yapıldı tezıne bak')</script>");
+                    onay.Visible = true;
+                    DurumOnay1.Text = Tezdb2.Konu;
+                    DurumOnay2.Text = Tezdb2.Aciklama;
+                    DurumOnay.Text = "Onaylandı";
                 }
-
             }
         }
         else
         {
-            Response.Write("<script>alert('Tarih aralık dışı')</script>");
+            Response.Redirect(@"~/Default.aspx");
         }
         //tarih kontrol
-
     }
 
     protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
