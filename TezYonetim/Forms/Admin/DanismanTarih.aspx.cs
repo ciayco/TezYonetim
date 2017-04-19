@@ -19,17 +19,23 @@ public partial class Forms_Admin_DanismanTarih : TezBaseAdmin
     }
     protected void btnGiris_Click(object sender, EventArgs e)
     {
+        if (DBas.Text != "" && DBit.Text != "")
+        {
+            //DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
+            //Tarih kayıt
+            trh.DanismanSBas = DateTime.Parse(DBas.Text.Replace("T", " "));
+            trh.DanismanSBit = DateTime.Parse(DBit.Text.Replace("T", " "));
+            db.SaveChanges();
 
-        //DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
-        //Tarih kayıt
-        trh.DanismanSBas = DateTime.Parse(DBas.Text.Replace("T", " "));
-        trh.DanismanSBit = DateTime.Parse(DBit.Text.Replace("T", " "));
-        db.SaveChanges();
-
-        //Label yenileme
-        Label1.Text = "Başlangıç " + trh.DanismanSBas.ToString();
-        Label2.Text = "Bitiş " + trh.DanismanSBit.ToString();
- 
+            //Label yenileme
+            Label1.Text = "Başlangıç " + trh.DanismanSBas.ToString();
+            Label2.Text = "Bitiş " + trh.DanismanSBit.ToString();
+        }
+        else
+        {
+            Label2.Text = "";
+            Label1.Text = "Başlangıç ve Bitiş Tarihini Boş Geçemezsin.!";
+        }
 
     }
 }

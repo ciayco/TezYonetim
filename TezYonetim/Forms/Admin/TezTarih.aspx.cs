@@ -19,16 +19,22 @@ public partial class Forms_Admin_TezTarih : TezBaseAdmin
     }
     protected void btnGiris_Click(object sender, EventArgs e)
     {
-        //DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
-        //Tarih kayıt
-        trh.TezSBas = DateTime.Parse(TBas.Text.Replace("T", " "));
-        trh.TezSBit = DateTime.Parse(TBit.Text.Replace("T", " "));
-        db.SaveChanges();
+        if(TBas.Text!="" && TBit.Text!="")
+        {
+            //DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss").Replace(' ', 'T');
+            //Tarih kayıt
+            trh.TezSBas = DateTime.Parse(TBas.Text.Replace("T", " "));
+            trh.TezSBit = DateTime.Parse(TBit.Text.Replace("T", " "));
+            db.SaveChanges();
 
-        //Label yenileme
-        Label1.Text = "Başlangıç " + trh.TezSBas.ToString();
-        Label2.Text = "Bitiş " + trh.TezSBit.ToString();
-
-
+            //Label yenileme
+            Label1.Text = "Başlangıç " + trh.TezSBas.ToString();
+            Label2.Text = "Bitiş " + trh.TezSBit.ToString();
+        }
+        else
+        {
+            Label2.Text = "";
+            Label1.Text = "Başlangıç ve Bitiş Tarihini Boş Geçemezsin.!";
+        }
     }
 }

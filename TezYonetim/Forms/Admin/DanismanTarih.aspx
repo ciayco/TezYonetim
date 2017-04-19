@@ -54,7 +54,7 @@
             </div>
         </div>
     </div>
-<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label><br /><br />
-    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="Label1" runat="server" ></asp:Label><br /><br />
+    <asp:Label ID="Label2" runat="server" ></asp:Label>
 </asp:Content>
 
