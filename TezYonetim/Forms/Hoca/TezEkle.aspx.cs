@@ -17,13 +17,16 @@ public partial class TezEkle :TezBase
     {
         TezDBEntities db = new TezDBEntities();
         Tez tez = new Tez();
-        tez.Konu = Request["Konu"].Trim();
-        tez.Aciklama = Request["Aciklama"].Trim();
-        //tez.Ogrsayi = Request["TezAdet"].Trim(); //vt düzeldiğinde aktif edilecek
-        tez.Hoca_ID = AppKontrol.id;
-        db.Tez.Add(tez);
-        db.SaveChanges();
-        Response.Redirect(@"~/Default.aspx");
-
+        if(Request["Konu"].Trim()!="" && Request["Aciklama"].Trim()!="")
+        { 
+            tez.Konu = Request["Konu"].Trim();
+            tez.Aciklama = Request["Aciklama"].Trim();
+            //tez.Ogrsayi = Request["TezAdet"].Trim(); //vt düzeldiğinde aktif edilecek
+            tez.Hoca_ID = AppKontrol.id;
+            db.Tez.Add(tez);
+            db.SaveChanges();
+            Response.Redirect(@"~/Default.aspx");
+        }
+        uyari.Text = "Boş geçilemez";
     }
 }
