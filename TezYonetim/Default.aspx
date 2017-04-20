@@ -50,45 +50,26 @@
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                         <input id="login-password" type="password" class="form-control" name="pass" placeholder="Şifre">
-                                    </div>
-                                    
-
-                                
-                            <div class="input-group">
-                                      <div class="checkbox">
-                                        <label><asp:CheckBox ID="CheckBox1" runat="server" />&nbsp;Remember me</label>
-                                      </div>
-                                    </div>
-
-
+                                    </div>                               
                                 <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
-
                                     <div class="col-sm-12 controls">
                                         <asp:Button ID="btnGiris" runat="server" class="btn btn-success" Text="Giriş" OnClick="btnGiris_Click" />
                                          <p><asp:Label ID="Label1" runat="server" ForeColor="Red"></asp:Label></p>
                                   </div>
                                 </div>  
                             </form>     
-
-
-
                         </div>                     
                     </div>  
         </div>
-        
     </div>
-
     <script src="../../js/jquery.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="../../js/bootstrap.min.js"></script>
-
     <!-- Morris Charts JavaScript -->
     <script src="../../js/plugins/morris/raphael.min.js"></script>
     <script src="../../js/plugins/morris/morris.min.js"></script>
     <script src="../../js/plugins/morris/morris-data.js"></script>
-
 </body>
 
 </html>
