@@ -11,8 +11,8 @@ public partial class Admin : TezBase
     protected void Page_Load(object sender, EventArgs e)
     {
         TezDBEntities db = new TezDBEntities();
-        var Ogrenci = db.Ogrenci.ToList();
-       
+        var Ogrenci = db.Ogrenci.Where(o => o.Hoca_ID == AppKontrol.id && o.Hoca_Onay == true).ToList();
+
         Repeater1.DataSource = Ogrenci;
         Repeater1.DataBind();
             if (Request.QueryString["Id"] != null)
