@@ -24,8 +24,7 @@
                           <th style="text-align:center;">Id </th>
                           <th style="text-align:center;">İsim Soyisim </th>
                           <th style="text-align:center;">Ders </th>
-                          <th style="text-align:center;">Seç</th>                 
-                          <th style="text-align:center;">Sil</th>
+                          <th style="text-align:center;">Seç</th>
                   </tr>
                     </thead>
                 <tbody>
@@ -38,9 +37,7 @@
                  <td>
                     <asp:Button ID="SecBut" CommandName="Sec" Text="Seç" runat="server" CommandArgument='<%# Eval("Id") %>' />
                 </td>
-                <td>
-                    <asp:Button ID="SilBut" CommandName="Click" Text="Sil" runat="server" CommandArgument='<%# Eval("Id") %>' />
-                </td>
+                
             </tr>
         </ItemTemplate>
         <FooterTemplate>

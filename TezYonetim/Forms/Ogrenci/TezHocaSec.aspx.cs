@@ -62,14 +62,10 @@ public partial class User : TezBaseUser
                     Ogrenci.Hoca_ID = Convert.ToInt32(id);
                     Ogrenci.Hoca_Onay = false;
                     db.SaveChanges();
-                    Repeater1.DataBind();   
-                    break;
-                case "Sil":
-                     id = e.CommandArgument.ToString();
-                     Ogrenci.Hoca_ID = null;
-                     db.SaveChanges();
-                     Repeater1.DataBind();                 
-                     break;
+                    Repeater1.DataBind();
+                    Response.Redirect(@"~/Forms/Ogrenci/TezHocaSec.aspx");
+                break;
+                
         }        
     }
     protected void LogOut_Click(object sender, EventArgs e)

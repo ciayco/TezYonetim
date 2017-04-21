@@ -50,6 +50,6 @@ public partial class Duzenle : TezBase
             AppKontrol.name = TextBox2.Text;
         }
         db.SaveChanges();
-        Response.Redirect(@"~/Admin.aspx");
+        Response.Redirect(@"~/Forms/Hoca/OgrenciListele.aspx");
     }
 }
