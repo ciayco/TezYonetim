@@ -21,7 +21,7 @@ public partial class TezEkle :TezBase
         { 
             tez.Konu = Request["Konu"].Trim();
             tez.Aciklama = Request["Aciklama"].Trim();
-            //tez.Ogrsayi = Request["TezAdet"].Trim(); //vt düzeldiğinde aktif edilecek
+            tez.Tez_Limit = Convert.ToInt32(Request["TezAdet"].Trim());
             tez.Hoca_ID = AppKontrol.id;
             db.Tez.Add(tez);
             db.SaveChanges();
