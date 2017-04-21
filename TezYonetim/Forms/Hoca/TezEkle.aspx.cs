@@ -11,7 +11,10 @@ public partial class TezEkle :TezBase
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if ((Request.QueryString["Id"]) == "1")
+        {
+            uyari.Text = ("<br>")+"Teziniz Kaydedilmiştir.!";
+        }
     }
     protected void btnGiris_Click(object sender, EventArgs e)
     {
@@ -25,7 +28,7 @@ public partial class TezEkle :TezBase
             tez.Hoca_ID = AppKontrol.id;
             db.Tez.Add(tez);
             db.SaveChanges();
-            Response.Redirect(@"~/Default.aspx");
+            Response.Redirect(@"~/Forms/Hoca/TezEkle.aspx?id=1");
         }
         uyari.Text = "Boş geçilemez";
     }

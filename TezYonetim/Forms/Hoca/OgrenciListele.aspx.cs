@@ -22,7 +22,7 @@ public partial class Admin : TezBase
                 db.Ogrenci.Remove(silKayit);
                 db.SaveChanges();
                 Repeater1.DataBind();
-                Response.Redirect(@"~/Admin.aspx");
+                Response.Redirect(@"~/Forms/Hoca/OgrenciListele.aspx");
             }
     }
     
