@@ -13,10 +13,7 @@
           <table class="table table-striped">
                <thead>
                   <tr>
-                          <th style="text-align:center;">Id </th>
-                          <th style="text-align:center;">Hoca_Id </th>
-                          <th style="text-align:center;">Og_Id </th>       
-                          <th style="text-align:center;">Og2_Id</th>
+                          <th style="text-align:center;">Id </th>                      
                           <th style="text-align:center;">Konu </th>
                           <th style="text-align:center;">Açıklama </th>                        
                   </tr>
@@ -26,9 +23,6 @@
         <ItemTemplate>
             <tr>
                 <td><%#Eval("Id") %></td>
-                <td><%#Eval("Hoca_id") %></td>
-                <td><%#Eval("Og_id") %></td>
-                <td><%#Eval("Og2_id") %></td>
                 <td><%#Eval("Konu") %></td>
                 <td><%#Eval("aciklama") %></td>
                 <td>
