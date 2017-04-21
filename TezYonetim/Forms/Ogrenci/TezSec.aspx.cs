@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class TezSec : TezBaseUser
 {
-    TezFonk fnk;
+  
     TezDBEntities db;
     Ogrenci Ogrenci;
     Tez tez;
@@ -19,10 +19,10 @@ public partial class TezSec : TezBaseUser
         Sistem trh = db.Sistem.Where(q => q.Id ==1).FirstOrDefault();
         if (tarih >= trh.DanismanSBas && tarih <= trh.DanismanSBit)
         {
-            fnk = new TezFonk();            
+                    
             Ogrenci = db.Ogrenci.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
-            var Tezdb = db.Tez.Where(t => t.Hoca_ID == Ogrenci.Hoca_ID && (t.Og_ID == null || t.Og2_ID == null)).ToList();
-            var Tezdb2 = db.Tez.Where(w => w.Og_ID == AppKontrol.id || w.Og2_ID == AppKontrol.id).FirstOrDefault();
+            var Tezdb = db.Tez.Where(t => t.Hoca_ID == Ogrenci.Hoca_ID && t.Tez_Alan < t.Tez_Limit).ToList();
+            var Tezdb2 = db.Tez.Where(w => w.Id == Ogrenci.Tez_ID).FirstOrDefault();
             if (!IsPostBack)
             {
               if(Ogrenci.Tez_ID==null)

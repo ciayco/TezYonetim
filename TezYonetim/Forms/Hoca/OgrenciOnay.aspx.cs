@@ -8,12 +8,12 @@ using System.Security.Cryptography;
 
 public partial class Admin : TezBase
 {
-    TezFonk fnk;
+   
     TezDBEntities db;
     Ogrenci Ogrenci;
     protected void Page_Load(object sender, EventArgs e)
     {
-        fnk = new TezFonk();
+       
         db = new TezDBEntities();
        
         var Ogrdb = db.Ogrenci.Where(t => t.Hoca_ID == AppKontrol.id && t.Hoca_Onay==false).ToList();

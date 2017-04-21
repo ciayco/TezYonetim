@@ -48,21 +48,18 @@ public partial class Admin : TezBase
                 id = e.CommandArgument.ToString();
                 ogid = Convert.ToInt32(id);
                 Ogrenci = db.Ogrenci.Where(o => o.Id == ogid).FirstOrDefault();
-                Ogrenci.Tez_Onay = true;
                 Tez = db.Tez.Where(oo => oo.Id == Ogrenci.Tez_ID).FirstOrDefault();
                 //Tezdeki boş yer kontrolü
-                if (Tez.Og_ID == null)
+                if (Tez.Tez_Alan < Tez.Tez_Limit)
                 {
-                    Tez.Og_ID = ogid;
-                }
-                else if (Tez.Og2_ID == null)
-                {
-                    Tez.Og2_ID = ogid;
+                    Ogrenci.Tez_Onay = true;
+                    Tez.Tez_Alan += 1;
                 }
                 else
                 {
-                    //Uyarı
+                    //Tez limiti Uyarı
                 }
+                
                 db.SaveChanges();
                 Repeater1.DataBind();
                 break;

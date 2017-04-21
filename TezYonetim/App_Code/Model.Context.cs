@@ -23,11 +23,11 @@ public partial class TezDBEntities : DbContext
         throw new UnintentionalCodeFirstException();
     }
 
+    public virtual DbSet<Admin> Admin { get; set; }
     public virtual DbSet<Hoca> Hoca { get; set; }
     public virtual DbSet<Ogrenci> Ogrenci { get; set; }
     public virtual DbSet<Rapor> Rapor { get; set; }
     public virtual DbSet<Sistem> Sistem { get; set; }
     public virtual DbSet<Tarih> Tarih { get; set; }
     public virtual DbSet<Tez> Tez { get; set; }
-    public virtual DbSet<Admin> Admin { get; set; }
 }

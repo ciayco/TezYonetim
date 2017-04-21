@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class User : TezBaseUser
 {
-    TezFonk fnk;
+   
     TezDBEntities db;
     Ogrenci Ogrenci;
     protected void Page_Load(object sender, EventArgs e)
@@ -18,7 +18,7 @@ public partial class User : TezBaseUser
         Sistem trh = db.Sistem.Where(q => q.Id ==1).FirstOrDefault();
         if (tarih >= trh.DanismanSBas && tarih <= trh.DanismanSBit)
         {
-            fnk = new TezFonk();           
+               
             var Hoca = db.Hoca.ToList();
             Ogrenci = db.Ogrenci.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
             var hoca2 = db.Hoca.Where(w => w.Id == Ogrenci.Hoca_ID).FirstOrDefault();
