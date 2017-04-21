@@ -16,7 +16,6 @@
                <thead>
                   <tr>
                           <th style="text-align:center;">Id </th>
-                          <th style="text-align:center;">Hoca_Id </th>
                           <th style="text-align:center;">İsim Soyisim </th>
                           <th style="text-align:center;">No </th>
                           <th style="text-align:center;">Mail </th>
@@ -30,7 +29,6 @@
         <ItemTemplate>
             <tr>
                 <td><%#Eval("Id") %></td>
-                <td><%#Eval("Hoca_ID") %></td>
                 <td><%#Eval("Ad") %></td>
                 <td><%#Eval("No") %></td>
                 <td><%#Eval("Mail") %></td>

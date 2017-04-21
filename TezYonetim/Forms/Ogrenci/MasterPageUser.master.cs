@@ -35,6 +35,7 @@ public partial class MasterPageUser : System.Web.UI.MasterPage
         if (!(tarih >= trh.TezSBas && tarih <= trh.TezSBit))
         {
             TezSec.Visible = false;
+            TezOner.Visible = false;
         }
 
     }

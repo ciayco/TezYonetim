@@ -27,8 +27,10 @@ public partial class User : TezBaseUser
             {
                 if (Ogrenci.Hoca_ID == null)
                 {
+                    sec.Visible = true;
                     Repeater1.DataSource = Hoca;
                     Repeater1.DataBind();
+                    
                 }
                 else if (Ogrenci.Hoca_Onay == false)
                 {

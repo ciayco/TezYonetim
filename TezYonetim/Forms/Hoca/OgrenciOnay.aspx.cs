@@ -43,6 +43,7 @@ public partial class Admin : TezBase
                 Ogrenci.Hoca_Onay = false;
                 db.SaveChanges();
                 Repeater1.DataBind();
+                Response.Redirect(@"~/Forms/Hoca/OgrenciOnay.aspx");
                 break;
 
             case "Sec":
@@ -53,6 +54,7 @@ public partial class Admin : TezBase
                 Ogrenci.Hoca_Onay = true;
                 db.SaveChanges();
                 Repeater1.DataBind();
+                Response.Redirect(@"~/Forms/Hoca/OgrenciOnay.aspx");
                 break;
         }
 
