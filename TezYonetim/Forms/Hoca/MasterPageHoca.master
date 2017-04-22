@@ -179,7 +179,7 @@
                                     <a href="OgrenciListele.aspx">Öğrencileri listele</a>
                                 </li>
                                 <li>
-                                    <a href="OgrenciOnay.aspx">Öğrenci Onay</a>
+                                    <a href="OgrenciOnay.aspx">Onay Bekleyen Öğrenci</a>
                                 </li>
                             </ul>
                         </li>
