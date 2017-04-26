@@ -15,13 +15,12 @@
           <table class="table table-striped">
                <thead>
                   <tr>
-                          <th style="text-align:center;">Id </th>
-                          <th style="text-align:center;">Hoca_Id </th>
                           <th style="text-align:center;">Tez_Id </th>       
                           <th style="text-align:center;">İsim Soyisim </th>
                           <th style="text-align:center;">No </th>
                           <th style="text-align:center;">Mail </th>
                           <th style="text-align:center;">Bolum </th>               
+                          <th style="text-align:center;">İncele</th>              
                           <th style="text-align:center;">Reddet</th>
                           <th style="text-align:center;">Onayla</th>
                   </tr>
@@ -30,13 +29,14 @@
         </HeaderTemplate>
         <ItemTemplate>
             <tr>
-                <td><%#Eval("Id") %></td>
-                <td><%#Eval("Hoca_ID") %></td>
                 <td><%#Eval("Tez_ID") %></td>
                 <td><%#Eval("Ad") %></td>
                 <td><%#Eval("No") %></td>
                 <td><%#Eval("Mail") %></td>
                 <td><%#Eval("Bolum") %></td>
+                <td>
+                    <button type="button" class="btn btn-success btn-xs btn-round" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">İncele</button>
+                </td>
                 <td>
                     <asp:Button ID="RedBut" CommandName="Red" Text="Reddet" runat="server" class="btn btn-danger btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
                 </td>
@@ -53,7 +53,24 @@
     
     <br />
 
+    
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+      </div>
+      <div class="modal-body">
+          <asp:Label ID="Label1" runat="server" ></asp:Label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

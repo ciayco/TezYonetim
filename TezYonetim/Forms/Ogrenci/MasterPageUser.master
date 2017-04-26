@@ -12,6 +12,9 @@
    <title></title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
@@ -24,6 +27,9 @@
 
     <!-- Custom Fonts -->
     <link href="../../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -207,7 +213,9 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="../../js/jquery.js"></script>
+    <%--<script src="../../js/jquery.js"></script>--%>
+        
+        
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../../js/bootstrap.min.js"></script>
@@ -215,9 +223,10 @@
 
       <!-- Morris Charts JavaScript -->
 
-    <script src="../../js/plugins/morris/raphael.min.js"></script>
+    <%--<script src="../../js/plugins/morris/raphael.min.js"></script>
     <script src="../../js/plugins/morris/morris.min.js"></script>
-    <script src="../../js/plugins/morris/morris-data.js"></script>
+    <script src="../../js/plugins/morris/morris-data.js"></script>--%>
+        
     </form>
 </body>
 

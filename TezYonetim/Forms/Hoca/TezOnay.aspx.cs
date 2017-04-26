@@ -19,21 +19,26 @@ public partial class Admin : TezBase
 
         if (!IsPostBack)
         {
-
             Repeater1.DataSource = Ogrdb;
             Repeater1.DataBind();
-
-
+   
         }
+         Label1.Text = "islam";
     }
-
+  
     protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
         string id;
         int ogid;
         switch (e.CommandName)
         {
-
+            //case "incele":
+            //    id = e.CommandArgument.ToString();
+            //    ogid = Convert.ToInt32(id);
+        //        Ogrenci = db.Ogrenci.Where(o => o.Id == ogid).FirstOrDefault();
+        //Tez = db.Tez.Where(oo => oo.Id == Ogrenci.Tez_ID).FirstOrDefault();
+        //Label1.Text = Tez.Konu + "</br></br></br>" + Tez.Aciklama;
+            //    break;
             case "Red":
                 id = e.CommandArgument.ToString();
                 ogid = Convert.ToInt32(id);
