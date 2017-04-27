@@ -26,7 +26,6 @@ public partial class Hoca
     {
         this.Ogrenci = new HashSet<Ogrenci>();
         this.Rapor = new HashSet<Rapor>();
-        this.Rapor_Tarih = new HashSet<Rapor_Tarih>();
         this.Tez = new HashSet<Tez>();
     }
 
@@ -41,8 +40,6 @@ public partial class Hoca
     public virtual ICollection<Ogrenci> Ogrenci { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Rapor> Rapor { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<Rapor_Tarih> Rapor_Tarih { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Tez> Tez { get; set; }
 }
@@ -71,23 +68,12 @@ public partial class Rapor
     public int Id { get; set; }
     public Nullable<int> Hoca_Id { get; set; }
     public Nullable<int> Tez_Id { get; set; }
-    public Nullable<int> Tarih_Id { get; set; }
     public string Ad { get; set; }
+    public string Tarih { get; set; }
     public string Aciklama { get; set; }
-    public string Dosya { get; set; }
 
     public virtual Hoca Hoca { get; set; }
     public virtual Tez Tez { get; set; }
-}
-
-public partial class Rapor_Tarih
-{
-    public int Id { get; set; }
-    public Nullable<int> Hoca_Id { get; set; }
-    public Nullable<System.DateTime> RaporBas { get; set; }
-    public Nullable<System.DateTime> RaporBit { get; set; }
-
-    public virtual Hoca Hoca { get; set; }
 }
 
 public partial class Sistem

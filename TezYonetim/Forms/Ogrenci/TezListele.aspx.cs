@@ -23,11 +23,9 @@ public partial class TezListele : TezBaseUser
         }
         else
         {
-            //var tezim2 = db.Tez.Where(w => w.Id == Ogrenci.Tez_ID).FirstOrDefault();
-            //Label1.Text = tezim2.Konu;
-            //Label2.Text = tezim2.Aciklama;
-            Label1.Text = Ogrenci.Tez.Konu;
-            Label2.Text = Ogrenci.Tez.Aciklama;
+            var tezim2 = db.Tez.Where(w => w.Id == Ogrenci.Tez_ID).FirstOrDefault();
+            Label1.Text = tezim2.Konu;
+            Label2.Text = tezim2.Aciklama;
         }             
     }
     protected void LogOut_Click(object sender, EventArgs e)
