@@ -27,6 +27,7 @@ public partial class TezDBEntities : DbContext
     public virtual DbSet<Hoca> Hoca { get; set; }
     public virtual DbSet<Ogrenci> Ogrenci { get; set; }
     public virtual DbSet<Rapor> Rapor { get; set; }
+    public virtual DbSet<Rapor_Tarih> Rapor_Tarih { get; set; }
     public virtual DbSet<Sistem> Sistem { get; set; }
     public virtual DbSet<Tarih> Tarih { get; set; }
     public virtual DbSet<Tez> Tez { get; set; }
