@@ -1,10 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Ogrenci/MasterPageUser.master" EnableEventValidation="false" AutoEventWireup="true" CodeFile="TezOner.aspx.cs" Inherits="Forms_Ogrenci_TezOner" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-     <title>Tez Öner</title>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <title>Tez Öner</title>
+
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-   
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+
+
+    <!--Select2-->
     <div class="container">
         <div id="signupbox" style="margin-top: 50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
             <div class="panel panel-info">
@@ -20,26 +23,49 @@
                         <div class="form-group">
                             <label for="name" class="col-md-3 control-label">Konu: </label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="Konu" placeholder="Tez Konu Başlığı">
+                                <input type="text" class="form-control" id="konu" runat="server" name="Konu" placeholder="Tez Konu Başlığı">
                             </div>
                         </div>
-                        <br> <br> <br>
+                        <br>
+                        <br>
+                        <br>
                         <div class="form-group">
-                              <label for="comment" class="col-md-3 control-label">Açıklama: </label>
+                            <label for="comment" class="col-md-3 control-label">Açıklama: </label>
                             <div class="col-md-9">
-                              <textarea class="form-control" rows="5" id="comment" name="Aciklama" placeholder="Tez Açıklama"></textarea>
+                                <textarea class="form-control" rows="5" id="comment" name="Aciklama" placeholder="Tez Açıklama"></textarea>
                             </div>
-                        </div><br /><br /><br />
-                         <div class="form-group">
-                            <label for="name" class="col-md-3 control-label">Öğrenci Sayısı: </label>
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <div class="form-group">
+                            <label for="name" class="col-md-3 control-label">Tezi Alan Diğer Öğrenciler (varsa) </label>
                             <div class="col-md-9">
-                                <input type="number" value="1" class="form-control" name="TezAdet">
+                                <asp:Repeater ID="Repeater1" runat="server">
+                                    <HeaderTemplate>
+                                        <select name="TeziAlanDigerOgrenciler" class="js-example-basic-multiple form-control" multiple="multiple">
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <option value="<%#Eval("Id") %>"><%#Eval("Ad") %></option>
+
+
+                                    </ItemTemplate>
+
+                                    <FooterTemplate>
+                                        </select>
+                                    </FooterTemplate>
+                                </asp:Repeater>
                             </div>
-                        </div>                    
-                              <div class="form-group">
+                        </div>
+
+                        <!--Select2-->
+                        <script type="text/javascript">
+                            $(".js-example-basic-multiple").select2();
+                        </script>
+                        <div class="form-group">
                             <div class="col-md-9">
                                 <p>
-                                    <asp:Label ID="LabelSignUP" runat="server" ForeColor="Red"></asp:Label>
+                                    <asp:Label ID="label1" runat="server" ForeColor="Red"></asp:Label>
                                 </p>
                             </div>
                         </div>
@@ -47,8 +73,8 @@
                             <!-- Button -->
                             <div class="col-md-offset-3 col-md-9">
 
-                                <asp:Button ID="btnGiris" runat="server" Text="Kayit" class="btn btn-info" OnClick="btnGiris_Click" />
 
+                                <asp:Button runat="server" class="btn btn-primary" OnClick="btnGiris_Click" Text="Button" />
                             </div>
                         </div>
 
@@ -57,5 +83,8 @@
             </div>
         </div>
     </div>
+
+
+
 </asp:Content>
 

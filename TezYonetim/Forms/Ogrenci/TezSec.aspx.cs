@@ -68,6 +68,7 @@ public partial class TezSec : TezBaseUser
                     Ogrenci.Tez_Onay = false;
                     db.SaveChanges();
                     Repeater1.DataBind();
+                    Response.Redirect(@"~/Forms/Ogrenci/TezSec.aspx");
 
                 break;
         }

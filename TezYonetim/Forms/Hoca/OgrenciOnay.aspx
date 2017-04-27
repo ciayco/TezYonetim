@@ -15,29 +15,27 @@
           <table class="table table-striped">
                <thead>
                   <tr>
-                          <th style="text-align:center;">Id </th>
-                          <th style="text-align:center;">İsim Soyisim </th>
-                          <th style="text-align:center;">No </th>
+                          <th style="text-align:center;">Ad & Soyad </th>
+                          <th style="text-align:center;">No</th>
                           <th style="text-align:center;">Mail </th>
-                          <th style="text-align:center;">Bolum </th>               
-                          <th style="text-align:center;">Sil</th>
-                          <th style="text-align:center;">Sec</th>
+                          <th style="text-align:center;">Bölüm </th>               
+                          <th style="text-align:center;">Seçim</th>
+                          <th style="text-align:center;">Seçim</th>
                   </tr>
                     </thead>
                 <tbody>
         </HeaderTemplate>
         <ItemTemplate>
             <tr>
-                <td><%#Eval("Id") %></td>
                 <td><%#Eval("Ad") %></td>
                 <td><%#Eval("No") %></td>
                 <td><%#Eval("Mail") %></td>
                 <td><%#Eval("Bolum") %></td>
                 <td>
-                    <asp:Button ID="SilBut" CommandName="Sil" Text="Sil" class="btn btn-danger btn-xs btn-round" runat="server" CommandArgument='<%# Eval("Id") %>' />
+                    <asp:Button ID="SilBut" CommandName="Sil" Text="  Reddet  " class="btn btn-danger btn-xs btn-round" runat="server" CommandArgument='<%# Eval("Id") %>' />
                 </td>
                 <td>
-                    <asp:Button ID="SecBut" CommandName="Sec" Text="Sec" class="btn btn-primary btn-xs btn-round" runat="server" CommandArgument='<%# Eval("Id") %>' />
+                    <asp:Button ID="SecBut" CommandName="Sec" Text="  Onayla  " class="btn btn-primary btn-xs btn-round" runat="server" CommandArgument='<%# Eval("Id") %>' />
                 </td>
             </tr>
         </ItemTemplate>

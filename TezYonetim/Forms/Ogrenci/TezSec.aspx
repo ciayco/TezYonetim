@@ -22,7 +22,6 @@
                   <tr>
                           <th style="text-align:center;">Id </th>
                           <th style="text-align:center;">Hoca Id </th>
-                          <th style="text-align:center;">Ogr Id </th>
                           <th style="text-align:center;">Konu </th>
                           <th style="text-align:center;">Aciklama</th>    
                   </tr>
@@ -33,7 +32,6 @@
             <tr>
                 <td><%#Eval("Id") %></td>
                 <td><%#Eval("Hoca_ID") %></td>
-                <td><%#Eval("Og_ID") %></td>
                 <td><%#Eval("Konu") %></td>
                 <td><%#Eval("Aciklama") %></td>
                  <td>
