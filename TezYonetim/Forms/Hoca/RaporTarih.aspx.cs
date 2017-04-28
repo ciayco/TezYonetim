@@ -27,38 +27,14 @@ public partial class Forms_Hoca_RaporTarih : TezBase
 
             if (sayi == 0)
             {
-                DateTime RaporBas = DateTime.Parse(DBas.Text.Replace("T", " "));
-                DateTime RaporBit = DateTime.Parse(DBit.Text.Replace("T", " "));
-                double toplamgun = (RaporBit - RaporBas).TotalDays;
-                toplamgun = toplamgun / Convert.ToInt32(RaporAdet.Text);              
-                double periyod = Math.Round(toplamgun);
-                DateTime temp = new DateTime();
-                temp = RaporBas;
-                Label1.Text = "Toplam gün sayısı " + periyod;
-
-                for (int i =0;i<Convert.ToInt32(RaporAdet.Text);i++) { 
-                trh.Hoca_Id = AppKontrol.id;
-                trh.RaporBas = temp;
-                temp = temp.AddDays(periyod);
-                    if (temp > RaporBit) trh.RaporBit = RaporBit;
-                    else trh.RaporBit = temp;
-                db.Rapor_Tarih.Add(trh);
-                db.SaveChanges();
-                }
-                
-           
-                //Label1.Text = "Başlangıç " + trh.RaporBas.ToString();
-                //Label2.Text = "Bitiş " + trh.RaporBit.ToString();               
+                tarihekle();                    
             }
             else
             {
                 db.Rapor_Tarih.RemoveRange(rptarih);
                 db.SaveChanges();
-            }
-            
-            
-          
-            
+                tarihekle();
+            }            
             
         }
         else
@@ -68,4 +44,29 @@ public partial class Forms_Hoca_RaporTarih : TezBase
         }
 
     }
+
+
+    public void tarihekle()
+    {
+        DateTime RaporBas = DateTime.Parse(DBas.Text.Replace("T", " "));
+        DateTime RaporBit = DateTime.Parse(DBit.Text.Replace("T", " "));
+        double toplamgun = (RaporBit - RaporBas).TotalDays;
+        toplamgun = toplamgun / Convert.ToInt32(RaporAdet.Text);
+        double periyod = Math.Round(toplamgun);
+        DateTime temp = new DateTime();
+        temp = RaporBas;
+        Label1.Text = "Toplam gün sayısı " + periyod;
+        int raportext = Convert.ToInt32(RaporAdet.Text);
+        for (int i = 0; i < raportext ; i++)
+        {
+            trh.Hoca_Id = AppKontrol.id;
+            trh.RaporBas = temp;
+            temp = temp.AddDays(periyod);
+            if (i+1==raportext) trh.RaporBit = RaporBit;
+            else trh.RaporBit = temp;
+            db.Rapor_Tarih.Add(trh);
+            db.SaveChanges();
+        }
+    }
+
 }
