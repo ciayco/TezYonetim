@@ -39,7 +39,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Kapat"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="exampleModalLabel1">New message</h4>
+                    <h4 class="modal-title" id="exampleModalLabel1">Rapor Görüntüle</h4>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -52,7 +52,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
-                    <button type="button" class="btn btn-primary">Kaydet</button>
+                    <asp:button type="button" runat="server" onclick="Rapor_goruntule_Click" class="btn btn-primary" Text="Kaydet"></asp:button>
                 </div>
             </div>
         </div>
@@ -61,12 +61,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Kapat"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="exampleModalLabel2">New message</h4>
+                    <h4 class="modal-title" id="exampleModalLabel2">Rapor Yükleme</h4>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="recipient-name" class="control-label">Dosya Yükle: </label>
                             <asp:FileUpload ID="FileUpload2" runat="server" />
                         </div>
                         
@@ -74,7 +73,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
-                    <button type="button" class="btn btn-primary">Kaydet</button>
+                    <asp:button type="button" runat="server" onclick="Rapor_Yukle_Click" class="btn btn-primary" Text="Kaydet"></asp:button>
                 </div>
             </div>
         </div>
