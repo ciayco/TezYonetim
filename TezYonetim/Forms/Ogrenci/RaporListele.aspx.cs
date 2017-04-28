@@ -30,7 +30,7 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
     protected void Rapor_Yukle_Click(object sender, EventArgs e)
     {
         HttpPostedFile myFile = filMyFile.PostedFile;
-        if (myFile != null)
+        if (myFile != null)//kontrol edılcek bos durumda false vermıyo
         {
             myFile.SaveAs(Server.MapPath("~/Raporlar/") + myFile.FileName);
         }
