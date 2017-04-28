@@ -49,9 +49,19 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Hoca_Id" Type="int" />
           <Property Name="Tez_Id" Type="int" />
-          <Property Name="Ad" Type="nchar" MaxLength="10" />
-          <Property Name="Tarih" Type="nchar" MaxLength="10" />
+          <Property Name="Tarih_Id" Type="int" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
           <Property Name="Aciklama" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dosya" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Rapor_Tarih">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hoca_Id" Type="int" />
+          <Property Name="RaporBas" Type="datetime" />
+          <Property Name="RaporBit" Type="datetime" />
         </EntityType>
         <EntityType Name="Sistem">
           <Key>
@@ -130,6 +140,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Rapor_Tarih_Hoca">
+          <End Role="Hoca" Type="Self.Hoca" Multiplicity="0..1" />
+          <End Role="Rapor_Tarih" Type="Self.Rapor_Tarih" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rapor_Tarih">
+              <PropertyRef Name="Hoca_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Rapor_Tez">
           <End Role="Tez" Type="Self.Tez" Multiplicity="0..1" />
           <End Role="Rapor" Type="Self.Rapor" Multiplicity="*" />
@@ -159,6 +181,7 @@
           <EntitySet Name="Hoca" EntityType="Self.Hoca" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ogrenci" EntityType="Self.Ogrenci" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rapor" EntityType="Self.Rapor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rapor_Tarih" EntityType="Self.Rapor_Tarih" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sistem" EntityType="Self.Sistem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tarih" EntityType="Self.Tarih" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tez" EntityType="Self.Tez" Schema="dbo" store:Type="Tables" />
@@ -178,6 +201,10 @@
             <End Role="Hoca" EntitySet="Hoca" />
             <End Role="Rapor" EntitySet="Rapor" />
           </AssociationSet>
+          <AssociationSet Name="FK_Rapor_Tarih_Hoca" Association="Self.FK_Rapor_Tarih_Hoca">
+            <End Role="Hoca" EntitySet="Hoca" />
+            <End Role="Rapor_Tarih" EntitySet="Rapor_Tarih" />
+          </AssociationSet>
           <AssociationSet Name="FK_Rapor_Tez" Association="Self.FK_Rapor_Tez">
             <End Role="Tez" EntitySet="Tez" />
             <End Role="Rapor" EntitySet="Rapor" />
@@ -196,6 +223,7 @@
           <EntitySet Name="Hoca" EntityType="TezDBModel.Hoca" />
           <EntitySet Name="Ogrenci" EntityType="TezDBModel.Ogrenci" />
           <EntitySet Name="Rapor" EntityType="TezDBModel.Rapor" />
+          <EntitySet Name="Rapor_Tarih" EntityType="TezDBModel.Rapor_Tarih" />
           <EntitySet Name="Sistem" EntityType="TezDBModel.Sistem" />
           <EntitySet Name="Tarih" EntityType="TezDBModel.Tarih" />
           <EntitySet Name="Tez" EntityType="TezDBModel.Tez" />
@@ -206,6 +234,10 @@
           <AssociationSet Name="FK_Rapor_Hoca" Association="TezDBModel.FK_Rapor_Hoca">
             <End Role="Hoca" EntitySet="Hoca" />
             <End Role="Rapor" EntitySet="Rapor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rapor_Tarih_Hoca" Association="TezDBModel.FK_Rapor_Tarih_Hoca">
+            <End Role="Hoca" EntitySet="Hoca" />
+            <End Role="Rapor_Tarih" EntitySet="Rapor_Tarih" />
           </AssociationSet>
           <AssociationSet Name="FK_Tez_Hoca" Association="TezDBModel.FK_Tez_Hoca">
             <End Role="Hoca" EntitySet="Hoca" />
@@ -246,6 +278,7 @@
           <Property Name="Derece" Type="Int32" />
           <NavigationProperty Name="Ogrenci" Relationship="TezDBModel.FK_Ogrenci_Hoca1" FromRole="Hoca" ToRole="Ogrenci" />
           <NavigationProperty Name="Rapor" Relationship="TezDBModel.FK_Rapor_Hoca" FromRole="Hoca" ToRole="Rapor" />
+          <NavigationProperty Name="Rapor_Tarih" Relationship="TezDBModel.FK_Rapor_Tarih_Hoca" FromRole="Hoca" ToRole="Rapor_Tarih" />
           <NavigationProperty Name="Tez" Relationship="TezDBModel.FK_Tez_Hoca" FromRole="Hoca" ToRole="Tez" />
         </EntityType>
         <EntityType Name="Ogrenci">
@@ -274,11 +307,22 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Hoca_Id" Type="Int32" />
           <Property Name="Tez_Id" Type="Int32" />
-          <Property Name="Ad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Tarih" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Tarih_Id" Type="Int32" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Aciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dosya" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Rapor_Hoca" FromRole="Rapor" ToRole="Hoca" />
           <NavigationProperty Name="Tez" Relationship="TezDBModel.FK_Rapor_Tez" FromRole="Rapor" ToRole="Tez" />
+        </EntityType>
+        <EntityType Name="Rapor_Tarih">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hoca_Id" Type="Int32" />
+          <Property Name="RaporBas" Type="DateTime" Precision="3" />
+          <Property Name="RaporBit" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Rapor_Tarih_Hoca" FromRole="Rapor_Tarih" ToRole="Hoca" />
         </EntityType>
         <EntityType Name="Sistem">
           <Key>
@@ -333,6 +377,18 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Rapor">
+              <PropertyRef Name="Hoca_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rapor_Tarih_Hoca">
+          <End Type="TezDBModel.Hoca" Role="Hoca" Multiplicity="0..1" />
+          <End Type="TezDBModel.Rapor_Tarih" Role="Rapor_Tarih" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rapor_Tarih">
               <PropertyRef Name="Hoca_Id" />
             </Dependent>
           </ReferentialConstraint>
@@ -434,10 +490,21 @@
           <EntitySetMapping Name="Rapor">
             <EntityTypeMapping TypeName="TezDBModel.Rapor">
               <MappingFragment StoreEntitySet="Rapor">
+                <ScalarProperty Name="Dosya" ColumnName="Dosya" />
                 <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
-                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
                 <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Tarih_Id" ColumnName="Tarih_Id" />
                 <ScalarProperty Name="Tez_Id" ColumnName="Tez_Id" />
+                <ScalarProperty Name="Hoca_Id" ColumnName="Hoca_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rapor_Tarih">
+            <EntityTypeMapping TypeName="TezDBModel.Rapor_Tarih">
+              <MappingFragment StoreEntitySet="Rapor_Tarih">
+                <ScalarProperty Name="RaporBit" ColumnName="RaporBit" />
+                <ScalarProperty Name="RaporBas" ColumnName="RaporBas" />
                 <ScalarProperty Name="Hoca_Id" ColumnName="Hoca_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
