@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -21,7 +22,14 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
     }
     protected void Rapor_Yukle_Click(object sender, EventArgs e)
     {
-        //Modal rapor yükle kayıt butonu işlemleri        
+        HttpPostedFile yuklenecekDosya = FileUpload2.PostedFile;
+        if (yuklenecekDosya != null)
+        {
+            FileInfo dosyaBilgisi = new FileInfo(yuklenecekDosya.FileName);
+            string klasor = "Raporlar";
+            string yuklemeYeri = Server.MapPath("~/" + klasor + "/" + dosyaBilgisi.Name);
+            FileUpload2.SaveAs(yuklemeYeri);
+        }
     }
 
 }
