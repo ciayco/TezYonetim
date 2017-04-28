@@ -39,6 +39,7 @@ public partial class Forms_Hoca_TezListele : TezBase
                 db.Tez.Remove(Tez);
                 db.SaveChanges();
                 Repeater1.DataBind();
+                Response.Redirect(@"~/Forms/Hoca/TezListele.aspx");
                 break;
                 
         }

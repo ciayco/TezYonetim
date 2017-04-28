@@ -12,8 +12,7 @@
           <HeaderTemplate>
           <table class="table table-striped">
                <thead>
-                  <tr>
-                          <th style="text-align:center;">Id </th>                      
+                  <tr>                    
                           <th style="text-align:center;">Konu </th>
                           <th style="text-align:center;">Açıklama </th>                        
                   </tr>
@@ -22,7 +21,6 @@
         </HeaderTemplate>
         <ItemTemplate>
             <tr>
-                <td><%#Eval("Id") %></td>
                 <td><%#Eval("Konu") %></td>
                 <td><%#Eval("aciklama") %></td>
                 <td>
