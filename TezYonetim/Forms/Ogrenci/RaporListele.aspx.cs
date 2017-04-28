@@ -22,14 +22,20 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
     }
     protected void Rapor_Yukle_Click(object sender, EventArgs e)
     {
-        HttpPostedFile yuklenecekDosya = FileUpload2.PostedFile;
-        if (yuklenecekDosya != null)
+        
+        if (FileUpload2.HasFile)
         {
-            FileInfo dosyaBilgisi = new FileInfo(yuklenecekDosya.FileName);
+            FileInfo dosyaBilgisi = new FileInfo(FileUpload2.PostedFile.FileName);
             string klasor = "Raporlar";
             string yuklemeYeri = Server.MapPath("~/" + klasor + "/" + dosyaBilgisi.Name);
             FileUpload2.SaveAs(yuklemeYeri);
+            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Dosya Yüklendi');</script>");
         }
+        else
+        {
+            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Hata');</script>");
+        }
+        
     }
 
 }
