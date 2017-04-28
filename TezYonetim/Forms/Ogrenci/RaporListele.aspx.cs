@@ -18,24 +18,26 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
     }
     protected void Rapor_goruntule_Click(object sender, EventArgs e)
     {
-        //Modal rapor goruntule kayıt butonu işlemleri   
+        //Raporlar klasorunde 1.pdf var direk onu çekiyorum vt kaydettıgımız ısme gore cekıccez DUZENLENECEK 
+        string navigateURL = "../../../Raporlar/1.pdf";//DUZENLENECEK
+        string target = "_blank";
+        string windowProperties = "status=no, menubar=yes, toolbar=yes";
+        string scriptText = "window.open('" + navigateURL + "','" + target + "','" + windowProperties + "')";
+
+        Page.ClientScript.RegisterStartupScript(this.GetType(), "eşsizAnahtar", scriptText, true);
     }
+
     protected void Rapor_Yukle_Click(object sender, EventArgs e)
     {
-        
-        if (FileUpload2.HasFile)
+        HttpPostedFile myFile = filMyFile.PostedFile;
+        if (myFile != null)
         {
-            FileInfo dosyaBilgisi = new FileInfo(FileUpload2.PostedFile.FileName);
-            string klasor = "Raporlar";
-            string yuklemeYeri = Server.MapPath("~/" + klasor + "/" + dosyaBilgisi.Name);
-            FileUpload2.SaveAs(yuklemeYeri);
-            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Dosya Yüklendi');</script>");
+            myFile.SaveAs(Server.MapPath("~/Raporlar/") + myFile.FileName);
         }
         else
         {
             Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Hata');</script>");
         }
-        
     }
 
 }

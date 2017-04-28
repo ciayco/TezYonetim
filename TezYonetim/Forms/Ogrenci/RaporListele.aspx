@@ -24,7 +24,7 @@
                             Rapor Başlangıç = <%#Eval("RaporBas") %><br />
                             Rapor Biriş = <%#Eval("RaporBit") %><br />
                             <br />
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">Rapor Görüntüle</button>&nbsp;&nbsp;
+                            <asp:Button type="button" runat="server" OnClick="Rapor_goruntule_Click" class="btn btn-primary" Text="Rapor Görüntüle"/>&nbsp;&nbsp;
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">Rapor Ekle</button>
                         </div>
                     </div>
@@ -33,30 +33,8 @@
             <FooterTemplate>
             </FooterTemplate>
         </asp:Repeater>
-    </div>
-    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Kapat"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="exampleModalLabel1">Rapor Görüntüle</h4>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <asp:Panel ID="Panel1" runat="server">rapor içerik</asp:Panel>
-                            
-                        </div>
-                        
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
-                    <asp:button type="button" runat="server" onclick="Rapor_goruntule_Click" class="btn btn-primary" Text="Kaydet"></asp:button>
-                </div>
-            </div>
-        </div>
-    </div><div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    </div>    
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -64,16 +42,13 @@
                     <h4 class="modal-title" id="exampleModalLabel2">Rapor Yükleme</h4>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <asp:FileUpload ID="FileUpload2" runat="server" />
-                        </div>
-                        
-                    </form>
+                    <div class="form-group">
+                        <input type="file" runat="server" id="filMyFile" />
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
-                    <asp:button type="button" runat="server" onclick="Rapor_Yukle_Click" class="btn btn-primary" Text="Kaydet"></asp:button>
+                    <asp:Button type="button" runat="server" OnClick="Rapor_Yukle_Click" class="btn btn-primary" Text="Kaydet"></asp:Button>
                 </div>
             </div>
         </div>
