@@ -14,7 +14,7 @@ public partial class Forms_Hoca_RaporTarih : TezBase
     {
         db = new TezDBEntities();
         trh = new Rapor_Tarih();
-        Label1.Text = "Toplam gün sayısı ";
+        Label1.Text = "Toplam gün sayısı.... ";
         //Label1.Text = "Başlangıç " + trh.DanismanSBas.ToString();
         //Label2.Text = "Bitiş " + trh.DanismanSBit.ToString();
     }
