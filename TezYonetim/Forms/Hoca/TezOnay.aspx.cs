@@ -17,12 +17,22 @@ public partial class Admin : TezBase
 
         var Ogrdb = db.Ogrenci.Where(t => t.Hoca_ID == AppKontrol.id && t.Tez_ID != null && t.Tez_Onay == false).ToList();
 
-        if (!IsPostBack)
+        if (Ogrdb.Count==0)
         {
-            Repeater1.DataSource = Ogrdb;
-            Repeater1.DataBind();
-   
+            tablo.Visible = false;
+            label.Visible = true;
+            Label2.Text = "Onay Bekleyen Öğrenci Bulunmamaktadır.!";
         }
+        else
+        {
+            if (!IsPostBack)
+            {
+                Repeater1.DataSource = Ogrdb;
+                Repeater1.DataBind();
+
+            }
+        }
+          
          Label1.Text = "islam";
     }
   
