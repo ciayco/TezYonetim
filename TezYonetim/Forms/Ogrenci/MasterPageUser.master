@@ -185,11 +185,9 @@
                            <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="glyphicon glyphicon-save-file"></i>&nbsp;&nbsp;&nbsp; Raporlar <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo3" class="collapse">
                             <li>
-                                <a href="Admin.aspx">Rapor periyodu</a>
+                                <a href="RaporListele.aspx">Raporları Görüntüle</a>
                             </li>
-                            <li>
-                                <a href="User.aspx">Raporları Görüntüle</a>
-                            </li>
+                            
                         </ul>
                     </li>
                     
