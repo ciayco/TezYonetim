@@ -10,7 +10,8 @@
         $(function () {
             $('.modal-button').click(function () {
                 //modal içindeki labelin textine data-id değerini ver
-                $('.makine-id').text($(this).attr('data-id'));
+                //$('.hiddenfield1').val($(this).attr('data-id'));
+                $("#exampleModal2").find("input[type='hidden']").val($(this).attr("data-id")); 
                 //modalı aç;
                 $('.modal').modal();
 
@@ -64,14 +65,14 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="file" runat="server" id="filMyFile" />
-                        <asp:Label ID="Label1" runat="server" CssClass="makine-id"></asp:Label>
-                      
+                        
+                        <asp:HiddenField ID="HiddenField1" runat="server"  />
                      
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
-                    <asp:Button type="button" runat="server" OnCommand="Rapor_Yukle_Click" class="btn btn-primary" Text="Kaydet" CommandName="Kaydet" CommandArgument='<%# Eval("Id") %>'></asp:Button>
+                    <asp:Button ID="buton123" type="button" runat="server" OnCommand="Rapor_Yukle_Click" class="btn btn-primary" Text="Kaydet" CommandName="Kaydet" ></asp:Button>
                 </div>
             </div>
         </div>

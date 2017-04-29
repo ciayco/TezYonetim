@@ -32,15 +32,16 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
 
     protected void Rapor_Yukle_Click(object sender, CommandEventArgs e)
     {
-        string abcf = Label1.Text;//null donuyo bakılcak
-        string id;
+       //null donuyo bakılcak
+        
         switch (e.CommandName)
         {
             case "Kaydet":
-                id = e.CommandArgument.ToString();
+                
                 HttpPostedFile myFile = filMyFile.PostedFile;
                 if (myFile.ContentLength > 0)//kontrol edılcek bos durumda false vermıyo
                 {
+                    string id = HiddenField1.Value.ToString();
                     myFile.SaveAs(Server.MapPath("~/Raporlar/") + myFile.FileName);
                     rpr.Hoca_Id = ogr.Hoca_ID;
                     rpr.Tez_Id = ogr.Tez_ID;
@@ -52,7 +53,7 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
                 }
                 else
                 {
-                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Hata');</script>");
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Hata');</script>");                          
                 }
                 break;
 
