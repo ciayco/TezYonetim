@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 
 public partial class Forms_Ogrenci_RaporListele : TezBaseUser
 {
+    string a ;
     TezDBEntities db = new TezDBEntities();
     Rapor rpr = new Rapor();
     Ogrenci ogr = new Ogrenci();
@@ -32,10 +33,13 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
     protected void Rapor_Yukle_Click(object sender, CommandEventArgs e)
     {
         string id;
+        HiddenField la = (System.Web.UI.WebControls.HiddenField)Repeater1.FindControl("HiddenField1");
+        id = a;
         switch (e.CommandName)
         {
+           
             case "Kaydet":
-                id = e.CommandArgument.ToString();
+               
                 HttpPostedFile myFile = filMyFile.PostedFile;
                 if (myFile.ContentLength > 0)//kontrol edılcek bos durumda false vermıyo
                 {
@@ -56,6 +60,13 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
 
         }
     }
-
+    protected void RepeaterItemEventHandler(Object Sender, RepeaterItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+            HiddenField currentTextBox = (HiddenField)e.Item.FindControl("HiddenField1");
+            a = currentTextBox.Value;
+        }
+    }
 }
 
