@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Ogrenci/MasterPageUser.master" EnableEventValidation="false" AutoEventWireup="true" CodeFile="RaporListele.aspx.cs" Inherits="Forms_Ogrenci_RaporListele" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+ 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
@@ -13,12 +14,13 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingTwo">
                         <h6 class="panel-title" style="text-align: left;">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#<%#Eval("Id") %>" aria-expanded="false" aria-controls="<%#Eval("Id") %>"><%#Eval("RaporBas") %> - <%#Eval("RaporBit") %>
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#<%#Eval("Id") %>" aria-expanded="false" aria-controls="<%#Eval("Id") %>"><%#Eval("RaporBas") %> - <%#Eval("RaporBit") %>                          
                             </a>
                         </h6>
                     </div>
-                    <div id="<%#Eval("Id") %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div id="<%#Eval("Id") %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">                     
                         <div class="panel-body" style="text-align: left;">
+                           
                             Rapor id = <%#Eval("Id") %><br />
                             Danışman Hoca =<%#Eval("Hoca_Id") %><br />
                             Rapor Başlangıç = <%#Eval("RaporBas") %><br />
@@ -48,7 +50,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
-                    <asp:Button type="button" runat="server" OnClick="Rapor_Yukle_Click" class="btn btn-primary" Text="Kaydet"></asp:Button>
+                    <asp:Button type="button" runat="server" OnCommand="Rapor_Yukle_Click" class="btn btn-primary" Text="Kaydet" CommandName="Kaydet" CommandArgument='<%# Eval("Id") %>'></asp:Button>
                 </div>
             </div>
         </div>

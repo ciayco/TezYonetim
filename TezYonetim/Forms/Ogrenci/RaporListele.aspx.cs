@@ -9,9 +9,11 @@ using System.Web.UI.WebControls;
 public partial class Forms_Ogrenci_RaporListele : TezBaseUser
 {
     TezDBEntities db = new TezDBEntities();
+    Rapor rpr = new Rapor();
+    Ogrenci ogr = new Ogrenci();
     protected void Page_Load(object sender, EventArgs e)
     {
-        var ogr = db.Ogrenci.Find(AppKontrol.id);
+        ogr = db.Ogrenci.Find(AppKontrol.id);
         var trh = db.Rapor_Tarih.Where(t => t.Hoca_Id == ogr.Hoca_ID).ToList();
         Repeater1.DataSource = trh;
         Repeater1.DataBind();
@@ -27,16 +29,31 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
         Page.ClientScript.RegisterStartupScript(this.GetType(), "eşsizAnahtar", scriptText, true);
     }
 
-    protected void Rapor_Yukle_Click(object sender, EventArgs e)
+    protected void Rapor_Yukle_Click(object sender, CommandEventArgs e)
     {
-        HttpPostedFile myFile = filMyFile.PostedFile;
-        if (myFile.ContentLength > 0)//kontrol edılcek bos durumda false vermıyo
+        string id;
+        switch (e.CommandName)
         {
-            myFile.SaveAs(Server.MapPath("~/Raporlar/") + myFile.FileName);
-        }
-        else
-        {
-            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Hata');</script>");
+            case "Kaydet":
+                id = e.CommandArgument.ToString();
+                HttpPostedFile myFile = filMyFile.PostedFile;
+                if (myFile.ContentLength > 0)//kontrol edılcek bos durumda false vermıyo
+                {
+                    myFile.SaveAs(Server.MapPath("~/Raporlar/") + myFile.FileName);
+                    rpr.Hoca_Id = ogr.Hoca_ID;
+                    rpr.Tez_Id = ogr.Tez_ID;
+                    rpr.Tarih_Id = Convert.ToInt32(id);
+                    rpr.Dosya = ogr.Hoca_ID + "" + ogr.Tez_ID + "" + rpr.Tarih_Id;
+                    db.Rapor.Add(rpr);
+                    db.SaveChanges();
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Kaydedildi');</script>");
+                }
+                else
+                {
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Hata');</script>");
+                }
+                break;
+
         }
     }
 
