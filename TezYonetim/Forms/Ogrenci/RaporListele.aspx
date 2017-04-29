@@ -6,8 +6,22 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
     <br>
+    <script type="text/javascript">
+        $(function () {
+            $('.modal-button').click(function () {
+                //modal içindeki labelin textine data-id değerini ver
+                $('.makine-id').text($(this).attr('data-id'));
+                //modalı aç;
+                $('.modal').modal();
+
+                //false return etmezsen sayfa navigate olur
+                return false;
+            });
+        });
+
+    </script>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <asp:Repeater ID="Repeater1" OnItemDataBound="RepeaterItemEventHandler" runat="server">
+        <asp:Repeater ID="Repeater1" runat="server">
             <HeaderTemplate>
             </HeaderTemplate>
             <ItemTemplate>
@@ -25,10 +39,13 @@
                             Danışman Hoca =<%#Eval("Hoca_Id") %><br />
                             Rapor Başlangıç = <%#Eval("RaporBas") %><br />
                             Rapor Biriş = <%#Eval("RaporBit") %><br />
-                            <asp:HiddenField ID="HiddenField1" runat="server" Value='<%#Eval("Id") %>' />
                             <br />
                             <asp:Button type="button" runat="server" OnClick="Rapor_goruntule_Click" class="btn btn-primary" Text="Rapor Görüntüle"/>&nbsp;&nbsp;
-                            <button type="button" id="deneme" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">Rapor Ekle</button>
+                            <%--<button type="button" data-id="<%#Eval("Id") %>"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">Rapor Ekle</button>
+                       --%> 
+                           
+                            <asp:LinkButton ID="makdes" data-id='<%#Eval("Id") %>' CssClass="modal-button" runat="server"><%#Eval("Id") %></asp:LinkButton>
+
                         </div>
                     </div>
                 </div>
@@ -47,6 +64,9 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="file" runat="server" id="filMyFile" />
+                        <asp:Label ID="Label1" runat="server" CssClass="makine-id"></asp:Label>
+                      
+                     
                     </div>
                 </div>
                 <div class="modal-footer">
