@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Ogrenci/MasterPageUser.master" EnableEventValidation="false" AutoEventWireup="true" CodeFile="RaporListele.aspx.cs" Inherits="Forms_Ogrenci_RaporListele" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
- 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
@@ -18,24 +17,21 @@
                             </a>
                         </h6>
                     </div>
-                    <div id="<%#Eval("Id") %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">                     
+                    <div id="<%#Eval("Id") %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                         <div class="panel-body" style="text-align: left;">
-                           
                             Rapor id = <%#Eval("Id") %><br />
                             Danışman Hoca =<%#Eval("Hoca_Id") %><br />
                             Rapor Başlangıç = <%#Eval("RaporBas") %><br />
                             Rapor Biriş = <%#Eval("RaporBit") %><br />
                             <br />
-                            <asp:Button type="button" runat="server" OnClick="Rapor_goruntule_Click" class="btn btn-primary" Text="Rapor Görüntüle"/>&nbsp;&nbsp;
+                            <asp:Button type="button" runat="server" OnClick="Rapor_goruntule_Click" class="btn btn-primary" Text="Rapor Görüntüle" />&nbsp;&nbsp;
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">Rapor Ekle</button>
                         </div>
                     </div>
                 </div>
             </ItemTemplate>
             <FooterTemplate>
-            </FooterTemplate>
-        </asp:Repeater>
-    </div>    
+                 <%-- MODAL BAŞLANGIC--%>
     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -55,5 +51,10 @@
             </div>
         </div>
     </div>
+      <%-- MODAL BAŞLANGIC--%>
+            </FooterTemplate>
+        </asp:Repeater>
+    </div>
+ 
 </asp:Content>
 
