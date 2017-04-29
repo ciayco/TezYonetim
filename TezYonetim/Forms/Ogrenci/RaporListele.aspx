@@ -29,9 +29,7 @@
                         </div>
                     </div>
                 </div>
-            </ItemTemplate>
-            <FooterTemplate>
-                 <%-- MODAL BAŞLANGIC--%>
+                              <%-- MODAL BAŞLANGIC--%>
     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -52,6 +50,9 @@
         </div>
     </div>
       <%-- MODAL BAŞLANGIC--%>
+            </ItemTemplate>
+            <FooterTemplate>
+   
             </FooterTemplate>
         </asp:Repeater>
     </div>
