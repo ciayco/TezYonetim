@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Ogrenci/MasterPageUser.master" EnableEventValidation="false" AutoEventWireup="true" CodeFile="RaporListele.aspx.cs" Inherits="Forms_Ogrenci_RaporListele" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
- 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
@@ -11,15 +10,13 @@
             $('.modal-button').click(function () {
                 //modal içindeki labelin textine data-id değerini ver
                 //$('.hiddenfield1').val($(this).attr('data-id'));
-                $("#exampleModal2").find("input[type='hidden']").val($(this).attr("data-id")); 
+                $("#exampleModal2").find("input[type='hidden']").val($(this).attr("data-id"));
                 //modalı aç;
                 $('.modal').modal();
-
                 //false return etmezsen sayfa navigate olur
                 return false;
             });
         });
-
     </script>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
         <asp:Repeater ID="Repeater1" runat="server">
@@ -33,20 +30,17 @@
                             </a>
                         </h6>
                     </div>
-                    <div id="<%#Eval("Id") %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">                     
+                    <div id="<%#Eval("Id") %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                         <div class="panel-body" style="text-align: left;">
-                           
                             Rapor id = <%#Eval("Id") %><br />
                             Danışman Hoca =<%#Eval("Hoca_Id") %><br />
                             Rapor Başlangıç = <%#Eval("RaporBas") %><br />
                             Rapor Biriş = <%#Eval("RaporBit") %><br />
                             <br />
-                            <asp:Button type="button" runat="server" OnClick="Rapor_goruntule_Click" class="btn btn-primary" Text="Rapor Görüntüle"/>&nbsp;&nbsp;
-                            <%--<button type="button" data-id="<%#Eval("Id") %>"  class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">Rapor Ekle</button>
-                       --%> 
-                           
-                            <asp:LinkButton ID="makdes" data-id='<%#Eval("Id") %>' CssClass="modal-button" runat="server"><%#Eval("Id") %></asp:LinkButton>
-
+                            <span class="btn btn-primary">
+                                <asp:Button type="button" runat="server" OnCommand="Rapor_goruntule_Click" CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" BorderStyle="None" BackColor="#337AB7" /></span>&nbsp;&nbsp;                          
+                            <span class="btn btn-primary">
+                                <asp:Button ID="makdes" class="btn btn-primary" data-id='<%#Eval("Id") %>' CssClass="modal-button" runat="server" Text="Rapor Ekle" BackColor="#337AB7" BorderStyle="None" /></span>
                         </div>
                     </div>
                 </div>
@@ -54,7 +48,7 @@
             <FooterTemplate>
             </FooterTemplate>
         </asp:Repeater>
-    </div>    
+    </div>
     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -65,14 +59,12 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <input type="file" runat="server" id="filMyFile" />
-                        
-                        <asp:HiddenField ID="HiddenField1" runat="server"  />
-                     
+                        <asp:HiddenField ID="HiddenField1" runat="server" />
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
-                    <asp:Button ID="buton123" type="button" runat="server" OnCommand="Rapor_Yukle_Click" class="btn btn-primary" Text="Kaydet" CommandName="Kaydet" ></asp:Button>
+                    <asp:Button ID="buton123" type="button" runat="server" OnCommand="Rapor_Yukle_Click" class="btn btn-primary" Text="Kaydet" CommandName="Kaydet"></asp:Button>
                 </div>
             </div>
         </div>
