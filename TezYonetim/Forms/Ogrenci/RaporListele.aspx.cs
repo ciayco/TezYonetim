@@ -38,21 +38,36 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
     }
     protected void Rapor_Yukle_Click(object sender, CommandEventArgs e)
     {
-        switch (e.CommandName)
+            switch (e.CommandName)
         {
             case "Kaydet":
                 HttpPostedFile myFile = filMyFile.PostedFile;
                 if (myFile.ContentLength > 0)
                 {
-                    string id = HiddenField1.Value.ToString();
-                    myFile.SaveAs(Server.MapPath("~/Raporlar/") + ogr.Hoca_ID + ogr.Tez_ID + id + ".pdf");
-                    rpr.Hoca_Id = ogr.Hoca_ID;
-                    rpr.Tez_Id = ogr.Tez_ID;
-                    rpr.Tarih_Id = Convert.ToInt32(id);
-                    rpr.Dosya = ogr.Hoca_ID + "" + ogr.Tez_ID + "" + rpr.Tarih_Id;
-                    db.Rapor.Add(rpr);
-                    db.SaveChanges();
-                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Kaydedildi');</script>");
+                    if (myFile.FileName.IndexOf(".pdf") > 0)//uzantı pdf degilse ekleme (Geçici)
+                    {
+                        string id = HiddenField1.Value.ToString();
+                        int idi = Convert.ToInt32(id);
+                        if (!(db.Rapor.Where(w => w.Tarih_Id ==idi && w.Hoca_Id==ogr.Hoca_ID && w.Tez_Id==ogr.Tez_ID ).Any()))// Önceden rapor ekledıyse yeni rapor ekleyemez düzenle yapılcak
+                        {
+                            myFile.SaveAs(Server.MapPath("~/Raporlar/") + ogr.Hoca_ID + ogr.Tez_ID + id + ".pdf");
+                            rpr.Hoca_Id = ogr.Hoca_ID;
+                            rpr.Tez_Id = ogr.Tez_ID;
+                            rpr.Tarih_Id = Convert.ToInt32(id);
+                            rpr.Dosya = ogr.Hoca_ID + "" + ogr.Tez_ID + "" + rpr.Tarih_Id;
+                            db.Rapor.Add(rpr);
+                            db.SaveChanges();
+                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Kaydedildi');</script>");
+                        }
+                        else
+                        {
+                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('DaHa Önce Bu Rapor Eklenmiş');</script>");
+                        }
+                    }
+                    else
+                    {
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('lütfen pdf dosyası yükleyiniz');</script>");
+                    }
                 }
                 else
                 {
