@@ -28,45 +28,47 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
                 id = e.CommandArgument.ToString();
                 rprid = Convert.ToInt32(id);
                 var rapor = db.Rapor.Where(o => o.Tarih_Id == rprid).FirstOrDefault();
-                string navigateURL = "../../../Raporlar/" + rapor.Dosya + ".pdf";
-                string target = "_blank";
-                string windowProperties = "status=no, menubar=yes, toolbar=yes";
-                string scriptText = "window.open('" + navigateURL + "','" + target + "','" + windowProperties + "')";
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "eşsizAnahtar", scriptText, true);
+                if (rapor!=null)
+                {
+                    string navigateURL = "../../../Raporlar/" + rapor.Dosya + "." + rapor.Ad;
+                    string target = "_blank";
+                    string windowProperties = "status=no, menubar=yes, toolbar=yes";
+                    string scriptText = "window.open('" + navigateURL + "','" + target + "','" + windowProperties + "')";
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "eşsizAnahtar", scriptText, true);
+                }
+                else
+                {
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Görüntülenecek Rapor Bulunamadı');</script>");
+                }
                 break;
         }
     }
     protected void Rapor_Yukle_Click(object sender, CommandEventArgs e)
     {
-            switch (e.CommandName)
+        switch (e.CommandName)
         {
             case "Kaydet":
                 HttpPostedFile myFile = filMyFile.PostedFile;
                 if (myFile.ContentLength > 0)
                 {
-                    if (myFile.FileName.IndexOf(".pdf") > 0)//uzantı pdf degilse ekleme (Geçici)
+                    string[] parcalar = myFile.FileName.Split('.');//.dan sonrakı uzantıyı parcalar[1] içine atar 
+                    string id = HiddenField1.Value.ToString();
+                    int idi = Convert.ToInt32(id);
+                    if (!(db.Rapor.Where(w => w.Tarih_Id == idi && w.Hoca_Id == ogr.Hoca_ID && w.Tez_Id == ogr.Tez_ID).Any()))// Önceden rapor ekledıyse yeni rapor ekleyemez düzenle yapılcak
                     {
-                        string id = HiddenField1.Value.ToString();
-                        int idi = Convert.ToInt32(id);
-                        if (!(db.Rapor.Where(w => w.Tarih_Id ==idi && w.Hoca_Id==ogr.Hoca_ID && w.Tez_Id==ogr.Tez_ID ).Any()))// Önceden rapor ekledıyse yeni rapor ekleyemez düzenle yapılcak
-                        {
-                            myFile.SaveAs(Server.MapPath("~/Raporlar/") + ogr.Hoca_ID + ogr.Tez_ID + id + ".pdf");
-                            rpr.Hoca_Id = ogr.Hoca_ID;
-                            rpr.Tez_Id = ogr.Tez_ID;
-                            rpr.Tarih_Id = Convert.ToInt32(id);
-                            rpr.Dosya = ogr.Hoca_ID + "" + ogr.Tez_ID + "" + rpr.Tarih_Id;
-                            db.Rapor.Add(rpr);
-                            db.SaveChanges();
-                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Kaydedildi');</script>");
-                        }
-                        else
-                        {
-                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('DaHa Önce Bu Rapor Eklenmiş');</script>");
-                        }
+                        myFile.SaveAs(Server.MapPath("~/Raporlar/") + ogr.Hoca_ID + ogr.Tez_ID + id + "." + parcalar[1]);
+                        rpr.Hoca_Id = ogr.Hoca_ID;
+                        rpr.Tez_Id = ogr.Tez_ID;
+                        rpr.Tarih_Id = Convert.ToInt32(id);
+                        rpr.Ad = parcalar[1];
+                        rpr.Dosya = ogr.Hoca_ID + "" + ogr.Tez_ID + "" + rpr.Tarih_Id;
+                        db.Rapor.Add(rpr);
+                        db.SaveChanges();
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Kaydedildi');</script>");
                     }
                     else
                     {
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('lütfen pdf dosyası yükleyiniz');</script>");
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('DaHa Önce Bu Rapor Eklenmiş');</script>");
                     }
                 }
                 else
@@ -76,6 +78,5 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
                 break;
         }
     }
-
 }
 
