@@ -28,7 +28,7 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
                 id = e.CommandArgument.ToString();
                 rprid = Convert.ToInt32(id);
                 var rapor = db.Rapor.Where(o => o.Tarih_Id == rprid).FirstOrDefault();
-                if (rapor!=null)
+                if (rapor != null)
                 {
                     string navigateURL = "../../../Raporlar/" + rapor.Dosya + "." + rapor.Ad;
                     string target = "_blank";
