@@ -23,7 +23,7 @@
             <HeaderTemplate>
             </HeaderTemplate>
             <ItemTemplate>
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading" role="tab" id="headingTwo">
                         <h6 class="panel-title" style="text-align: left;">
                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#<%#Eval("Id") %>" aria-expanded="false" aria-controls="<%#Eval("Id") %>"><%#Eval("RaporBas") %> - <%#Eval("RaporBit") %>                          
