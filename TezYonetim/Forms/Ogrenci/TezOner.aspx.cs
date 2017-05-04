@@ -12,6 +12,7 @@ public partial class Forms_Ogrenci_TezOner : TezBaseUser
     protected void Page_Load(object sender, EventArgs e)
     {
         db = new TezDBEntities();
+        Ogrenci = db.Ogrenci.Find(AppKontrol.id);
         //tarih kontrol
         DateTime tarih = DateTime.Now;
         Sistem trh = db.Sistem.Where(q => q.Id == 1).FirstOrDefault();
@@ -19,40 +20,46 @@ public partial class Forms_Ogrenci_TezOner : TezBaseUser
         {
             Response.Redirect(@"~/Forms/Ogrenci/index.aspx");
         }
-        else
-        {
-
-            var hocaId = db.Ogrenci.Find(AppKontrol.id).Hoca_ID;
-
-        
-            var Ogrenci = db.Ogrenci.Where(o => o.Hoca_Onay == true && o.Hoca_ID == hocaId && o.Tez_Onay != true && o.Id != AppKontrol.id).ToList();
-
-            Repeater1.DataSource = Ogrenci;
-            Repeater1.DataBind();
-        }
-        
+            
      }
     
     protected void btnGiris_Click(object sender, EventArgs e)
     {
-        var teziAlanDigerOgrenciler = Request["TeziAlanDigerOgrenciler"];
 
-        // boş mu dolu mu kontrolünün yapılması lazım.
-
-        foreach (var item in teziAlanDigerOgrenciler)
+        if(konu.Text != "" && comment.Text != "" && TextOgr.Text != "")
         {
-            string ogrenciId = (item.ToString());
-            
-            if (ogrenciId !=",")
+  
+        Ogrenci DigerOgr = db.Ogrenci.Where(o => o.Hoca_Onay == true &&
+                                       o.Hoca_ID == Ogrenci.Hoca.Id &&
+                                       o.Tez_ID == null &&
+                                       o.Tez_Onay != true &&
+                                       o.Id != AppKontrol.id &&
+                                       o.No == TextOgr.Text).FirstOrDefault();
+            if (DigerOgr != null)
             {
-                int a = Convert.ToInt32(ogrenciId);
-                Ogrenci ogrenci = db.Ogrenci.Find(a);
-                label1.Text =label1.Text+"<br>"+ ogrenci.Ad;
+                Tez tez = new Tez();
+                tez.Hoca_ID = Ogrenci.Hoca.Id;
+                tez.Konu = konu.Text;
+                tez.Aciklama = comment.Text;
+                db.Tez.Add(tez);              
+                Ogrenci.Tez_ID = tez.Id;
+                Ogrenci.Tez_Onay = false;
+                DigerOgr.Tez_ID = tez.Id;
+                DigerOgr.Tez_Onay = false;
+                db.SaveChanges();
+                label1.Text = "Tez Onay İçin Gönderildi";
             }
-           
-        }
+            else
+            {
+                label1.Text = "Sistemde Şartlara Uygun Öğrenci Bulunamadı";
+            }
       
 
+        }
+        else
+        {
+            label1.Text = "Alanlar Boş Bırakılamaz";
+        }
     }
   
     protected void LogOut_Click(object sender, EventArgs e)
