@@ -42,4 +42,4 @@ public partial class Forms_Hoca_RaporListele : TezBase
                 break;
         }
     }
-}
+ }

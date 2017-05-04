@@ -5,6 +5,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <br />
     <br />
+     <script type="text/javascript">
+        $(function () {
+            $('.modal-button').click(function () {
+                //modalı aç;
+                $('.modal').modal();
+                //false return etmezsen sayfa navigate olur
+                return false;
+            });
+        });
+    </script>
     <table class="display"  id="students">
         <thead>
             <tr>
@@ -26,9 +36,8 @@
                         <td><%#Eval("Ad") %></td>
                         <td><%#Eval("Mail") %></td>
                         <td><%#Eval("Bolum") %></td>
-                        <td><%--<a href="Duzenle.aspx?ID=<%#Eval("Id") %>" class="btn btn-primary btn-xs btn-round"> <span class="glyphicon glyphicon-edit"></span>  </a>
-                            <a href="OgrenciListele.aspx?ID=<%#Eval("Id") %>" class="btn btn-danger btn-xs btn-round"> <span class="glyphicon glyphicon-remove"></span></a> --%>                           
-                            <asp:Button type="button" runat="server" OnCommand="Goster_Click" CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" class="btn btn-primary"  />
+                        <td>
+                            <asp:Button type="button" runat="server" OnCommand="Goster_Click"   CssClass="modal-button" CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" class="btn btn-primary"  />
                         </td>
                     </tr>
 
@@ -38,10 +47,27 @@
             </tbody>
     </table>
     <br />
-
-
-
-
+ 
+    <%-- Modal başlangıç --%>
+     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Kapat"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel2">Rapor Yükleme</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <%-- Modal Bitiş --%>
 
     <script type="text/javascript">
         $(document).ready(function () {
