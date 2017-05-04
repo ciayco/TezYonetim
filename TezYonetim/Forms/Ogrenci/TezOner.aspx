@@ -23,7 +23,7 @@
                         <div class="form-group">
                             <label for="name" class="col-md-3 control-label">Konu: </label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="konu" runat="server" name="Konu" placeholder="Tez Konu Başlığı">
+                                <asp:textbox type="text" class="form-control" id="konu" runat="server" name="Konu" placeholder="Tez Konu Başlığı"></asp:textbox>
                             </div>
                         </div>
                         <br>
@@ -32,36 +32,19 @@
                         <div class="form-group">
                             <label for="comment" class="col-md-3 control-label">Açıklama: </label>
                             <div class="col-md-9">
-                                <textarea class="form-control" rows="5" id="comment" name="Aciklama" placeholder="Tez Açıklama"></textarea>
+                                <asp:textbox class="form-control" rows="5" id="comment" name="Aciklama" runat="server" placeholder="Tez Açıklama"></asp:textbox>
                             </div>
                         </div>
                         <br />
                         <br />
                         <br />
-                        <div class="form-group">
-                            <label for="name" class="col-md-3 control-label">Tezi Alan Diğer Öğrenciler (varsa) </label>
+                         <div class="form-group">
+                            <label for="name" class="col-md-3 control-label">Tezi Alan Diğer Öğrenciler(Varsa): </label>
                             <div class="col-md-9">
-                                <asp:Repeater ID="Repeater1" runat="server">
-                                    <HeaderTemplate>
-                                        <select name="TeziAlanDigerOgrenciler" class="js-example-basic-multiple form-control" multiple="multiple">
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <option value="<%#Eval("Id") %>"><%#Eval("Ad") %></option>
-
-
-                                    </ItemTemplate>
-
-                                    <FooterTemplate>
-                                        </select>
-                                    </FooterTemplate>
-                                </asp:Repeater>
+                                <asp:textbox type="text" class="form-control" id="TextOgr" runat="server" name="OgrD" placeholder="Tez Konu Diğer Öğrenciler"></asp:textbox>
                             </div>
                         </div>
 
-                        <!--Select2-->
-                        <script type="text/javascript">
-                            $(".js-example-basic-multiple").select2();
-                        </script>
                         <div class="form-group">
                             <div class="col-md-9">
                                 <p>
