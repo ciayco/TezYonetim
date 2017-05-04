@@ -20,8 +20,7 @@ public partial class Forms_Ogrenci_TezOner : TezBaseUser
         {
             Response.Redirect(@"~/Forms/Ogrenci/index.aspx");
         }
-     
-        
+            
      }
     
     protected void btnGiris_Click(object sender, EventArgs e)
@@ -42,10 +41,11 @@ public partial class Forms_Ogrenci_TezOner : TezBaseUser
                 tez.Hoca_ID = Ogrenci.Hoca.Id;
                 tez.Konu = konu.Text;
                 tez.Aciklama = comment.Text;
-                db.Tez.Add(tez);
-                
+                db.Tez.Add(tez);              
                 Ogrenci.Tez_ID = tez.Id;
+                Ogrenci.Tez_Onay = false;
                 DigerOgr.Tez_ID = tez.Id;
+                DigerOgr.Tez_Onay = false;
                 db.SaveChanges();
                 label1.Text = "Tez Onay İçin Gönderildi";
             }
