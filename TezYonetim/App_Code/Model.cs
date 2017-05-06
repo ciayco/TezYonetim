@@ -19,11 +19,23 @@ public partial class Admin
     public Nullable<int> Derece { get; set; }
 }
 
+public partial class Duyuru
+{
+    public int Id { get; set; }
+    public Nullable<int> Hoca_Id { get; set; }
+    public string Duyuru_Baslik { get; set; }
+    public string Duyuru_Text { get; set; }
+    public Nullable<System.DateTime> Duyuru_Tarih { get; set; }
+
+    public virtual Hoca Hoca { get; set; }
+}
+
 public partial class Hoca
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     public Hoca()
     {
+        this.Duyuru = new HashSet<Duyuru>();
         this.Ogrenci = new HashSet<Ogrenci>();
         this.Rapor = new HashSet<Rapor>();
         this.Rapor_Tarih = new HashSet<Rapor_Tarih>();
@@ -37,6 +49,8 @@ public partial class Hoca
     public string Ders { get; set; }
     public Nullable<int> Derece { get; set; }
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Duyuru> Duyuru { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Ogrenci> Ogrenci { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
