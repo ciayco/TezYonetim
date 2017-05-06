@@ -1,21 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Hoca/MasterPageHoca.master" EnableEventValidation="false" AutoEventWireup="true" CodeFile="RaporListele.aspx.cs" Inherits="Forms_Hoca_RaporListele" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
     <br />
-     <script type="text/javascript">
+    <script type="text/javascript">
         $(function () {
             $('.modal-button').click(function () {
                 //modalı aç;
+
                 $('.modal').modal();
                 //false return etmezsen sayfa navigate olur
                 return false;
             });
         });
     </script>
-    <table class="display"  id="students">
+
+
+
+
+    <table class="display" id="students">
         <thead>
             <tr>
                 <th style="text-align: center;">Id </th>
@@ -27,9 +32,8 @@
             </tr>
         </thead>
         <tbody>
-        <asp:Repeater ID="Repeater1" runat="server">
-            <ItemTemplate>
-                
+            <asp:Repeater ID="Repeater1" runat="server">
+                <ItemTemplate>
                     <tr>
                         <td><%#Eval("Id") %></td>
                         <td><%#Eval("No") %></td>
@@ -37,19 +41,17 @@
                         <td><%#Eval("Mail") %></td>
                         <td><%#Eval("Bolum") %></td>
                         <td>
-                            <asp:Button type="button" runat="server" OnCommand="Goster_Click"   CssClass="modal-button" CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" class="btn btn-primary"  />
+
+                            <asp:Button type="button" runat="server" OnCommand="Goster_Click"  CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" class="btn btn-primary" />
                         </td>
                     </tr>
-
-                
-            </ItemTemplate>
-        </asp:Repeater>
-            </tbody>
+                </ItemTemplate>
+            </asp:Repeater>
+        </tbody>
     </table>
     <br />
- 
     <%-- Modal başlangıç --%>
-     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -66,9 +68,8 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
     <%-- Modal Bitiş --%>
-
     <script type="text/javascript">
         $(document).ready(function () {
             $('#students').DataTable({
@@ -97,8 +98,6 @@
                         "sSortAscending": ": artan sütun sıralamasını aktifleştir",
                         "sSortDescending": ": azalan sütun soralamasını aktifleştir"
                     },
-                    
-                    
                 }
             });
         });

@@ -23,7 +23,7 @@
                         <div class="form-group">
                             <label for="name" class="col-md-3 control-label">Konu: </label>
                             <div class="col-md-9">
-                                <asp:textbox type="text" class="form-control" id="konu" runat="server" name="Konu" placeholder="Tez Konu Başlığı"></asp:textbox>
+                                <asp:TextBox type="text" class="form-control" ID="konu" runat="server" name="Konu" placeholder="Tez Konu Başlığı"></asp:TextBox>
                             </div>
                         </div>
                         <br>
@@ -32,19 +32,31 @@
                         <div class="form-group">
                             <label for="comment" class="col-md-3 control-label">Açıklama: </label>
                             <div class="col-md-9">
-                                <asp:textbox class="form-control" rows="5" id="comment" name="Aciklama" runat="server" placeholder="Tez Açıklama"></asp:textbox>
+                                <asp:TextBox class="form-control" Rows="5" ID="comment" name="Aciklama" runat="server" placeholder="Tez Açıklama"></asp:TextBox>
                             </div>
                         </div>
                         <br />
                         <br />
                         <br />
-                         <div class="form-group">
+                        <div class="form-group">
                             <label for="name" class="col-md-3 control-label">Tezi Alan Diğer Öğrenciler(Varsa): </label>
                             <div class="col-md-9">
-                                <asp:textbox type="text" class="form-control" id="TextOgr" runat="server" name="OgrD" placeholder="Tez Konu Diğer Öğrenciler"></asp:textbox>
+                                <select name="TeziAlanDigerOgrenciler" id="TeziAlanDigerOgrenciler" class="js-example-basic-multiple form-control" multiple="multiple"></select>
                             </div>
                         </div>
-
+                        <!--Select2-->
+                        <script type="text/javascript">
+                            $(".js-example-basic-multiple").select2(
+                                {
+                                    tags: true,
+                                    tokenSeparators: [','],
+                                    "language": {
+                                        "noResults": function () {
+                                            return "Öğrenci numarasını girdikten sonra Enter'a basabilir ya da virgül (,) koyabilirsiniz.";
+                                        }
+                                    },
+                                });
+                        </script>
                         <div class="form-group">
                             <div class="col-md-9">
                                 <p>
@@ -67,7 +79,29 @@
         </div>
     </div>
 
+    <%-- Modal başlangıç --%>
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Kapat"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel2">Tez Önerme</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">                        
+                         <asp:Label ID="Label2" runat="server"></asp:Label><br /><br /><br />
+                        <asp:Label ID="Label3" runat="server"></asp:Label>
 
-
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div style="float:right;" id="butonmodal" runat="server" ><asp:Button runat="server" class="btn btn-primary" OnClick="Onayla_Click" Text="Button" /></div>&nbsp;&nbsp;&nbsp;
+                    <div style="float:right;"> <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <%-- Modal Bitiş --%>
 </asp:Content>
 

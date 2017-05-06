@@ -59,7 +59,11 @@ public partial class Login : System.Web.UI.Page
             Ogrenci user = db.Ogrenci.Where(w => w.No == UserName && w.Sifre == Password).FirstOrDefault();
 
             if (user != null)
-                AuthenticateUser(user.Id, user.Derece, user.Ad, user.Sifre, "Ogrenci");
+            {
+                Response.Cookies.Add(cookie.Cookie(user.No, user.Sifre));
+                AuthenticateUser(user.Id, user.Derece, user.Ad, user.Sifre, "Ogrenci");               
+            }
+               
             else
                 Label1.Text = "Kullanıcı Adı Veya Şifresi Hatalı!";
         }
@@ -68,7 +72,11 @@ public partial class Login : System.Web.UI.Page
             Admin user = db.Admin.Where(w => w.Mail == UserName && w.Sifre == Password).FirstOrDefault();
 
             if (user != null)
-                AuthenticateUser(user.Id, user.Derece, user.KullanıcıAdi, user.Sifre, "Admin");
+            {
+                Response.Cookies.Add(cookie.Cookie(user.Mail, user.Sifre));
+                AuthenticateUser(user.Id, user.Derece, user.KullanıcıAdi, user.Sifre, "Admin");                
+            }
+                
             else
                 Label1.Text = "Kullanıcı Adı Veya Şifresi Hatalı!";
 
@@ -78,7 +86,11 @@ public partial class Login : System.Web.UI.Page
             Hoca user = db.Hoca.Where(w => w.Mail == UserName && w.Sifre == Password).FirstOrDefault();
 
             if (user != null)
-                AuthenticateUser(user.Id, user.Derece, user.Ad, user.Sifre, "Hoca");
+            {
+                Response.Cookies.Add(cookie.Cookie(user.Mail, user.Sifre));
+                AuthenticateUser(user.Id, user.Derece, user.Ad, user.Sifre, "Hoca");               
+            }
+                
             else
                 Label1.Text = "Kullanıcı Adı Veya Şifresi Hatalı!";
         }
@@ -90,7 +102,6 @@ public partial class Login : System.Web.UI.Page
         AppKontrol.id = Id; //Id kontrolu           
         AppKontrol.derece = (int)Derece;// derece kontrolü
         AppKontrol.name = UserName;// isim soyisim kontrolü
-        Response.Cookies.Add(cookie.Cookie(UserName, Password));
         Response.Redirect(@"~/Forms/" + Page + "/index.aspx");
     }
 
