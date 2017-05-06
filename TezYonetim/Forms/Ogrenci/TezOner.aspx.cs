@@ -7,8 +7,6 @@ using System.Web.UI.WebControls;
 
 public partial class Forms_Ogrenci_TezOner : TezBaseUser
 {
-    
-
     // Kullanıcı tarafından girilen diğer öğrenci numaralarından doğru olanlar.
     List<string> TeziAlanDigerOgrenciListesi;
     List<string> TeziAlanDigerOgrenciNumaralari;
@@ -16,7 +14,6 @@ public partial class Forms_Ogrenci_TezOner : TezBaseUser
     Ogrenci Ogrenci;
     protected void Page_Load(object sender, EventArgs e)
     {
-        
         db = new TezDBEntities();
         Ogrenci = db.Ogrenci.Find(AppKontrol.id);
         //tarih kontrol
@@ -26,7 +23,6 @@ public partial class Forms_Ogrenci_TezOner : TezBaseUser
         {
             Response.Redirect(@"~/Forms/Ogrenci/index.aspx");
         }
-
     }
     protected void btnGiris_Click(object sender, EventArgs e)
     {
@@ -73,27 +69,22 @@ public partial class Forms_Ogrenci_TezOner : TezBaseUser
 
         return false;
     }
-  
-
     protected void LogOut_Click(object sender, EventArgs e)
     {
         Response.Cookies["MyCookie"].Expires = DateTime.Now.AddDays(-1);
         Session.RemoveAll();
         Response.Redirect(@"~/Default.aspx");
     }
-
     protected void Onayla_Click(object sender, EventArgs e)
     {
-        List<string> yeniList =  Session["ogrList"] as List<string> ;
+        List<string> yeniList = Session["ogrList"] as List<string>;
         Session.Remove("ogrList");
         if (IsPostBack)
         {
-
             if (yeniList.Count > 0)
             {
                 foreach (var item in yeniList)
                 {
-                    //label1.Text = label1.Text + "<br>" + db.Ogrenci.Where(w => w.No == item.Trim()).FirstOrDefault().Ad + " " + item.Trim();
                     Ogrenci DigerOgr = db.Ogrenci.Where(o => o.Hoca_Onay == true &&
                                                              o.Hoca_ID == Ogrenci.Hoca.Id &&
                                                              o.Tez_ID == null &&
