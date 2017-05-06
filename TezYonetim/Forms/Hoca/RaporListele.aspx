@@ -23,11 +23,9 @@
     <table class="display" id="students">
         <thead>
             <tr>
-                <th style="text-align: center;">Id </th>
-                <th style="text-align: center;">Numara </th>
-                <th style="text-align: center;">İsim Soyisim </th>
-                <th style="text-align: center;">E-Mail </th>
-                <th style="text-align: center;">Bölüm </th>
+                <th style="text-align: center;">Konu </th>
+                <th style="text-align: center;">Açıklama </th>
+                <th style="text-align: center;">Öğrenci Sayısı</th>            
                 <th style="text-align: center;">Düzenle</th>
             </tr>
         </thead>
@@ -35,11 +33,9 @@
             <asp:Repeater ID="Repeater1" runat="server">
                 <ItemTemplate>
                     <tr>
-                        <td><%#Eval("Id") %></td>
-                        <td><%#Eval("No") %></td>
-                        <td><%#Eval("Ad") %></td>
-                        <td><%#Eval("Mail") %></td>
-                        <td><%#Eval("Bolum") %></td>
+                        <td><%#Eval("Konu") %></td>
+                        <td><%#Eval("Aciklama") %></td>
+                        <td><%#Eval("Tez_Alan") %></td>                  
                         <td>
 
                             <asp:Button type="button" runat="server" OnCommand="Goster_Click"  CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" class="btn btn-primary" />
