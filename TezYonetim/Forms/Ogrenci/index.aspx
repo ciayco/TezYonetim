@@ -71,17 +71,16 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Duyurular</div>
                     <div class="panel-body">
-                        <asp:LinkButton ID="LinkButton1" CssClass="modal-button" runat="server">02:05:2017:15:30  Tez 1. Hafta Rapor Tarihleri Eklenmiştir.</asp:LinkButton>
+                    <asp:Repeater ID="Repeater1" runat="server">
+                        <ItemTemplate>
+                    
+                        <asp:LinkButton ID="LinkButton1" CssClass="modal-button" runat="server"><%#Eval("Duyuru_Tarih") %>  -  <%#Eval("Duyuru_Baslik") %> </asp:LinkButton>
                         <br />
-                        <br />
-                        <asp:LinkButton ID="LinkButton2" CssClass="modal-button" runat="server">02:05:2017:17:30  Tez Seçmeyen Öğrencilerin dikkatine!</asp:LinkButton>
-                        <br />
-                        <br />
-                        <asp:LinkButton ID="LinkButton3" CssClass="modal-button" runat="server">02:05:2017:17:30  Tez Seçmeyen Öğrencilerin dikkatine!</asp:LinkButton>
-                        <br />
-                        <br />
-                        <asp:LinkButton ID="LinkButton4" CssClass="modal-button" runat="server">02:05:2017:17:30  Tez Seçmeyen Öğrencilerin dikkatine!</asp:LinkButton>
-                    </div>
+                        <br />                     
+                    
+                           </ItemTemplate>
+                        </asp:Repeater>
+                        </div>
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane"id="profile"><br /><br />

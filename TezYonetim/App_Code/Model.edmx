@@ -15,6 +15,16 @@
           <Property Name="Mail" Type="nvarchar" MaxLength="50" />
           <Property Name="Derece" Type="int" />
         </EntityType>
+        <EntityType Name="Duyuru">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hoca_Id" Type="int" />
+          <Property Name="Duyuru_Baslik" Type="nvarchar" MaxLength="50" />
+          <Property Name="Duyuru_Text" Type="nvarchar(max)" />
+          <Property Name="Duyuru_Tarih" Type="datetime" />
+        </EntityType>
         <EntityType Name="Hoca">
           <Key>
             <PropertyRef Name="Id" />
@@ -92,6 +102,18 @@
           <Property Name="Tez_Limit" Type="int" />
           <Property Name="Tez_Alan" Type="int" />
         </EntityType>
+        <Association Name="FK_Duyuru_Hoca">
+          <End Role="Hoca" Type="Self.Hoca" Multiplicity="0..1" />
+          <End Role="Duyuru" Type="Self.Duyuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Duyuru">
+              <PropertyRef Name="Hoca_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Ogrenci_Hoca1">
           <End Role="Hoca" Type="Self.Hoca" Multiplicity="0..1" />
           <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="*" />
@@ -178,6 +200,7 @@
         </Association>
         <EntityContainer Name="TezDBModelStoreContainer">
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Duyuru" EntityType="Self.Duyuru" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hoca" EntityType="Self.Hoca" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ogrenci" EntityType="Self.Ogrenci" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rapor" EntityType="Self.Rapor" Schema="dbo" store:Type="Tables" />
@@ -185,6 +208,10 @@
           <EntitySet Name="Sistem" EntityType="Self.Sistem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tarih" EntityType="Self.Tarih" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tez" EntityType="Self.Tez" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Duyuru_Hoca" Association="Self.FK_Duyuru_Hoca">
+            <End Role="Hoca" EntitySet="Hoca" />
+            <End Role="Duyuru" EntitySet="Duyuru" />
+          </AssociationSet>
           <AssociationSet Name="FK_Ogrenci_Hoca1" Association="Self.FK_Ogrenci_Hoca1">
             <End Role="Hoca" EntitySet="Hoca" />
             <End Role="Ogrenci" EntitySet="Ogrenci" />
@@ -220,6 +247,7 @@
       <Schema Namespace="TezDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="TezDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admin" EntityType="TezDBModel.Admin" />
+          <EntitySet Name="Duyuru" EntityType="TezDBModel.Duyuru" />
           <EntitySet Name="Hoca" EntityType="TezDBModel.Hoca" />
           <EntitySet Name="Ogrenci" EntityType="TezDBModel.Ogrenci" />
           <EntitySet Name="Rapor" EntityType="TezDBModel.Rapor" />
@@ -227,6 +255,10 @@
           <EntitySet Name="Sistem" EntityType="TezDBModel.Sistem" />
           <EntitySet Name="Tarih" EntityType="TezDBModel.Tarih" />
           <EntitySet Name="Tez" EntityType="TezDBModel.Tez" />
+          <AssociationSet Name="FK_Duyuru_Hoca" Association="TezDBModel.FK_Duyuru_Hoca">
+            <End Role="Hoca" EntitySet="Hoca" />
+            <End Role="Duyuru" EntitySet="Duyuru" />
+          </AssociationSet>
           <AssociationSet Name="FK_Ogrenci_Hoca1" Association="TezDBModel.FK_Ogrenci_Hoca1">
             <End Role="Hoca" EntitySet="Hoca" />
             <End Role="Ogrenci" EntitySet="Ogrenci" />
@@ -266,6 +298,17 @@
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Derece" Type="Int32" />
         </EntityType>
+        <EntityType Name="Duyuru">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hoca_Id" Type="Int32" />
+          <Property Name="Duyuru_Baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Duyuru_Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Duyuru_Tarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Duyuru_Hoca" FromRole="Duyuru" ToRole="Hoca" />
+        </EntityType>
         <EntityType Name="Hoca">
           <Key>
             <PropertyRef Name="Id" />
@@ -276,6 +319,7 @@
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Ders" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Derece" Type="Int32" />
+          <NavigationProperty Name="Duyuru" Relationship="TezDBModel.FK_Duyuru_Hoca" FromRole="Hoca" ToRole="Duyuru" />
           <NavigationProperty Name="Ogrenci" Relationship="TezDBModel.FK_Ogrenci_Hoca1" FromRole="Hoca" ToRole="Ogrenci" />
           <NavigationProperty Name="Rapor" Relationship="TezDBModel.FK_Rapor_Hoca" FromRole="Hoca" ToRole="Rapor" />
           <NavigationProperty Name="Rapor_Tarih" Relationship="TezDBModel.FK_Rapor_Tarih_Hoca" FromRole="Hoca" ToRole="Rapor_Tarih" />
@@ -357,6 +401,18 @@
           <NavigationProperty Name="Ogrenci" Relationship="TezDBModel.FK_Ogrenci_Tez" FromRole="Tez" ToRole="Ogrenci" />
           <NavigationProperty Name="Rapor" Relationship="TezDBModel.FK_Rapor_Tez" FromRole="Tez" ToRole="Rapor" />
         </EntityType>
+        <Association Name="FK_Duyuru_Hoca">
+          <End Type="TezDBModel.Hoca" Role="Hoca" Multiplicity="0..1" />
+          <End Type="TezDBModel.Duyuru" Role="Duyuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Duyuru">
+              <PropertyRef Name="Hoca_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Ogrenci_Hoca1">
           <End Type="TezDBModel.Hoca" Role="Hoca" Multiplicity="0..1" />
           <End Type="TezDBModel.Ogrenci" Role="Ogrenci" Multiplicity="*" />
@@ -454,6 +510,17 @@
                 <ScalarProperty Name="Mail" ColumnName="Mail" />
                 <ScalarProperty Name="Sifre" ColumnName="Sifre" />
                 <ScalarProperty Name="KullanıcıAdi" ColumnName="KullanıcıAdi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Duyuru">
+            <EntityTypeMapping TypeName="TezDBModel.Duyuru">
+              <MappingFragment StoreEntitySet="Duyuru">
+                <ScalarProperty Name="Duyuru_Tarih" ColumnName="Duyuru_Tarih" />
+                <ScalarProperty Name="Duyuru_Text" ColumnName="Duyuru_Text" />
+                <ScalarProperty Name="Duyuru_Baslik" ColumnName="Duyuru_Baslik" />
+                <ScalarProperty Name="Hoca_Id" ColumnName="Hoca_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
