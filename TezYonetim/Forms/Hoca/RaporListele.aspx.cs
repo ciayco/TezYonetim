@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 public partial class Forms_Hoca_RaporListele : TezBase
 {
     TezDBEntities db = new TezDBEntities();
+    string idg1, idg2;
+    int tezid,rprid,i;
     protected void Page_Load(object sender, EventArgs e)
     {
         var tezler = db.Tez.Where(o => o.Hoca_ID == AppKontrol.id).ToList();
@@ -18,22 +20,29 @@ public partial class Forms_Hoca_RaporListele : TezBase
     {
 
 
-        string id;
-        int tezid;
+       
 
 
         switch (e.CommandName)
         {
             case "Goruntule":
-                id = e.CommandArgument.ToString();
-                tezid = Convert.ToInt32(id);
+                i = 0;
+                idg1 = e.CommandArgument.ToString();
+                tezid = Convert.ToInt32(idg1);
 
 
-                var rapor = db.Rapor_Tarih.Where(o => o.Hoca_Id == 2).ToList();
-
-                if (rapor != null)
+                var raportrh = db.Rapor_Tarih.Where(o => o.Hoca_Id == 2).ToList();
+                var ogrenci = db.Ogrenci.Where(o => o.Tez_ID == tezid).ToList();
+                while (i < ogrenci.Count())
                 {
-                    Repeater2.DataSource = rapor;
+                    TezOgrLbl.Text += " " + ogrenci[i].Ad;
+                    i++;
+                }
+
+
+                if (raportrh != null)
+                {
+                    Repeater2.DataSource = raportrh;
                     Repeater2.DataBind();
                     Page.ClientScript.RegisterStartupScript(GetType(), "modelBox", "$('.modal').modal()", true);
 
@@ -50,15 +59,15 @@ public partial class Forms_Hoca_RaporListele : TezBase
 
     protected void RaporGoruntule(object sender, CommandEventArgs e)
     {
-        string id;
-        int rprid;
+        
+      
         switch (e.CommandName)
         {
             
             case "Goruntule":
-                id = e.CommandArgument.ToString();
-                rprid = Convert.ToInt32(id);
-                var rapor = db.Rapor.Where(o => o.Tarih_Id == rprid).FirstOrDefault();
+                idg2 = e.CommandArgument.ToString();
+                rprid = Convert.ToInt32(idg2);
+                var rapor = db.Rapor.Where(o => o.Tarih_Id == rprid && o.Tez_Id == tezid).FirstOrDefault();
                 if (rapor != null)
                 {
                     string navigateURL = "../../../Raporlar/" + rapor.Dosya + "." + rapor.Ad;
