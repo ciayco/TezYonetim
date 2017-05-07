@@ -15,7 +15,7 @@ public partial class Admin : TezBase
     {
         db = new TezDBEntities();
 
-        var Ogrdb = db.Ogrenci.Where(t => t.Hoca_ID == AppKontrol.id && t.Tez_ID != null && t.Tez_Onay == false).ToList();
+        var Ogrdb = db.Ogrenci.Where(t => t.Hoca_ID == AppKontrol.id && t.Tez_ID != null && t.Tez_Onay != true).ToList();
 
         if (Ogrdb.Count==0)
         {
@@ -69,6 +69,8 @@ public partial class Admin : TezBase
                 {
                     Ogrenci.Tez_Onay = true;
                     Tez.Tez_Alan += 1;
+                    db.SaveChanges();
+                    Response.Redirect(@"~/Forms/Hoca/TezOnay.aspx");
                 }
                 else
                 {

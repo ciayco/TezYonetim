@@ -10,6 +10,7 @@ public partial class Forms_Ogrenci_TezOner : TezBaseUser
     // Kullanıcı tarafından girilen diğer öğrenci numaralarından doğru olanlar.
     List<string> TeziAlanDigerOgrenciListesi;
     List<string> TeziAlanDigerOgrenciNumaralari;
+    List<string> YanlisGirilenOgrenciListesi;
     TezDBEntities db;
     Ogrenci Ogrenci;
     protected void Page_Load(object sender, EventArgs e)
@@ -27,6 +28,7 @@ public partial class Forms_Ogrenci_TezOner : TezBaseUser
     protected void btnGiris_Click(object sender, EventArgs e)
     {
         TeziAlanDigerOgrenciListesi = new List<string>();
+        YanlisGirilenOgrenciListesi = new List<string>();
         Label2.Text = "";
         if (konu.Text != "" && comment.Text != "" /*&& Request["TeziAlanDigerOgrenciler"].Trim() !=""*/)
         {
@@ -39,8 +41,22 @@ public partial class Forms_Ogrenci_TezOner : TezBaseUser
                 {
                     TeziAlanDigerOgrenciListesi.Add(item.Trim());
                 }
+                else
+                {
+                    YanlisGirilenOgrenciListesi.Add(item.Trim());
+                }
             }
-            if (TeziAlanDigerOgrenciListesi.Count > 0)
+            if (YanlisGirilenOgrenciListesi.Count > 0)
+            {
+                butonmodal.Visible = false;
+                foreach (var item in YanlisGirilenOgrenciListesi)
+                {
+                    label4.Text = label4.Text + "<br>" + item.Trim();
+                    
+                }
+                label5.Text = "Yukarıda bilgileri verilen öğrenci(ler) sistemde bulunamadı";
+            }
+            else if (TeziAlanDigerOgrenciListesi.Count > 0)
             {
                 butonmodal.Visible = true;
                 foreach (var item in TeziAlanDigerOgrenciListesi)
@@ -100,6 +116,8 @@ public partial class Forms_Ogrenci_TezOner : TezBaseUser
                             tezz.Hoca_ID = Ogrenci.Hoca.Id;
                             tezz.Konu = konu.Text;
                             tezz.Aciklama = comment.Text;
+                            tezz.Tez_Limit = (yeniList.Count)+1;
+                            tezz.Tez_Alan = 0;
                             db.Tez.Add(tezz);
                             db.SaveChanges();
                             Ogrenci.Tez_ID = tezz.Id;

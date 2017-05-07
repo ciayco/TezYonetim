@@ -88,15 +88,17 @@
                     <h4 class="modal-title" id="exampleModalLabel2">Tez Önerme</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">                        
+                    <div class="form-group">       
+                        <asp:Label ID="label4" runat="server" ForeColor="Red"></asp:Label>                 
                          <asp:Label ID="Label2" runat="server"></asp:Label><br /><br /><br />
                         <asp:Label ID="Label3" runat="server"></asp:Label>
+                        <asp:Label ID="label5" runat="server" ForeColor="Red"></asp:Label>    
 
                     </div>
                 </div>
                 <div class="modal-footer">
                     <div style="float:right;" id="butonmodal" runat="server" ><asp:Button runat="server" class="btn btn-primary" OnClick="Onayla_Click" Text="Button" /></div>&nbsp;&nbsp;&nbsp;
-                    <div style="float:right;"> <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button></div>
+                    <div style="float:right;"> <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button></div>&nbsp;&nbsp;&nbsp;
                     
                 </div>
             </div>

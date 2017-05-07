@@ -188,10 +188,10 @@
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="glyphicon glyphicon-duplicate"></i>&nbsp;&nbsp;&nbsp;Raporlar <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo3" class="collapse">
                                 <li>
-                                    <a href="#">Periyod</a>
+                                    <a href="RaporTarih.aspx">Rapor Tarihi Ekle</a>
                                 </li>
                                 <li>
-                                    <a href="#">Dropdown Item</a>
+                                    <a href="RaporListele.aspx">Rapor Listele</a>
                                 </li>
                             </ul>
                         </li>

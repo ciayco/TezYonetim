@@ -9,7 +9,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
     <br />
- <!--Repeater -->
+ <!--Repeater --><div id="repeaterdiv" runat="server">
           <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
           <HeaderTemplate>
           <table class="table table-striped">
@@ -43,8 +43,8 @@
             </tbody> </table>
         </FooterTemplate>
     </asp:Repeater>
-
-    
+     </div>
+   <div id="labeldiv" runat="server"> <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></div>
     <br />
 
 

@@ -20,11 +20,19 @@ public partial class Admin : TezBase
 
         if (!IsPostBack)
         {
-           
+            if (Ogrdb.Count>0)
+            {
+                labeldiv.Visible = false;
                 Repeater1.DataSource = Ogrdb;
                 Repeater1.DataBind();
-           
-
+            }
+            else
+            {
+                repeaterdiv.Visible = false;
+                labeldiv.Visible = true;
+                Label1.Text = "Onay bekleyen Öğrenci bulunmamaktadır.!";
+            }
+                         
         }
     }
 
