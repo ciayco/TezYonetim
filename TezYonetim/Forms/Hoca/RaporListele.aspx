@@ -55,6 +55,7 @@
                     <h4 class="modal-title" id="exampleModalLabel2">Rapor Yükleme</h4>
                 </div>
                 <div class="modal-body">
+                    <asp:Label ID="TezOgrLbl" runat="server" Text="Label">Tez Öğrencileri</asp:Label>
                     <div class="form-group">
                          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
         <asp:Repeater ID="Repeater2" runat="server">
