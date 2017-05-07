@@ -74,7 +74,7 @@
                     <asp:Repeater ID="Repeater1" runat="server">
                         <ItemTemplate>
                     
-                        <asp:LinkButton ID="LinkButton1" CssClass="modal-button" runat="server"><%#Eval("Duyuru_Tarih") %>  -  <%#Eval("Duyuru_Baslik") %> </asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton1"  OnCommand="LinkButton1_Click" CommandName="duyuru" CommandArgument='<%#Eval("Id") %>' runat="server"><%#Eval("Duyuru_Tarih") %>  -  <%#Eval("Duyuru_Baslik") %> </asp:LinkButton>
                         <br />
                         <br />                     
                     
@@ -114,7 +114,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <asp:Label ID="Label8" runat="server" Text="Label">Duyuru Açıklama</asp:Label>
+                        <asp:Label ID="Label8" runat="server"></asp:Label><br /><br />
+                          <asp:Label ID="Label9" runat="server"></asp:Label>
                     </div>
                 </div>
                 <div class="modal-footer">
