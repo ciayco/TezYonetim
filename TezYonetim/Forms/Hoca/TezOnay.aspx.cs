@@ -21,7 +21,7 @@ public partial class Admin : TezBase
         {
             tablo.Visible = false;
             label.Visible = true;
-            Label2.Text = "Onay Bekleyen Öğrenci Bulunmamaktadır.!";
+            Label2.Text = "Onay Bekleyen Tez Bulunmamaktadır.!";
         }
         else
         {
@@ -42,13 +42,15 @@ public partial class Admin : TezBase
         int ogid;
         switch (e.CommandName)
         {
-            //case "incele":
-            //    id = e.CommandArgument.ToString();
-            //    ogid = Convert.ToInt32(id);
-        //        Ogrenci = db.Ogrenci.Where(o => o.Id == ogid).FirstOrDefault();
-        //Tez = db.Tez.Where(oo => oo.Id == Ogrenci.Tez_ID).FirstOrDefault();
-        //Label1.Text = Tez.Konu + "</br></br></br>" + Tez.Aciklama;
-            //    break;
+            case "incele":
+                id = e.CommandArgument.ToString();
+                ogid = Convert.ToInt32(id);
+                Ogrenci = db.Ogrenci.Where(o => o.Id == ogid).FirstOrDefault();
+                Tez = db.Tez.Where(oo => oo.Id == Ogrenci.Tez_ID).FirstOrDefault();
+                Label1.Text = Tez.Konu ;
+                Label3.Text = Tez.Aciklama ;
+                Page.ClientScript.RegisterStartupScript(GetType(), "modelBox", "$('.modal').modal()", true);
+                break;
             case "Red":
                 id = e.CommandArgument.ToString();
                 ogid = Convert.ToInt32(id);

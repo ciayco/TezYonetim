@@ -36,7 +36,7 @@
                     <td><%#Eval("Mail") %></td>
                     <td><%#Eval("Bolum") %></td>
                     <td>
-                        <button type="button" class="btn btn-success btn-xs btn-round" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">İncele</button>
+                        <asp:Button ID="incBut" CommandName="incele" Text="İncele" runat="server" class="btn btn-success btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
                     </td>
                     <td>
                         <asp:Button ID="RedBut" CommandName="Red" Text="Reddet" runat="server" class="btn btn-danger btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
@@ -62,10 +62,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+                    <h4 class="modal-title" id="exampleModalLabel">Tez Ayrıntıları</h4>
                 </div>
                 <div class="modal-body">
-                    <asp:Label ID="Label1" runat="server"></asp:Label>
+                    <asp:Label ID="Label1" Font-Bold="true" Font-Size="16px" runat="server"></asp:Label><br /><br /><br>
+                    <asp:Label ID="Label3" runat="server"></asp:Label>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>

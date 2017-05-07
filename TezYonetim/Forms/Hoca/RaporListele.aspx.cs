@@ -18,11 +18,6 @@ public partial class Forms_Hoca_RaporListele : TezBase
     }
     protected void Goster_Click(object sender, CommandEventArgs e)
     {
-
-
-       
-
-
         switch (e.CommandName)
         {
             case "Goruntule":
