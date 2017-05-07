@@ -59,4 +59,37 @@ public partial class User : TezBaseUser
            
         
     }
+
+    protected void LinkButton1_Click(object sender, CommandEventArgs e)
+    {
+
+
+        string id;
+        int did;
+
+
+        switch (e.CommandName)
+        {
+            case "duyuru":
+                id = e.CommandArgument.ToString();
+                did = Convert.ToInt32(id);
+                var duyuru = db.Duyuru.Where(o => o.Id ==did ).FirstOrDefault();
+
+                if (duyuru != null)
+                {
+                    Label8.Text = duyuru.Duyuru_Baslik;
+                    Label9.Text = duyuru.Duyuru_Text;
+                    Page.ClientScript.RegisterStartupScript(GetType(), "modelBox", "$('.modal').modal()", true);
+
+                }
+                else
+                {
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Görüntülenecek Rapor Bulunamadı');</script>");
+                }
+                
+                break;
+        }
+
+               
+    }
 }
