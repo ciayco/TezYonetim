@@ -36,6 +36,21 @@
           <Property Name="Ders" Type="nvarchar" MaxLength="50" />
           <Property Name="Derece" Type="int" />
         </EntityType>
+        <EntityType Name="Mesaj">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gid" Type="int" />
+          <Property Name="Aid" Type="int" />
+          <Property Name="GDerece" Type="int" />
+          <Property Name="ADerece" Type="int" />
+          <Property Name="Gadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="MsjBaslik" Type="nvarchar" MaxLength="50" />
+          <Property Name="MsjText" Type="nvarchar(max)" />
+          <Property Name="MsjTarih" Type="datetime" />
+        </EntityType>
         <EntityType Name="Ogrenci">
           <Key>
             <PropertyRef Name="Id" />
@@ -202,6 +217,7 @@
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Duyuru" EntityType="Self.Duyuru" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hoca" EntityType="Self.Hoca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesaj" EntityType="Self.Mesaj" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ogrenci" EntityType="Self.Ogrenci" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rapor" EntityType="Self.Rapor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rapor_Tarih" EntityType="Self.Rapor_Tarih" Schema="dbo" store:Type="Tables" />
@@ -249,6 +265,7 @@
           <EntitySet Name="Admin" EntityType="TezDBModel.Admin" />
           <EntitySet Name="Duyuru" EntityType="TezDBModel.Duyuru" />
           <EntitySet Name="Hoca" EntityType="TezDBModel.Hoca" />
+          <EntitySet Name="Mesaj" EntityType="TezDBModel.Mesaj" />
           <EntitySet Name="Ogrenci" EntityType="TezDBModel.Ogrenci" />
           <EntitySet Name="Rapor" EntityType="TezDBModel.Rapor" />
           <EntitySet Name="Rapor_Tarih" EntityType="TezDBModel.Rapor_Tarih" />
@@ -324,6 +341,21 @@
           <NavigationProperty Name="Rapor" Relationship="TezDBModel.FK_Rapor_Hoca" FromRole="Hoca" ToRole="Rapor" />
           <NavigationProperty Name="Rapor_Tarih" Relationship="TezDBModel.FK_Rapor_Tarih_Hoca" FromRole="Hoca" ToRole="Rapor_Tarih" />
           <NavigationProperty Name="Tez" Relationship="TezDBModel.FK_Tez_Hoca" FromRole="Hoca" ToRole="Tez" />
+        </EntityType>
+        <EntityType Name="Mesaj">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gid" Type="Int32" />
+          <Property Name="Aid" Type="Int32" />
+          <Property Name="GDerece" Type="Int32" />
+          <Property Name="ADerece" Type="Int32" />
+          <Property Name="Gadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MsjBaslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MsjText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MsjTarih" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Ogrenci">
           <Key>
@@ -534,6 +566,22 @@
                 <ScalarProperty Name="Sifre" ColumnName="Sifre" />
                 <ScalarProperty Name="Ad" ColumnName="Ad" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mesaj">
+            <EntityTypeMapping TypeName="TezDBModel.Mesaj">
+              <MappingFragment StoreEntitySet="Mesaj">
+                <ScalarProperty Name="MsjTarih" ColumnName="MsjTarih" />
+                <ScalarProperty Name="MsjText" ColumnName="MsjText" />
+                <ScalarProperty Name="MsjBaslik" ColumnName="MsjBaslik" />
+                <ScalarProperty Name="Aadi" ColumnName="Aadi" />
+                <ScalarProperty Name="Gadi" ColumnName="Gadi" />
+                <ScalarProperty Name="ADerece" ColumnName="ADerece" />
+                <ScalarProperty Name="GDerece" ColumnName="GDerece" />
+                <ScalarProperty Name="Aid" ColumnName="Aid" />
+                <ScalarProperty Name="Gid" ColumnName="Gid" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
