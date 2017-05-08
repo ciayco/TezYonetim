@@ -30,7 +30,6 @@ public partial class Forms_Ogrenci_MesajGonder : TezBaseUser
         {
                      
                 Mesaj mesaj = new Mesaj();
-
                 mesaj.MsjBaslik = baslik;
                 mesaj.MsjText = mesajT;
                 mesaj.Gid = AppKontrol.id;
@@ -38,7 +37,8 @@ public partial class Forms_Ogrenci_MesajGonder : TezBaseUser
                 mesaj.Gadi = ogr.Ad;
                 mesaj.Aadi = ogr.Hoca.Ad;
                 mesaj.GDerece = AppKontrol.derece;
-                mesaj.ADerece = ogr.Hoca.Derece;                          
+                mesaj.ADerece = ogr.Hoca.Derece;
+                mesaj.MsjTarih = DateTime.Now;                      
                 db.Mesaj.Add(mesaj);
                 db.SaveChanges();
                 Response.Redirect(@"~/Default.aspx");
