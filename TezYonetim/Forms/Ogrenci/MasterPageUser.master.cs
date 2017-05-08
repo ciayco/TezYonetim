@@ -7,8 +7,10 @@ using System.Web.UI.WebControls;
 
 public partial class MasterPageUser : System.Web.UI.MasterPage
 {
+    TezDBEntities db;
     protected void Page_Load(object sender, EventArgs e)
     {
+        db = new TezDBEntities();
         if (Session["id"] == null)
         {
             Response.Redirect(@"~/Default.aspx");
@@ -16,6 +18,7 @@ public partial class MasterPageUser : System.Web.UI.MasterPage
         Label1.Text = Session["name"].ToString();
 
         Kontrol();
+        MesajOnizle();
     }
     protected void LogOut_Click(object sender, EventArgs e)
     {
@@ -25,7 +28,6 @@ public partial class MasterPageUser : System.Web.UI.MasterPage
     }
     protected void Kontrol()
     {
-        TezDBEntities db = new TezDBEntities();
         DateTime tarih = DateTime.Now;
         Sistem trh = db.Sistem.Where(q => q.Id == 1).FirstOrDefault();
         if (!(tarih >= trh.DanismanSBas && tarih <= trh.DanismanSBit))
@@ -40,4 +42,38 @@ public partial class MasterPageUser : System.Web.UI.MasterPage
         }
 
     }
-}
+
+    protected void MesajOnizle()
+    {
+        List<minimesaj> msjlist = new List<minimesaj>();
+        minimesaj msj;
+        var ogr = db.Ogrenci.Where(o => o.Id == AppKontrol.id).FirstOrDefault();
+        var mesajlar = db.Mesaj.Where(m => m.Alıcıid == AppKontrol.id).ToList();
+        if(mesajlar != null)
+        {
+            int i = mesajlar.Count();
+            int limit = mesajlar.Count();
+            if (limit > 3) limit = 3;
+            for(int x = 0; x < limit; x++)
+            {
+                msj = new minimesaj();
+                msj.Isim = ogr.Hoca.Ad;
+                msj.Mesaj = mesajlar[i-1].MsjText;
+                msj.Tarih = mesajlar[i-1].MsjTarih.ToString();
+                msjlist.Add(msj);
+                i--;
+            }
+            Repeatermsj.DataSource = msjlist;
+            Repeatermsj.DataBind();
+           
+        }
+    }
+
+    protected class minimesaj{
+
+        public string Isim { get; set; }
+        public string Tarih { get; set; }
+        public string Mesaj { get; set; }
+    }
+
+    }

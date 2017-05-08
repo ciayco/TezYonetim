@@ -6,14 +6,15 @@
     <edmx:Diagrams>
       <Diagram DiagramId="8bb66e8b85644c69a4bbd1ba3eafeaa0" Name="Diagram1">
         <EntityTypeShape EntityType="TezDBModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TezDBModel.Duyuru" Width="1.5" PointX="3" PointY="19.875" />
+        <EntityTypeShape EntityType="TezDBModel.Duyuru" Width="1.5" PointX="3" PointY="16.375" />
         <EntityTypeShape EntityType="TezDBModel.Hoca" Width="1.5" PointX="0.75" PointY="8.25" />
-        <EntityTypeShape EntityType="TezDBModel.Ogrenci" Width="1.5" PointX="5.25" PointY="8" />
-        <EntityTypeShape EntityType="TezDBModel.Rapor" Width="1.5" PointX="8.25" PointY="8.5" />
+        <EntityTypeShape EntityType="TezDBModel.Mesaj" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TezDBModel.Ogrenci" Width="1.5" PointX="5.25" PointY="13.25" />
+        <EntityTypeShape EntityType="TezDBModel.Rapor" Width="1.5" PointX="8.25" PointY="13.75" />
         <EntityTypeShape EntityType="TezDBModel.Rapor_Tarih" Width="1.5" PointX="3" PointY="5.625" />
-        <EntityTypeShape EntityType="TezDBModel.Sistem" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TezDBModel.Tarih" Width="1.5" PointX="3" PointY="11.875" />
-        <EntityTypeShape EntityType="TezDBModel.Tez" Width="1.5" PointX="3" PointY="8.375" />
+        <EntityTypeShape EntityType="TezDBModel.Sistem" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TezDBModel.Tarih" Width="1.5" PointX="3" PointY="13.25" />
+        <EntityTypeShape EntityType="TezDBModel.Tez" Width="1.5" PointX="3" PointY="19.25" />
         <AssociationConnector Association="TezDBModel.FK_Duyuru_Hoca" />
         <AssociationConnector Association="TezDBModel.FK_Ogrenci_Hoca1" />
         <AssociationConnector Association="TezDBModel.FK_Rapor_Hoca" />

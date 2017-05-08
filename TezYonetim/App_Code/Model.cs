@@ -61,6 +61,18 @@ public partial class Hoca
     public virtual ICollection<Tez> Tez { get; set; }
 }
 
+public partial class Mesaj
+{
+    public int id { get; set; }
+    public Nullable<int> Gonderenid { get; set; }
+    public Nullable<int> Alıcıid { get; set; }
+    public string MsjBaslik { get; set; }
+    public string MsjText { get; set; }
+    public Nullable<int> GonderenDerece { get; set; }
+    public Nullable<int> AlıcıDerece { get; set; }
+    public Nullable<System.DateTime> MsjTarih { get; set; }
+}
+
 public partial class Ogrenci
 {
     public int Id { get; set; }
