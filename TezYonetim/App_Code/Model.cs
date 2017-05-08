@@ -64,12 +64,14 @@ public partial class Hoca
 public partial class Mesaj
 {
     public int id { get; set; }
-    public Nullable<int> Gonderenid { get; set; }
-    public Nullable<int> Alıcıid { get; set; }
+    public Nullable<int> Gid { get; set; }
+    public Nullable<int> Aid { get; set; }
+    public Nullable<int> GDerece { get; set; }
+    public Nullable<int> ADerece { get; set; }
+    public string Gadi { get; set; }
+    public string Aadi { get; set; }
     public string MsjBaslik { get; set; }
     public string MsjText { get; set; }
-    public Nullable<int> GonderenDerece { get; set; }
-    public Nullable<int> AlıcıDerece { get; set; }
     public Nullable<System.DateTime> MsjTarih { get; set; }
 }
 

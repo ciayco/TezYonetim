@@ -45,10 +45,9 @@ public partial class MasterPageUser : System.Web.UI.MasterPage
 
     protected void MesajOnizle()
     {
-        List<minimesaj> msjlist = new List<minimesaj>();
-        minimesaj msj;
+        List<Mesaj> mesajlist = new List<Mesaj>();
         var ogr = db.Ogrenci.Where(o => o.Id == AppKontrol.id).FirstOrDefault();
-        var mesajlar = db.Mesaj.Where(m => m.Alıcıid == AppKontrol.id).ToList();
+        var mesajlar = db.Mesaj.Where(m => m.Aid == AppKontrol.id).ToList();
         if(mesajlar != null)
         {
             int i = mesajlar.Count();
@@ -56,24 +55,13 @@ public partial class MasterPageUser : System.Web.UI.MasterPage
             if (limit > 3) limit = 3;
             for(int x = 0; x < limit; x++)
             {
-                msj = new minimesaj();
-                msj.Isim = ogr.Hoca.Ad;
-                msj.Mesaj = mesajlar[i-1].MsjText;
-                msj.Tarih = mesajlar[i-1].MsjTarih.ToString();
-                msjlist.Add(msj);
-                i--;
+                mesajlist.Add(mesajlar[i-1]);
+                i--;        
             }
-            Repeatermsj.DataSource = msjlist;
-            Repeatermsj.DataBind();
-           
+            Repeatermsj.DataSource = mesajlist;
+            Repeatermsj.DataBind();           
         }
     }
 
-    protected class minimesaj{
 
-        public string Isim { get; set; }
-        public string Tarih { get; set; }
-        public string Mesaj { get; set; }
-    }
-
-    }
+   }

@@ -41,12 +41,14 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Gonderenid" Type="int" />
-          <Property Name="Alıcıid" Type="int" />
+          <Property Name="Gid" Type="int" />
+          <Property Name="Aid" Type="int" />
+          <Property Name="GDerece" Type="int" />
+          <Property Name="ADerece" Type="int" />
+          <Property Name="Gadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aadi" Type="nvarchar" MaxLength="50" />
           <Property Name="MsjBaslik" Type="nvarchar" MaxLength="50" />
           <Property Name="MsjText" Type="nvarchar(max)" />
-          <Property Name="GonderenDerece" Type="int" />
-          <Property Name="AlıcıDerece" Type="int" />
           <Property Name="MsjTarih" Type="datetime" />
         </EntityType>
         <EntityType Name="Ogrenci">
@@ -345,12 +347,14 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Gonderenid" Type="Int32" />
-          <Property Name="Alıcıid" Type="Int32" />
+          <Property Name="Gid" Type="Int32" />
+          <Property Name="Aid" Type="Int32" />
+          <Property Name="GDerece" Type="Int32" />
+          <Property Name="ADerece" Type="Int32" />
+          <Property Name="Gadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MsjBaslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MsjText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="GonderenDerece" Type="Int32" />
-          <Property Name="AlıcıDerece" Type="Int32" />
           <Property Name="MsjTarih" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Ogrenci">
@@ -569,12 +573,14 @@
             <EntityTypeMapping TypeName="TezDBModel.Mesaj">
               <MappingFragment StoreEntitySet="Mesaj">
                 <ScalarProperty Name="MsjTarih" ColumnName="MsjTarih" />
-                <ScalarProperty Name="AlıcıDerece" ColumnName="AlıcıDerece" />
-                <ScalarProperty Name="GonderenDerece" ColumnName="GonderenDerece" />
                 <ScalarProperty Name="MsjText" ColumnName="MsjText" />
                 <ScalarProperty Name="MsjBaslik" ColumnName="MsjBaslik" />
-                <ScalarProperty Name="Alıcıid" ColumnName="Alıcıid" />
-                <ScalarProperty Name="Gonderenid" ColumnName="Gonderenid" />
+                <ScalarProperty Name="Aadi" ColumnName="Aadi" />
+                <ScalarProperty Name="Gadi" ColumnName="Gadi" />
+                <ScalarProperty Name="ADerece" ColumnName="ADerece" />
+                <ScalarProperty Name="GDerece" ColumnName="GDerece" />
+                <ScalarProperty Name="Aid" ColumnName="Aid" />
+                <ScalarProperty Name="Gid" ColumnName="Gid" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

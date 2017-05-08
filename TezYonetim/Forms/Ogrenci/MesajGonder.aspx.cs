@@ -33,10 +33,12 @@ public partial class Forms_Ogrenci_MesajGonder : TezBaseUser
 
                 mesaj.MsjBaslik = baslik;
                 mesaj.MsjText = mesajT;
-                mesaj.Gonderenid = AppKontrol.id;
-                mesaj.Alıcıid = ogr.Hoca.Id;
-                mesaj.GonderenDerece = AppKontrol.derece;
-                mesaj.AlıcıDerece = ogr.Hoca.Derece;                          
+                mesaj.Gid = AppKontrol.id;
+                mesaj.Aid = ogr.Hoca.Id;
+                mesaj.Gadi = ogr.Ad;
+                mesaj.Aadi = ogr.Hoca.Ad;
+                mesaj.GDerece = AppKontrol.derece;
+                mesaj.ADerece = ogr.Hoca.Derece;                          
                 db.Mesaj.Add(mesaj);
                 db.SaveChanges();
                 Response.Redirect(@"~/Default.aspx");

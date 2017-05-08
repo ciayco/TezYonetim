@@ -64,10 +64,10 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong><%#Eval("Isim") %></strong>
+                                        <h5 class="media-heading"><strong><%#Eval("Gadi") %></strong>
                                         </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> <%#Eval("Tarih") %></p>
-                                        <p><%#Eval("Mesaj") %></p>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> <%#Eval("MsjTarih") %></p>
+                                        <p><%#Eval("MsjText") %></p>
                                     </div>
                                 </div>
                             </a>
