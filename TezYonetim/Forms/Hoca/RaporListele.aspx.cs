@@ -9,7 +9,7 @@ public partial class Forms_Hoca_RaporListele : TezBase
 {
     TezDBEntities db = new TezDBEntities();
     string idg1, idg2;
-    int tezid,rprid,i;
+    int tezid, rprid, i;
     protected void Page_Load(object sender, EventArgs e)
     {
         var tezler = db.Tez.Where(o => o.Hoca_ID == AppKontrol.id).ToList();
@@ -22,19 +22,17 @@ public partial class Forms_Hoca_RaporListele : TezBase
         {
             case "Goruntule":
                 i = 0;
+                TezOgrLbl.Text = "";
                 idg1 = e.CommandArgument.ToString();
                 tezid = Convert.ToInt32(idg1);
-
-
+                Session["tezid"] = tezid;
                 var raportrh = db.Rapor_Tarih.Where(o => o.Hoca_Id == 2).ToList();
                 var ogrenci = db.Ogrenci.Where(o => o.Tez_ID == tezid).ToList();
                 while (i < ogrenci.Count())
                 {
-                    TezOgrLbl.Text += " " + ogrenci[i].Ad;
+                    TezOgrLbl.Text = TezOgrLbl.Text + ogrenci[i].Ad + "<br/>";
                     i++;
                 }
-
-
                 if (raportrh != null)
                 {
                     Repeater2.DataSource = raportrh;
@@ -49,20 +47,17 @@ public partial class Forms_Hoca_RaporListele : TezBase
                 break;
         }
     }
-
-
-
     protected void RaporGoruntule(object sender, CommandEventArgs e)
     {
-        
-      
         switch (e.CommandName)
         {
-            
             case "Goruntule":
                 idg2 = e.CommandArgument.ToString();
                 rprid = Convert.ToInt32(idg2);
-                var rapor = db.Rapor.Where(o => o.Tarih_Id == rprid && o.Tez_Id == tezid).FirstOrDefault();
+                string tezidi = Session["tezid"].ToString();
+                Session.Remove("tezid");
+                int id = Convert.ToInt32(tezidi);
+                    var rapor = db.Rapor.Where(o => o.Tarih_Id == rprid && o.Tez_Id == id).FirstOrDefault();
                 if (rapor != null)
                 {
                     string navigateURL = "../../../Raporlar/" + rapor.Dosya + "." + rapor.Ad;
@@ -71,8 +66,12 @@ public partial class Forms_Hoca_RaporListele : TezBase
                     string scriptText = "window.open('" + navigateURL + "','" + target + "','" + windowProperties + "')";
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "eşsizAnahtar", scriptText, true);
                 }
-        break;
-    }
+                else
+                {
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Görüntülenecek Rapor Bulunamadı');</script>");
+                }
+                break;
+        }
     }
 
 }

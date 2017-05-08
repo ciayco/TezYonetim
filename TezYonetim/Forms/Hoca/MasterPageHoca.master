@@ -176,6 +176,9 @@
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo2" class="collapse">
                                 <li>
+                                    <a href="DuyuruEkle.aspx">Duyuru Ekle</a>
+                                </li>
+                                <li>
                                     <a href="OgrenciListele.aspx">Öğrencileri listele</a>
                                 </li>
                                 <li>

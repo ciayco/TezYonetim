@@ -32,12 +32,5 @@
             </tbody> </table>
         </FooterTemplate>
     </asp:Repeater>
-
-    
-    <br />
-
-
-
-
 </asp:Content>
 

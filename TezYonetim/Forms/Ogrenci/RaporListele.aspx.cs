@@ -21,13 +21,14 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
     protected void Rapor_goruntule_Click(object sender, CommandEventArgs e)
     {
         string id;
-        int rprid;
+
+        ogr = db.Ogrenci.Find(AppKontrol.id);
         switch (e.CommandName)
         {
             case "Goruntule":
                 id = e.CommandArgument.ToString();
-                rprid = Convert.ToInt32(id);
-                var rapor = db.Rapor.Where(o => o.Tarih_Id == rprid).FirstOrDefault();
+                string orgid = ogr.Hoca_ID.ToString() + ogr.Tez_ID.ToString() + id;
+                var rapor = db.Rapor.Where(o => o.Dosya == orgid).FirstOrDefault();
                 if (rapor != null)
                 {
                     string navigateURL = "../../../Raporlar/" + rapor.Dosya + "." + rapor.Ad;

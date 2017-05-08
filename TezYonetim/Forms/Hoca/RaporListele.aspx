@@ -17,15 +17,12 @@
         });
     </script>
 
-
-
-
     <table class="display" id="students">
         <thead>
             <tr>
                 <th style="text-align: center;">Konu </th>
                 <th style="text-align: center;">Açıklama </th>
-                <th style="text-align: center;">Öğrenci Sayısı</th>            
+                <th style="text-align: center;">Öğrenci Sayısı</th>
                 <th style="text-align: center;">Düzenle</th>
             </tr>
         </thead>
@@ -35,10 +32,9 @@
                     <tr>
                         <td><%#Eval("Konu") %></td>
                         <td><%#Eval("Aciklama") %></td>
-                        <td><%#Eval("Tez_Alan") %></td>                  
+                        <td><%#Eval("Tez_Alan") %></td>
                         <td>
-
-                            <asp:Button type="button" runat="server" OnCommand="Goster_Click" data-id='<%#Eval("Id") %>'  CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" class="btn btn-primary" />
+                            <asp:Button type="button" runat="server" OnCommand="Goster_Click" data-id='<%#Eval("Id") %>' CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" class="btn btn-primary" />
                         </td>
                     </tr>
                 </ItemTemplate>
@@ -55,43 +51,42 @@
                     <h4 class="modal-title" id="exampleModalLabel2">Rapor Yükleme</h4>
                 </div>
                 <div class="modal-body">
-                    <asp:Label ID="TezOgrLbl" runat="server" Text="Label">Tez Öğrencileri</asp:Label>
+                    <asp:Label ID="Label1" runat="server" Font-Size="20px" Text="Tez Öğrencileri"></asp:Label><br />
+                    <asp:Label ID="TezOgrLbl" runat="server"></asp:Label>
                     <div class="form-group">
-                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <asp:Repeater ID="Repeater2" runat="server">
-            <HeaderTemplate>
-            </HeaderTemplate>
-            <ItemTemplate>
-                <div class="panel panel-primary">
-                    <div class="panel-heading" role="tab" id="headingTwo">
-                        <h6 class="panel-title" style="text-align: left;">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#<%#Eval("Id") %>" aria-expanded="false" aria-controls="<%#Eval("Id") %>"><%#Eval("RaporBas") %> - <%#Eval("RaporBit") %>                          
-                            </a>
-                        </h6>
-                    </div>
-                    <div id="<%#Eval("Id") %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                        <div class="panel-body" style="text-align: left;">
-                            Rapor id = <%#Eval("Id") %><br />
-                            Danışman Hoca =<%#Eval("Hoca_Id") %><br />
-                            Rapor Başlangıç = <%#Eval("RaporBas") %><br />
-                            Rapor Biriş = <%#Eval("RaporBit") %><br />
-                            <br />
-                            <span class="btn btn-primary">
-                                <asp:Button type="button" runat="server" OnCommand="RaporGoruntule" CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" BorderStyle="None" BackColor="#337AB7" /></span>&nbsp;&nbsp;                          
-                            
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <asp:Repeater ID="Repeater2" runat="server">
+                                <HeaderTemplate>
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading" role="tab" id="headingTwo">
+                                            <h6 class="panel-title" style="text-align: left;">
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#<%#Eval("Id") %>" aria-expanded="false" aria-controls="<%#Eval("Id") %>"><%#Eval("RaporBas") %> - <%#Eval("RaporBit") %>                          
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="<%#Eval("Id") %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                            <div class="panel-body" style="text-align: left;">
+                                                Rapor id = <%#Eval("Id") %><br />
+                                                Danışman Hoca =<%#Eval("Hoca_Id") %><br />
+                                                Rapor Başlangıç = <%#Eval("RaporBas") %><br />
+                                                Rapor Biriş = <%#Eval("RaporBit") %><br />
+                                                <br />
+                                                <span class="btn btn-primary">
+                                                    <asp:Button type="button" runat="server" OnCommand="RaporGoruntule" CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" BorderStyle="None" BackColor="#337AB7" /></span>&nbsp;&nbsp;                           
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                </FooterTemplate>
+                            </asp:Repeater>
                         </div>
-                    </div>
-                </div>
-            </ItemTemplate>
-            <FooterTemplate>
-            </FooterTemplate>
-        </asp:Repeater>
-    </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
-                    
                 </div>
             </div>
         </div>
