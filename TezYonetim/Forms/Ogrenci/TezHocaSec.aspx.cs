@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 
 public partial class User : TezBaseUser
 {
-   
     TezDBEntities db;
     Ogrenci Ogrenci;
     protected void Page_Load(object sender, EventArgs e)
@@ -15,10 +14,9 @@ public partial class User : TezBaseUser
         db = new TezDBEntities();
         //tarih kontrol
         DateTime tarih = DateTime.Now;
-        Sistem trh = db.Sistem.Where(q => q.Id ==1).FirstOrDefault();
+        Sistem trh = db.Sistem.Where(q => q.Id == 1).FirstOrDefault();
         if (tarih >= trh.DanismanSBas && tarih <= trh.DanismanSBit)
         {
-               
             var Hoca = db.Hoca.ToList();
             Ogrenci = db.Ogrenci.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
             var hoca2 = db.Hoca.Where(w => w.Id == Ogrenci.Hoca_ID).FirstOrDefault();
@@ -30,7 +28,6 @@ public partial class User : TezBaseUser
                     sec.Visible = true;
                     Repeater1.DataSource = Hoca;
                     Repeater1.DataBind();
-                    
                 }
                 else if (Ogrenci.Hoca_Onay == false)
                 {
@@ -55,18 +52,17 @@ public partial class User : TezBaseUser
     protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
         string id;
-            switch (e.CommandName)
-            {
-                case "Sec":
-                    id = e.CommandArgument.ToString();                                    
-                    Ogrenci.Hoca_ID = Convert.ToInt32(id);
-                    Ogrenci.Hoca_Onay = false;
-                    db.SaveChanges();
-                    Repeater1.DataBind();
-                    Response.Redirect(@"~/Forms/Ogrenci/TezHocaSec.aspx");
+        switch (e.CommandName)
+        {
+            case "Sec":
+                id = e.CommandArgument.ToString();
+                Ogrenci.Hoca_ID = Convert.ToInt32(id);
+                Ogrenci.Hoca_Onay = false;
+                db.SaveChanges();
+                Repeater1.DataBind();
+                Response.Redirect(@"~/Forms/Ogrenci/TezHocaSec.aspx");
                 break;
-                
-        }        
+        }
     }
     protected void LogOut_Click(object sender, EventArgs e)
     {

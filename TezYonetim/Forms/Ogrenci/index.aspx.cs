@@ -17,7 +17,9 @@ public partial class User : TezBaseUser
         Label1.Text = "Tez Öğrencisi";
         Label2.Text = Ogrenci.Ad;
         Label3.Text = Ogrenci.Bolum;
-        Label7.Text = hoca.Ad;
+        if (Ogrenci.Hoca_Onay != true && Ogrenci.Hoca_ID == null) { Label7.Text = "Seçilmemiş"; }
+        else if (Ogrenci.Hoca_Onay == false && Ogrenci.Hoca_ID != null) { Label7.Text = "Onay Beklemede"; }
+        else { Label7.Text = hoca.Ad; }
         Label4.Text = Ogrenci.No;
         if (Ogrenci.Tez_Onay == null) { Label5.Text = "Tez Almamış"; }
         else if (Ogrenci.Tez_Onay == true) { Label5.Text = "Onaylandı"; }
@@ -26,7 +28,7 @@ public partial class User : TezBaseUser
         var Duyurular = db.Duyuru.ToList();
         Repeater1.DataSource = Duyurular;
         Repeater1.DataBind();
-    }        
+    }
 
     protected void LogOut_Click(object sender, EventArgs e)
     {
@@ -45,7 +47,7 @@ public partial class User : TezBaseUser
             {
                 guncelKayit.Sifre = Sifreleme.Sifrele(Password1.Text);
                 db.SaveChanges();
-                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Şifreniz başarıyla güncellendi');</script>");                
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Şifreniz başarıyla güncellendi');</script>");
             }
             else
             {
@@ -56,40 +58,32 @@ public partial class User : TezBaseUser
         {
             Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Boş Geçilemez');</script>");
         }
-           
-        
+
+
     }
 
     protected void LinkButton1_Click(object sender, CommandEventArgs e)
     {
-
-
         string id;
         int did;
-
-
         switch (e.CommandName)
         {
             case "duyuru":
                 id = e.CommandArgument.ToString();
                 did = Convert.ToInt32(id);
-                var duyuru = db.Duyuru.Where(o => o.Id ==did ).FirstOrDefault();
+                var duyuru = db.Duyuru.Where(o => o.Id == did).FirstOrDefault();
 
                 if (duyuru != null)
                 {
                     Label8.Text = duyuru.Duyuru_Baslik;
                     Label9.Text = duyuru.Duyuru_Text;
                     Page.ClientScript.RegisterStartupScript(GetType(), "modelBox", "$('.modal').modal()", true);
-
                 }
                 else
                 {
                     Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Görüntülenecek Rapor Bulunamadı');</script>");
                 }
-                
                 break;
         }
-
-               
     }
 }
