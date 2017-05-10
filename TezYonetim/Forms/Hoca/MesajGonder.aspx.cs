@@ -12,33 +12,37 @@ public partial class Forms_Hoca_MesajGonder : TezBase
     List<string> ogrlist = new List<string>();
     protected void Page_Load(object sender, EventArgs e)
     {
-        int i = 0;
-        hca = db.Hoca.Where(h => h.Id == AppKontrol.id).FirstOrDefault();
-        var ogrenci = db.Ogrenci
-        .Where(x=> x.Hoca_ID == AppKontrol.id)
-        .Select(x => new { x.Ad, x.Id }).ToList();
+        if (!IsPostBack)
+        {
+            int i = 0;
+            hca = db.Hoca.Where(h => h.Id == AppKontrol.id).FirstOrDefault();
+            var ogrenci = db.Ogrenci
+            .Where(x => x.Hoca_ID == AppKontrol.id)
+            .Select(x => new { x.Ad, x.Id }).ToList();
 
-        Alici.DataSource = ogrenci;
-        Alici.DataTextField = "Ad";
-        Alici.DataValueField = "Id";       
-        Alici.DataBind();
-      
+            Alici.DataSource = ogrenci;
+            Alici.DataTextField = "Ad";
+            Alici.DataValueField = "Id";
+            Alici.DataBind();
+        }
 
     }
     protected void btnGiris_Click(object sender, EventArgs e)
     {
-        TezDBEntities db = new TezDBEntities();
+       
 
-        string baslik = Request["Baslik"].Trim();
-        string mesajT = Request["Mesaj"].Trim();
-        if (mesajT == "" || baslik == "" )
-        {
-            LabelSignUP.Text = "Lütfen Boş Geçmeyiniz";
-        }
-        else
-        {
-                     
-                Mesaj mesaj = new Mesaj();                
+            TezDBEntities db = new TezDBEntities();
+
+            string baslik = Request["Baslik"].Trim();
+            string mesajT = Request["Mesaj"].Trim();
+            if (mesajT == "" || baslik == "")
+            {
+                LabelSignUP.Text = "Lütfen Boş Geçmeyiniz";
+            }
+            else
+            {
+
+                Mesaj mesaj = new Mesaj();
                 mesaj.MsjBaslik = baslik;
                 mesaj.MsjText = mesajT;
                 mesaj.Gid = AppKontrol.id;
@@ -47,12 +51,13 @@ public partial class Forms_Hoca_MesajGonder : TezBase
                 mesaj.Aadi = Alici.SelectedItem.Text.ToString();
                 mesaj.GDerece = AppKontrol.derece;
                 mesaj.ADerece = 2;
-                mesaj.MsjTarih = DateTime.Now;                   
+                mesaj.MsjTarih = DateTime.Now;
                 db.Mesaj.Add(mesaj);
                 db.SaveChanges();
                 Response.Redirect(@"~/Default.aspx");
-           
 
+
+            }
         }
-    }
+    
 }
