@@ -77,7 +77,8 @@ public partial class User : TezBaseUser
                 {
                     Label8.Text = duyuru.Duyuru_Baslik;
                     Label9.Text = duyuru.Duyuru_Text;
-                    Page.ClientScript.RegisterStartupScript(GetType(), "modelBox", "$('.modal').modal()", true);
+                    Page.ClientScript.RegisterStartupScript(GetType(), "none", "$('#exampleModal4').modal()", true);
+                    
                 }
                 else
                 {
