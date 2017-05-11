@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="~/Forms/Hoca/MasterPageHoca.master.cs" Inherits="MasterPageHoca" %>
+
 <!DOCTYPE html>
 <html lang="tr">
 <head runat="server">
@@ -8,14 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-     
+
     <asp:ContentPlaceHolder ID="head" runat="server">
-       
     </asp:ContentPlaceHolder>
-<title></title>
+    <title></title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.10.13/datatables.min.css" />
-    
-       <script src="../../js/jquery.js"></script>
+
+    <script src="../../js/jquery.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json"></script>
 
@@ -101,7 +101,7 @@
                                 </a>
                             </li>
                             <li class="message-footer">
-                                <a href="#">Read All New Messages</a>
+                                <a href="MesajGonder.aspx">Yeni Mesaj Gönder</a>
                             </li>
                         </ul>
                     </li>
@@ -155,7 +155,7 @@
                 </ul>
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse" role="navigation">
-                    <ul class="nav navbar-nav side-nav" >
+                    <ul class="nav navbar-nav side-nav">
 
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="glyphicon glyphicon-text-background"></i>&nbsp;&nbsp;&nbsp;Tez İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
@@ -218,12 +218,12 @@
         <!-- /#wrapper -->
 
         <!-- jQuery -->
-        
+
 
         <!-- Bootstrap Core JavaScript -->
         <script src="../../js/bootstrap.min.js"></script>
 
-       
+
         <!-- Morris Charts JavaScript -->
 
         <script src="../../js/plugins/morris/morris.min.js"></script>

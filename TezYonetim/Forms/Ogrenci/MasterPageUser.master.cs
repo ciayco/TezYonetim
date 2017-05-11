@@ -32,7 +32,7 @@ public partial class MasterPageUser : System.Web.UI.MasterPage
         Sistem trh = db.Sistem.Where(q => q.Id == 1).FirstOrDefault();
         if (!(tarih >= trh.DanismanSBas && tarih <= trh.DanismanSBit))
         {
-            TezHocaSec.Visible = false;        
+            TezHocaSec.Visible = false;
         }
         if (!(tarih >= trh.TezSBas && tarih <= trh.TezSBit))
         {
@@ -48,20 +48,38 @@ public partial class MasterPageUser : System.Web.UI.MasterPage
         List<Mesaj> mesajlist = new List<Mesaj>();
         var ogr = db.Ogrenci.Where(o => o.Id == AppKontrol.id).FirstOrDefault();
         var mesajlar = db.Mesaj.Where(m => m.Aid == AppKontrol.id).ToList();
-        if(mesajlar != null)
+        if (mesajlar != null)
         {
             int i = mesajlar.Count();
             int limit = mesajlar.Count();
             if (limit > 3) limit = 3;
-            for(int x = 0; x < limit; x++)
+            for (int x = 0; x < limit; x++)
             {
-                mesajlist.Add(mesajlar[i-1]);
-                i--;        
+                mesajlist.Add(mesajlar[i - 1]);
+                i--;
             }
             Repeatermsj.DataSource = mesajlist;
-            Repeatermsj.DataBind();           
+            Repeatermsj.DataBind();
         }
     }
 
 
-   }
+
+    protected void LinkButton1_Click(object sender, CommandEventArgs e)
+    {
+        konu.Text = "Konu : ";
+        icerik.Text = "İçerik : ";
+        switch (e.CommandName)
+        {
+            case "Goruntule":
+                string id = e.CommandArgument.ToString();
+                int idi = Convert.ToInt32(id);
+                var mesajlar = db.Mesaj.Find(idi);
+                konu.Text = konu.Text + mesajlar.MsjBaslik;
+                icerik.Text = icerik.Text + mesajlar.MsjText;
+                Page.ClientScript.RegisterStartupScript(GetType(), "none", "$('#exampleModal12').modal()", true);
+                break;
+        }
+
+    }
+}
