@@ -32,8 +32,8 @@ public partial class Forms_Hoca_MesajGonder : TezBase
        
 
             TezDBEntities db = new TezDBEntities();
-
-            string baslik = Request["Baslik"].Trim();
+        hca = db.Hoca.Where(h => h.Id == AppKontrol.id).FirstOrDefault();
+        string baslik = Request["Baslik"].Trim();
             string mesajT = Request["Mesaj"].Trim();
             if (mesajT == "" || baslik == "")
             {
@@ -48,7 +48,7 @@ public partial class Forms_Hoca_MesajGonder : TezBase
                 mesaj.Gid = AppKontrol.id;
                 mesaj.Aid = Convert.ToInt32(Alici.SelectedValue);
                 mesaj.Gadi = hca.Ad;
-                mesaj.Aadi = Alici.SelectedItem.Text.ToString();
+                mesaj.Aadi = Alici.SelectedItem.Text;
                 mesaj.GDerece = AppKontrol.derece;
                 mesaj.ADerece = 2;
                 mesaj.MsjTarih = DateTime.Now;

@@ -52,56 +52,35 @@
                 <!-- Top Menu Items -->
 
                 <ul class="nav navbar-right top-nav">
-                    <li class="dropdown">
+                   <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i><b class="caret"></b></a>
                         <ul class="dropdown-menu message-dropdown">
-                            <li class="message-preview">
-                                <a href="#">
-                                    <div class="media">
-                                        <span class="pull-left">
-                                            <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                        </span>
-                                        <div class="media-body">
-                                            <h5 class="media-heading"><strong>John Smith</strong>
-                                            </h5>
-                                            <p class="small text-muted"><i class="fa fa-clock-o"></i>Yesterday at 4:32 PM</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                        </div>
+                            <asp:Repeater ID="Repeatermsj" runat="server">
+                                <HeaderTemplate>
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <li class="message-preview">
+                                        <asp:LinkButton ID="LinkButton1" CommandArgument='<%#Eval("id") %>' CommandName="Goruntule" OnCommand="LinkButton1_Click" runat="server">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong><%#Eval("Gadi") %></strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> <%#Eval("MsjTarih") %></p>
+                                        <p><%#Eval("MsjText") %></p>
                                     </div>
-                                </a>
-                            </li>
-                            <li class="message-preview">
-                                <a href="#">
-                                    <div class="media">
-                                        <span class="pull-left">
-                                            <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                        </span>
-                                        <div class="media-body">
-                                            <h5 class="media-heading"><strong>John Smith</strong>
-                                            </h5>
-                                            <p class="small text-muted"><i class="fa fa-clock-o"></i>Yesterday at 4:32 PM</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="message-preview">
-                                <a href="#">
-                                    <div class="media">
-                                        <span class="pull-left">
-                                            <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                        </span>
-                                        <div class="media-body">
-                                            <h5 class="media-heading"><strong>John Smith</strong>
-                                            </h5>
-                                            <p class="small text-muted"><i class="fa fa-clock-o"></i>Yesterday at 4:32 PM</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
+                                </div>
+                                        </asp:LinkButton>
+                                    </li>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                </FooterTemplate>
+                            </asp:Repeater>
                             <li class="message-footer">
                                 <a href="MesajGonder.aspx">Yeni Mesaj Gönder</a>
+
                             </li>
                         </ul>
                     </li>
@@ -216,7 +195,24 @@
 
         </div>
         <!-- /#wrapper -->
-
+         <div class="modal fade" id="exampleModal12" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="exampleModalLabel">Mesaj İçerik</h4>
+                        </div>
+                        <div class="modal-body">
+                            <asp:Label ID="konu" runat="server"></asp:Label><br />
+                            <br />
+                            <asp:Label ID="icerik" runat="server"></asp:Label>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <!-- jQuery -->
 
 
