@@ -43,21 +43,5 @@ public partial class MasterPageHoca : System.Web.UI.MasterPage
             Repeatermsj.DataBind();
         }
     }
-    protected void LinkButton1_Click(object sender, CommandEventArgs e)
-    {
-        konu.Text = "Konu : ";
-        icerik.Text = "İçerik : ";
-        switch (e.CommandName)
-        {
-            case "Goruntule":
-                string id = e.CommandArgument.ToString();
-                int idi = Convert.ToInt32(id);
-                var mesajlar = db.Mesaj.Find(idi);
-                konu.Text = konu.Text + mesajlar.MsjBaslik;
-                icerik.Text = icerik.Text + mesajlar.MsjText;
-                Page.ClientScript.RegisterStartupScript(GetType(), "none", "$('#exampleModal12').modal()", true);
-                break;
-        }
 
-    }
 }
