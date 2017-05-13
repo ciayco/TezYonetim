@@ -74,7 +74,7 @@
                     <asp:Repeater ID="Repeater1" runat="server">
                         <ItemTemplate>
                     
-                        <asp:LinkButton ID="LinkButton1"  OnCommand="LinkButton1_Click" CommandName="duyuru" CommandArgument='<%#Eval("Id") %>' runat="server"><%#Eval("Duyuru_Tarih") %>  -  <%#Eval("Duyuru_Baslik") %> </asp:LinkButton>
+                       <i class="glyphicon glyphicon-bullhorn">&nbsp;</i> <asp:LinkButton ID="LinkButton1"  OnCommand="LinkButton1_Click" CommandName="duyuru" CommandArgument='<%#Eval("Id") %>' runat="server"><%#Eval("Duyuru_Tarih") %>  -  <%#Eval("Duyuru_Baslik") %> </asp:LinkButton>
                         <br />
                         <br />                     
                     
