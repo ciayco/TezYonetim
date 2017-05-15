@@ -72,7 +72,7 @@
                                         <h5 class="media-heading"><strong><%#Eval("Gadi") %></strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> <%#Eval("MsjTarih") %></p>
-                                        <p><%#Eval("MsjText") %></p>
+                                        <p><%#metin_kisalt_yan(Eval("MsjText").ToString().Trim()) %></p>
                                     </div>
                                 </div>
                                         </a>

@@ -15,15 +15,21 @@ public partial class Admin : TezBase
 
         Repeater1.DataSource = Ogrenci;
         Repeater1.DataBind();
-            if (Request.QueryString["Id"] != null)
-            {
-                int id = int.Parse(Request.QueryString["Id"]);
-                var silKayit = db.Ogrenci.Find(id);
-                db.Ogrenci.Remove(silKayit);
-                db.SaveChanges();
-                Repeater1.DataBind();
-                Response.Redirect(@"~/Forms/Hoca/OgrenciListele.aspx");
-            }
+        if (Request.QueryString["Id"] != null)
+        {
+            int id = int.Parse(Request.QueryString["Id"]);
+            var ogr2 = db.Ogrenci.Where(w => w.Id== id).FirstOrDefault();
+            var goster = db.Tez.Where(o => o.Id == id).FirstOrDefault();
+            Label1.Text = ogr2.Ad;
+            Label2.Text = ogr2.No;
+            Label3.Text = ogr2.Mail;
+            Label5.Text = ogr2.Bolum;
+            if (ogr2.Tez_Onay == null) { Label6.Text = "Tez Almamış"; }
+            else if (ogr2.Tez_Onay == true) { Label6.Text = goster.Konu; }
+            else { Label6.Text = "Onay Beklemede"; }
+            Page.ClientScript.RegisterStartupScript(GetType(), "modelBox", "$('.modal').modal()", true);
+
+        }
     }
-    
+
 }

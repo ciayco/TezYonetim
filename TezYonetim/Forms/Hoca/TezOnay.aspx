@@ -52,7 +52,6 @@
         </asp:Repeater>
     </div>
     <br />
-
     <div id="label" runat="server" visible="false">
         <asp:Label ID="Label2" runat="server"></asp:Label>
     </div>
@@ -65,8 +64,25 @@
                     <h4 class="modal-title" id="exampleModalLabel">Tez Ayrıntıları</h4>
                 </div>
                 <div class="modal-body">
-                    <asp:Label ID="Label1" Font-Bold="true" Font-Size="16px" runat="server"></asp:Label><br /><br /><br>
-                    <asp:Label ID="Label3" runat="server"></asp:Label>
+                    <div class="panel-body" style="text-align: left;">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div style="text-align: left; float: left;">
+                                    <i class="glyphicon glyphicon-text-background">&nbsp;</i>
+                                    <asp:Label ID="Label1" runat="server"></asp:Label>
+                                </div>
+                                <div style="text-align: right; float: right">
+                                    <asp:Label ID="Label4" runat="server"></asp:Label>
+                                </div>
+                            </div>
+                            <div class="panel-footer" style="text-align: left;">
+                                <i class="glyphicon glyphicon-user">&nbsp;</i><asp:Label ID="Label3" runat="server"></asp:Label><br />
+                                <blockquote>
+                                    <asp:Label ID="Label5" runat="server"></asp:Label>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
@@ -74,10 +90,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 
 </asp:Content>
 

@@ -82,7 +82,7 @@ public partial class User : TezBaseUser
                 }
                 else
                 {
-                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Görüntülenecek Rapor Bulunamadı');</script>");
+                    Label9.Text = "Görüntülenecek Duyuru Bulunmamaktadır.!";
                 }
                 break;
         }

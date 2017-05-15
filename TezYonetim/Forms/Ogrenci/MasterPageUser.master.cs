@@ -26,6 +26,19 @@ public partial class MasterPageUser : System.Web.UI.MasterPage
         Session.RemoveAll();
         Response.Redirect(@"~/Default.aspx");
     }
+    public string metin_kisalt_yan(string metin)
+
+    {
+        if (metin.Length > 20)
+        {
+            metin = metin.Substring(0, 20);
+
+            metin = metin + "...";
+        }
+
+        return metin;
+
+    }
     protected void Kontrol()
     {
         DateTime tarih = DateTime.Now;

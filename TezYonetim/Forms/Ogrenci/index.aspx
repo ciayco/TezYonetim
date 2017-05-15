@@ -52,7 +52,7 @@
                 <asp:Label ID="Label6" runat="server"></asp:Label></li>
         </ul>
     </div>
-    <%-- Boşluk fivi --%>
+    <%-- Boşluk divi --%>
     <div style="float: left; width: 5%;"></div>
 
     <%-- Tab Başlangıc --%>
