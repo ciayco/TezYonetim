@@ -32,8 +32,8 @@
             <tr>
                 <td><%#Eval("Id") %></td>
                 <td><%#Eval("Hoca_ID") %></td>
-                <td><%#Eval("Konu") %></td>
-                <td><%#Eval("Aciklama") %></td>
+                <td><%#metin_kisalt_yan(Eval("Konu").ToString().Trim()) %></td>
+                <td><%#metin_kisalt_yan(Eval("Aciklama").ToString().Trim()) %></td>
                  <td>
                     <asp:Button ID="SecBut" CommandName="Sec" class="btn btn-primary" Text="Seç" runat="server" CommandArgument='<%# Eval("Id") %>' />
                 </td>

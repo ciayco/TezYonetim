@@ -41,8 +41,8 @@ public partial class TezSec : TezBaseUser
                 else
                 {
                     onay.Visible = true;
-                    DurumOnay1.Text = Tezdb2.Konu;
-                    DurumOnay2.Text = Tezdb2.Aciklama;
+                    DurumOnay1.Text = metin_kisalt_yan(Tezdb2.Konu);
+                    DurumOnay2.Text = metin_kisalt_yan(Tezdb2.Aciklama);
                     DurumOnay.Text = "Onaylandı";
                 }
             }
@@ -53,7 +53,19 @@ public partial class TezSec : TezBaseUser
         }
         //tarih kontrol
     }
+    public string metin_kisalt_yan(string metin)
 
+    {
+        if (metin.Length > 40)
+        {
+            metin = metin.Substring(0, 40);
+
+            metin = metin + "...";
+        }
+
+        return metin;
+
+    }
     protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
         string id;

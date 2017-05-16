@@ -25,10 +25,16 @@ public partial class Forms_Ogrenci_MesajGoster : System.Web.UI.Page
             }
             else
             {
-                Label2.Text = Label2.Text + "<blockquote>" + "Mesaj Bulunamadı.";
+                dolumsg.Visible = false;
+                bosmsg.Visible = true;
+                Label5.Text = Label5.Text + "<blockquote>" + "Mesaj Bulunamadı.";
             }
-
-
+        }
+        else
+        {
+            dolumsg.Visible = false;
+            bosmsg.Visible = true;
+            Label5.Text = Label5.Text + "<blockquote>" + "Mesaj Bulunamadı.";
         }
     }
 }

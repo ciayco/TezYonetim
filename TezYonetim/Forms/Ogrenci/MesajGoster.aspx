@@ -10,8 +10,8 @@
             <h4>Mesajları Oku</h4>
         </div>
         <div class="panel-body" style="text-align: left;">
-            <div class="panel panel-default">
-                <div class="panel-body">
+            <div class="panel panel-default" id="dolumsg" runat="server">
+                <div class="panel-body" >
                     <div style="text-align: left; float: left;">
                         <i class="glyphicon glyphicon-envelope">&nbsp;</i>
                         <asp:Label ID="Label1" runat="server"></asp:Label>
@@ -25,6 +25,7 @@
                     <asp:Label ID="Label2" runat="server"></asp:Label>
                 </div>
             </div>
+            <div id="bosmsg" runat="server" visible="false"><asp:Label ID="Label5" runat="server"></asp:Label></div>
         </div>
     </div>
 </asp:Content>

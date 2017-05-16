@@ -10,7 +10,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 

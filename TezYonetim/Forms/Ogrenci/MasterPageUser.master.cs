@@ -51,7 +51,6 @@ public partial class MasterPageUser : System.Web.UI.MasterPage
         {
             TezSec.Visible = false;
             TezOner.Visible = false;
-            TezOner.Visible = false;
         }
 
     }
