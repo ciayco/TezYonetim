@@ -68,8 +68,11 @@ public partial class TezSec : TezBaseUser
     }
     protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
+        Label1.Text ="";
+        Label3.Text ="";
+        Label5.Text = "";
         string id;
-        int tezid;
+        int tezid,ogid;
             switch (e.CommandName)
             {
 
@@ -82,6 +85,20 @@ public partial class TezSec : TezBaseUser
                     Repeater1.DataBind();
                     Response.Redirect(@"~/Forms/Ogrenci/TezSec.aspx");
 
+                break;
+            case "incele":
+                id = e.CommandArgument.ToString();
+                ogid = Convert.ToInt32(id);
+                Ogrenci = db.Ogrenci.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
+                var hoca = db.Hoca.Find(Ogrenci.Hoca_ID);
+                tez = db.Tez.Where(oo => oo.Id == ogid).FirstOrDefault();
+                Label1.Text += tez.Konu;
+                Label3.Text = hoca.Ad;
+                Label5.Text = Label5.Text + tez.Aciklama;
+                var tezalan = db.Ogrenci.Where(oo => oo.Tez_ID == ogid).ToList();
+                Repeater2.DataSource = tezalan;
+                Repeater2.DataBind();
+                Page.ClientScript.RegisterStartupScript(GetType(), "modelBox", "$('.modal').modal()", true);
                 break;
         }
         
