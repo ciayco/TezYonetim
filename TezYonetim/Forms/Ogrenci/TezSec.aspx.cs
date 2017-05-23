@@ -95,7 +95,7 @@ public partial class TezSec : TezBaseUser
                 Label1.Text += tez.Konu;
                 Label3.Text = hoca.Ad;
                 Label5.Text = Label5.Text + tez.Aciklama;
-                var tezalan = db.Ogrenci.Where(oo => oo.Tez_ID == ogid).ToList();
+                var tezalan = db.Ogrenci.Where(oo => oo.Tez_ID == ogid && oo.Tez_Onay==true).ToList();
                 Repeater2.DataSource = tezalan;
                 Repeater2.DataBind();
                 Page.ClientScript.RegisterStartupScript(GetType(), "modelBox", "$('.modal').modal()", true);
