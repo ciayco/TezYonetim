@@ -25,7 +25,7 @@ public partial class User : TezBaseUser
         else if (Ogrenci.Tez_Onay == true) { Label5.Text = "Onaylandı"; }
         else { Label5.Text = "Onay Bekliyor"; }
         Label6.Text = Ogrenci.Mail;
-        var Duyurular = db.Duyuru.ToList();
+        var Duyurular = db.Duyuru.Where(w=> w.Hoca_Id==Ogrenci.Hoca_ID).ToList();
         Repeater1.DataSource = Duyurular;
         Repeater1.DataBind();
     }

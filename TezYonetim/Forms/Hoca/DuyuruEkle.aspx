@@ -1,11 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Hoca/MasterPageHoca.master" AutoEventWireup="true" EnableEventValidation="false" CodeFile="DuyuruEkle.aspx.cs" Inherits="Forms_Hoca_DuyuruEkle" %>
 
-
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
     <title>Duyuru Ekle</title>
-
 </asp:Content>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div style="position: relative; margin: auto; width: 100%;">
         <div style="position: relative; margin: auto; width: 100%;">
