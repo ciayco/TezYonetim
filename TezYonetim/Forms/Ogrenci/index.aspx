@@ -68,11 +68,11 @@
             <div role="tabpanel" class="tab-pane active" id="home">
                 <div class="panel panel-default">
                     <div class="panel-heading">Duyurular</div>
-                    <div class="panel-body">
+                    <div class="panel-body" style="text-align:left;" >
                     <asp:Repeater ID="Repeater1" runat="server">
                         <ItemTemplate>
                     
-                       <i class="glyphicon glyphicon-bullhorn">&nbsp;</i> <asp:LinkButton ID="LinkButton1"  OnCommand="LinkButton1_Click" CommandName="duyuru" CommandArgument='<%#Eval("Id") %>' runat="server"><%#Eval("Duyuru_Tarih") %>  -  <%#Eval("Duyuru_Baslik") %> </asp:LinkButton>
+                       <i class="glyphicon glyphicon-bullhorn">&nbsp;</i> <asp:LinkButton ID="LinkButton1"  OnCommand="LinkButton1_Click" CommandName="duyuru" CommandArgument='<%#Eval("Id") %>' runat="server"><%#metin_kisalt_yan(Eval("Duyuru_Tarih").ToString().Trim()) %> - <%#metin_kisalt_yan(Eval("Duyuru_Baslik").ToString().Trim()) %> </asp:LinkButton>
                         <br />
                         <br />                     
                     

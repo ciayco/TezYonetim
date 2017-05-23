@@ -37,6 +37,19 @@ public partial class User : TezBaseUser
         Response.Redirect(@"~/Default.aspx");
     }
 
+    public string metin_kisalt_yan(string metin)
+
+    {
+        if (metin.Length > 50)
+        {
+            metin = metin.Substring(0, 50);
+
+            metin = metin + "...";
+        }
+
+        return metin;
+
+    }
     protected void Password_Click(object sender, EventArgs e)
     {
         if (Password.Text != null && Password1.Text != null && Password2.Text != null)
