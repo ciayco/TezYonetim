@@ -192,13 +192,10 @@
                         </li>
 
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="glyphicon glyphicon-duplicate"></i>&nbsp;&nbsp;&nbsp;Boş <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="glyphicon glyphicon-duplicate"></i>&nbsp;&nbsp;&nbsp;İşlemler <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo3" class="collapse">
                                 <li>
-                                    <a href="#">Boş</a>
-                                </li>
-                                <li>
-                                    <a href="#">Boş</a>
+                                    <a href="DuyuruEkle.aspx">Duyuru Ekle</a>
                                 </li>
                             </ul>
                         </li>
