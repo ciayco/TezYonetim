@@ -28,6 +28,11 @@ public partial class User : TezBaseUser
         var Duyurular = db.Duyuru.Where(w=> w.Hoca_Id==Ogrenci.Hoca_ID && Ogrenci.Hoca_Onay==true).ToList();
         Repeater1.DataSource = Duyurular;
         Repeater1.DataBind();
+        var Mesajlar = db.Mesaj.Where(w => w.Aid ==AppKontrol.id && w.ADerece==AppKontrol.derece).ToList();
+       
+            Repeater2.DataSource = Mesajlar;
+            Repeater2.DataBind();
+        
     }
 
     protected void LogOut_Click(object sender, EventArgs e)

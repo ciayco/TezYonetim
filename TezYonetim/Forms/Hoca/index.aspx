@@ -37,8 +37,7 @@
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Duyuru</a></li>
             <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">İşlemler</a></li>
-            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Boş Alan 1</a></li>
-            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Boş Alan 2</a></li>
+            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Mesajlarım</a></li>
         </ul>
 
         <!-- Tab panes -->
@@ -75,8 +74,21 @@
                     <asp:Button ID="Button1" class="btn btn-primary" OnClick="Password_Click" runat="server" Text="Şifre Güncelle" />
                </form>
             </div>
-            <div role="tabpanel" class="tab-pane" id="messages">21312312312</div>
-            <div role="tabpanel" class="tab-pane" id="settings">.qweqweqwe.</div>
+            <div role="tabpanel" class="tab-pane" id="messages">
+                 <br />
+                <div style="height: 450px; overflow-x: hidden; overflow-y: scroll;">
+
+
+                    <asp:Repeater ID="Repeater2" runat="server">
+                        <ItemTemplate>
+                            <div class="alert alert-success" style="font-size: 12px; text-align: left" role="alert"><%#metin_kisalt_yan(Eval("Gadi").ToString().Trim()) %> <i style="text-align: right; float: right;"><%#Eval("MsjTarih") %></i>
+                                <br />
+                                <a style="text-decoration: none; color:green" href="MesajGoster.aspx?ID=<%#Eval("Id") %>"> <%#metin_kisalt_yan(Eval("MsjText").ToString().Trim()) %></a></div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
+
+            </div>
         </div>
         <!-- Tab Bitiş -->
     </div>

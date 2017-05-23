@@ -21,6 +21,24 @@ public partial class index : TezBase
         var Duyurular = db.Duyuru_Admin.ToList();
         Repeater1.DataSource = Duyurular;
         Repeater1.DataBind();
+        var Mesajlar = db.Mesaj.Where(w => w.Aid == AppKontrol.id && w.ADerece == AppKontrol.derece).ToList();
+
+        Repeater2.DataSource = Mesajlar;
+        Repeater2.DataBind();
+
+    }
+    public string metin_kisalt_yan(string metin)
+
+    {
+        if (metin.Length > 50)
+        {
+            metin = metin.Substring(0, 50);
+
+            metin = metin + "...";
+        }
+
+        return metin;
+
     }
     protected void LinkButton1_Click(object sender, CommandEventArgs e)
     {
