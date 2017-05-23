@@ -151,17 +151,6 @@
                                 </li>
                             </ul>
                         </li>
-
-                        <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="demo2" class="collapse">
-                                <li>
-                                    <a href="Admin.aspx">Danışman onayı</a>
-                                </li>
-
-                            </ul>
-                        </li>
-
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="glyphicon glyphicon-save-file"></i>&nbsp;&nbsp;&nbsp; Raporlar <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo3" class="collapse">

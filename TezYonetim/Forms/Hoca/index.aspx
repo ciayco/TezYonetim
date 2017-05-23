@@ -46,7 +46,7 @@
             <div role="tabpanel" class="tab-pane active" id="home">
                 <div class="panel panel-default">
                     <div class="panel-heading">Duyurular</div>
-                    <div class="panel-body">
+                    <div class="panel-body" style="text-align:left;">
                     <asp:Repeater ID="Repeater1" runat="server">
                         <ItemTemplate>
                     
