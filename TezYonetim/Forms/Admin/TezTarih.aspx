@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Admin/MasterPageAdmin.master" AutoEventWireup="true" EnableEventValidation="false" CodeFile="TezTarih.aspx.cs" Inherits="Forms_Admin_TezTarih" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <title>Tez Seçim Tarihi Ekle</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div style="position: relative; margin: auto; width: 100%;">

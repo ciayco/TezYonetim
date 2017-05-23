@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Admin/MasterPageAdmin.master" AutoEventWireup="true" CodeFile="OgrenciListele.aspx.cs" Inherits="Forms_Admin_OgrenciListele" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
-    <title>Kullanıcı Görüntüle</title>
+    <title>Öğrenci Görüntüle</title>
     
 </asp:Content>
 
