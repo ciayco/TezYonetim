@@ -12,7 +12,6 @@
     <table class="display"  id="students">
         <thead>
             <tr>
-                <th style="text-align: center;">Id </th>
                 <th style="text-align: center;">İsim Soyisim </th>
                 <th style="text-align: center;">E-Mail </th>
                 <th style="text-align: center;">Düzenle</th>
@@ -23,12 +22,11 @@
             <ItemTemplate>
                 
                     <tr>
-                        <td><%#Eval("Id") %></td>
                         <td><%#Eval("KullanıcıAdi") %></td>
                         <td><%#Eval("Mail") %></td>
                         <td>
-                            <a href="Duzenle.aspx?ID=<%#Eval("Id") %>" class="btn btn-primary btn-xs btn-round"> <span class="glyphicon glyphicon-edit"></span></a>
-                            <a href="Admin.aspx?ID=<%#Eval("Id") %>" class="btn btn-danger btn-xs btn-round"> <span class="glyphicon glyphicon-remove"></span></a> 
+                            <a href="#" class="btn btn-primary btn-xs btn-round"> <span class="glyphicon glyphicon-edit"></span></a>
+                            <a href="#" class="btn btn-danger btn-xs btn-round"> <span class="glyphicon glyphicon-remove"></span></a> 
                         </td>
                     </tr>
 
