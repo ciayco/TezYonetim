@@ -14,17 +14,21 @@
     <div class="panel panel-default">
         <div class="panel-heading">Tezim</div>
         <div class="panel-body">
-             <div class="panel-body" style="text-align: left;">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <div style="text-align: left; float: left;">
-                                    <i class="glyphicon glyphicon-text-background">&nbsp;</i>
-                                    <asp:Label ID="Label1" runat="server"></asp:Label>
-                                </div>
-                                
+            <div  runat="server" id="onaysiz" visible="false">
+                <asp:Label ID="Label3" runat="server"></asp:Label>
+            </div>
+            <div runat="server" id="onayli" visible="false">
+                <div class="panel-body" style="text-align: left;">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div style="text-align: left; float: left;">
+                                <i class="glyphicon glyphicon-text-background">&nbsp;</i>
+                                <asp:Label ID="Label1" runat="server"></asp:Label>
                             </div>
-                            <div class="panel-footer" style="text-align: left;">
-                                <i class="glyphicon glyphicon-user">&nbsp;</i>Tezi Alan Öğrenciler:
+
+                        </div>
+                        <div class="panel-footer" style="text-align: left;">
+                            <i class="glyphicon glyphicon-user">&nbsp;</i>Tezi Alan Öğrenciler:
                                 <asp:Repeater ID="Repeater2" runat="server">
 
                                     <ItemTemplate>
@@ -33,12 +37,13 @@
                                 </asp:Repeater>
 
 
-                                <blockquote style="font-size: 14px;">
-                                    <asp:Label ID="Label2" runat="server"></asp:Label>
-                                </blockquote>
-                            </div>
+                            <blockquote style="font-size: 14px;">
+                                <asp:Label ID="Label2" runat="server"></asp:Label>
+                            </blockquote>
                         </div>
                     </div>
+                </div>
+            </div>
         </div>
     </div>
 </asp:Content>

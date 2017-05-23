@@ -34,8 +34,8 @@ public partial class TezSec : TezBaseUser
                 else if (Ogrenci.Tez_Onay == false)
                 {
                     bekleme.Visible = true;
-                    DurumBekleme1.Text = Tezdb2.Konu;
-                    DurumBekleme2.Text = Tezdb2.Aciklama;
+                    DurumBekleme1.Text = metin_kisalt_yan(Tezdb2.Konu);
+                    DurumBekleme2.Text = metin_kisalt_yan(Tezdb2.Aciklama);
                     DurumBekleme.Text = "Onay Beklemede";
                 }
                 else

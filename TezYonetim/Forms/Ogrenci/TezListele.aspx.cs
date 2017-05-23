@@ -19,16 +19,20 @@ public partial class TezListele : TezBaseUser
 
         if (Ogrenci.Tez_ID == null)
         {
-            Label2.Text = "Tez Seçimi yapınız";
+            onaysiz.Visible = true;
+            onayli.Visible = false;
+            Label3.Text = "Tez Seçimi yapınız";
         }
         else if (Ogrenci.Tez_Onay == false)
         {
-            Label1.Text = tezim2.Konu;
-            Label2.Text = "Tez onay beklemede";
+            onaysiz.Visible = true;
+            onayli.Visible = false;
+            Label3.Text = "Tez onay beklemede";
         }
         else
         {
-        
+            onayli.Visible = true;
+            onaysiz.Visible = false;
             Repeater2.DataSource = Ogrdb;
             Repeater2.DataBind();
             Label1.Text = tezim2.Konu;
