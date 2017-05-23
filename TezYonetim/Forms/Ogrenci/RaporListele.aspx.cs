@@ -11,6 +11,7 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
     TezDBEntities db = new TezDBEntities();
     Rapor rpr = new Rapor();
     Ogrenci ogr = new Ogrenci();
+    public int sayac = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
         ogr = db.Ogrenci.Find(AppKontrol.id);
