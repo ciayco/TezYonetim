@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Forms/Ogrenci/MasterPageUser.master" EnableEventValidation="false" CodeFile="index.aspx.cs" Inherits="User" %>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
     <title>AnaSayfa</title>
 </asp:Content>
@@ -68,36 +69,71 @@
             <div role="tabpanel" class="tab-pane active" id="home">
                 <div class="panel panel-default">
                     <div class="panel-heading">Duyurular</div>
-                    <div class="panel-body" style="text-align:left;" >
-                    <asp:Repeater ID="Repeater1" runat="server">
-                        <ItemTemplate>
-                    
-                       <i class="glyphicon glyphicon-bullhorn">&nbsp;</i> <asp:LinkButton ID="LinkButton1"  OnCommand="LinkButton1_Click" CommandName="duyuru" CommandArgument='<%#Eval("Id") %>' runat="server"><%#metin_kisalt_yan(Eval("Duyuru_Tarih").ToString().Trim()) %> - <%#metin_kisalt_yan(Eval("Duyuru_Baslik").ToString().Trim()) %> </asp:LinkButton>
-                        <br />
-                        <br />                     
-                    
-                           </ItemTemplate>
+                    <div class="panel-body" style="text-align: left;">
+                        <asp:Repeater ID="Repeater1" runat="server">
+                            <ItemTemplate>
+
+                                <i class="glyphicon glyphicon-bullhorn">&nbsp;</i>
+                                <asp:LinkButton ID="LinkButton1" OnCommand="LinkButton1_Click" CommandName="duyuru" CommandArgument='<%#Eval("Id") %>' runat="server"><%#metin_kisalt_yan(Eval("Duyuru_Tarih").ToString().Trim()) %> - <%#metin_kisalt_yan(Eval("Duyuru_Baslik").ToString().Trim()) %> </asp:LinkButton>
+                                <br />
+                                <br />
+
+                            </ItemTemplate>
                         </asp:Repeater>
-                        </div>
+                    </div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane"id="profile"><br /><br />
+            <div role="tabpanel" class="tab-pane" id="profile">
+                <br />
+                <br />
                 <form>
-                    <div style="width:70%;padding-left:10%; ">
-                     <div class="form-group">
-                         <asp:TextBox id="Password" TextMode="Password" placeholder="Eski Şifre" runat="server" class="form-control" ></asp:TextBox>
-                     </div>
-                    <div class="form-group">
-                        <asp:TextBox id="Password1" TextMode="Password" placeholder="Yeni Şifre" runat="server" class="form-control" ></asp:TextBox>
-                     </div>
-                    <div class="form-group">
-                         <asp:TextBox id="Password2" TextMode="Password" placeholder="Yeni şifre Tekrar" runat="server" class="form-control" ></asp:TextBox>
-                     </div>
-                   </div>
+                    <div style="width: 70%; padding-left: 10%;">
+                        <div class="form-group">
+                            <asp:TextBox ID="Password" TextMode="Password" placeholder="Eski Şifre" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                        <div class="form-group">
+                            <asp:TextBox ID="Password1" TextMode="Password" placeholder="Yeni Şifre" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                        <div class="form-group">
+                            <asp:TextBox ID="Password2" TextMode="Password" placeholder="Yeni şifre Tekrar" runat="server" class="form-control"></asp:TextBox>
+                        </div>
+                    </div>
                     <asp:Button ID="Button1" class="btn btn-primary" OnClick="Password_Click" runat="server" Text="Şifre Güncelle" />
-               </form>
+                </form>
             </div>
-            <div role="tabpanel" class="tab-pane" id="messages">21312312312</div>
+            <div role="tabpanel" class="tab-pane" id="messages">
+                <table class="display" id="students">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Id </th>
+                            <th style="text-align: center;">İsim Soyisim </th>
+                            <th style="text-align: center;">E-Mail </th>
+                            <th style="text-align: center;">Ders </th>
+                            <th style="text-align: center;">Düzenle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <asp:Repeater ID="Repeater2" runat="server">
+                            <ItemTemplate>
+
+                                <tr>
+                                    <td><%#Eval("Id") %></td>
+                                    <td><%#Eval("Ad") %></td>
+                                    <td><%#Eval("Mail") %></td>
+                                    <td><%#Eval("Ders") %></td>
+                                    <td>
+                                        <a href="Duzenle.aspx?ID=<%#Eval("Id") %>" class="btn btn-primary btn-xs btn-round"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a href="Admin.aspx?ID=<%#Eval("Id") %>" class="btn btn-danger btn-xs btn-round"><span class="glyphicon glyphicon-remove"></span></a>
+                                    </td>
+                                </tr>
+
+
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </tbody>
+                </table>
+
+            </div>
             <div role="tabpanel" class="tab-pane" id="settings">.qweqweqwe.</div>
         </div>
         <!-- Tab Bitiş -->
@@ -112,8 +148,9 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <asp:Label ID="Label8" runat="server"></asp:Label><br /><br />
-                          <asp:Label ID="Label9" runat="server"></asp:Label>
+                        <asp:Label ID="Label8" runat="server"></asp:Label><br />
+                        <br />
+                        <asp:Label ID="Label9" runat="server"></asp:Label>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -123,4 +160,39 @@
         </div>
     </div>
     <%-- Modal Bitiş--%>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#students').DataTable({
+                "aLengthMenu": [[20, 40, 60, 100, -1], [20, 40, 60, 100, "Hepsi"]],
+                "iDisplayLength": 20,
+                "language": {
+                    "sDecimal": ",",
+                    "sEmptyTable": "Tabloda herhangi bir veri mevcut değil",
+                    "sInfo": "_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor",
+                    "sInfoEmpty": "Kayıt yok",
+                    "sInfoFiltered": "(_MAX_ kayıt içerisinden bulunan)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "Sayfada _MENU_ kayıt göster",
+                    "sLoadingRecords": "Yükleniyor...",
+                    "sProcessing": "İşleniyor...",
+                    "sSearch": "Ara:",
+                    "sZeroRecords": "Eşleşen kayıt bulunamadı",
+                    "oPaginate": {
+                        "sFirst": "İlk",
+                        "sLast": "Son",
+                        "sNext": "Sonraki",
+                        "sPrevious": "Önceki"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": artan sütun sıralamasını aktifleştir",
+                        "sSortDescending": ": azalan sütun soralamasını aktifleştir"
+                    },
+                    
+                    
+                }
+            });
+        });
+    </script>
+
 </asp:Content>
