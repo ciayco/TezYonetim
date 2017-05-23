@@ -15,11 +15,7 @@ public partial class TezListele : TezBaseUser
         db = new TezDBEntities();
         var Ogrdb = db.Ogrenci.Where(t => t.Tez_ID == Ogrenci.Tez_ID ).ToList();
         var tezim2 = db.Tez.Where(w => w.Id == Ogrenci.Tez_ID).FirstOrDefault();
-        if (!IsPostBack)
-        {
-            Repeater2.DataSource = Ogrdb;
-            Repeater2.DataBind();
-        }
+       
 
         if (Ogrenci.Tez_ID == null)
         {
@@ -32,7 +28,9 @@ public partial class TezListele : TezBaseUser
         }
         else
         {
-            
+        
+            Repeater2.DataSource = Ogrdb;
+            Repeater2.DataBind();
             Label1.Text = tezim2.Konu;
             Label2.Text = tezim2.Aciklama;
         }             
