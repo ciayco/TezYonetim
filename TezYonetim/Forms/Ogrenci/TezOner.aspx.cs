@@ -30,6 +30,8 @@ public partial class Forms_Ogrenci_TezOner : TezBaseUser
         TeziAlanDigerOgrenciListesi = new List<string>();
         YanlisGirilenOgrenciListesi = new List<string>();
         Label2.Text = "";
+        label4.Text = "";
+        label5.Text = "";
         if (konu.Text != "" && comment.Text != "" /*&& Request["TeziAlanDigerOgrenciler"].Trim() !=""*/)
         {
             Page.ClientScript.RegisterStartupScript(GetType(), "modelBox", "$('.modal').modal()", true);

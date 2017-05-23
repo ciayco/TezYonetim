@@ -69,7 +69,7 @@
                             <div class="col-md-offset-3 col-md-9">
 
 
-                                <asp:Button runat="server" class="btn btn-primary" OnClick="btnGiris_Click" Text="Button" />
+                                <asp:Button runat="server" class="btn btn-primary" OnClick="btnGiris_Click" Text="Kaydet" />
                             </div>
                         </div>
 
@@ -97,7 +97,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <div style="float:right;" id="butonmodal" runat="server" ><asp:Button runat="server" class="btn btn-primary" OnClick="Onayla_Click" Text="Button" /></div>&nbsp;&nbsp;&nbsp;
+                    <div style="float:right;" id="butonmodal" runat="server" ><asp:Button runat="server" class="btn btn-primary" OnClick="Onayla_Click" Text="Kaydet" /></div>&nbsp;&nbsp;&nbsp;
                     <div style="float:right;"> <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button></div>&nbsp;&nbsp;&nbsp;
                     
                 </div>
