@@ -2,7 +2,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
-    <title>Kullanıcı Görüntüle</title>
+    <title>Öğrenci Onay</title>
     
 </asp:Content>
 
