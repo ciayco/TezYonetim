@@ -30,6 +30,14 @@ public partial class Duyuru
     public virtual Hoca Hoca { get; set; }
 }
 
+public partial class Duyuru_Admin
+{
+    public int Id { get; set; }
+    public string Duyuru_Baslik { get; set; }
+    public string Duyuru_Text { get; set; }
+    public Nullable<System.DateTime> Duyuru_Tarih { get; set; }
+}
+
 public partial class Hoca
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

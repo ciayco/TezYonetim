@@ -25,6 +25,15 @@
           <Property Name="Duyuru_Text" Type="nvarchar(max)" />
           <Property Name="Duyuru_Tarih" Type="datetime" />
         </EntityType>
+        <EntityType Name="Duyuru_Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Duyuru_Baslik" Type="nvarchar" MaxLength="50" />
+          <Property Name="Duyuru_Text" Type="nvarchar(max)" />
+          <Property Name="Duyuru_Tarih" Type="datetime" />
+        </EntityType>
         <EntityType Name="Hoca">
           <Key>
             <PropertyRef Name="Id" />
@@ -216,6 +225,7 @@
         <EntityContainer Name="TezDBModelStoreContainer">
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Duyuru" EntityType="Self.Duyuru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Duyuru_Admin" EntityType="Self.Duyuru_Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hoca" EntityType="Self.Hoca" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mesaj" EntityType="Self.Mesaj" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ogrenci" EntityType="Self.Ogrenci" Schema="dbo" store:Type="Tables" />
@@ -264,6 +274,7 @@
         <EntityContainer Name="TezDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admin" EntityType="TezDBModel.Admin" />
           <EntitySet Name="Duyuru" EntityType="TezDBModel.Duyuru" />
+          <EntitySet Name="Duyuru_Admin" EntityType="TezDBModel.Duyuru_Admin" />
           <EntitySet Name="Hoca" EntityType="TezDBModel.Hoca" />
           <EntitySet Name="Mesaj" EntityType="TezDBModel.Mesaj" />
           <EntitySet Name="Ogrenci" EntityType="TezDBModel.Ogrenci" />
@@ -325,6 +336,15 @@
           <Property Name="Duyuru_Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Duyuru_Tarih" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Duyuru_Hoca" FromRole="Duyuru" ToRole="Hoca" />
+        </EntityType>
+        <EntityType Name="Duyuru_Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Duyuru_Baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Duyuru_Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Duyuru_Tarih" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Hoca">
           <Key>
@@ -553,6 +573,16 @@
                 <ScalarProperty Name="Duyuru_Text" ColumnName="Duyuru_Text" />
                 <ScalarProperty Name="Duyuru_Baslik" ColumnName="Duyuru_Baslik" />
                 <ScalarProperty Name="Hoca_Id" ColumnName="Hoca_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Duyuru_Admin">
+            <EntityTypeMapping TypeName="TezDBModel.Duyuru_Admin">
+              <MappingFragment StoreEntitySet="Duyuru_Admin">
+                <ScalarProperty Name="Duyuru_Tarih" ColumnName="Duyuru_Tarih" />
+                <ScalarProperty Name="Duyuru_Text" ColumnName="Duyuru_Text" />
+                <ScalarProperty Name="Duyuru_Baslik" ColumnName="Duyuru_Baslik" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

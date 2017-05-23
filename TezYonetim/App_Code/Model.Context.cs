@@ -25,6 +25,7 @@ public partial class TezDBEntities : DbContext
 
     public virtual DbSet<Admin> Admin { get; set; }
     public virtual DbSet<Duyuru> Duyuru { get; set; }
+    public virtual DbSet<Duyuru_Admin> Duyuru_Admin { get; set; }
     public virtual DbSet<Hoca> Hoca { get; set; }
     public virtual DbSet<Mesaj> Mesaj { get; set; }
     public virtual DbSet<Ogrenci> Ogrenci { get; set; }

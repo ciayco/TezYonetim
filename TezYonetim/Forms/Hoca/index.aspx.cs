@@ -18,7 +18,7 @@ public partial class index : TezBase
         Label2.Text = hoca.Ad;
         Label3.Text = "Bilgisayar Mühendisliği";
         Label4.Text = hoca.Mail;
-        var Duyurular = db.Duyuru.ToList();
+        var Duyurular = db.Duyuru_Admin.ToList();
         Repeater1.DataSource = Duyurular;
         Repeater1.DataBind();
     }
@@ -31,7 +31,7 @@ public partial class index : TezBase
             case "duyuru":
                 id = e.CommandArgument.ToString();
                 did = Convert.ToInt32(id);
-                var duyuru = db.Duyuru.Where(o => o.Id == did).FirstOrDefault();
+                var duyuru = db.Duyuru_Admin.Where(o => o.Id == did).FirstOrDefault();
 
                 if (duyuru != null)
                 {
