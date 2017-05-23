@@ -31,7 +31,7 @@ public partial class Forms_Admin_DuyuruEkle : TezBaseAdmin
                 duyuru.Duyuru_Tarih = DateTime.Now;
                 db.Duyuru_Admin.Add(duyuru);
                 db.SaveChanges();
-                Response.Redirect(@"~/Default.aspx");
+                Response.Redirect(@"~/Forms/Admin/DuyuruEkle.aspx");
            
 
         }
