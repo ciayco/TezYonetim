@@ -62,16 +62,14 @@
                                     <div class="panel panel-primary">
                                         <div class="panel-heading" role="tab" id="headingTwo">
                                             <h6 class="panel-title" style="text-align: left;">
-                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#<%#Eval("Id") %>" aria-expanded="false" aria-controls="<%#Eval("Id") %>"><%#Eval("RaporBas") %> - <%#Eval("RaporBit") %>                          
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#<%#Eval("Id") %>" aria-expanded="false" aria-controls="<%#Eval("Id") %>"> Rapor <%=++sayac%>                        
                                                 </a>
                                             </h6>
                                         </div>
                                         <div id="<%#Eval("Id") %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                             <div class="panel-body" style="text-align: left;">
-                                                Rapor id = <%#Eval("Id") %><br />
-                                                Danışman Hoca =<%#Eval("Hoca_Id") %><br />
-                                                Rapor Başlangıç = <%#Eval("RaporBas") %><br />
-                                                Rapor Biriş = <%#Eval("RaporBit") %><br />
+                                                <b>Rapor Başlangıç</b> = <%#Eval("RaporBas") %><br />
+                                                <b>Rapor Biriş</b> = <%#Eval("RaporBit") %><br />
                                                 <br />
                                                 <span class="btn btn-primary">
                                                     <asp:Button type="button" runat="server" OnCommand="RaporGoruntule" CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" BorderStyle="None" BackColor="#337AB7" /></span>&nbsp;&nbsp;                           

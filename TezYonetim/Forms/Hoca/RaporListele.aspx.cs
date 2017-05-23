@@ -10,6 +10,7 @@ public partial class Forms_Hoca_RaporListele : TezBase
     TezDBEntities db = new TezDBEntities();
     string idg1, idg2;
     int tezid, rprid, i;
+    public int sayac = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
         var tezler = db.Tez.Where(o => o.Hoca_ID == AppKontrol.id).ToList();
