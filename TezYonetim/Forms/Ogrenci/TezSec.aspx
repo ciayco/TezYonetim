@@ -26,7 +26,7 @@
                     </thead>
                 <tbody>
         </HeaderTemplate>
-        <ItemTemplate>
+        <ItemTemplate> 
             <tr>
                 <td><%#metin_kisalt_yan(Eval("Konu").ToString().Trim()) %></td>
                 <td><%#metin_kisalt_yan(Eval("Aciklama").ToString().Trim()) %></td>
