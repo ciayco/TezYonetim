@@ -17,6 +17,19 @@ public partial class Forms_Hoca_RaporListele : TezBase
         Repeater1.DataSource = tezler;
         Repeater1.DataBind();
     }
+    public string metin_kisalt_yan(string metin)
+
+    {
+        if (metin.Length > 50)
+        {
+            metin = metin.Substring(0, 50);
+
+            metin = metin + "...";
+        }
+
+        return metin;
+
+    }
     protected void Goster_Click(object sender, CommandEventArgs e)
     {
         switch (e.CommandName)
@@ -31,7 +44,7 @@ public partial class Forms_Hoca_RaporListele : TezBase
                 var ogrenci = db.Ogrenci.Where(o => o.Tez_ID == tezid).ToList();
                 while (i < ogrenci.Count())
                 {
-                    TezOgrLbl.Text = TezOgrLbl.Text + ogrenci[i].Ad + "<br/>";
+                    TezOgrLbl.Text = TezOgrLbl.Text + ogrenci[i].Ad + " ";
                     i++;
                 }
                 if (raportrh != null)

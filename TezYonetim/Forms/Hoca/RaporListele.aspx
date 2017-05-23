@@ -30,8 +30,8 @@
             <asp:Repeater ID="Repeater1" runat="server">
                 <ItemTemplate>
                     <tr>
-                        <td><%#Eval("Konu") %></td>
-                        <td><%#Eval("Aciklama") %></td>
+                        <td><%#metin_kisalt_yan(Eval("Konu").ToString().Trim()) %></td>
+                        <td><%#metin_kisalt_yan(Eval("Aciklama").ToString().Trim()) %> </td>
                         <td><%#Eval("Tez_Alan") %></td>
                         <td>
                             <asp:Button type="button" runat="server" OnCommand="Goster_Click" data-id='<%#Eval("Id") %>' CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" class="btn btn-primary" />
@@ -51,8 +51,8 @@
                     <h4 class="modal-title" id="exampleModalLabel2">Rapor Yükleme</h4>
                 </div>
                 <div class="modal-body">
-                    <asp:Label ID="Label1" runat="server" Font-Size="20px" Text="Tez Öğrencileri"></asp:Label><br />
-                    <asp:Label ID="TezOgrLbl" runat="server"></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Font-Size="18px" Text="Tez Öğrencileri"></asp:Label><br />
+                    <asp:Label ID="TezOgrLbl" runat="server"></asp:Label><br /><br /><br />
                     <div class="form-group">
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                             <asp:Repeater ID="Repeater2" runat="server">
