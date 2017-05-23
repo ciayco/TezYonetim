@@ -3,7 +3,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
 
-    <title>Tez Seçimi</title>
+    <title>Danışman Seçimi</title>
    
     
 </asp:Content>

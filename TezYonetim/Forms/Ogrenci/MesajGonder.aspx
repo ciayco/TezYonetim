@@ -2,7 +2,7 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
-    <title>Hoca Ekle</title>
+    <title>Mesaj Gönder</title>
 
 </asp:Content>
 
