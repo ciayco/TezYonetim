@@ -23,7 +23,6 @@ public partial class TezListele : TezBaseUser
 
         if (Ogrenci.Tez_ID == null)
         {
-            Label1.Text = tezim2.Konu;
             Label2.Text = "Tez Seçimi yapınız";
         }
         else if (Ogrenci.Tez_Onay == false)
