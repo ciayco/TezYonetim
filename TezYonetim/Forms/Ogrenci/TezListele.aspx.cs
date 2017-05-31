@@ -14,7 +14,7 @@ public partial class TezListele : TezBaseUser
         Ogrenci Ogrenci = db.Ogrenci.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
         db = new TezDBEntities();
         var Ogrdb = db.Ogrenci.Where(t => t.Tez_ID == Ogrenci.Tez_ID ).ToList();
-        var tezim2 = db.Tez.Where(w => w.Id == Ogrenci.Tez_ID).FirstOrDefault();
+        var tezim = db.Tez.Where(w => w.Id == Ogrenci.Tez_ID).FirstOrDefault();
        
 
         if (Ogrenci.Tez_ID == null)
@@ -35,8 +35,9 @@ public partial class TezListele : TezBaseUser
             onaysiz.Visible = false;
             Repeater2.DataSource = Ogrdb;
             Repeater2.DataBind();
-            Label1.Text = tezim2.Konu;
-            Label2.Text = tezim2.Aciklama;
+            Label1.Text = tezim.Konu;
+            Label2.Text = tezim.Aciklama;
+            Label4.Text = db.Hoca.Find(Ogrenci.Hoca_ID).Ad;
         }             
     }
     protected void LogOut_Click(object sender, EventArgs e)

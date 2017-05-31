@@ -111,28 +111,28 @@ public partial class Forms_Ogrenci_TezOner : TezBaseUser
                                                              o.No == item.Trim()).FirstOrDefault();
                     if (DigerOgr != null)
                     {
-                        Tez tezz = new Tez();
-                        Tez tez = db.Tez.Where(o => o.Konu == konu.Text).FirstOrDefault();
-                        if (!(tez != null))
+                        Tez tez = new Tez();
+                        Tez tezKontrol = db.Tez.Where(o => o.Konu == konu.Text).FirstOrDefault();
+                        if (!(tezKontrol != null))
                         {
-                            tezz.Hoca_ID = Ogrenci.Hoca.Id;
-                            tezz.Konu = konu.Text;
-                            tezz.Aciklama = comment.Text;
-                            tezz.Tez_Limit = (yeniList.Count)+1;
-                            tezz.Tez_Alan = 0;
-                            db.Tez.Add(tezz);
+                            tez.Hoca_ID = Ogrenci.Hoca.Id;
+                            tez.Konu = konu.Text;
+                            tez.Aciklama = comment.Text;
+                            tez.Tez_Limit = (yeniList.Count)+1;
+                            tez.Tez_Alan = 0;
+                            db.Tez.Add(tez);
                             db.SaveChanges();
-                            Ogrenci.Tez_ID = tezz.Id;
+                            Ogrenci.Tez_ID = tez.Id;
                             Ogrenci.Tez_Onay = false;
-                            DigerOgr.Tez_ID = tezz.Id;
+                            DigerOgr.Tez_ID = tez.Id;
                             DigerOgr.Tez_Onay = false;
                             db.SaveChanges();
                         }
                         else
                         {
-                            Ogrenci.Tez_ID = tez.Id;
+                            Ogrenci.Tez_ID = tezKontrol.Id;
                             Ogrenci.Tez_Onay = false;
-                            DigerOgr.Tez_ID = tez.Id;
+                            DigerOgr.Tez_ID = tezKontrol.Id;
                             DigerOgr.Tez_Onay = false;
                             db.SaveChanges();
                         }

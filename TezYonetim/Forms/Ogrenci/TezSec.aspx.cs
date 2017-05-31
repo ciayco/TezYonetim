@@ -25,25 +25,30 @@ public partial class TezSec : TezBaseUser
             var Tezdb2 = db.Tez.Where(w => w.Id == Ogrenci.Tez_ID).FirstOrDefault();
             if (!IsPostBack)
             {
-              if(Ogrenci.Tez_ID==null)
+              if(Ogrenci.Tez_ID==null && Ogrenci.Hoca_Onay==true)
                 {
                     sec.Visible = true;
                     Repeater1.DataSource = Tezdb;
                     Repeater1.DataBind();
                 }
-                else if (Ogrenci.Tez_Onay == false)
+                else if (Ogrenci.Tez_Onay == false && Ogrenci.Hoca_Onay == true)
                 {
                     bekleme.Visible = true;
                     DurumBekleme1.Text = metin_kisalt_yan(Tezdb2.Konu);
                     DurumBekleme2.Text = metin_kisalt_yan(Tezdb2.Aciklama);
                     DurumBekleme.Text = "Onay Beklemede";
                 }
-                else
+                else if(Ogrenci.Tez_ID!=null && Ogrenci.Hoca_Onay == true)
                 {
                     onay.Visible = true;
                     DurumOnay1.Text = metin_kisalt_yan(Tezdb2.Konu);
                     DurumOnay2.Text = metin_kisalt_yan(Tezdb2.Aciklama);
                     DurumOnay.Text = "Onaylandı";
+                }
+              else
+                {
+                    danisman.Visible = true;
+                    danismanOnay.Text = "Danışman Onayı Olmadan Tez Seçim işlemi gerçekleştiremezsiniz.";
                 }
             }
         }

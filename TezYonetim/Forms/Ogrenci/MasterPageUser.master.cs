@@ -58,8 +58,7 @@ public partial class MasterPageUser : System.Web.UI.MasterPage
     protected void MesajOnizle()
     {
         List<Mesaj> mesajlist = new List<Mesaj>();
-        var ogr = db.Ogrenci.Where(o => o.Id == AppKontrol.id).FirstOrDefault();
-        var mesajlar = db.Mesaj.Where(m => m.Aid == AppKontrol.id).ToList();
+       var mesajlar = db.Mesaj.Where(m => m.Aid == AppKontrol.id).ToList();
         if (mesajlar != null)
         {
             int i = mesajlar.Count();

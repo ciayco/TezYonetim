@@ -25,7 +25,9 @@
                                 <i class="glyphicon glyphicon-text-background">&nbsp;</i>
                                 <asp:Label ID="Label1" runat="server"></asp:Label>
                             </div>
-
+                            <div style="text-align: right; float: right">
+                                    <i class="glyphicon glyphicon-user">&nbsp;</i><asp:Label ID="Label4" runat="server"></asp:Label><br />
+                            </div>
                         </div>
                         <div class="panel-footer" style="text-align: left;">
                             <i class="glyphicon glyphicon-user">&nbsp;</i>Tezi Alan Öğrenciler:

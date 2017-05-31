@@ -21,7 +21,6 @@
           <table class="table table-striped">
                <thead>
                   <tr>
-                          <th style="text-align:center;">Id </th>
                           <th style="text-align:center;">İsim Soyisim </th>
                           <th style="text-align:center;">Ders </th>
                           <th style="text-align:center;">Seç</th>
@@ -31,11 +30,10 @@
         </HeaderTemplate>
         <ItemTemplate>
             <tr>
-                <td><%#Eval("Id") %></td>
                 <td><%#Eval("Ad") %></td>
                 <td><%#Eval("Ders") %></td>
                  <td>
-                    <asp:Button ID="SecBut" CommandName="Sec" class="btn btn-primary" Text="Seç" runat="server" CommandArgument='<%# Eval("Id") %>' />
+                    <asp:Button ID="SecBut" CommandName="Sec" class="btn btn-primary btn-xs" Text="Seç" runat="server" CommandArgument='<%# Eval("Id") %>' />
                 </td>
                 
             </tr>

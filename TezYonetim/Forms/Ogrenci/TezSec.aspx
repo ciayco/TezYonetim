@@ -63,7 +63,21 @@
         </table>
     </div>
      <!--Onay bekleme-->
-    
+        <!--Danışman bekleme -->
+    <div id="danisman" runat="server" visible="false">
+         <table class="table table-striped">
+             
+            <tr>                
+                <th style="text-align:center;">Durum</th>    
+            </tr>                 
+            <tr>           
+                <td><asp:Label ID="danismanOnay" runat="server"></asp:Label></td>
+               
+                
+            </tr>
+        </table>
+    </div>
+     <!--Danışman bekleme-->
     <!--Onaylanmış-->
     <div id="onay" runat="server" visible="false">
 
