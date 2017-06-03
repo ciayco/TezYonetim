@@ -58,15 +58,32 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
                     int idi = Convert.ToInt32(id);
                     if (parcalar[1]=="doc" || parcalar[1] == "docx" || parcalar[1] == "pdf" || parcalar[1] == "DOC" || parcalar[1] == "DOCX" || parcalar[1] == "PDF")
                     {
-                        myFile.SaveAs(Server.MapPath("~/Raporlar/") + ogr.Hoca_ID + ogr.Tez_ID + id + "." + parcalar[1]);
-                        rpr.Hoca_Id = ogr.Hoca_ID;
-                        rpr.Tez_Id = ogr.Tez_ID;
-                        rpr.Tarih_Id = Convert.ToInt32(id);
-                        rpr.Ad = parcalar[1];
-                        rpr.Dosya = ogr.Hoca_ID + "" + ogr.Tez_ID + "" + rpr.Tarih_Id;
-                        db.Rapor.Add(rpr);
-                        db.SaveChanges();
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Kaydedildi');</script>");
+                        var kontrol = db.Rapor.Where(w => w.Tarih_Id == idi && w.Hoca_Id == ogr.Hoca_ID && w.Tez_Id == ogr.Tez_ID).FirstOrDefault();
+                        if (kontrol==null)
+                        {
+                            myFile.SaveAs(Server.MapPath("~/Raporlar/") + ogr.Hoca_ID + ogr.Tez_ID + id + "." + parcalar[1]);
+                            rpr.Hoca_Id = ogr.Hoca_ID;
+                            rpr.Tez_Id = ogr.Tez_ID;
+                            rpr.Tarih_Id = Convert.ToInt32(id);
+                            rpr.Ad = parcalar[1];
+                            rpr.Dosya = ogr.Hoca_ID + "" + ogr.Tez_ID + "" + rpr.Tarih_Id;
+                            db.Rapor.Add(rpr);
+                            db.SaveChanges();
+                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Kaydedildi');</script>");
+                        }
+                        else
+                        {
+                            File.Delete(Server.MapPath("~/Raporlar/")+ ogr.Hoca_ID + ogr.Tez_ID + id + "." + kontrol.Ad);
+                            myFile.SaveAs(Server.MapPath("~/Raporlar/") + ogr.Hoca_ID + ogr.Tez_ID + id + "." + parcalar[1]);
+                            kontrol.Hoca_Id = ogr.Hoca_ID;
+                            kontrol.Tez_Id = ogr.Tez_ID;
+                            kontrol.Tarih_Id = Convert.ToInt32(id);
+                            kontrol.Ad = parcalar[1];
+                            kontrol.Dosya = ogr.Hoca_ID + "" + ogr.Tez_ID + "" + idi;
+                            db.SaveChanges();
+                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Kaydedildi');</script>");
+                        }
+                       
                     }
                     else
                     {
