@@ -24,6 +24,7 @@
           <Property Name="Duyuru_Baslik" Type="nvarchar" MaxLength="50" />
           <Property Name="Duyuru_Text" Type="nvarchar(max)" />
           <Property Name="Duyuru_Tarih" Type="datetime" />
+          <Property Name="Derece" Type="int" />
         </EntityType>
         <EntityType Name="Duyuru_Admin">
           <Key>
@@ -336,6 +337,7 @@
           <Property Name="Duyuru_Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Duyuru_Tarih" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Duyuru_Hoca" FromRole="Duyuru" ToRole="Hoca" />
+          <Property Name="Derece" Type="Int32" />
         </EntityType>
         <EntityType Name="Duyuru_Admin">
           <Key>
@@ -569,6 +571,7 @@
           <EntitySetMapping Name="Duyuru">
             <EntityTypeMapping TypeName="TezDBModel.Duyuru">
               <MappingFragment StoreEntitySet="Duyuru">
+                <ScalarProperty Name="Derece" ColumnName="Derece" />
                 <ScalarProperty Name="Duyuru_Tarih" ColumnName="Duyuru_Tarih" />
                 <ScalarProperty Name="Duyuru_Text" ColumnName="Duyuru_Text" />
                 <ScalarProperty Name="Duyuru_Baslik" ColumnName="Duyuru_Baslik" />

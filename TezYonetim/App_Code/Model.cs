@@ -26,6 +26,7 @@ public partial class Duyuru
     public string Duyuru_Baslik { get; set; }
     public string Duyuru_Text { get; set; }
     public Nullable<System.DateTime> Duyuru_Tarih { get; set; }
+    public Nullable<int> Derece { get; set; }
 
     public virtual Hoca Hoca { get; set; }
 }

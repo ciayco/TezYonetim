@@ -27,6 +27,9 @@
                     <asp:Button ID="incBut" CommandName="incele" Text="İncele" runat="server" class="btn btn-success btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
                 </td>
                 <td>
+                    <a href="TezDuzenle.aspx?ID=<%#Eval("Id") %>"   class="btn btn-success btn-xs btn-round" >Düzenle</a>
+                </td>
+                <td>
                     <asp:Button ID="RedBut" CommandName="Red" Text="Sil" runat="server" class="btn btn-danger btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
                 </td>
             </tr>
