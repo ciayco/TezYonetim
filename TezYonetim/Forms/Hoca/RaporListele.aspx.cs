@@ -13,7 +13,7 @@ public partial class Forms_Hoca_RaporListele : TezBase
     public int sayac = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
-        var tezler = db.Tez.Where(o => o.Hoca_ID == AppKontrol.id).ToList();
+        var tezler = db.Tez.Where(o => o.Hoca_ID == AppKontrol.id && o.Tez_Alan>0).ToList();
         Repeater1.DataSource = tezler;
         Repeater1.DataBind();
     }

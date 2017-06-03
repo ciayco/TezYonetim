@@ -33,7 +33,6 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a href="OgrenciListele.aspx?ID=<%#Eval("Id") %>">İncele</a></li>
-                                    <li><a href="#">işlem 2</a></li>
                                 </ul>
                             </div>
                         </td>

@@ -77,11 +77,7 @@ public partial class Admin : TezBase
                     db.SaveChanges();
                     Response.Redirect(@"~/Forms/Hoca/TezOnay.aspx");
                 }
-                else
-                {
-                    //Tez limiti Uyarı
-                }
-                
+                             
                 db.SaveChanges();
                 Repeater1.DataBind();
                 break;

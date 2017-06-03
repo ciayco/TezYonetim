@@ -43,7 +43,7 @@ public partial class Admin : TezBase
         switch (e.CommandName)
         {
 
-            case "Sil":
+            case "Red":
                 id = e.CommandArgument.ToString();
                 ogid = Convert.ToInt32(id);
                 Ogrenci = db.Ogrenci.Where(o => o.Id == ogid).FirstOrDefault();

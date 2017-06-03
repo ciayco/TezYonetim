@@ -32,7 +32,7 @@
                 <td><%#Eval("Mail") %></td>
                 <td><%#Eval("Bolum") %></td>
                 <td>
-                    <asp:Button ID="SilBut" CommandName="Sil" Text="  Reddet  " class="btn btn-danger btn-xs btn-round" runat="server" CommandArgument='<%# Eval("Id") %>' />
+                    <asp:Button ID="SilBut" CommandName="Red" Text="  Reddet  " class="btn btn-danger btn-xs btn-round" runat="server" CommandArgument='<%# Eval("Id") %>' />
                 </td>
                 <td>
                     <asp:Button ID="SecBut" CommandName="Sec" Text="  Onayla  " class="btn btn-primary btn-xs btn-round" runat="server" CommandArgument='<%# Eval("Id") %>' />

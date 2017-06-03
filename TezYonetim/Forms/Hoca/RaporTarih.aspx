@@ -9,7 +9,7 @@
             <div id="signupbox" style="margin-top: 50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <div class="panel-title">Danışman Hoca Seçim Tarihi Ekle</div>
+                        <div class="panel-title">Rapor Tarihi Ekle</div>
                     </div>
                     <form id="signupform" class="form-horizontal" role="form">
                         <div class="panel-body">

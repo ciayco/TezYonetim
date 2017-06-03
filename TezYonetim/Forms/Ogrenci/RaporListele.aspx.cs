@@ -56,7 +56,7 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
                     string[] parcalar = myFile.FileName.Split('.');//.dan sonrakı uzantıyı parcalar[1] içine atar 
                     string id = HiddenField1.Value.ToString();
                     int idi = Convert.ToInt32(id);
-                    if (!(db.Rapor.Where(w => w.Tarih_Id == idi && w.Hoca_Id == ogr.Hoca_ID && w.Tez_Id == ogr.Tez_ID).Any()))// Önceden rapor ekledıyse yeni rapor ekleyemez düzenle yapılcak
+                    if (parcalar[1]=="doc" || parcalar[1] == "docx" || parcalar[1] == "pdf" || parcalar[1] == "DOC" || parcalar[1] == "DOCX" || parcalar[1] == "PDF")
                     {
                         myFile.SaveAs(Server.MapPath("~/Raporlar/") + ogr.Hoca_ID + ogr.Tez_ID + id + "." + parcalar[1]);
                         rpr.Hoca_Id = ogr.Hoca_ID;
@@ -70,8 +70,9 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
                     }
                     else
                     {
-                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('DaHa Önce Bu Rapor Eklenmiş');</script>");
+                        Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('uzantı hatası');</script>");
                     }
+                   
                 }
                 else
                 {

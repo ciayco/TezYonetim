@@ -40,7 +40,8 @@
                             <span class="btn btn-primary">
                                 <asp:Button type="button" runat="server" OnCommand="Rapor_goruntule_Click" CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" BorderStyle="None" BackColor="#337AB7" /></span>&nbsp;&nbsp;                          
                             <span class="btn btn-primary">
-                                <asp:Button ID="makdes" class="btn btn-primary" data-id='<%#Eval("Id") %>' CssClass="modal-button" runat="server" Text="Rapor Ekle" BackColor="#337AB7" BorderStyle="None" /></span>
+                                <asp:Button ID="makdes" class="btn btn-primary" data-id='<%#Eval("Id") %>' CssClass="modal-button" runat="server" Text="Rapor Ekle" BackColor="#337AB7" BorderStyle="None" /></span><br />
+                            <h6><i class="glyphicon glyphicon-info-sign"> </i>Rapor dosyalarınız "pdf" yada "word" dosyası olması gereklidir.</h6>
                         </div>
                     </div>
                 </div>

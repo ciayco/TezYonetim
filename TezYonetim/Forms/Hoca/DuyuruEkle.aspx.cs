@@ -25,7 +25,6 @@ public partial class Forms_Hoca_DuyuruEkle : TezBase
         {
                      
                 Duyuru duyuru = new Duyuru();
-
                 duyuru.Duyuru_Baslik =baslik;
                 duyuru.Duyuru_Text = duyuruT;
                 duyuru.Duyuru_Tarih = DateTime.Now;

@@ -16,7 +16,6 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th style="text-align: center;">Tez_Id </th>
                             <th style="text-align: center;">İsim Soyisim </th>
                             <th style="text-align: center;">No </th>
                             <th style="text-align: center;">Mail </th>
@@ -30,7 +29,6 @@
             </HeaderTemplate>
             <ItemTemplate>
                 <tr>
-                    <td><%#Eval("Tez_ID") %></td>
                     <td><%#Eval("Ad") %></td>
                     <td><%#Eval("No") %></td>
                     <td><%#Eval("Mail") %></td>
