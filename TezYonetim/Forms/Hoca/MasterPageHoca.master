@@ -73,7 +73,7 @@
                                 <FooterTemplate>
                                 </FooterTemplate>
                             </asp:Repeater>
-                            
+
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -136,14 +136,28 @@
                                 <li>
                                     <a href="TezEkle.aspx">Tez Önerisi Yap</a>
                                 </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;&nbsp;Tez Görüntüle<i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="demo2" class="collapse">
                                 <li>
-                                    <a href="TezListele.aspx">Tez Önerilerim</a>
+                                    <a href="TezAlinan.aspx">Devam Eden Tezler</a>
+                                </li>
+                                <li>
+                                    <a href="TezAlinmayan.aspx">Alınmayan Tezler</a>
+                                </li>
+                                <li>
+                                    <a href="TezBiten.aspx">Biten Tezler</a>
+                                </li>
+                                <li>
+                                    <a href="TezListele.aspx">Tüm Tezler</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="demo2" class="collapse">
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;&nbsp;Öğrenci İşlemleri <i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="demo3" class="collapse">
                                 <li>
                                     <a href="DuyuruEkle.aspx">Duyuru Ekle</a>
                                 </li>
@@ -156,8 +170,8 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="glyphicon glyphicon-duplicate"></i>&nbsp;&nbsp;&nbsp;Raporlar <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="demo3" class="collapse">
+                            <a href="javascript:;" data-toggle="collapse" data-target="#demo4"><i class="glyphicon glyphicon-duplicate"></i>&nbsp;&nbsp;&nbsp;Raporlar <i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="demo4" class="collapse">
                                 <li>
                                     <a href="RaporTarih.aspx">Rapor Tarihi Ekle</a>
                                 </li>

@@ -24,10 +24,13 @@
                 <td><%#metin_kisalt_yan(Eval("Konu").ToString().Trim()) %></td>
                 <td><%#metin_kisalt_yan(Eval("aciklama").ToString().Trim()) %></td>
                 <td>
-                    <asp:Button ID="incBut" CommandName="incele" Text="İncele" runat="server" class="btn btn-success btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
+                    <asp:ImageButton ID="ImageButton1" OnCommand="ImageButton1_Command" CommandName="poster" CommandArgument='<%# Eval("Id") %>' runat="server" Height="20px" Width="20px" ImageUrl='<%# "~/Posterler/" + Eval("ResimAd") + "." + Eval("ResimUzanti") %>' />
                 </td>
                 <td>
-                    <a href="TezDuzenle.aspx?ID=<%#Eval("Id") %>"   class="btn btn-success btn-xs btn-round" >Düzenle</a>
+                    <asp:Button ID="incBut" CommandName="incele" Text="İncele" runat="server" class="btn btn-default btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
+                </td>
+                <td>
+                    <a href="TezDuzenle.aspx?ID=<%#Eval("Id") %>" class="btn btn-success btn-xs btn-round">Düzenle</a>
                 </td>
                 <td>
                     <asp:Button ID="RedBut" CommandName="Red" Text="Sil" runat="server" class="btn btn-danger btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
@@ -80,5 +83,25 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="postermodal" tabindex="-1" role="dialog" aria-labelledby="postermodalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="postermodalLabel">Tez Afişi</h4>
+                </div>
+                <div class="modal-body">
+                   <div id="posterDiv" runat="server"><asp:Image ID="posterimage" Height="400" Width="275px   " runat="server" /></div> 
+                    <div id="posterLabel" runat="server" visible="false">
+                        <asp:Label ID="labelPoster" runat="server" Text=""></asp:Label></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </asp:Content>
 

@@ -32,7 +32,7 @@ public partial class Forms_Hoca_TezListele : TezBase
 
         return metin;
 
-    } 
+    }
     protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
         Label1.Text = "Konu  : ";
@@ -61,7 +61,34 @@ public partial class Forms_Hoca_TezListele : TezBase
                 var tezalan = db.Ogrenci.Where(oo => oo.Tez_ID == ogid).ToList();
                 Repeater2.DataSource = tezalan;
                 Repeater2.DataBind();
-                Page.ClientScript.RegisterStartupScript(GetType(), "modelBox", "$('.modal').modal()", true);
+                Page.ClientScript.RegisterStartupScript(GetType(), "none", "$('#exampleModal').modal()", true);
+                break;
+        }
+    }
+
+
+    protected void ImageButton1_Command(object sender, CommandEventArgs e)
+    {
+        switch (e.CommandName)
+        {
+            case "poster":
+                int id = int.Parse(e.CommandArgument.ToString());
+                var poster = db.Tez.Find(id);
+                if (poster.ResimAd != "bosimg")
+                {
+                    posterDiv.Visible = true;
+                    posterLabel.Visible = false;
+                    posterimage.ImageUrl = "~/Posterler/" + poster.ResimAd + "." + poster.ResimUzanti;
+                    Page.ClientScript.RegisterStartupScript(GetType(), "none", "$('#postermodal').modal()", true);
+                }
+                else
+                {
+                    posterDiv.Visible = false;
+                    posterLabel.Visible = true;
+                    labelPoster.Text = "Sisteme Tez Afişi Yüklenmemiş.!";
+                    Page.ClientScript.RegisterStartupScript(GetType(), "none", "$('#postermodal').modal()", true);
+                }
+                            
                 break;
         }
     }

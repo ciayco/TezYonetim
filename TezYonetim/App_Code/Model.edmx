@@ -126,6 +126,8 @@
           <Property Name="Aciklama" Type="nvarchar(max)" />
           <Property Name="Tez_Limit" Type="int" />
           <Property Name="Tez_Alan" Type="int" />
+          <Property Name="ResimAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="ResimUzanti" Type="nchar" MaxLength="10" />
         </EntityType>
         <Association Name="FK_Duyuru_Hoca">
           <End Role="Hoca" Type="Self.Hoca" Multiplicity="0..1" />
@@ -454,6 +456,8 @@
           <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Tez_Hoca" FromRole="Tez" ToRole="Hoca" />
           <NavigationProperty Name="Ogrenci" Relationship="TezDBModel.FK_Ogrenci_Tez" FromRole="Tez" ToRole="Ogrenci" />
           <NavigationProperty Name="Rapor" Relationship="TezDBModel.FK_Rapor_Tez" FromRole="Tez" ToRole="Rapor" />
+          <Property Name="ResimAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ResimUzanti" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <Association Name="FK_Duyuru_Hoca">
           <End Type="TezDBModel.Hoca" Role="Hoca" Multiplicity="0..1" />
@@ -681,6 +685,8 @@
           <EntitySetMapping Name="Tez">
             <EntityTypeMapping TypeName="TezDBModel.Tez">
               <MappingFragment StoreEntitySet="Tez">
+                <ScalarProperty Name="ResimUzanti" ColumnName="ResimUzanti" />
+                <ScalarProperty Name="ResimAd" ColumnName="ResimAd" />
                 <ScalarProperty Name="Tez_Alan" ColumnName="Tez_Alan" />
                 <ScalarProperty Name="Tez_Limit" ColumnName="Tez_Limit" />
                 <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />

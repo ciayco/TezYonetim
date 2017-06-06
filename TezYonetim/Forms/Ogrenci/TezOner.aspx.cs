@@ -120,6 +120,8 @@ public partial class Forms_Ogrenci_TezOner : TezBaseUser
                             tez.Aciklama = comment.Text;
                             tez.Tez_Limit = (yeniList.Count)+1;
                             tez.Tez_Alan = 0;
+                            tez.ResimAd = "bosimg";
+                            tez.ResimUzanti = "png";
                             db.Tez.Add(tez);
                             db.SaveChanges();
                             Ogrenci.Tez_ID = tez.Id;

@@ -22,6 +22,8 @@ public partial class TezEkle : TezBase
             tez.Aciklama = Request["Aciklama"].Trim();
             tez.Tez_Limit = Convert.ToInt32(Request["TezAdet"].Trim());
             tez.Hoca_ID = AppKontrol.id;
+            tez.ResimAd = "bosimg";
+            tez.ResimUzanti = "png";
             tez.Tez_Alan = 0;
             db.Tez.Add(tez);
             db.SaveChanges();

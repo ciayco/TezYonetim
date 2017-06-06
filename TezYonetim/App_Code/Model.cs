@@ -167,6 +167,8 @@ public partial class Tez
     public string Aciklama { get; set; }
     public Nullable<int> Tez_Limit { get; set; }
     public Nullable<int> Tez_Alan { get; set; }
+    public string ResimAd { get; set; }
+    public string ResimUzanti { get; set; }
 
     public virtual Hoca Hoca { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
