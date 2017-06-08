@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Forms_Ogrenci_Mesajlar : TezBaseUser
+public partial class Forms_Hoca_Mesajlar : TezBase
 {
     TezDBEntities db;
     protected void Page_Load(object sender, EventArgs e)

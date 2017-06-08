@@ -5,10 +5,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
-    <br />
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4>Mesajları Oku</h4>
+         <div class="panel-heading">
+            <div style="text-align: center;">
+                <h5>Mesajları Oku</h5>
+            </div>
+            <div style="text-align: right;"><a href="MesajGonder.aspx">Yeni Mesaj Gönder</a></div>
         </div>
         <div class="panel-body" style="text-align: left;">
             <div class="panel panel-default">

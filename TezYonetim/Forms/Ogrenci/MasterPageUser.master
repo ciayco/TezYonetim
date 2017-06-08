@@ -70,6 +70,9 @@
                                 <FooterTemplate>
                                 </FooterTemplate>
                             </asp:Repeater>
+                            <li class="message-footer">
+                                <a href="Mesajlar.aspx">Tüm Mesajları Görüntüle</a>
+                            </li>
                         </ul>
                     </li>
                  <%--   <li class="dropdown"> //Bildirim Paneli
