@@ -22,17 +22,24 @@ public partial class Forms_Ogrenci_PosterEkle : TezBaseUser
         if (myFile.ContentLength > 0)
         {
             string[] parcalar = myFile.FileName.Split('.');
-            if (poster != null)
+            if (parcalar[1] == "jpg" || parcalar[1] == "jpeg" || parcalar[1] == "png" || parcalar[1] == "JPG" || parcalar[1] == "PNG" || parcalar[1] == "JPEG")
             {
-                myFile.SaveAs(Server.MapPath("~/Posterler/") + ogrenci.Hoca_ID + ogrenci.Tez_ID + "." + parcalar[1]);
-                poster.ResimUzanti = parcalar[1];
-                poster.ResimAd= ogrenci.Hoca_ID +""+ ogrenci.Tez_ID;
-                db.SaveChanges();
-                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Kaydedildi');</script>");
-            }
-            else
+                
+                if (poster != null)
+                {
+                    myFile.SaveAs(Server.MapPath("~/Posterler/") + ogrenci.Hoca_ID + ogrenci.Tez_ID + "." + parcalar[1]);
+                    poster.ResimUzanti = parcalar[1];
+                    poster.ResimAd = ogrenci.Hoca_ID + "" + ogrenci.Tez_ID;
+                    db.SaveChanges();
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Kaydedildi');</script>");
+                }
+                else
+                {
+                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Tez Bulunmadı');</script>");
+                }
+            }else
             {
-                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Tez Bulunmadı');</script>");
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('uzantı hatası');</script>");
             }
         }
         else
