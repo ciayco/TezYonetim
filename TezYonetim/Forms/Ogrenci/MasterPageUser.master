@@ -72,7 +72,7 @@
                             </asp:Repeater>
                         </ul>
                     </li>
-                    <li class="dropdown">
+                 <%--   <li class="dropdown"> //Bildirim Paneli
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i><b class="caret"></b></a>
                         <ul class="dropdown-menu alert-dropdown">
                             <li>
@@ -98,20 +98,14 @@
                                 <a href="#">View All</a>
                             </li>
                         </ul>
-                    </li>
+                    </li>--%>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
                             <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                             <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#"><i class="fa fa-fw fa-user"></i>Profile</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-fw fa-envelope"></i>Inbox</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-fw fa-gear"></i>Settings</a>
+                                <a href="Mesajlar.aspx"><i class="fa fa-fw fa-envelope"></i>Gelen Kutusu</a>
                             </li>
                             <li class="divider"></li>
                             <li>
@@ -138,7 +132,7 @@
                                 <li>
                                     <a href="TezListele.aspx">Tezi Görüntüle </a>
                                 </li>
-                                 <li>
+                                <li>
                                     <a href="PosterEkle.aspx">Poster Ekle </a>
                                 </li>
                             </ul>
