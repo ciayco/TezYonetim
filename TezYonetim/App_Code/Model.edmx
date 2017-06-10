@@ -129,6 +129,7 @@
           <Property Name="Tez_Alan" Type="int" />
           <Property Name="ResimAd" Type="nvarchar" MaxLength="50" />
           <Property Name="ResimUzanti" Type="nchar" MaxLength="10" />
+          <Property Name="ResimDurum" Type="int" />
         </EntityType>
         <EntityType Name="Tez_Kitap">
           <Key>
@@ -137,9 +138,10 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Hoca_id" Type="int" />
           <Property Name="Tez_id" Type="int" />
-          <Property Name="Dosya_ad" Type="nvarchar" MaxLength="50" />
-          <Property Name="Dosya_Uzanti" Type="nvarchar" MaxLength="50" />
           <Property Name="Ogr_id" Type="int" />
+          <Property Name="Dosya_Uzanti" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dosya_ad" Type="int" />
+          <Property Name="Durum" Type="int" />
         </EntityType>
         <Association Name="FK_Duyuru_Hoca">
           <End Role="Hoca" Type="Self.Hoca" Multiplicity="0..1" />
@@ -473,6 +475,7 @@
           <NavigationProperty Name="Rapor" Relationship="TezDBModel.FK_Rapor_Tez" FromRole="Tez" ToRole="Rapor" />
           <Property Name="ResimAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ResimUzanti" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ResimDurum" Type="Int32" />
         </EntityType>
         <Association Name="FK_Duyuru_Hoca">
           <End Type="TezDBModel.Hoca" Role="Hoca" Multiplicity="0..1" />
@@ -577,9 +580,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Hoca_id" Type="Int32" />
           <Property Name="Tez_id" Type="Int32" />
-          <Property Name="Dosya_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Dosya_Uzanti" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Ogr_id" Type="Int32" />
+          <Property Name="Dosya_Uzanti" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dosya_ad" Type="Int32" />
+          <Property Name="Durum" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -712,6 +716,7 @@
           <EntitySetMapping Name="Tez">
             <EntityTypeMapping TypeName="TezDBModel.Tez">
               <MappingFragment StoreEntitySet="Tez">
+                <ScalarProperty Name="ResimDurum" ColumnName="ResimDurum" />
                 <ScalarProperty Name="ResimUzanti" ColumnName="ResimUzanti" />
                 <ScalarProperty Name="ResimAd" ColumnName="ResimAd" />
                 <ScalarProperty Name="Tez_Alan" ColumnName="Tez_Alan" />
@@ -726,9 +731,10 @@
           <EntitySetMapping Name="Tez_Kitap">
             <EntityTypeMapping TypeName="TezDBModel.Tez_Kitap">
               <MappingFragment StoreEntitySet="Tez_Kitap">
-                <ScalarProperty Name="Ogr_id" ColumnName="Ogr_id" />
-                <ScalarProperty Name="Dosya_Uzanti" ColumnName="Dosya_Uzanti" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
                 <ScalarProperty Name="Dosya_ad" ColumnName="Dosya_ad" />
+                <ScalarProperty Name="Dosya_Uzanti" ColumnName="Dosya_Uzanti" />
+                <ScalarProperty Name="Ogr_id" ColumnName="Ogr_id" />
                 <ScalarProperty Name="Tez_id" ColumnName="Tez_id" />
                 <ScalarProperty Name="Hoca_id" ColumnName="Hoca_id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

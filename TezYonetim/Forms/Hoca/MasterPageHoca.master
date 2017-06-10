@@ -132,6 +132,12 @@
                                 <li>
                                     <a href="TezEkle.aspx">Tez Önerisi Yap</a>
                                 </li>
+                                <li>
+                                    <a href="TezKitapOnay.aspx">Onay Bekleyen Kitaplar</a>
+                                </li>
+                                <li>
+                                    <a href="TezPosterOnay.aspx">Onay Bekleyen Posterler</a>
+                                </li>
                             </ul>
                         </li>
                         <li>

@@ -170,6 +170,7 @@ public partial class Tez
     public Nullable<int> Tez_Alan { get; set; }
     public string ResimAd { get; set; }
     public string ResimUzanti { get; set; }
+    public Nullable<int> ResimDurum { get; set; }
 
     public virtual Hoca Hoca { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -183,7 +184,8 @@ public partial class Tez_Kitap
     public int Id { get; set; }
     public Nullable<int> Hoca_id { get; set; }
     public Nullable<int> Tez_id { get; set; }
-    public string Dosya_ad { get; set; }
-    public string Dosya_Uzanti { get; set; }
     public Nullable<int> Ogr_id { get; set; }
+    public string Dosya_Uzanti { get; set; }
+    public Nullable<int> Dosya_ad { get; set; }
+    public Nullable<int> Durum { get; set; }
 }

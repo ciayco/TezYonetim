@@ -4,39 +4,39 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Security.Cryptography;
 
-public partial class Forms_Hoca_TezListele : TezBase
+public partial class Admin : TezBase
 {
     TezDBEntities db;
-    Ogrenci Ogrenci;
-    Tez Tez;
+    Tez tez;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         db = new TezDBEntities();
-        var Ogrdb = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id).ToList();
-        if (!IsPostBack)
+
+        var tezkitap = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id && t.ResimDurum == 1 && t.ResimAd != "bosimg").ToList();
+
+        if (tezkitap.Count == 0)
         {
-            Repeater1.DataSource = Ogrdb;
-            Repeater1.DataBind();
+            tablo.Visible = false;
+            label.Visible = true;
+            Label2.Text = "Onay Bekleyen Tez Posteri Bulunmamaktadır.!";
         }
-    }
-    public string metin_kisalt_yan(string metin)
-
-    {
-        if (metin.Length > 50)
+        else
         {
-            metin = metin.Substring(0, 50);
+            if (!IsPostBack)
+            {
+                Repeater1.DataSource = tezkitap;
+                Repeater1.DataBind();
 
-            metin = metin + "...";
+            }
         }
 
-        return metin;
-
     }
+
     protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
     {
-        Label1.Text = "Konu  : ";
-        Label5.Text = "<br/>";
         string id;
         int ogid;
         switch (e.CommandName)
@@ -44,29 +44,22 @@ public partial class Forms_Hoca_TezListele : TezBase
             case "Red":
                 id = e.CommandArgument.ToString();
                 ogid = Convert.ToInt32(id);
-                Tez = db.Tez.Where(o => o.Id == ogid).FirstOrDefault();
-                db.Tez.Remove(Tez);
+                tez = db.Tez.Where(o => o.Id == ogid).FirstOrDefault();
+                tez.ResimDurum = 2;//onaylanmadı
                 db.SaveChanges();
-                Repeater1.DataBind();
-                Response.Redirect(@"~/Forms/Hoca/TezListele.aspx");
+                Response.Redirect(@"~/Forms/Hoca/TezPosterOnay.aspx");
                 break;
-            case "incele":
+            case "Onay":
                 id = e.CommandArgument.ToString();
                 ogid = Convert.ToInt32(id);
-                var hoca = db.Hoca.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
-                Tez = db.Tez.Where(oo => oo.Id == ogid).FirstOrDefault();
-                Label1.Text += Tez.Konu;
-                Label3.Text = hoca.Ad;
-                Label5.Text = Label5.Text + Tez.Aciklama;
-                var tezalan = db.Ogrenci.Where(oo => oo.Tez_ID == ogid).ToList();
-                Repeater2.DataSource = tezalan;
-                Repeater2.DataBind();
-                Page.ClientScript.RegisterStartupScript(GetType(), "none", "$('#exampleModal').modal()", true);
+                tez = db.Tez.Where(o => o.Id == ogid).FirstOrDefault();
+                tez.ResimDurum = 3;//onaylandı
+                db.SaveChanges();
+                Response.Redirect(@"~/Forms/Hoca/TezPosterOnay.aspx");
                 break;
         }
+
     }
-
-
     protected void ImageButton1_Command(object sender, CommandEventArgs e)
     {
         switch (e.CommandName)
@@ -88,8 +81,14 @@ public partial class Forms_Hoca_TezListele : TezBase
                     labelPoster.Text = "Sisteme Tez Afişi Yüklenmemiş.!";
                     Page.ClientScript.RegisterStartupScript(GetType(), "none", "$('#postermodal').modal()", true);
                 }
-                            
+
                 break;
         }
+    }
+    protected void LogOut_Click(object sender, EventArgs e)
+    {
+        Response.Cookies["MyCookie"].Expires = DateTime.Now.AddDays(-1);
+        Session.RemoveAll();
+        Response.Redirect(@"~/Default.aspx");
     }
 }

@@ -24,7 +24,7 @@
         <AssociationConnector Association="TezDBModel.FK_Ogrenci_Tarih" />
         <AssociationConnector Association="TezDBModel.FK_Ogrenci_Tez" />
         <AssociationConnector Association="TezDBModel.FK_Rapor_Tez" />
-        <EntityTypeShape EntityType="TezDBModel.Tez_Kitap" Width="1.5" PointX="8.5" PointY="0.625" />
+        <EntityTypeShape EntityType="TezDBModel.Tez_Kitap" Width="1.5" PointX="8.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

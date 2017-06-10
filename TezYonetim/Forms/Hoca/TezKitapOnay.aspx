@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Hoca/MasterPageHoca.master" EnableEventValidation="false" AutoEventWireup="true" CodeFile="TezOnay.aspx.cs" Inherits="Admin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Forms/Hoca/MasterPageHoca.master" EnableEventValidation="false" AutoEventWireup="true" CodeFile="TezKitapOnay.aspx.cs" Inherits="Admin" %>
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
-    <title>Tez Onay</title>
+    <title>Tez Kitap Onay</title>
 
 </asp:Content>
 
@@ -16,10 +16,9 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th style="text-align: center;">İsim Soyisim </th>
-                            <th style="text-align: center;">No </th>
-                            <th style="text-align: center;">Mail </th>
-                            <th style="text-align: center;">Bolum </th>
+                            <th style="text-align: center;">Konu </th>
+                            <th></th>
+                            <th></th>
                             <th style="text-align: center;">İncele</th>
                             <th style="text-align: center;">Reddet</th>
                             <th style="text-align: center;">Onayla</th>
@@ -29,10 +28,9 @@
             </HeaderTemplate>
             <ItemTemplate>
                 <tr>
-                    <td><%#Eval("Ad") %></td>
-                    <td><%#Eval("No") %></td>
-                    <td><%#Eval("Mail") %></td>
-                    <td><%#Eval("Bolum") %></td>
+                    <td><%#metin_kisalt_yan(Eval("id").ToString().Trim()) %></td>
+                    <td></td>
+                    <td></td>
                     <td>
                         <asp:Button ID="incBut" CommandName="incele" Text="İncele" runat="server" class="btn btn-success btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
                     </td>
