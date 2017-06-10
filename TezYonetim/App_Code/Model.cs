@@ -123,6 +123,7 @@ public partial class Rapor_Tarih
     public Nullable<int> Hoca_Id { get; set; }
     public Nullable<System.DateTime> RaporBas { get; set; }
     public Nullable<System.DateTime> RaporBit { get; set; }
+    public Nullable<int> tur { get; set; }
 
     public virtual Hoca Hoca { get; set; }
 }
@@ -175,4 +176,14 @@ public partial class Tez
     public virtual ICollection<Ogrenci> Ogrenci { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Rapor> Rapor { get; set; }
+}
+
+public partial class Tez_Kitap
+{
+    public int Id { get; set; }
+    public Nullable<int> Hoca_id { get; set; }
+    public Nullable<int> Tez_id { get; set; }
+    public string Dosya_ad { get; set; }
+    public string Dosya_Uzanti { get; set; }
+    public Nullable<int> Ogr_id { get; set; }
 }

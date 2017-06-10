@@ -34,4 +34,5 @@ public partial class TezDBEntities : DbContext
     public virtual DbSet<Sistem> Sistem { get; set; }
     public virtual DbSet<Tarih> Tarih { get; set; }
     public virtual DbSet<Tez> Tez { get; set; }
+    public virtual DbSet<Tez_Kitap> Tez_Kitap { get; set; }
 }

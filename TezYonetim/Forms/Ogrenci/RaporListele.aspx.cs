@@ -15,9 +15,15 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
     protected void Page_Load(object sender, EventArgs e)
     {
         ogr = db.Ogrenci.Find(AppKontrol.id);
-        var trh = db.Rapor_Tarih.Where(t => t.Hoca_Id == ogr.Hoca_ID).ToList();
+        var trh = db.Rapor_Tarih.Where(t => t.Hoca_Id == ogr.Hoca_ID && t.tur==1).ToList();//diğer raporlar 1
+        var vize = db.Rapor_Tarih.Where(t => t.Hoca_Id == ogr.Hoca_ID && t.tur == 2).ToList();// vize 2
+        var final = db.Rapor_Tarih.Where(t => t.Hoca_Id == ogr.Hoca_ID && t.tur == 3).ToList();// final 3
         Repeater1.DataSource = trh;
         Repeater1.DataBind();
+        Repeater2.DataSource = vize;
+        Repeater2.DataBind();
+        Repeater3.DataSource = final;
+        Repeater3.DataBind();
     }
     protected void Rapor_goruntule_Click(object sender, CommandEventArgs e)
     {
@@ -59,6 +65,7 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
                     if (parcalar[1]=="doc" || parcalar[1] == "docx" || parcalar[1] == "pdf" || parcalar[1] == "DOC" || parcalar[1] == "DOCX" || parcalar[1] == "PDF")
                     {
                         var kontrol = db.Rapor.Where(w => w.Tarih_Id == idi && w.Hoca_Id == ogr.Hoca_ID && w.Tez_Id == ogr.Tez_ID).FirstOrDefault();
+                        var rprtrh = db.Rapor_Tarih.Find(idi);
                         if (kontrol==null)
                         {
                             myFile.SaveAs(Server.MapPath("~/Raporlar/") + ogr.Hoca_ID + ogr.Tez_ID + id + "." + parcalar[1]);
@@ -67,6 +74,7 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
                             rpr.Tarih_Id = Convert.ToInt32(id);
                             rpr.Ad = parcalar[1];
                             rpr.Dosya = ogr.Hoca_ID + "" + ogr.Tez_ID + "" + rpr.Tarih_Id;
+                            rpr.Aciklama = rprtrh.tur.ToString();
                             db.Rapor.Add(rpr);
                             db.SaveChanges();
                             Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Kaydedildi');</script>");
@@ -79,6 +87,7 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
                             kontrol.Tez_Id = ogr.Tez_ID;
                             kontrol.Tarih_Id = Convert.ToInt32(id);
                             kontrol.Ad = parcalar[1];
+                            kontrol.Aciklama = rprtrh.tur.ToString();
                             kontrol.Dosya = ogr.Hoca_ID + "" + ogr.Tez_ID + "" + idi;
                             db.SaveChanges();
                             Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Kaydedildi');</script>");
@@ -97,6 +106,14 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
                 }
                 break;
         }
+    }
+    protected void VizeRaporEkle_Click(object sender, EventArgs e)
+    {
+        Page.ClientScript.RegisterStartupScript(GetType(), "none", "$('#exampleModal2').modal()", true);
+    }
+    protected void FinalRaporEkle_Click(object sender, EventArgs e)
+    {
+        Page.ClientScript.RegisterStartupScript(GetType(), "none", "$('#exampleModal2').modal()", true);
     }
 }
 

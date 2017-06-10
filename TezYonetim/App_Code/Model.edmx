@@ -97,6 +97,7 @@
           <Property Name="Hoca_Id" Type="int" />
           <Property Name="RaporBas" Type="datetime" />
           <Property Name="RaporBit" Type="datetime" />
+          <Property Name="tur" Type="int" />
         </EntityType>
         <EntityType Name="Sistem">
           <Key>
@@ -128,6 +129,17 @@
           <Property Name="Tez_Alan" Type="int" />
           <Property Name="ResimAd" Type="nvarchar" MaxLength="50" />
           <Property Name="ResimUzanti" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Tez_Kitap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hoca_id" Type="int" />
+          <Property Name="Tez_id" Type="int" />
+          <Property Name="Dosya_ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dosya_Uzanti" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ogr_id" Type="int" />
         </EntityType>
         <Association Name="FK_Duyuru_Hoca">
           <End Role="Hoca" Type="Self.Hoca" Multiplicity="0..1" />
@@ -237,6 +249,7 @@
           <EntitySet Name="Sistem" EntityType="Self.Sistem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tarih" EntityType="Self.Tarih" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tez" EntityType="Self.Tez" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tez_Kitap" EntityType="Self.Tez_Kitap" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Duyuru_Hoca" Association="Self.FK_Duyuru_Hoca">
             <End Role="Hoca" EntitySet="Hoca" />
             <End Role="Duyuru" EntitySet="Duyuru" />
@@ -318,6 +331,7 @@
             <End Role="Tez" EntitySet="Tez" />
             <End Role="Rapor" EntitySet="Rapor" />
           </AssociationSet>
+          <EntitySet Name="Tez_Kitap" EntityType="TezDBModel.Tez_Kitap" />
         </EntityContainer>
         <EntityType Name="Admin">
           <Key>
@@ -423,6 +437,7 @@
           <Property Name="RaporBas" Type="DateTime" Precision="3" />
           <Property Name="RaporBit" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Rapor_Tarih_Hoca" FromRole="Rapor_Tarih" ToRole="Hoca" />
+          <Property Name="tur" Type="Int32" />
         </EntityType>
         <EntityType Name="Sistem">
           <Key>
@@ -555,6 +570,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Tez_Kitap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hoca_id" Type="Int32" />
+          <Property Name="Tez_id" Type="Int32" />
+          <Property Name="Dosya_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dosya_Uzanti" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ogr_id" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -655,6 +681,7 @@
           <EntitySetMapping Name="Rapor_Tarih">
             <EntityTypeMapping TypeName="TezDBModel.Rapor_Tarih">
               <MappingFragment StoreEntitySet="Rapor_Tarih">
+                <ScalarProperty Name="tur" ColumnName="tur" />
                 <ScalarProperty Name="RaporBit" ColumnName="RaporBit" />
                 <ScalarProperty Name="RaporBas" ColumnName="RaporBas" />
                 <ScalarProperty Name="Hoca_Id" ColumnName="Hoca_Id" />
@@ -692,6 +719,18 @@
                 <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
                 <ScalarProperty Name="Konu" ColumnName="Konu" />
                 <ScalarProperty Name="Hoca_ID" ColumnName="Hoca_ID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tez_Kitap">
+            <EntityTypeMapping TypeName="TezDBModel.Tez_Kitap">
+              <MappingFragment StoreEntitySet="Tez_Kitap">
+                <ScalarProperty Name="Ogr_id" ColumnName="Ogr_id" />
+                <ScalarProperty Name="Dosya_Uzanti" ColumnName="Dosya_Uzanti" />
+                <ScalarProperty Name="Dosya_ad" ColumnName="Dosya_ad" />
+                <ScalarProperty Name="Tez_id" ColumnName="Tez_id" />
+                <ScalarProperty Name="Hoca_id" ColumnName="Hoca_id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -138,6 +138,9 @@
                                 <li>
                                     <a href="PosterEkle.aspx">Poster Ekle </a>
                                 </li>
+                                <li>
+                                    <a href="TezKitapEkle.aspx">Tez Kitap Ekle </a>
+                                </li>
                             </ul>
                         </li>
                         <li>
