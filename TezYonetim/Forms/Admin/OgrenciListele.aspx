@@ -2,17 +2,14 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
     <title>Öğrenci Görüntüle</title>
-    
 </asp:Content>
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
     <br />
-    <table class="display"  id="students">
+    <table class="display" id="students">
         <thead>
             <tr>
-                 <th style="text-align: center;">No</th>
+                <th style="text-align: center;">No</th>
                 <th style="text-align: center;">İsim Soyisim </th>
                 <th style="text-align: center;">E-Mail </th>
                 <th style="text-align: center;">Bolum </th>
@@ -20,30 +17,21 @@
             </tr>
         </thead>
         <tbody>
-        <asp:Repeater ID="Repeater1" runat="server">
-            <ItemTemplate>
-                
+            <asp:Repeater ID="Repeater1" runat="server">
+                <ItemTemplate>
                     <tr>
                         <td><%#Eval("Ad") %></td>
                         <td><%#Eval("No") %></td>
                         <td><%#Eval("Mail") %></td>
                         <td><%#Eval("Bolum") %></td>
                         <td>
-                            <a href="#" class="btn btn-primary btn-xs btn-round"> <span class="glyphicon glyphicon-edit"></span></a>
-                            <a href="#" class="btn btn-danger btn-xs btn-round"> <span class="glyphicon glyphicon-remove"></span></a> 
+                            <a href="Duzenle.aspx?IdO=<%#Eval("Id") %>" title="Şifre Değiştir" class="btn btn-primary btn-xs btn-round"><span class="glyphicon glyphicon-edit"></span></a>
                         </td>
                     </tr>
-
-                
-            </ItemTemplate>
-        </asp:Repeater>
-            </tbody>
+                </ItemTemplate>
+            </asp:Repeater>
+        </tbody>
     </table>
-    <br />
-
-
-
-
     <script type="text/javascript">
         $(document).ready(function () {
             $('#students').DataTable({
@@ -72,8 +60,8 @@
                         "sSortAscending": ": artan sütun sıralamasını aktifleştir",
                         "sSortDescending": ": azalan sütun soralamasını aktifleştir"
                     },
-                    
-                    
+
+
                 }
             });
         });

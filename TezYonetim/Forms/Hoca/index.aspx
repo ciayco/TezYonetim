@@ -5,8 +5,9 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <br /><br />
-     <div class="col-sm-3" style="float: left; width: 25%;">
+    <br />
+    <br />
+    <div class="col-sm-3" style="float: left; width: 25%;">
         <!--left col-->
         <ul class="list-group">
             <li id="mainPagePanelHeaderBG1" class="list-group-item text-muted active">
@@ -45,45 +46,48 @@
             <div role="tabpanel" class="tab-pane active" id="home">
                 <div class="panel panel-default">
                     <div class="panel-heading">Duyurular</div>
-                    <div class="panel-body" style="text-align:left;">
-                    <asp:Repeater ID="Repeater1" runat="server">
-                        <ItemTemplate>
-                    
-                       <i class="glyphicon glyphicon-bullhorn">&nbsp;</i> <asp:LinkButton ID="LinkButton1"  OnCommand="LinkButton1_Click" CommandName="duyuru" CommandArgument='<%#Eval("Id") %>' runat="server"><%#Eval("Duyuru_Tarih") %>  -  <%#Eval("Duyuru_Baslik") %> </asp:LinkButton>
-                        <br />
-                        <br />                     
-                    
-                           </ItemTemplate>
+                    <div class="panel-body" style="text-align: left;">
+                        <asp:Repeater ID="Repeater1" runat="server">
+                            <ItemTemplate>
+
+                                <i class="glyphicon glyphicon-bullhorn">&nbsp;</i>
+                                <asp:LinkButton ID="LinkButton1" OnCommand="LinkButton1_Click" CommandName="duyuru" CommandArgument='<%#Eval("Id") %>' runat="server"><%#Eval("Duyuru_Tarih") %>  -  <%#Eval("Duyuru_Baslik") %> </asp:LinkButton>
+                                <br />
+                                <br />
+
+                            </ItemTemplate>
                         </asp:Repeater>
-                        </div>
+                    </div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane"id="profile"><br /><br />
-                <form>
-                    <div style="width:70%;padding-left:10%; ">
-                     <div class="form-group">
-                         <asp:TextBox id="Password" TextMode="Password" placeholder="Eski Şifre" runat="server" class="form-control" ></asp:TextBox>
-                     </div>
+            <div role="tabpanel" class="tab-pane" id="profile">
+                <br />
+                <br />
+                <div style="width: 70%; padding-left: 10%;">
                     <div class="form-group">
-                        <asp:TextBox id="Password1" TextMode="Password" placeholder="Yeni Şifre" runat="server" class="form-control" ></asp:TextBox>
-                     </div>
+                        <asp:TextBox ID="Password" TextMode="Password" placeholder="Eski Şifre" runat="server" class="form-control"></asp:TextBox>
+                    </div>
                     <div class="form-group">
-                         <asp:TextBox id="Password2" TextMode="Password" placeholder="Yeni şifre Tekrar" runat="server" class="form-control" ></asp:TextBox>
-                     </div>
-                   </div>
-                    <asp:Button ID="Button1" class="btn btn-primary" OnClick="Password_Click" runat="server" Text="Şifre Güncelle" />
-               </form>
+                        <asp:TextBox ID="Password1" TextMode="Password" placeholder="Yeni Şifre" runat="server" class="form-control"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <asp:TextBox ID="Password2" TextMode="Password" placeholder="Yeni şifre Tekrar" runat="server" class="form-control"></asp:TextBox>
+                    </div>
+                </div>
+                <asp:Button ID="Button1" class="btn btn-primary" OnClick="Password_Click" runat="server" Text="Şifre Güncelle" />
             </div>
             <div role="tabpanel" class="tab-pane" id="messages">
-                 <br />
+                <br />
                 <div style="height: 450px; overflow-x: hidden; overflow-y: scroll;">
 
 
                     <asp:Repeater ID="Repeater2" runat="server">
                         <ItemTemplate>
-                            <div class="alert alert-success" style="font-size: 12px; text-align: left" role="alert"><%#metin_kisalt_yan(Eval("Gadi").ToString().Trim()) %> <i style="text-align: right; float: right;"><%#Eval("MsjTarih") %></i>
+                            <div class="alert alert-success" style="font-size: 12px; text-align: left" role="alert">
+                                <%#metin_kisalt_yan(Eval("Gadi").ToString().Trim()) %> <i style="text-align: right; float: right;"><%#Eval("MsjTarih") %></i>
                                 <br />
-                                <a style="text-decoration: none; color:green" href="MesajGoster.aspx?ID=<%#Eval("Id") %>"> <%#metin_kisalt_yan(Eval("MsjText").ToString().Trim()) %></a></div>
+                                <a style="text-decoration: none; color: green" href="MesajGoster.aspx?ID=<%#Eval("Id") %>"><%#metin_kisalt_yan(Eval("MsjText").ToString().Trim()) %></a>
+                            </div>
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>
@@ -102,8 +106,9 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <asp:Label ID="Label8" runat="server"></asp:Label><br /><br />
-                          <asp:Label ID="Label9" runat="server"></asp:Label>
+                        <asp:Label ID="Label8" runat="server"></asp:Label><br />
+                        <br />
+                        <asp:Label ID="Label9" runat="server"></asp:Label>
                     </div>
                 </div>
                 <div class="modal-footer">

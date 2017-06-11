@@ -2,14 +2,11 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="Server">
     <title>Admin Görüntüle</title>
-    
 </asp:Content>
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
     <br />
-    <table class="display"  id="students">
+    <table class="display" id="students">
         <thead>
             <tr>
                 <th style="text-align: center;">İsim Soyisim </th>
@@ -18,29 +15,19 @@
             </tr>
         </thead>
         <tbody>
-        <asp:Repeater ID="Repeater1" runat="server">
-            <ItemTemplate>
-                
+            <asp:Repeater ID="Repeater1" runat="server">
+                <ItemTemplate>
                     <tr>
                         <td><%#Eval("KullanıcıAdi") %></td>
                         <td><%#Eval("Mail") %></td>
                         <td>
-                            <a href="#" class="btn btn-primary btn-xs btn-round"> <span class="glyphicon glyphicon-edit"></span></a>
-                            <a href="#" class="btn btn-danger btn-xs btn-round"> <span class="glyphicon glyphicon-remove"></span></a> 
+                            <a href="Duzenle.aspx?IdA=<%#Eval("Id") %>" title="Şifre Değiştir" class="btn btn-primary btn-xs btn-round"><span class="glyphicon glyphicon-edit"></span></a>
                         </td>
                     </tr>
-
-                
-            </ItemTemplate>
-        </asp:Repeater>
-            </tbody>
+                </ItemTemplate>
+            </asp:Repeater>
+        </tbody>
     </table>
-    <br />
-
-
-
-
-
     <script type="text/javascript">
         $(document).ready(function () {
             $('#students').DataTable({
@@ -69,8 +56,8 @@
                         "sSortAscending": ": artan sütun sıralamasını aktifleştir",
                         "sSortDescending": ": azalan sütun soralamasını aktifleştir"
                     },
-                    
-                    
+
+
                 }
             });
         });
