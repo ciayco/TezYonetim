@@ -7,9 +7,9 @@ using System.Web.UI.WebControls;
 
 public partial class Forms_Hoca_RaporTarih : TezBase
 {
-        TezDBEntities db;
-        Rapor_Tarih trh;
-        
+    TezDBEntities db;
+    Rapor_Tarih trh;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         db = new TezDBEntities();
@@ -28,7 +28,7 @@ public partial class Forms_Hoca_RaporTarih : TezBase
             if (sayi == 0)
             {
                 tarihekle();
-                                          
+
                 //Label1.Text = "Başlangıç " + trh.RaporBas.ToString();
                 //Label2.Text = "Bitiş " + trh.RaporBit.ToString();               
             }
@@ -37,9 +37,9 @@ public partial class Forms_Hoca_RaporTarih : TezBase
                 db.Rapor_Tarih.RemoveRange(rptarih);
                 db.SaveChanges();
                 tarihekle();
-            }        
-            
-            
+            }
+
+
         }
         else
         {
@@ -51,24 +51,27 @@ public partial class Forms_Hoca_RaporTarih : TezBase
 
     public void tarihekle()
     {
-         DateTime RaporBas = DateTime.Parse(DBas.Text.Replace("T", " "));
+        DateTime RaporBas = DateTime.Parse(DBas.Text.Replace("T", " "));
         DateTime RaporBit = DateTime.Parse(DBit.Text.Replace("T", " "));
-         double toplamgun = (RaporBit - RaporBas).TotalDays;
-         toplamgun = toplamgun / Convert.ToInt32(RaporAdet.Text);
-         double periyod = Math.Round(toplamgun);
-         DateTime temp = new DateTime();
-         temp = RaporBas;
-         Label1.Text = "Toplam gün sayısı " + periyod;
-         int raportext = Convert.ToInt32(RaporAdet.Text);
-         for (int i = 0; i<raportext ; i++)
-         {
-             trh.Hoca_Id = AppKontrol.id;
+        double toplamgun = (RaporBit - RaporBas).TotalDays;
+        toplamgun = toplamgun / Convert.ToInt32(RaporAdet.Text);
+        double periyod = Math.Round(toplamgun);
+        DateTime temp = new DateTime();
+        temp = RaporBas;
+        Label1.Text = "Toplam gün sayısı " + periyod;
+        int raportext = Convert.ToInt32(RaporAdet.Text);
+        for (int i = 0; i < raportext; i++)
+        {
+            trh.Hoca_Id = AppKontrol.id;
             trh.RaporBas = temp;
-             temp = temp.AddDays(periyod);
-             if (i+1==raportext) trh.RaporBit = RaporBit;
-             else trh.RaporBit = temp;
-             db.Rapor_Tarih.Add(trh);
+            temp = temp.AddDays(periyod);
+            if (i + 1 == raportext) trh.RaporBit = RaporBit;
+            else trh.RaporBit = temp;
+            trh.tur = 1;
+            db.Rapor_Tarih.Add(trh);
             db.SaveChanges();
-         }
-     }
+            
+        }
+        Label1.Text += "<br/>" + "Kaydedildi";
+    }
 }

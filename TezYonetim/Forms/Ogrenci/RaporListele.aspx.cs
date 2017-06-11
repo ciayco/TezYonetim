@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 
 public partial class Forms_Ogrenci_RaporListele : TezBaseUser
 {
+    static int kontrol = 1;
     TezDBEntities db = new TezDBEntities();
     Rapor rpr = new Rapor();
     Ogrenci ogr = new Ogrenci();
@@ -15,7 +16,7 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
     protected void Page_Load(object sender, EventArgs e)
     {
         ogr = db.Ogrenci.Find(AppKontrol.id);
-        var trh = db.Rapor_Tarih.Where(t => t.Hoca_Id == ogr.Hoca_ID && t.tur==1).ToList();//diğer raporlar 1
+        var trh = db.Rapor_Tarih.Where(t => t.Hoca_Id == ogr.Hoca_ID && t.tur == 1).ToList();//diğer raporlar 1
         var vize = db.Rapor_Tarih.Where(t => t.Hoca_Id == ogr.Hoca_ID && t.tur == 2).ToList();// vize 2
         var final = db.Rapor_Tarih.Where(t => t.Hoca_Id == ogr.Hoca_ID && t.tur == 3).ToList();// final 3
         Repeater1.DataSource = trh;
@@ -56,49 +57,60 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
         switch (e.CommandName)
         {
             case "Kaydet":
+                DateTime tarih = DateTime.Now;
+
                 HttpPostedFile myFile = filMyFile.PostedFile;
                 if (myFile.ContentLength > 0)
                 {
                     string[] parcalar = myFile.FileName.Split('.');//.dan sonrakı uzantıyı parcalar[1] içine atar 
                     string id = HiddenField1.Value.ToString();
                     int idi = Convert.ToInt32(id);
-                    if (parcalar[1]=="doc" || parcalar[1] == "docx" || parcalar[1] == "pdf" || parcalar[1] == "DOC" || parcalar[1] == "DOCX" || parcalar[1] == "PDF")
+                    if (parcalar[1] == "doc" || parcalar[1] == "docx" || parcalar[1] == "pdf" || parcalar[1] == "DOC" || parcalar[1] == "DOCX" || parcalar[1] == "PDF")
                     {
                         var kontrol = db.Rapor.Where(w => w.Tarih_Id == idi && w.Hoca_Id == ogr.Hoca_ID && w.Tez_Id == ogr.Tez_ID).FirstOrDefault();
                         var rprtrh = db.Rapor_Tarih.Find(idi);
-                        if (kontrol==null)
+                        if (rprtrh.RaporBit >= tarih && rprtrh.RaporBas <= tarih)
                         {
-                            myFile.SaveAs(Server.MapPath("~/Raporlar/") + ogr.Hoca_ID + ogr.Tez_ID + id + "." + parcalar[1]);
-                            rpr.Hoca_Id = ogr.Hoca_ID;
-                            rpr.Tez_Id = ogr.Tez_ID;
-                            rpr.Tarih_Id = Convert.ToInt32(id);
-                            rpr.Ad = parcalar[1];
-                            rpr.Dosya = ogr.Hoca_ID + "" + ogr.Tez_ID + "" + rpr.Tarih_Id;
-                            rpr.Aciklama = rprtrh.tur.ToString();
-                            db.Rapor.Add(rpr);
-                            db.SaveChanges();
-                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Kaydedildi');</script>");
+
+                            if (kontrol == null)
+                            {
+                                myFile.SaveAs(Server.MapPath("~/Raporlar/") + ogr.Hoca_ID + ogr.Tez_ID + id + "." + parcalar[1]);
+                                rpr.Hoca_Id = ogr.Hoca_ID;
+                                rpr.Tez_Id = ogr.Tez_ID;
+                                rpr.Tarih_Id = Convert.ToInt32(id);
+                                rpr.Ad = parcalar[1];
+                                rpr.Dosya = ogr.Hoca_ID + "" + ogr.Tez_ID + "" + rpr.Tarih_Id;
+                                rpr.Aciklama = rprtrh.tur.ToString();
+                                db.Rapor.Add(rpr);
+                                db.SaveChanges();
+                                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Kaydedildi');</script>");
+                            }
+                            else
+                            {
+                                File.Delete(Server.MapPath("~/Raporlar/") + ogr.Hoca_ID + ogr.Tez_ID + id + "." + kontrol.Ad);
+                                myFile.SaveAs(Server.MapPath("~/Raporlar/") + ogr.Hoca_ID + ogr.Tez_ID + id + "." + parcalar[1]);
+                                kontrol.Hoca_Id = ogr.Hoca_ID;
+                                kontrol.Tez_Id = ogr.Tez_ID;
+                                kontrol.Tarih_Id = Convert.ToInt32(id);
+                                kontrol.Ad = parcalar[1];
+                                kontrol.Aciklama = rprtrh.tur.ToString();
+                                kontrol.Dosya = ogr.Hoca_ID + "" + ogr.Tez_ID + "" + idi;
+                                db.SaveChanges();
+                                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Kaydedildi');</script>");
+                            }
+
                         }
                         else
                         {
-                            File.Delete(Server.MapPath("~/Raporlar/")+ ogr.Hoca_ID + ogr.Tez_ID + id + "." + kontrol.Ad);
-                            myFile.SaveAs(Server.MapPath("~/Raporlar/") + ogr.Hoca_ID + ogr.Tez_ID + id + "." + parcalar[1]);
-                            kontrol.Hoca_Id = ogr.Hoca_ID;
-                            kontrol.Tez_Id = ogr.Tez_ID;
-                            kontrol.Tarih_Id = Convert.ToInt32(id);
-                            kontrol.Ad = parcalar[1];
-                            kontrol.Aciklama = rprtrh.tur.ToString();
-                            kontrol.Dosya = ogr.Hoca_ID + "" + ogr.Tez_ID + "" + idi;
-                            db.SaveChanges();
-                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Kaydedildi');</script>");
+                            Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Rapor Yükleme Tarihi Aralık Dışı');</script>");
                         }
-                       
+
                     }
                     else
                     {
                         Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('uzantı hatası');</script>");
                     }
-                   
+
                 }
                 else
                 {
@@ -116,4 +128,5 @@ public partial class Forms_Ogrenci_RaporListele : TezBaseUser
         Page.ClientScript.RegisterStartupScript(GetType(), "none", "$('#exampleModal2').modal()", true);
     }
 }
+
 

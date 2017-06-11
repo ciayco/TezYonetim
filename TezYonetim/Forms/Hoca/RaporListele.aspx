@@ -25,6 +25,7 @@
                 <th style="text-align: center;">Açıklama </th>
                 <th style="text-align: center;">Öğrenci Sayısı</th>
                 <th style="text-align: center;">Düzenle</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -35,8 +36,22 @@
                         <td><%#metin_kisalt_yan(Eval("Aciklama").ToString().Trim()) %> </td>
                         <td><%#Eval("Tez_Alan") %></td>
                         <td>
-                            <asp:Button type="button" runat="server" OnCommand="Goster_Click" data-id='<%#Eval("Id") %>' CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" class="btn btn-primary" />
+                            <div class="btn-group">
+                                <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    İşlemler <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <asp:Button type="button" ID="genel" runat="server" OnCommand="Goster_Click" data-id='<%#Eval("Id") %>' CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" class="btn btn-default btn-sm" /></li>
+                                    <li>
+                                        <asp:Button type="button" ID="vize" runat="server" OnCommand="Goster_Click" data-id='<%#Eval("Id") %>' CommandName="Goruntulevize" CommandArgument='<%#Eval("Id") %>' Text="Vize Rapor Görüntüle" class="btn btn-default btn-sm" /></li>
+                                    <li>
+                                        <asp:Button type="button" ID="final" runat="server" OnCommand="Goster_Click" data-id='<%#Eval("Id") %>' CommandName="Goruntulefinal" CommandArgument='<%#Eval("Id") %>' Text="Final Rapor Görüntüle" class="btn btn-default btn-sm" /></li>
+                                </ul>
+                            </div>
+
                         </td>
+                        <td></td>
                     </tr>
                 </ItemTemplate>
             </asp:Repeater>
@@ -53,17 +68,21 @@
                 </div>
                 <div class="modal-body">
                     <asp:Label ID="Label1" runat="server" Font-Size="18px" Text="Tez Öğrencileri"></asp:Label><br />
-                    <asp:Label ID="TezOgrLbl" runat="server"></asp:Label><br /><br /><br />
+                    <asp:Label ID="TezOgrLbl" runat="server"></asp:Label><br />
+                    <br />
+                    <br />
                     <div class="form-group">
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                            <asp:Repeater ID="Repeater2" runat="server">
+                            <asp:Repeater ID="Repeater2" runat="server" OnItemDataBound="Repeater2_ItemDataBound">
                                 <HeaderTemplate>
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <div class="panel panel-primary">
                                         <div class="panel-heading" role="tab" id="headingTwo">
                                             <h6 class="panel-title" style="text-align: left;">
-                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#<%#Eval("Id") %>" aria-expanded="false" aria-controls="<%#Eval("Id") %>"> Rapor <%=++sayac%>                        
+                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#<%#Eval("Id") %>" aria-expanded="false" aria-controls="<%#Eval("Id") %>">
+                                                    <asp:Label ID="lblrapor" runat="server"></asp:Label>
+                                                    <%=++sayac%>                        
                                                 </a>
                                             </h6>
                                         </div>
@@ -72,8 +91,7 @@
                                                 <b>Rapor Başlangıç</b> = <%#Eval("RaporBas") %><br />
                                                 <b>Rapor Biriş</b> = <%#Eval("RaporBit") %><br />
                                                 <br />
-                                                <span class="btn btn-primary">
-                                                    <asp:Button type="button" runat="server" OnCommand="RaporGoruntule" CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" BorderStyle="None" BackColor="#337AB7" /></span>&nbsp;&nbsp;                           
+                                                <asp:Button CssClass="btn btn-primary" type="button" ID="goruntule" runat="server" OnCommand="RaporGoruntule" CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" />
                                             </div>
                                         </div>
                                     </div>
