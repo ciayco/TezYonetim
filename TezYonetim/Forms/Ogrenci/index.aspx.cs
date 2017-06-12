@@ -17,22 +17,41 @@ public partial class User : TezBaseUser
         Label1.Text = "Tez Öğrencisi";
         Label2.Text = Ogrenci.Ad;
         Label3.Text = Ogrenci.Bolum;
-        if (Ogrenci.Hoca_Onay != true && Ogrenci.Hoca_ID == null) { Label7.Text = "Seçilmemiş"; }
-        else if (Ogrenci.Hoca_Onay == false && Ogrenci.Hoca_ID != null) { Label7.Text = "Onay Beklemede"; }
-        else { Label7.Text = hoca.Ad; }
+
+        if (Ogrenci.Hoca_Onay != true && Ogrenci.Hoca_ID == null)
+        {
+            Label7.Text = "Seçilmemiş";
+        }
+        else if (Ogrenci.Hoca_Onay == false && Ogrenci.Hoca_ID != null)
+        {
+            Label7.Text = "Onay Beklemede";
+        }
+        else
+        {
+            Label7.Text = hoca.Ad;
+        }
         Label4.Text = Ogrenci.No;
-        if (Ogrenci.Tez_Onay == null) { Label5.Text = "Tez Almamış"; }
-        else if (Ogrenci.Tez_Onay == true) { Label5.Text = "Onaylandı"; }
-        else { Label5.Text = "Onay Bekliyor"; }
+        if (Ogrenci.Tez_Onay == null)
+        {
+            Label5.Text = "Tez Almamış";
+        }
+        else if (Ogrenci.Tez_Onay == true)
+        {
+            Label5.Text = "Onaylandı";
+        }
+        else
+        {
+            Label5.Text = "Onay Bekliyor";
+        }
         Label6.Text = Ogrenci.Mail;
-        var Duyurular = db.Duyuru.Where(w=> w.Hoca_Id==Ogrenci.Hoca_ID && Ogrenci.Hoca_Onay==true).ToList();
+
+        var Duyurular = db.Duyuru.Where(w => w.Hoca_Id == Ogrenci.Hoca_ID && Ogrenci.Hoca_Onay == true).ToList();
         Repeater1.DataSource = Duyurular;
         Repeater1.DataBind();
-        var Mesajlar = db.Mesaj.Where(w => w.Aid ==AppKontrol.id && w.ADerece==AppKontrol.derece).ToList();
-       
-            Repeater2.DataSource = Mesajlar;
-            Repeater2.DataBind();
-        
+
+        var Mesajlar = db.Mesaj.Where(w => w.Aid == AppKontrol.id && w.ADerece == AppKontrol.derece).ToList();
+        Repeater2.DataSource = Mesajlar;
+        Repeater2.DataBind();
     }
 
     protected void LogOut_Click(object sender, EventArgs e)
@@ -43,17 +62,13 @@ public partial class User : TezBaseUser
     }
 
     public string metin_kisalt_yan(string metin)
-
     {
         if (metin.Length > 50)
         {
             metin = metin.Substring(0, 50);
-
             metin = metin + "...";
         }
-
         return metin;
-
     }
     protected void Password_Click(object sender, EventArgs e)
     {
@@ -76,8 +91,6 @@ public partial class User : TezBaseUser
         {
             Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "Başlık", "<script>alert('Boş Geçilemez');</script>");
         }
-
-
     }
 
     protected void LinkButton1_Click(object sender, CommandEventArgs e)
@@ -90,13 +103,11 @@ public partial class User : TezBaseUser
                 id = e.CommandArgument.ToString();
                 did = Convert.ToInt32(id);
                 var duyuru = db.Duyuru.Where(o => o.Id == did).FirstOrDefault();
-
                 if (duyuru != null)
                 {
                     Label8.Text = duyuru.Duyuru_Baslik;
                     Label9.Text = duyuru.Duyuru_Text;
                     Page.ClientScript.RegisterStartupScript(GetType(), "none", "$('#exampleModal4').modal()", true);
-                    
                 }
                 else
                 {
