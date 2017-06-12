@@ -2,45 +2,175 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 
-    <title>Tezlerim</title>
+    <title>Tez Görüntüle</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
     <br />
-    <!--Repeater -->
-    <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
-        <HeaderTemplate>
-            <table class="table table-striped">
-                <thead>
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#devam" aria-controls="home" role="tab" data-toggle="tab">Devam Eden Tezler</a></li>
+        <li role="presentation"><a href="#tum" aria-controls="tum" role="tab" data-toggle="tab">Tüm Tezler</a></li>
+        <li role="presentation"><a href="#alinmayan" aria-controls="alinmayan" role="tab" data-toggle="tab">Alınmayan Tezler</a></li>
+        <li role="presentation"><a href="#biten" aria-controls="biten" role="tab" data-toggle="tab">Biten Tezler</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="devam">
+            <br />
+            <!--Repeater -->
+            <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                <HeaderTemplate>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;">Konu </th>
+                                <th style="text-align: center;">Açıklama </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                </HeaderTemplate>
+                <ItemTemplate>
                     <tr>
-                        <th style="text-align: center;">Konu </th>
-                        <th style="text-align: center;">Açıklama </th>
+                        <td><%#metin_kisalt_yan(Eval("Konu").ToString().Trim()) %></td>
+                        <td><%#metin_kisalt_yan(Eval("aciklama").ToString().Trim()) %></td>
+                        <td>
+                            <asp:ImageButton ID="ImageButton1" OnCommand="ImageButton1_Command" CommandName="poster" CommandArgument='<%# Eval("Id") %>' runat="server" Height="20px" Width="20px" ImageUrl='<%# "~/Posterler/" + Eval("ResimAd") + "." + Eval("ResimUzanti") %>' />
+                        </td>
+                        <td>
+                            <asp:Button ID="incBut" CommandName="incele" Text="İncele" runat="server" class="btn btn-default btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
+                        </td>
+                        <td>
+                            <a href="TezDuzenle.aspx?ID=<%#Eval("Id") %>" class="btn btn-success btn-xs btn-round">Düzenle</a>
+                        </td>
+                        <td>
+                            <asp:Button ID="RedBut" CommandName="Red" Text="Sil" runat="server" class="btn btn-danger btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-        </HeaderTemplate>
-        <ItemTemplate>
-            <tr>
-                <td><%#metin_kisalt_yan(Eval("Konu").ToString().Trim()) %></td>
-                <td><%#metin_kisalt_yan(Eval("aciklama").ToString().Trim()) %></td>
-                <td>
-                    <asp:ImageButton ID="ImageButton1" OnCommand="ImageButton1_Command" CommandName="poster" CommandArgument='<%# Eval("Id") %>' runat="server" Height="20px" Width="20px" ImageUrl='<%# "~/Posterler/" + Eval("ResimAd") + "." + Eval("ResimUzanti") %>' />
-                </td>
-                <td>
-                    <asp:Button ID="incBut" CommandName="incele" Text="İncele" runat="server" class="btn btn-default btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
-                </td>
-                <td>
-                    <a href="TezDuzenle.aspx?ID=<%#Eval("Id") %>" class="btn btn-success btn-xs btn-round">Düzenle</a>
-                </td>
-                <td>
-                    <asp:Button ID="RedBut" CommandName="Red" Text="Sil" runat="server" class="btn btn-danger btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
-                </td>
-            </tr>
-        </ItemTemplate>
-        <FooterTemplate>
-            </tbody> </table>
-        </FooterTemplate>
-    </asp:Repeater>
+                </ItemTemplate>
+                <FooterTemplate>
+                    </tbody> </table>
+                </FooterTemplate>
+            </asp:Repeater>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="tum">
+            <br />
+
+            <!--Repeater -->
+            <asp:Repeater ID="Repeater3" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                <HeaderTemplate>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;">Konu </th>
+                                <th style="text-align: center;">Açıklama </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                </HeaderTemplate>
+                <ItemTemplate>
+                    <tr>
+                        <td><%#metin_kisalt_yan(Eval("Konu").ToString().Trim()) %></td>
+                        <td><%#metin_kisalt_yan(Eval("aciklama").ToString().Trim()) %></td>
+                        <td>
+                            <asp:ImageButton ID="ImageButton1" OnCommand="ImageButton1_Command" CommandName="poster" CommandArgument='<%# Eval("Id") %>' runat="server" Height="20px" Width="20px" ImageUrl='<%# "~/Posterler/" + Eval("ResimAd") + "." + Eval("ResimUzanti") %>' />
+                        </td>
+                        <td>
+                            <asp:Button ID="incBut" CommandName="incele" Text="İncele" runat="server" class="btn btn-default btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
+                        </td>
+                        <td>
+                            <a href="TezDuzenle.aspx?ID=<%#Eval("Id") %>" class="btn btn-success btn-xs btn-round">Düzenle</a>
+                        </td>
+                        <td>
+                            <asp:Button ID="RedBut" CommandName="Red" Text="Sil" runat="server" class="btn btn-danger btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
+                        </td>
+                    </tr>
+                </ItemTemplate>
+                <FooterTemplate>
+                    </tbody> </table>
+                </FooterTemplate>
+            </asp:Repeater>
+
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="alinmayan">
+            <br />
+            <!--Repeater -->
+            <asp:Repeater ID="Repeater4" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                <HeaderTemplate>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;">Konu </th>
+                                <th style="text-align: center;">Açıklama </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                </HeaderTemplate>
+                <ItemTemplate>
+                    <tr>
+                        <td><%#metin_kisalt_yan(Eval("Konu").ToString().Trim()) %></td>
+                        <td><%#metin_kisalt_yan(Eval("aciklama").ToString().Trim()) %></td>
+                        <td>
+                            <asp:ImageButton ID="ImageButton1" OnCommand="ImageButton1_Command" CommandName="poster" CommandArgument='<%# Eval("Id") %>' runat="server" Height="20px" Width="20px" ImageUrl='<%# "~/Posterler/" + Eval("ResimAd") + "." + Eval("ResimUzanti") %>' />
+                        </td>
+                        <td>
+                            <asp:Button ID="incBut" CommandName="incele" Text="İncele" runat="server" class="btn btn-default btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
+                        </td>
+                        <td>
+                            <a href="TezDuzenle.aspx?ID=<%#Eval("Id") %>" class="btn btn-success btn-xs btn-round">Düzenle</a>
+                        </td>
+                        <td>
+                            <asp:Button ID="RedBut" CommandName="Red" Text="Sil" runat="server" class="btn btn-danger btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
+                        </td>
+                    </tr>
+                </ItemTemplate>
+                <FooterTemplate>
+                    </tbody> </table>
+                </FooterTemplate>
+            </asp:Repeater>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="biten">
+            <br />
+            <!--Repeater -->
+            <asp:Repeater ID="Repeater5" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                <HeaderTemplate>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;">Konu </th>
+                                <th style="text-align: center;">Açıklama </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                </HeaderTemplate>
+                <ItemTemplate>
+                    <tr>
+                        <td><%#metin_kisalt_yan(Eval("Konu").ToString().Trim()) %></td>
+                        <td><%#metin_kisalt_yan(Eval("aciklama").ToString().Trim()) %></td>
+                        <td>
+                            <asp:ImageButton ID="ImageButton1" OnCommand="ImageButton1_Command" CommandName="poster" CommandArgument='<%# Eval("Id") %>' runat="server" Height="20px" Width="20px" ImageUrl='<%# "~/Posterler/" + Eval("ResimAd") + "." + Eval("ResimUzanti") %>' />
+                        </td>
+                        <td>
+                            <asp:Button ID="incBut" CommandName="incele" Text="İncele" runat="server" class="btn btn-default btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
+                        </td>
+                        <td>
+                            <a href="TezDuzenle.aspx?ID=<%#Eval("Id") %>" class="btn btn-success btn-xs btn-round">Düzenle</a>
+                        </td>
+                        <td>
+                            <asp:Button ID="RedBut" CommandName="Red" Text="Sil" runat="server" class="btn btn-danger btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
+                        </td>
+                    </tr>
+                </ItemTemplate>
+                <FooterTemplate>
+                    </tbody> </table>
+                </FooterTemplate>
+            </asp:Repeater>
+        </div>
+
+    </div>
+    <!-- Tab Bitiş -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -92,9 +222,12 @@
                     <h4 class="modal-title" id="postermodalLabel">Tez Afişi</h4>
                 </div>
                 <div class="modal-body">
-                   <div id="posterDiv" runat="server"><asp:Image ID="posterimage" Height="400" Width="275px   " runat="server" /></div> 
+                    <div id="posterDiv" runat="server">
+                        <asp:Image ID="posterimage" Height="400" Width="275px   " runat="server" />
+                    </div>
                     <div id="posterLabel" runat="server" visible="false">
-                        <asp:Label ID="labelPoster" runat="server" Text=""></asp:Label></div>
+                        <asp:Label ID="labelPoster" runat="server" Text=""></asp:Label>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

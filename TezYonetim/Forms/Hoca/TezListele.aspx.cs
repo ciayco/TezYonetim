@@ -13,11 +13,21 @@ public partial class Forms_Hoca_TezListele : TezBase
     protected void Page_Load(object sender, EventArgs e)
     {
         db = new TezDBEntities();
-        var Ogrdb = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id).ToList();
+        var Ogrdb1 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id && t.Tez_Alan > 0).ToList();//alınan
+        var Ogrdb2 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id).ToList();//tum
+        var Ogrdb3 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id && t.Tez_Alan == 0).ToList();//alınmayan
+        var Ogrdb4 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id).ToList();//biten
+
         if (!IsPostBack)
         {
-            Repeater1.DataSource = Ogrdb;
+            Repeater1.DataSource = Ogrdb1;
             Repeater1.DataBind();
+            Repeater3.DataSource = Ogrdb2;
+            Repeater3.DataBind();
+            Repeater4.DataSource = Ogrdb3;
+            Repeater4.DataBind();
+            Repeater5.DataSource = Ogrdb4;
+            Repeater5.DataBind();
         }
     }
     public string metin_kisalt_yan(string metin)

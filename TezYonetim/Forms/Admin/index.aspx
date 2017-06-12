@@ -32,7 +32,8 @@
     <%-- Boşluk divi --%>
     <div style="float: left; width: 5%;"></div>
 
-    <%-- Tab Başlangıc --%> <div style="float: left; width: 70%;">
+    <%-- Tab Başlangıc --%> 
+    <div style="float: left; width: 70%;">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Şifre İşlemleri</a></li>
