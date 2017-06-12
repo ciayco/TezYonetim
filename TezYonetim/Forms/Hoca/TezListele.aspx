@@ -6,20 +6,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
-    <br />
-
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#devam" aria-controls="home" role="tab" data-toggle="tab">Devam Eden Tezler</a></li>
         <li role="presentation"><a href="#tum" aria-controls="tum" role="tab" data-toggle="tab">Tüm Tezler</a></li>
         <li role="presentation"><a href="#alinmayan" aria-controls="alinmayan" role="tab" data-toggle="tab">Alınmayan Tezler</a></li>
         <li role="presentation"><a href="#biten" aria-controls="biten" role="tab" data-toggle="tab">Biten Tezler</a></li>
     </ul>
-
     <!-- Tab panes -->
     <div class="tab-content">
+        <!-- Tap Başlangıc -->
         <div role="tabpanel" class="tab-pane active" id="devam">
             <br />
-            <!--Repeater -->
             <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
                 <HeaderTemplate>
                     <table class="table table-striped">
@@ -54,9 +51,10 @@
                 </FooterTemplate>
             </asp:Repeater>
         </div>
+        <!-- Tap Bitiş -->
+        <!-- Tap Başlangıc -->
         <div role="tabpanel" class="tab-pane" id="tum">
             <br />
-
             <!--Repeater -->
             <asp:Repeater ID="Repeater3" runat="server" OnItemCommand="Repeater1_ItemCommand">
                 <HeaderTemplate>
@@ -91,9 +89,9 @@
                     </tbody> </table>
                 </FooterTemplate>
             </asp:Repeater>
-
-
         </div>
+        <!-- Tap Bitiş -->
+        <!-- Tap Başlangıc -->
         <div role="tabpanel" class="tab-pane" id="alinmayan">
             <br />
             <!--Repeater -->
@@ -131,9 +129,10 @@
                 </FooterTemplate>
             </asp:Repeater>
         </div>
+        <!-- Tap Bitiş -->
+        <!-- Tap Başlangıc -->
         <div role="tabpanel" class="tab-pane" id="biten">
             <br />
-            <!--Repeater -->
             <asp:Repeater ID="Repeater5" runat="server" OnItemCommand="Repeater1_ItemCommand">
                 <HeaderTemplate>
                     <table class="table table-striped">
@@ -168,9 +167,10 @@
                 </FooterTemplate>
             </asp:Repeater>
         </div>
-
+        <!-- Tap Bitiş -->
     </div>
-    <!-- Tab Bitiş -->
+    <!-- Tab panel Bitiş -->
+    <!-- Modal başlangıç-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -193,13 +193,10 @@
                             <div class="panel-footer" style="text-align: left;">
                                 <i class="glyphicon glyphicon-user">&nbsp;</i>Tezi Alan Öğrenciler:
                                 <asp:Repeater ID="Repeater2" runat="server" OnItemCommand="Repeater1_ItemCommand">
-
                                     <ItemTemplate>
                                         <a href="#"><%#Eval("Ad") %></a>
                                     </ItemTemplate>
                                 </asp:Repeater>
-
-
                                 <blockquote style="font-size: 14px;">
                                     <asp:Label ID="Label5" runat="server"></asp:Label>
                                 </blockquote>
@@ -213,7 +210,8 @@
             </div>
         </div>
     </div>
-
+    <!-- Modal Bitiş -->
+    <!-- Modal başlangıç-->
     <div class="modal fade" id="postermodal" tabindex="-1" role="dialog" aria-labelledby="postermodalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -235,6 +233,6 @@
             </div>
         </div>
     </div>
-
+    <!-- Modal Bitiş -->
 </asp:Content>
 
