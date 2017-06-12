@@ -11,10 +11,10 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jqc-1.12.4/dt-1.10.13/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/datatables.min.css" />
     <script src="../../js/jquery.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.13/i18n/Turkish.json"></script>
+    <script type="text/javascript" src="../../css/datatables.min.js"></script>
+    <script type="text/javascript" src="../../css/Turkish.json"></script>
     <!-- Bootstrap Core CSS -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->

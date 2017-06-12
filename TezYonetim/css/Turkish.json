@@ -1,0 +1,26 @@
+﻿
+
+{
+	"sDecimal":        ",",
+	"sEmptyTable":     "Tabloda herhangi bir veri mevcut deÄŸil",
+	"sInfo":           "_TOTAL_ kayÄ±ttan _START_ - _END_ arasÄ±ndaki kayÄ±tlar gÃ¶steriliyor",
+	"sInfoEmpty":      "KayÄ±t yok",
+	"sInfoFiltered":   "(_MAX_ kayÄ±t iÃ§erisinden bulunan)",
+	"sInfoPostFix":    "",
+	"sInfoThousands":  ".",
+	"sLengthMenu":     "Sayfada _MENU_ kayÄ±t gÃ¶ster",
+	"sLoadingRecords": "YÃ¼kleniyor...",
+	"sProcessing":     "Ä°ÅŸleniyor...",
+	"sSearch":         "Ara:",
+	"sZeroRecords":    "EÅŸleÅŸen kayÄ±t bulunamadÄ±",
+	"oPaginate": {
+		"sFirst":    "Ä°lk",
+		"sLast":     "Son",
+		"sNext":     "Sonraki",
+		"sPrevious": "Ã–nceki"
+	},
+	"oAria": {
+		"sSortAscending":  ": artan sÃ¼tun sÄ±ralamasÄ±nÄ± aktifleÅŸtir",
+		"sSortDescending": ": azalan sÃ¼tun soralamasÄ±nÄ± aktifleÅŸtir"
+	}
+}
