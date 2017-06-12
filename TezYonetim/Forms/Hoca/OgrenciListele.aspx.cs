@@ -19,7 +19,7 @@ public partial class Admin : TezBase
         {
             int id = int.Parse(Request.QueryString["Id"]);
             var ogr2 = db.Ogrenci.Where(w => w.Id== id).FirstOrDefault();
-            var goster = db.Tez.Where(o => o.Id == id).FirstOrDefault();
+            var goster = db.Tez.Where(o => o.Id == ogr2.Tez_ID).FirstOrDefault();
             Label1.Text = ogr2.Ad;
             Label2.Text = ogr2.No;
             Label3.Text = ogr2.Mail;

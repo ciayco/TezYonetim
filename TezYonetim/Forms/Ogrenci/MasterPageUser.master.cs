@@ -42,12 +42,13 @@ public partial class MasterPageUser : System.Web.UI.MasterPage
     protected void Kontrol()
     {
         DateTime tarih = DateTime.Now;
+        var ogr = db.Ogrenci.Find(AppKontrol.id);
         Sistem trh = db.Sistem.Where(q => q.Id == 1).FirstOrDefault();
         if (!(tarih >= trh.DanismanSBas && tarih <= trh.DanismanSBit))
         {
             TezHocaSec.Visible = false;
         }
-        if (!(tarih >= trh.TezSBas && tarih <= trh.TezSBit))
+        if (!(tarih >= trh.TezSBas && tarih <= trh.TezSBit) || ogr.Hoca_Onay!=true)
         {
             TezSec.Visible = false;
             TezOner.Visible = false;

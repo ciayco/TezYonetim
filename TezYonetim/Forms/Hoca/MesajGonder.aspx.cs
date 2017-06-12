@@ -14,7 +14,6 @@ public partial class Forms_Hoca_MesajGonder : TezBase
     {
         if (!IsPostBack)
         {
-            int i = 0;
             hca = db.Hoca.Where(h => h.Id == AppKontrol.id).FirstOrDefault();
             var ogrenci = db.Ogrenci
             .Where(x => x.Hoca_ID == AppKontrol.id)

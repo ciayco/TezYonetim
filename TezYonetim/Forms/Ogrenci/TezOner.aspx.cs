@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 
 public partial class Forms_Ogrenci_TezOner : TezBaseUser
 {
-    // Kullanıcı tarafından girilen diğer öğrenci numaralarından doğru olanlar.
     List<string> TeziAlanDigerOgrenciListesi;
     List<string> TeziAlanDigerOgrenciNumaralari;
     List<string> YanlisGirilenOgrenciListesi;
@@ -32,7 +31,7 @@ public partial class Forms_Ogrenci_TezOner : TezBaseUser
         Label2.Text = "";
         label4.Text = "";
         label5.Text = "";
-        if (konu.Text != "" && comment.Text != "" /*&& Request["TeziAlanDigerOgrenciler"].Trim() !=""*/)
+        if (konu.Text != "" && comment.Text != "")
         {
             Page.ClientScript.RegisterStartupScript(GetType(), "modelBox", "$('.modal').modal()", true);
             var teziAlanDigerOgrenciler = Request["TeziAlanDigerOgrenciler"].Trim();

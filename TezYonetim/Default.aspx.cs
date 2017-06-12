@@ -58,10 +58,14 @@ public partial class Login : System.Web.UI.Page
         {
             Ogrenci user = db.Ogrenci.Where(w => w.No == UserName && w.Sifre == Password).FirstOrDefault();
 
-            if (user != null)
+            if (user != null && user.durum==true)
             {
                 Response.Cookies.Add(cookie.Cookie(user.No, user.Sifre));
                 AuthenticateUser(user.Id, user.Derece, user.Ad, user.Sifre, "Ogrenci");               
+            }
+            else if (user.durum != true)
+            {
+                Label1.Text = "Teziniz Bitmiştir. Sisteme Giriş Yetkiniz Bulunmamaktadır.";
             }
                
             else

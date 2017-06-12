@@ -24,6 +24,8 @@
                             <tr>
                                 <th style="text-align: center;">Konu </th>
                                 <th style="text-align: center;">Açıklama </th>
+                                <th style="text-align: center;">Poster </th>
+                                <th style="text-align: center;">İşlemler </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,13 +38,17 @@
                             <asp:ImageButton ID="ImageButton1" OnCommand="ImageButton1_Command" CommandName="poster" CommandArgument='<%# Eval("Id") %>' runat="server" Height="20px" Width="20px" ImageUrl='<%# "~/Posterler/" + Eval("ResimAd") + "." + Eval("ResimUzanti") %>' />
                         </td>
                         <td>
-                            <asp:Button ID="incBut" CommandName="incele" Text="İncele" runat="server" class="btn btn-default btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
-                        </td>
-                        <td>
-                            <a href="TezDuzenle.aspx?ID=<%#Eval("Id") %>" class="btn btn-success btn-xs btn-round">Düzenle</a>
-                        </td>
-                        <td>
-                            <asp:Button ID="RedBut" CommandName="Red" Text="Sil" runat="server" class="btn btn-danger btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
+                            <div class="btn-group">
+                                <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Tüm İşlemler <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <asp:LinkButton ID="incBut" CommandName="incele" runat="server" CommandArgument='<%# Eval("Id") %>'>İncele</asp:LinkButton></li>
+                                    <li>
+                                        <asp:LinkButton ID="tezbit" CommandName="bitir" runat="server" CommandArgument='<%# Eval("Id") %>'>Tezi Bitir</asp:LinkButton></li>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                 </ItemTemplate>
@@ -63,6 +69,8 @@
                             <tr>
                                 <th style="text-align: center;">Konu </th>
                                 <th style="text-align: center;">Açıklama </th>
+                                <th style="text-align: center;">Poster </th>
+                                <th style="text-align: center;">İşlemler </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -75,13 +83,19 @@
                             <asp:ImageButton ID="ImageButton1" OnCommand="ImageButton1_Command" CommandName="poster" CommandArgument='<%# Eval("Id") %>' runat="server" Height="20px" Width="20px" ImageUrl='<%# "~/Posterler/" + Eval("ResimAd") + "." + Eval("ResimUzanti") %>' />
                         </td>
                         <td>
-                            <asp:Button ID="incBut" CommandName="incele" Text="İncele" runat="server" class="btn btn-default btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
-                        </td>
-                        <td>
-                            <a href="TezDuzenle.aspx?ID=<%#Eval("Id") %>" class="btn btn-success btn-xs btn-round">Düzenle</a>
-                        </td>
-                        <td>
-                            <asp:Button ID="RedBut" CommandName="Red" Text="Sil" runat="server" class="btn btn-danger btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
+                            <div class="btn-group">
+                                <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Tüm İşlemler <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <asp:LinkButton ID="incBut" CommandName="incele" runat="server" CommandArgument='<%# Eval("Id") %>'>İncele</asp:LinkButton></li>
+                                    <li>
+                                        <a href="TezDuzenle.aspx?ID=<%#Eval("Id") %>">Düzenle</a></li>
+                                    <li>
+                                        <asp:LinkButton ID="RedBut" CommandName="Red" runat="server" CommandArgument='<%# Eval("Id") %>'>Sil</asp:LinkButton></li>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                 </ItemTemplate>
@@ -102,6 +116,7 @@
                             <tr>
                                 <th style="text-align: center;">Konu </th>
                                 <th style="text-align: center;">Açıklama </th>
+                                <th style="text-align: center;">İşlemler </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -111,16 +126,19 @@
                         <td><%#metin_kisalt_yan(Eval("Konu").ToString().Trim()) %></td>
                         <td><%#metin_kisalt_yan(Eval("aciklama").ToString().Trim()) %></td>
                         <td>
-                            <asp:ImageButton ID="ImageButton1" OnCommand="ImageButton1_Command" CommandName="poster" CommandArgument='<%# Eval("Id") %>' runat="server" Height="20px" Width="20px" ImageUrl='<%# "~/Posterler/" + Eval("ResimAd") + "." + Eval("ResimUzanti") %>' />
-                        </td>
-                        <td>
-                            <asp:Button ID="incBut" CommandName="incele" Text="İncele" runat="server" class="btn btn-default btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
-                        </td>
-                        <td>
-                            <a href="TezDuzenle.aspx?ID=<%#Eval("Id") %>" class="btn btn-success btn-xs btn-round">Düzenle</a>
-                        </td>
-                        <td>
-                            <asp:Button ID="RedBut" CommandName="Red" Text="Sil" runat="server" class="btn btn-danger btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
+                            <div class="btn-group">
+                                <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Tüm İşlemler <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <asp:LinkButton ID="incBut" CommandName="incele" runat="server" CommandArgument='<%# Eval("Id") %>'>İncele</asp:LinkButton></li>
+                                    <li>
+                                        <a href="TezDuzenle.aspx?ID=<%#Eval("Id") %>">Düzenle</a></li>
+                                    <li>
+                                        <asp:LinkButton ID="RedBut" CommandName="Red" runat="server" CommandArgument='<%# Eval("Id") %>'>Sil</asp:LinkButton></li>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                 </ItemTemplate>
@@ -140,6 +158,8 @@
                             <tr>
                                 <th style="text-align: center;">Konu </th>
                                 <th style="text-align: center;">Açıklama </th>
+                                <th style="text-align: center;">Poster </th>
+                                <th style="text-align: center;">İşlemler </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -152,14 +172,13 @@
                             <asp:ImageButton ID="ImageButton1" OnCommand="ImageButton1_Command" CommandName="poster" CommandArgument='<%# Eval("Id") %>' runat="server" Height="20px" Width="20px" ImageUrl='<%# "~/Posterler/" + Eval("ResimAd") + "." + Eval("ResimUzanti") %>' />
                         </td>
                         <td>
-                            <asp:Button ID="incBut" CommandName="incele" Text="İncele" runat="server" class="btn btn-default btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
-                        </td>
-                        <td>
-                            <a href="TezDuzenle.aspx?ID=<%#Eval("Id") %>" class="btn btn-success btn-xs btn-round">Düzenle</a>
-                        </td>
-                        <td>
-                            <asp:Button ID="RedBut" CommandName="Red" Text="Sil" runat="server" class="btn btn-danger btn-xs btn-round" CommandArgument='<%# Eval("Id") %>' />
-                        </td>
+                            <div class="btn-group">
+                                <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Tüm İşlemler <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <asp:LinkButton ID="incBut" CommandName="incele" runat="server" CommandArgument='<%# Eval("Id") %>'>İncele</asp:LinkButton></li>
                     </tr>
                 </ItemTemplate>
                 <FooterTemplate>

@@ -38,6 +38,7 @@ public partial class SignUp : System.Web.UI.Page
                 ogrenci.Sifre = sifrem;
                 ogrenci.Mail = Request["E-mail"].Trim();
                 ogrenci.Bolum = Request["Bolum"].Trim();
+                ogrenci.durum = true;
                 ogrenci.Derece = 2;
                 db.Ogrenci.Add(ogrenci);
                 db.SaveChanges();

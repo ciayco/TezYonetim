@@ -42,11 +42,11 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <asp:Button type="button" ID="genel" runat="server" OnCommand="Goster_Click" data-id='<%#Eval("Id") %>' CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>' Text="Rapor Görüntüle" class="btn btn-default btn-sm" /></li>
+                                        <asp:LinkButton ID="genel" runat="server" OnCommand="Goster_Click" data-id='<%#Eval("Id") %>' CommandName="Goruntule" CommandArgument='<%#Eval("Id") %>'>Rapor Görüntüle</asp:LinkButton></li>
                                     <li>
-                                        <asp:Button type="button" ID="vize" runat="server" OnCommand="Goster_Click" data-id='<%#Eval("Id") %>' CommandName="Goruntulevize" CommandArgument='<%#Eval("Id") %>' Text="Vize Rapor Görüntüle" class="btn btn-default btn-sm" /></li>
+                                        <asp:LinkButton ID="vize" runat="server" OnCommand="Goster_Click" data-id='<%#Eval("Id") %>' CommandName="Goruntulevize" CommandArgument='<%#Eval("Id") %>'>Vize Rapor Görüntüle</asp:LinkButton></li>
                                     <li>
-                                        <asp:Button type="button" ID="final" runat="server" OnCommand="Goster_Click" data-id='<%#Eval("Id") %>' CommandName="Goruntulefinal" CommandArgument='<%#Eval("Id") %>' Text="Final Rapor Görüntüle" class="btn btn-default btn-sm" /></li>
+                                        <asp:LinkButton ID="final" runat="server" OnCommand="Goster_Click" data-id='<%#Eval("Id") %>' CommandName="Goruntulefinal" CommandArgument='<%#Eval("Id") %>'>Final Rapor Görüntüle</asp:LinkButton></li>
                                 </ul>
                             </div>
 

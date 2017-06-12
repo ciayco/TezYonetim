@@ -13,10 +13,10 @@ public partial class Forms_Hoca_TezListele : TezBase
     protected void Page_Load(object sender, EventArgs e)
     {
         db = new TezDBEntities();
-        var Ogrdb1 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id && t.Tez_Alan > 0).ToList();//alınan
-        var Ogrdb2 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id).ToList();//tum
-        var Ogrdb3 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id && t.Tez_Alan == 0).ToList();//alınmayan
-        var Ogrdb4 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id).ToList();//biten
+        var Ogrdb1 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id && t.Tez_Alan > 0 && t.durum == true).ToList();//alınan
+        var Ogrdb2 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id && t.durum == true).ToList();//tum
+        var Ogrdb3 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id && t.Tez_Alan == 0 && t.durum == true).ToList();//alınmayan
+        var Ogrdb4 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id && t.durum==false).ToList();//biten
 
         if (!IsPostBack)
         {
@@ -58,7 +58,19 @@ public partial class Forms_Hoca_TezListele : TezBase
                 db.Tez.Remove(Tez);
                 db.SaveChanges();
                 Repeater1.DataBind();
-                Response.Redirect(@"~/Forms/Hoca/TezListele.aspx");
+                break;
+            case "bitir":
+                id = e.CommandArgument.ToString();
+                ogid = Convert.ToInt32(id);
+                Tez = db.Tez.Where(o => o.Id == ogid).FirstOrDefault();
+                var ogr = db.Ogrenci.Where(o => o.Tez_ID == Tez.Id).ToList();
+                foreach (var item in ogr)
+                {
+                    item.durum = false;
+                }
+                Tez.durum = false;
+                db.SaveChanges();
+                Repeater1.DataBind();
                 break;
             case "incele":
                 id = e.CommandArgument.ToString();
