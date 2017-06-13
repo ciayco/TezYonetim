@@ -22,27 +22,27 @@ public partial class Forms_Ogrenci_MesajGonder : TezBaseUser
 
         string baslik = Request["Baslik"].Trim();
         string mesajT = Request["Mesaj"].Trim();
-        if (mesajT == "" || baslik == "" )
+        if (mesajT == "" || baslik == "")
         {
-            LabelSignUP.Text = "Lütfen Boş Geçmeyiniz";
+            msgbilgi.Text = "Lütfen Boş Geçmeyiniz";
         }
         else
         {
-                     
-                Mesaj mesaj = new Mesaj();
-                mesaj.MsjBaslik = baslik;
-                mesaj.MsjText = mesajT;
-                mesaj.Gid = AppKontrol.id;
-                mesaj.Aid = ogr.Hoca.Id;
-                mesaj.Gadi = ogr.Ad;
-                mesaj.Aadi = ogr.Hoca.Ad;
-                mesaj.GDerece = AppKontrol.derece;
-                mesaj.ADerece = ogr.Hoca.Derece;
-                mesaj.MsjTarih = DateTime.Now;                      
-                db.Mesaj.Add(mesaj);
-                db.SaveChanges();
-                Response.Redirect(@"~/Default.aspx");
-           
+            Mesaj mesaj = new Mesaj();
+            mesaj.MsjBaslik = baslik;
+            mesaj.MsjText = mesajT;
+            mesaj.Gid = AppKontrol.id;
+            mesaj.Aid = ogr.Hoca.Id;
+            mesaj.Gadi = ogr.Ad;
+            mesaj.Aadi = ogr.Hoca.Ad;
+            mesaj.GDerece = AppKontrol.derece;
+            mesaj.ADerece = ogr.Hoca.Derece;
+            mesaj.MsjTarih = DateTime.Now;
+            mesaj.Okundu = false;
+            db.Mesaj.Add(mesaj);
+            db.SaveChanges();
+            msgbilgi.Text = "Mesajınız Gönderilmiştir.";
+
 
         }
     }

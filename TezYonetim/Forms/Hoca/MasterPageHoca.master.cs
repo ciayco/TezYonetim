@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 public partial class MasterPageHoca : System.Web.UI.MasterPage
 {
+    string okuma;
+    static int kontrol = 0;
     TezDBEntities db;
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -17,6 +20,17 @@ public partial class MasterPageHoca : System.Web.UI.MasterPage
         }
         MesajOnizle();
         Label1.Text = Session["name"].ToString();
+        var msgcount = db.Mesaj.Where(m => m.Aid == AppKontrol.id && m.Okundu == false).ToList();
+        if (msgcount.Count > 0)
+        {
+            Label2.Text = msgcount.Count.ToString();
+            kontrol = 1;
+        }
+        else
+        {
+            Label2.Text = "0";
+            kontrol = 0;
+        }
     }
     protected void LogOut_Click(object sender, EventArgs e)
     {
@@ -37,10 +51,27 @@ public partial class MasterPageHoca : System.Web.UI.MasterPage
         return metin;
 
     }
+    public string gelenkutusukontrol(string metin)
+    {
+        int id = Convert.ToInt16(metin);
+        var msg = db.Mesaj.Find(id);
+
+        if (msg.Okundu == false)
+        {
+            okuma = "Yeni";
+            kontrol = 1;
+        }
+        else
+        {
+            kontrol = 0;
+        }
+
+        return okuma;
+
+    }
     protected void MesajOnizle()
     {
         List<Mesaj> mesajlist = new List<Mesaj>();
-        var ogr = db.Hoca.Where(o => o.Id == AppKontrol.id).FirstOrDefault();
         var mesajlar = db.Mesaj.Where(m => m.Aid == AppKontrol.id).ToList();
         if (mesajlar != null)
         {
@@ -56,5 +87,20 @@ public partial class MasterPageHoca : System.Web.UI.MasterPage
             Repeatermsj.DataBind();
         }
     }
-
+    protected void Repeatermsj_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+            Label lblUserId = (Label)e.Item.FindControl("yeni");
+            HtmlGenericControl div = (HtmlGenericControl)e.Item.FindControl("msg");
+            if (kontrol == 0)
+            {
+                div.Visible = false;
+            }
+            if (kontrol == 1)
+            {
+                div.Visible = true;
+            }
+        }
+    }
 }

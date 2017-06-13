@@ -39,7 +39,7 @@
                         <div class="form-group">
                             <div class="col-md-9">
                                 <p>
-                                    <asp:Label ID="LabelSignUP" runat="server" ForeColor="Red"></asp:Label>
+                                    <asp:Label ID="msgbilgi" runat="server" ForeColor="Red"></asp:Label>
                                 </p>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <!-- Button -->
                             <div class="col-md-offset-3 col-md-9">
-                                <asp:Button ID="btnGiris" runat="server" Text="Kayit" class="btn btn-info" OnClick="btnGiris_Click" />
+                                <asp:Button ID="btnGiris" runat="server" Text="Gönder" class="btn btn-info" OnClick="btnGiris_Click" />
                             </div>
                         </div>
                     </div>
