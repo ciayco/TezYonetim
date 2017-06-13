@@ -15,48 +15,40 @@ public partial class Forms_Hoca_MesajGonder : TezBase
         if (!IsPostBack)
         {
             hca = db.Hoca.Where(h => h.Id == AppKontrol.id).FirstOrDefault();
-            var ogrenci = db.Ogrenci
-            .Where(x => x.Hoca_ID == AppKontrol.id)
-            .Select(x => new { x.Ad, x.Id }).ToList();
-
+            var ogrenci = db.Ogrenci.Where(x => x.Hoca_ID == AppKontrol.id).Select(x => new { x.Ad, x.Id }).ToList();
             Alici.DataSource = ogrenci;
             Alici.DataTextField = "Ad";
             Alici.DataValueField = "Id";
             Alici.DataBind();
         }
-
     }
     protected void btnGiris_Click(object sender, EventArgs e)
     {
-       
-
-            TezDBEntities db = new TezDBEntities();
+        TezDBEntities db = new TezDBEntities();
         hca = db.Hoca.Where(h => h.Id == AppKontrol.id).FirstOrDefault();
         string baslik = Request["Baslik"].Trim();
-            string mesajT = Request["Mesaj"].Trim();
-            if (mesajT == "" || baslik == "")
-            {
-                LabelSignUP.Text = "Lütfen Boş Geçmeyiniz";
-            }
-            else
-            {
-
-                Mesaj mesaj = new Mesaj();
-                mesaj.MsjBaslik = baslik;
-                mesaj.MsjText = mesajT;
-                mesaj.Gid = AppKontrol.id;
-                mesaj.Aid = Convert.ToInt32(Alici.SelectedValue);
-                mesaj.Gadi = hca.Ad;
-                mesaj.Aadi = Alici.SelectedItem.Text;
-                mesaj.GDerece = AppKontrol.derece;
-                mesaj.ADerece = 2;
-                mesaj.MsjTarih = DateTime.Now;
-                db.Mesaj.Add(mesaj);
-                db.SaveChanges();
-                Response.Redirect(@"~/Default.aspx");
-
-
-            }
+        string mesajT = Request["Mesaj"].Trim();
+        if (mesajT == "" || baslik == "")
+        {
+            msgbilgi.Text = "Lütfen Boş Geçmeyiniz";
         }
-    
+        else
+        {
+            Mesaj mesaj = new Mesaj();
+            mesaj.MsjBaslik = baslik;
+            mesaj.MsjText = mesajT;
+            mesaj.Gid = AppKontrol.id;
+            mesaj.Aid = Convert.ToInt32(Alici.SelectedValue);
+            mesaj.Gadi = hca.Ad;
+            mesaj.Aadi = Alici.SelectedItem.Text;
+            mesaj.GDerece = AppKontrol.derece;
+            mesaj.ADerece = 2;
+            mesaj.Okundu = false;
+            mesaj.MsjTarih = DateTime.Now;
+            db.Mesaj.Add(mesaj);
+            db.SaveChanges();
+            msgbilgi.Text = "Mesajınız Gönderilmiştir.";
+        }
+    }
+
 }

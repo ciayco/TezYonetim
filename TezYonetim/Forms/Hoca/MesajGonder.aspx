@@ -37,7 +37,7 @@
                         <div class="form-group">
                             <div class="col-md-9">
                                 <p>
-                                    <asp:Label ID="LabelSignUP" runat="server" ForeColor="Red"></asp:Label>
+                                    <asp:Label ID="msgbilgi" runat="server" ForeColor="Red"></asp:Label>
                                 </p>
                             </div>
                         </div><br /><br />

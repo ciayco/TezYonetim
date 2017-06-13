@@ -46,7 +46,7 @@ public partial class Login : System.Web.UI.Page
         if (string.IsNullOrEmpty(UserName))
         {
             Label1.Text = "Lütfen Kullanıcı Adı Ve Şifre Giriniz!";
-            return; 
+            return;
         }
         else
         {
@@ -58,18 +58,23 @@ public partial class Login : System.Web.UI.Page
         {
             Ogrenci user = db.Ogrenci.Where(w => w.No == UserName && w.Sifre == Password).FirstOrDefault();
 
-            if (user != null && user.durum==true)
+            if (user != null)
             {
-                Response.Cookies.Add(cookie.Cookie(user.No, user.Sifre));
-                AuthenticateUser(user.Id, user.Derece, user.Ad, user.Sifre, "Ogrenci");               
+                if (user.durum == true)
+                {
+                    Response.Cookies.Add(cookie.Cookie(user.No, user.Sifre));
+                    AuthenticateUser(user.Id, user.Derece, user.Ad, user.Sifre, "Ogrenci");
+                }
+                else
+                {
+                    Label1.Text = "Teziniz Bitmiştir. Sisteme Giriş Yetkiniz Bulunmamaktadır.";
+                }
             }
-            else if (user.durum != true)
+            else
             {
-                Label1.Text = "Teziniz Bitmiştir. Sisteme Giriş Yetkiniz Bulunmamaktadır.";
+                Label1.Text = "Kullanıcı Adı Veya Şifresi Hatalı!";
             }
                
-            else
-                Label1.Text = "Kullanıcı Adı Veya Şifresi Hatalı!";
         }
         else if (IsAdmin(UserName))
         {
@@ -78,9 +83,9 @@ public partial class Login : System.Web.UI.Page
             if (user != null)
             {
                 Response.Cookies.Add(cookie.Cookie(user.Mail, user.Sifre));
-                AuthenticateUser(user.Id, user.Derece, user.KullanıcıAdi, user.Sifre, "Admin");                
+                AuthenticateUser(user.Id, user.Derece, user.KullanıcıAdi, user.Sifre, "Admin");
             }
-                
+
             else
                 Label1.Text = "Kullanıcı Adı Veya Şifresi Hatalı!";
 
@@ -92,9 +97,9 @@ public partial class Login : System.Web.UI.Page
             if (user != null)
             {
                 Response.Cookies.Add(cookie.Cookie(user.Mail, user.Sifre));
-                AuthenticateUser(user.Id, user.Derece, user.Ad, user.Sifre, "Hoca");               
+                AuthenticateUser(user.Id, user.Derece, user.Ad, user.Sifre, "Hoca");
             }
-                
+
             else
                 Label1.Text = "Kullanıcı Adı Veya Şifresi Hatalı!";
         }

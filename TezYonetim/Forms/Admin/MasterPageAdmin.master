@@ -197,7 +197,7 @@
                 </div>
                 <!-- /.navbar-collapse -->
             </nav>
-            <div id="page-wrapper">
+            <div id="page-wrapper" style="height:585px">
 
                 <div>
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
