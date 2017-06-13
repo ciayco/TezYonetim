@@ -81,6 +81,7 @@ public partial class Mesaj
     public string MsjBaslik { get; set; }
     public string MsjText { get; set; }
     public Nullable<System.DateTime> MsjTarih { get; set; }
+    public Nullable<bool> Okundu { get; set; }
 }
 
 public partial class Ogrenci

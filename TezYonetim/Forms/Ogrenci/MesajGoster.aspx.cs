@@ -22,6 +22,8 @@ public partial class Forms_Ogrenci_MesajGoster : System.Web.UI.Page
                 Label3.Text = msg.Gadi;
                 Label1.Text = Label1.Text + msg.MsjBaslik;
                 Label2.Text = Label2.Text + "<blockquote>" + msg.MsjText;
+                msg.Okundu = true;
+                db.SaveChanges();
             }
             else
             {

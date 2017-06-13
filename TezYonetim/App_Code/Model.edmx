@@ -59,6 +59,7 @@
           <Property Name="MsjBaslik" Type="nvarchar" MaxLength="50" />
           <Property Name="MsjText" Type="nvarchar(max)" />
           <Property Name="MsjTarih" Type="datetime" />
+          <Property Name="Okundu" Type="bit" />
         </EntityType>
         <EntityType Name="Ogrenci">
           <Key>
@@ -385,6 +386,7 @@
           <Property Name="MsjBaslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MsjText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MsjTarih" Type="DateTime" Precision="3" />
+          <Property Name="Okundu" Type="Boolean" />
         </EntityType>
         <EntityType Name="Ogrenci">
           <Key>
@@ -629,6 +631,7 @@
           <EntitySetMapping Name="Mesaj">
             <EntityTypeMapping TypeName="TezDBModel.Mesaj">
               <MappingFragment StoreEntitySet="Mesaj">
+                <ScalarProperty Name="Okundu" ColumnName="Okundu" />
                 <ScalarProperty Name="MsjTarih" ColumnName="MsjTarih" />
                 <ScalarProperty Name="MsjText" ColumnName="MsjText" />
                 <ScalarProperty Name="MsjBaslik" ColumnName="MsjBaslik" />
