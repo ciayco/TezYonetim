@@ -11,10 +11,18 @@ public partial class Forms_Hoca_Mesajlar : TezBase
     protected void Page_Load(object sender, EventArgs e)
     {
         db = new TezDBEntities();
+        List<Mesaj> mesajlist = new List<Mesaj>();
         var Mesajlar = db.Mesaj.Where(w => w.Aid == AppKontrol.id && w.ADerece == AppKontrol.derece).ToList();
         if (Mesajlar.Count > 0)
         {
-            Repeater2.DataSource = Mesajlar;
+            int limit = Mesajlar.Count();
+            int i = Mesajlar.Count();
+            for (int x = 0; x < limit; x++)
+            {
+                mesajlist.Add(Mesajlar[i - 1]);
+                i--;
+            }
+            Repeater2.DataSource = mesajlist;
             Repeater2.DataBind();
             dolumsg.Visible = true;
             bosmsg.Visible = false;

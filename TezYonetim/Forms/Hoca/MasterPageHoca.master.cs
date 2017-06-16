@@ -73,7 +73,21 @@ public partial class MasterPageHoca : System.Web.UI.MasterPage
     {
         List<Mesaj> mesajlist = new List<Mesaj>();
         var mesajlar = db.Mesaj.Where(m => m.Aid == AppKontrol.id).ToList();
-        if (mesajlar != null)
+        var mesajlar1 = db.Mesaj.Where(m => m.Aid == AppKontrol.id && m.Okundu == false).ToList();
+        if (mesajlar1.Count > 0)
+        {
+            int i = mesajlar1.Count();
+            int limit = mesajlar1.Count();
+            if (limit > 3) limit = 3;
+            for (int x = 0; x < limit; x++)
+            {
+                mesajlist.Add(mesajlar1[i - 1]);
+                i--;
+            }
+            Repeatermsj.DataSource = mesajlist;
+            Repeatermsj.DataBind();
+        }
+        else if (mesajlar.Count > 0)
         {
             int i = mesajlar.Count();
             int limit = mesajlar.Count();
