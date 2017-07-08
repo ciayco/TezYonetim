@@ -10,14 +10,16 @@ public partial class Forms_Hoca_TezAra : TezBase
     TezDBEntities db;
     Ogrenci Ogrenci;
     Tez Tez;
+    List<Tez> Tezlist;
     List<string> KeywordListesi;
     protected void Page_Load(object sender, EventArgs e)
     {
         db = new TezDBEntities();
+        Tezlist = new List<Tez>();
         KeywordListesi = new List<string>();
         /*  var Ogrdb1 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id).ToList();//alınan
 
-
+        
           if (!IsPostBack)
           {
               Repeater1.DataSource = Ogrdb1;
@@ -94,17 +96,17 @@ public partial class Forms_Hoca_TezAra : TezBase
         var keywordlist = Request["KeywordBox"].Trim();
         int i = 0;
         KeywordListesi = keywordlist.Split(',').ToList();
-
+       
         var Ogrdb2 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id).ToList();
         while (KeywordListesi.Count > i)
         {
-            Ogrdb2 = Ogrdb2.Where(t => t.Hoca_ID == AppKontrol.id && t.keywords.Contains(KeywordListesi[i].ToString())).ToList();
+            Tezlist.AddRange(Ogrdb2.Where(t => t.Hoca_ID == AppKontrol.id && t.keywords.Contains(KeywordListesi[i].ToString())).ToList());
             i++;
 
 
         }
 
-        Repeater1.DataSource = Ogrdb2;
+        Repeater1.DataSource = Tezlist;
         Repeater1.DataBind();
 
 
