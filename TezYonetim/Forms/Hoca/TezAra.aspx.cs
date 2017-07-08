@@ -103,8 +103,9 @@ public partial class Forms_Hoca_TezAra : TezBase
             Tezlist.AddRange(Ogrdb2.Where(t => t.Hoca_ID == AppKontrol.id && t.keywords.Contains(KeywordListesi[i].ToString())).ToList());
             i++;
 
-
+        
         }
+        Tezlist = Tezlist.Distinct().ToList();
 
         Repeater1.DataSource = Tezlist;
         Repeater1.DataBind();
