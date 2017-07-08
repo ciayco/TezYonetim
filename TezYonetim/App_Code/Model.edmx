@@ -132,6 +132,7 @@
           <Property Name="ResimUzanti" Type="nchar" MaxLength="10" />
           <Property Name="ResimDurum" Type="int" />
           <Property Name="durum" Type="bit" />
+          <Property Name="keywords" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Tez_Kitap">
           <Key>
@@ -293,6 +294,7 @@
       <Schema Namespace="TezDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="TezDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admin" EntityType="TezDBModel.Admin" />
+          <EntitySet Name="Duyuru" EntityType="TezDBModel.Duyuru" />
           <EntitySet Name="Duyuru_Admin" EntityType="TezDBModel.Duyuru_Admin" />
           <EntitySet Name="Hoca" EntityType="TezDBModel.Hoca" />
           <EntitySet Name="Mesaj" EntityType="TezDBModel.Mesaj" />
@@ -302,6 +304,11 @@
           <EntitySet Name="Sistem" EntityType="TezDBModel.Sistem" />
           <EntitySet Name="Tarih" EntityType="TezDBModel.Tarih" />
           <EntitySet Name="Tez" EntityType="TezDBModel.Tez" />
+          <EntitySet Name="Tez_Kitap" EntityType="TezDBModel.Tez_Kitap" />
+          <AssociationSet Name="FK_Duyuru_Hoca" Association="TezDBModel.FK_Duyuru_Hoca">
+            <End Role="Hoca" EntitySet="Hoca" />
+            <End Role="Duyuru" EntitySet="Duyuru" />
+          </AssociationSet>
           <AssociationSet Name="FK_Ogrenci_Hoca1" Association="TezDBModel.FK_Ogrenci_Hoca1">
             <End Role="Hoca" EntitySet="Hoca" />
             <End Role="Ogrenci" EntitySet="Ogrenci" />
@@ -330,12 +337,6 @@
             <End Role="Tez" EntitySet="Tez" />
             <End Role="Rapor" EntitySet="Rapor" />
           </AssociationSet>
-          <EntitySet Name="Tez_Kitap" EntityType="TezDBModel.Tez_Kitap" />
-          <EntitySet Name="Duyuru" EntityType="TezDBModel.Duyuru" />
-          <AssociationSet Name="FK_Duyuru_Hoca" Association="TezDBModel.FK_Duyuru_Hoca">
-            <End Role="Hoca" EntitySet="Hoca" />
-            <End Role="Duyuru" EntitySet="Duyuru" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Admin">
           <Key>
@@ -346,6 +347,17 @@
           <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Derece" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Duyuru">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hoca_Id" Type="Int32" />
+          <Property Name="Duyuru_Baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Duyuru_Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Duyuru_Tarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Duyuru_Hoca" FromRole="Duyuru" ToRole="Hoca" />
         </EntityType>
         <EntityType Name="Duyuru_Admin">
           <Key>
@@ -366,11 +378,11 @@
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Ders" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Derece" Type="Int32" />
+          <NavigationProperty Name="Duyuru" Relationship="TezDBModel.FK_Duyuru_Hoca" FromRole="Hoca" ToRole="Duyuru" />
           <NavigationProperty Name="Ogrenci" Relationship="TezDBModel.FK_Ogrenci_Hoca1" FromRole="Hoca" ToRole="Ogrenci" />
           <NavigationProperty Name="Rapor" Relationship="TezDBModel.FK_Rapor_Hoca" FromRole="Hoca" ToRole="Rapor" />
           <NavigationProperty Name="Rapor_Tarih" Relationship="TezDBModel.FK_Rapor_Tarih_Hoca" FromRole="Hoca" ToRole="Rapor_Tarih" />
           <NavigationProperty Name="Tez" Relationship="TezDBModel.FK_Tez_Hoca" FromRole="Hoca" ToRole="Tez" />
-          <NavigationProperty Name="Duyuru" Relationship="TezDBModel.FK_Duyuru_Hoca" FromRole="Hoca" ToRole="Duyuru" />
         </EntityType>
         <EntityType Name="Mesaj">
           <Key>
@@ -403,10 +415,10 @@
           <Property Name="Derece" Type="Int32" />
           <Property Name="Tez_ID" Type="Int32" />
           <Property Name="Tez_Onay" Type="Boolean" />
+          <Property Name="durum" Type="Boolean" />
           <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Ogrenci_Hoca1" FromRole="Ogrenci" ToRole="Hoca" />
           <NavigationProperty Name="Tarih" Relationship="TezDBModel.FK_Ogrenci_Tarih" FromRole="Ogrenci" ToRole="Tarih" />
           <NavigationProperty Name="Tez" Relationship="TezDBModel.FK_Ogrenci_Tez" FromRole="Ogrenci" ToRole="Tez" />
-          <Property Name="durum" Type="Boolean" />
         </EntityType>
         <EntityType Name="Rapor">
           <Key>
@@ -430,8 +442,8 @@
           <Property Name="Hoca_Id" Type="Int32" />
           <Property Name="RaporBas" Type="DateTime" Precision="3" />
           <Property Name="RaporBit" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Rapor_Tarih_Hoca" FromRole="Rapor_Tarih" ToRole="Hoca" />
           <Property Name="tur" Type="Int32" />
+          <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Rapor_Tarih_Hoca" FromRole="Rapor_Tarih" ToRole="Hoca" />
         </EntityType>
         <EntityType Name="Sistem">
           <Key>
@@ -462,14 +474,39 @@
           <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Tez_Limit" Type="Int32" />
           <Property Name="Tez_Alan" Type="Int32" />
-          <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Tez_Hoca" FromRole="Tez" ToRole="Hoca" />
-          <NavigationProperty Name="Ogrenci" Relationship="TezDBModel.FK_Ogrenci_Tez" FromRole="Tez" ToRole="Ogrenci" />
-          <NavigationProperty Name="Rapor" Relationship="TezDBModel.FK_Rapor_Tez" FromRole="Tez" ToRole="Rapor" />
           <Property Name="ResimAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ResimUzanti" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="ResimDurum" Type="Int32" />
           <Property Name="durum" Type="Boolean" />
+          <Property Name="keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Tez_Hoca" FromRole="Tez" ToRole="Hoca" />
+          <NavigationProperty Name="Ogrenci" Relationship="TezDBModel.FK_Ogrenci_Tez" FromRole="Tez" ToRole="Ogrenci" />
+          <NavigationProperty Name="Rapor" Relationship="TezDBModel.FK_Rapor_Tez" FromRole="Tez" ToRole="Rapor" />
         </EntityType>
+        <EntityType Name="Tez_Kitap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hoca_id" Type="Int32" />
+          <Property Name="Tez_id" Type="Int32" />
+          <Property Name="Ogr_id" Type="Int32" />
+          <Property Name="Dosya_Uzanti" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dosya_ad" Type="Int32" />
+          <Property Name="Durum" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Duyuru_Hoca">
+          <End Type="TezDBModel.Hoca" Role="Hoca" Multiplicity="0..1" />
+          <End Type="TezDBModel.Duyuru" Role="Duyuru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hoca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Duyuru">
+              <PropertyRef Name="Hoca_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Ogrenci_Hoca1">
           <End Type="TezDBModel.Hoca" Role="Hoca" Multiplicity="0..1" />
           <End Type="TezDBModel.Ogrenci" Role="Ogrenci" Multiplicity="*" />
@@ -554,41 +591,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Tez_Kitap">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Hoca_id" Type="Int32" />
-          <Property Name="Tez_id" Type="Int32" />
-          <Property Name="Ogr_id" Type="Int32" />
-          <Property Name="Dosya_Uzanti" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Dosya_ad" Type="Int32" />
-          <Property Name="Durum" Type="Int32" />
-        </EntityType>
-        <EntityType Name="Duyuru">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Hoca_Id" Type="Int32" />
-          <Property Name="Duyuru_Baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Duyuru_Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Duyuru_Tarih" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Hoca" Relationship="TezDBModel.FK_Duyuru_Hoca" FromRole="Duyuru" ToRole="Hoca" />
-        </EntityType>
-        <Association Name="FK_Duyuru_Hoca">
-          <End Type="TezDBModel.Hoca" Role="Hoca" Multiplicity="0..1" />
-          <End Type="TezDBModel.Duyuru" Role="Duyuru" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hoca">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Duyuru">
-              <PropertyRef Name="Hoca_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -602,6 +604,17 @@
                 <ScalarProperty Name="Mail" ColumnName="Mail" />
                 <ScalarProperty Name="Sifre" ColumnName="Sifre" />
                 <ScalarProperty Name="KullanıcıAdi" ColumnName="KullanıcıAdi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Duyuru">
+            <EntityTypeMapping TypeName="TezDBModel.Duyuru">
+              <MappingFragment StoreEntitySet="Duyuru">
+                <ScalarProperty Name="Duyuru_Tarih" ColumnName="Duyuru_Tarih" />
+                <ScalarProperty Name="Duyuru_Text" ColumnName="Duyuru_Text" />
+                <ScalarProperty Name="Duyuru_Baslik" ColumnName="Duyuru_Baslik" />
+                <ScalarProperty Name="Hoca_Id" ColumnName="Hoca_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -710,6 +723,7 @@
           <EntitySetMapping Name="Tez">
             <EntityTypeMapping TypeName="TezDBModel.Tez">
               <MappingFragment StoreEntitySet="Tez">
+                <ScalarProperty Name="keywords" ColumnName="keywords" />
                 <ScalarProperty Name="durum" ColumnName="durum" />
                 <ScalarProperty Name="ResimDurum" ColumnName="ResimDurum" />
                 <ScalarProperty Name="ResimUzanti" ColumnName="ResimUzanti" />
@@ -732,17 +746,6 @@
                 <ScalarProperty Name="Ogr_id" ColumnName="Ogr_id" />
                 <ScalarProperty Name="Tez_id" ColumnName="Tez_id" />
                 <ScalarProperty Name="Hoca_id" ColumnName="Hoca_id" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Duyuru">
-            <EntityTypeMapping TypeName="TezDBModel.Duyuru">
-              <MappingFragment StoreEntitySet="Duyuru">
-                <ScalarProperty Name="Duyuru_Tarih" ColumnName="Duyuru_Tarih" />
-                <ScalarProperty Name="Duyuru_Text" ColumnName="Duyuru_Text" />
-                <ScalarProperty Name="Duyuru_Baslik" ColumnName="Duyuru_Baslik" />
-                <ScalarProperty Name="Hoca_Id" ColumnName="Hoca_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -43,11 +43,11 @@ public partial class Hoca
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     public Hoca()
     {
+        this.Duyuru = new HashSet<Duyuru>();
         this.Ogrenci = new HashSet<Ogrenci>();
         this.Rapor = new HashSet<Rapor>();
         this.Rapor_Tarih = new HashSet<Rapor_Tarih>();
         this.Tez = new HashSet<Tez>();
-        this.Duyuru = new HashSet<Duyuru>();
     }
 
     public int Id { get; set; }
@@ -58,6 +58,8 @@ public partial class Hoca
     public Nullable<int> Derece { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Duyuru> Duyuru { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Ogrenci> Ogrenci { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Rapor> Rapor { get; set; }
@@ -65,8 +67,6 @@ public partial class Hoca
     public virtual ICollection<Rapor_Tarih> Rapor_Tarih { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
     public virtual ICollection<Tez> Tez { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<Duyuru> Duyuru { get; set; }
 }
 
 public partial class Mesaj
@@ -173,6 +173,7 @@ public partial class Tez
     public string ResimUzanti { get; set; }
     public Nullable<int> ResimDurum { get; set; }
     public Nullable<bool> durum { get; set; }
+    public string keywords { get; set; }
 
     public virtual Hoca Hoca { get; set; }
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
