@@ -15,14 +15,14 @@ public partial class Forms_Hoca_TezAra: TezBase
     {
         db = new TezDBEntities();
         KeywordListesi = new List<string>();
-        var Ogrdb1 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id).ToList();//alınan
-       
+        //var Ogrdb1 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id).ToList();//alınan
 
-        if (!IsPostBack)
-        {
-            Repeater1.DataSource = Ogrdb1;
-            Repeater1.DataBind();
-        }
+
+        //if (!IsPostBack)
+        //{
+        //    Repeater1.DataSource = Ogrdb1;
+        //    Repeater1.DataBind();
+        //}
     }
     public string metin_kisalt_yan(string metin)
 
@@ -88,20 +88,19 @@ public partial class Forms_Hoca_TezAra: TezBase
         }
     }
 
-    protected void Arama_Click(object sender, CommandEventArgs e)
+    protected void Arama_Click(object sender, EventArgs e)
     {
         var keywordlist = Request["KeywordBox"].Trim();
-        int i = 1;
         KeywordListesi = keywordlist.Split(',').ToList();
+        int i = 0;
         Labelkey.Text = KeywordListesi[0].ToString();
-        var Ogrdb2 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id && t.keywords.Contains(KeywordListesi[0].ToString())).ToList();
-         while(KeywordListesi.Count > i)
-        {           
+        var Ogrdb2 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id ).ToList();
+        while (KeywordListesi.Count > i)
+        {
             Ogrdb2 = Ogrdb2.Where(t => t.Hoca_ID == AppKontrol.id && t.keywords.Contains(KeywordListesi[i].ToString())).ToList();
             i++;
         }
-            Repeater1.DataSource = Ogrdb2;
-            Repeater1.DataBind();
-    
+        Repeater1.DataSource = Ogrdb2;
+        Repeater1.DataBind();
     }
 }

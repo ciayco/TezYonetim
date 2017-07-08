@@ -24,7 +24,7 @@
                             <div class="form-group">
                                 <label for="name" class="col-md-3 control-label">Tezi Alan Diğer Öğrenciler(Varsa): </label>
                                 <div class="col-md-9">
-                                    <select name="Keywords" id="KeywordBox" class="js-example-basic-multiple form-control" multiple="multiple"></select>
+                                    <select name="KeywordBox" id="KeywordBox"  class="js-example-basic-multiple form-control" multiple="multiple"></select>
                                 </div>
                             </div>
                             <!--Select2-->
@@ -44,7 +44,7 @@
                             <div class="form-group">
                                 <!-- Button -->
                                 <div class="col-md-offset-3 col-md-9">
-                                    <asp:Button ID="AraButton" CommandName="Arama" runat="server" CommandOnClick="Arama_Click" Text="Ara"></asp:Button>
+                                    <asp:Button ID="Button1" runat="server" OnClick="Arama_Click" Text="Ara" />
                                     <asp:Label ID="Labelkey" runat="server"></asp:Label>
                                 </div>
                             </div>
