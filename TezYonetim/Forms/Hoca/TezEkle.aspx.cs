@@ -19,9 +19,7 @@ public partial class TezEkle : TezBase
         string konu = Request["Konu"].Trim();
         string aciklama = Request["Aciklama"].Trim();
         string keywordlist = Request["KeywordBox"].Trim();
-
-      
-
+        keywordlist = keywordlist.ToLower();
         if (Request["Konu"].Trim() != "" && Request["Aciklama"].Trim() != "" && Convert.ToInt32(Request["TezAdet"].Trim()) > 0)
         {
             var kontrol = db.Tez.Where(t => t.Konu == konu || t.Aciklama== aciklama).Any();

@@ -95,6 +95,7 @@ public partial class Forms_Hoca_TezAra : TezBase
 
         var keywordlist = Request["KeywordBox"].Trim();
         int i = 0;
+        keywordlist = keywordlist.ToLower();
         KeywordListesi = keywordlist.Split(',').ToList();
        
         var Ogrdb2 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id).ToList();
