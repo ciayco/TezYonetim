@@ -39,7 +39,26 @@
                                 <div class="col-md-9">
                                     <input type="number" value="1" class="form-control" name="TezAdet">
                                 </div>
+                            </div><br /><br /><br /><br /><br /><br />
+                            <div class="form-group">
+                                <label for="name" class="col-md-3 control-label">Keywords: </label>
+                                <div class="col-md-9">
+                                    <select name="KeywordBox" id="KeywordBox" class="js-example-basic-multiple form-control" multiple="multiple"></select>
+                                </div>
                             </div>
+                            <!--Select2-->
+                            <script type="text/javascript">
+                                $(".js-example-basic-multiple").select2(
+                                    {
+                                        tags: true,
+                                        tokenSeparators: [','],
+                                        "language": {
+                                            "noResults": function () {
+                                                return "Keywordleri girdikten sonra Enter'a basabilir ya da virgül (,) koyabilirsiniz.";
+                                            }
+                                        },
+                                    });
+                            </script>
                             <div class="form-group">
                                 <div class="col-md-9">
                                     <p>

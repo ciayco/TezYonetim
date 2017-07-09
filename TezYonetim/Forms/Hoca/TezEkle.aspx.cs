@@ -18,6 +18,10 @@ public partial class TezEkle : TezBase
         Tez tez = new Tez();
         string konu = Request["Konu"].Trim();
         string aciklama = Request["Aciklama"].Trim();
+        string keywordlist = Request["KeywordBox"].Trim();
+
+      
+
         if (Request["Konu"].Trim() != "" && Request["Aciklama"].Trim() != "" && Convert.ToInt32(Request["TezAdet"].Trim()) > 0)
         {
             var kontrol = db.Tez.Where(t => t.Konu == konu || t.Aciklama== aciklama).Any();
@@ -31,6 +35,7 @@ public partial class TezEkle : TezBase
                 tez.ResimUzanti = "png";
                 tez.Tez_Alan = 0;
                 tez.durum = true;
+                tez.keywords = keywordlist;
                 db.Tez.Add(tez);
                 db.SaveChanges();
                 uyari.Text = ("<br>") + "Teziniz Kaydedilmiştir.!";
