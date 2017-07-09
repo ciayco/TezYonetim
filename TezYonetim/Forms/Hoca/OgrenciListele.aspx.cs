@@ -12,13 +12,24 @@ public partial class Admin : TezBase
     {
         TezDBEntities db = new TezDBEntities();
         var Ogrenci = db.Ogrenci.Where(o => o.Hoca_ID == AppKontrol.id && o.Hoca_Onay == true).ToList();
+        if (Ogrenci.Count>0)
+        {
+            goster.Visible = true;
+            gosterme.Visible = false;
+            Repeater1.DataSource = Ogrenci;
+            Repeater1.DataBind();
+        }
+        else
+        {
+            goster.Visible = false;
+            gosterme.Visible = true;
+            lbgosterme.Text = "Size Kayıtlı Öğrenci Bulunamadı!!";
+        }
 
-        Repeater1.DataSource = Ogrenci;
-        Repeater1.DataBind();
         if (Request.QueryString["Id"] != null)
         {
             int id = int.Parse(Request.QueryString["Id"]);
-            var ogr2 = db.Ogrenci.Where(w => w.Id== id).FirstOrDefault();
+            var ogr2 = db.Ogrenci.Where(w => w.Id == id).FirstOrDefault();
             var goster = db.Tez.Where(o => o.Id == ogr2.Tez_ID).FirstOrDefault();
             Label1.Text = ogr2.Ad;
             Label2.Text = ogr2.No;

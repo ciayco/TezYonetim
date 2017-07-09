@@ -17,7 +17,9 @@
             });
         });
     </script>
-
+     <div id="gosterme" runat="server">
+        <asp:Label ID="lbgosterme" runat="server" Text="Label"></asp:Label></div>
+    <div id="goster" runat="server">
     <table class="display" id="students">
         <thead>
             <tr>
@@ -57,6 +59,7 @@
             </asp:Repeater>
         </tbody>
     </table>
+        </div>
     <br />
     <%-- Modal başlangıç --%>
     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">

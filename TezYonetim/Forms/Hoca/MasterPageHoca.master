@@ -138,6 +138,9 @@
                                 <li>
                                     <a href="TezListele.aspx">Tezleri Görüntüle</a>
                                 </li>
+                                 <li>
+                                    <a href="TezAra.aspx">Tez Ara</a>
+                                </li>
                             </ul>
                         </li>
                         <li>

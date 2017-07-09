@@ -6,6 +6,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <br />
     <br />
+    <div id="gosterme" runat="server">
+        <asp:Label ID="lbgosterme" runat="server" Text="Label"></asp:Label></div>
+    <div id="goster" runat="server">
     <table class="display" id="students">
         <thead>
             <tr>
@@ -38,7 +41,7 @@
                 </ItemTemplate>
             </asp:Repeater>
         </tbody>
-    </table>
+    </table></div>
     <br />
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document">

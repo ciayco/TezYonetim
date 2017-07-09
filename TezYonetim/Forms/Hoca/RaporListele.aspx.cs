@@ -15,8 +15,19 @@ public partial class Forms_Hoca_RaporListele : TezBase
     protected void Page_Load(object sender, EventArgs e)
     {
         var tezler = db.Tez.Where(o => o.Hoca_ID == AppKontrol.id && o.Tez_Alan > 0).ToList();
-        Repeater1.DataSource = tezler;
-        Repeater1.DataBind();
+        if (tezler.Count > 0)
+        {
+            goster.Visible = true;
+            gosterme.Visible = false;
+            Repeater1.DataSource = tezler;
+            Repeater1.DataBind();
+        }
+        else
+        {
+            goster.Visible = false;
+            gosterme.Visible = true;
+            lbgosterme.Text = "Görüntülenecek Rapor Bulunamadı!!";
+        }
     }
     public string metin_kisalt_yan(string metin)
 

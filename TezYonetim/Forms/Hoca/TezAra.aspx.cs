@@ -50,14 +50,26 @@ public partial class Forms_Hoca_TezAra : TezBase
             case "incele":
                 id = e.CommandArgument.ToString();
                 ogid = Convert.ToInt32(id);
-                var hoca = db.Hoca.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
                 Tez = db.Tez.Where(oo => oo.Id == ogid).FirstOrDefault();
+                var hoca = db.Hoca.Where(w => w.Id == Tez.Hoca_ID).FirstOrDefault();
                 Label1.Text += Tez.Konu;
                 Label3.Text = hoca.Ad;
                 Label5.Text = Label5.Text + Tez.Aciklama;
                 var tezalan = db.Ogrenci.Where(oo => oo.Tez_ID == ogid).ToList();
-                Repeater2.DataSource = tezalan;
-                Repeater2.DataBind();
+                if (tezalan.Count > 0)
+                {
+                    goster.Visible = true;
+                    gosterme.Visible = false;
+                    Repeater2.DataSource = tezalan;
+                    Repeater2.DataBind();
+                }
+                else
+                {
+                    goster.Visible = false;
+                    gosterme.Visible = true;
+                    lbgosterme.Text = "Yok";
+                }
+
                 Page.ClientScript.RegisterStartupScript(GetType(), "none", "$('#exampleModal').modal()", true);
                 break;
         }
@@ -92,24 +104,39 @@ public partial class Forms_Hoca_TezAra : TezBase
 
     protected void Arama_Click(object sender, EventArgs e)
     {
-
-        var keywordlist = Request["KeywordBox"].Trim();
-        int i = 0;
-        keywordlist = keywordlist.ToLower();
-        KeywordListesi = keywordlist.Split(',').ToList();
-       
-        var Ogrdb2 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id).ToList();
-        while (KeywordListesi.Count > i)
+        bilgi.Text = "";
+        if (Request.Form["KeywordBox"] != null)
         {
-            Tezlist.AddRange(Ogrdb2.Where(t => t.Hoca_ID == AppKontrol.id && t.keywords.Contains(KeywordListesi[i].ToString())).ToList());
-            i++;
+            
+            var keywordlist = Request["KeywordBox"].Trim();
+            int i = 0;
+            keywordlist = keywordlist.ToLower();
+            KeywordListesi = keywordlist.Split(',').ToList();
 
-        
+            var Ogrdb2 = db.Tez.ToList();
+            while (KeywordListesi.Count > i)
+            {
+                Tezlist.AddRange(Ogrdb2.Where(t => t.keywords.Contains(KeywordListesi[i].ToString())).ToList());
+                i++;
+            }
+            Tezlist = Tezlist.Distinct().ToList();
+            if (Tezlist.Count>0)
+            {
+                tezler.Visible = true;
+                Repeater1.DataSource = Tezlist;
+                Repeater1.DataBind();
+            }
+            else
+            {
+                tezler.Visible = false;
+                bilgi.Text= "tez Bulunamadı";
+            }
         }
-        Tezlist = Tezlist.Distinct().ToList();
-
-        Repeater1.DataSource = Tezlist;
-        Repeater1.DataBind();
+        else
+        {
+            tezler.Visible = false;
+            bilgi.Text = "Boş Gecilemez";
+        }
 
 
     }
