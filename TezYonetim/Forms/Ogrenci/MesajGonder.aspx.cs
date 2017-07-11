@@ -13,7 +13,11 @@ public partial class Forms_Ogrenci_MesajGonder : TezBaseUser
     {
 
         ogr = db.Ogrenci.Where(w => w.Id == AppKontrol.id).FirstOrDefault();
-        Alici.Text = "Alıcı : " + ogr.Hoca.Ad;
+        if(ogr.Hoca_ID != null)
+        {
+            Alici.Text = "Alıcı : " + ogr.Hoca.Ad;
+        }
+       
 
     }
     protected void btnGiris_Click(object sender, EventArgs e)
@@ -22,7 +26,11 @@ public partial class Forms_Ogrenci_MesajGonder : TezBaseUser
 
         string baslik = Request["Baslik"].Trim();
         string mesajT = Request["Mesaj"].Trim();
-        if (mesajT == "" || baslik == "")
+        if(ogr.Hoca_ID == null)
+        {
+            msgbilgi.Text = "Danışman Hoca Atanmadığından Mesaj Gönderemezsiniz!";
+        }
+        else if (mesajT == "" || baslik == "" || ogr.Hoca_ID == null)
         {
             msgbilgi.Text = "Lütfen Boş Geçmeyiniz";
         }
