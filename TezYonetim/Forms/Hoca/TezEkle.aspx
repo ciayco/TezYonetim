@@ -50,6 +50,7 @@
                             <script type="text/javascript">
                                 $(".js-example-basic-multiple").select2(
                                     {
+                                        maximumSelectionLength: 3,
                                         tags: true,
                                         tokenSeparators: [','],
                                         "language": {
@@ -58,6 +59,21 @@
                                             }
                                         },
                                     });
+                                $('form').on('submit', function () {
+                                    var minimum = 3;
+
+                                    if ($(".js-example-basic-multiple").select2('data').length >= minimum){
+                                        alert('Submited...')
+                                        return true;
+                                    }
+                          
+                                       
+                                    else {
+                                        alert('Seçilmesi gereken keyword sayısı : ' + minimum)
+                                        return false;
+                                    }
+                                   
+                                });
                             </script>
                             <div class="form-group">
                                 <div class="col-md-9">
@@ -70,7 +86,7 @@
                                 <!-- Button -->
                                 <div class="col-md-offset-3 col-md-9">
 
-                                    <asp:Button ID="btnGiris" runat="server" Text="  Kayit  " class="btn btn-info" OnClick="btnGiris_Click" />
+                                    <asp:Button ID="btnGiris" type="submit" runat="server" Text="  Kayit  " class="btn btn-info" OnClick="btnGiris_Click" />
 
                                 </div>
                             </div>
