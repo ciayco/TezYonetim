@@ -8,10 +8,21 @@
     <br />
     <form class="form-inline">
         <div class="form-group">
+            <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
             <label for="exampleInputFile">Keyword Arama</label><br />
             <br />
             <div class="input-group" style="width: 100%;">
-                <select name="KeywordBox" id="KeywordBox" class="js-example-basic-multiple form-control" multiple="multiple"></select>
+                <select name="KeywordBox" id="KeywordBox" class="js-example-basic-multiple form-control" multiple="multiple">
+                    <asp:Repeater ID="Repeater3" runat="server">
+                        <ItemTemplate>
+                            <option> 
+
+                               <%# Eval("NAME")  %>
+
+                            </option>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </select>
                 <script type="text/javascript">
                     $(".js-example-basic-multiple").select2(
                         {
@@ -27,50 +38,51 @@
 
             </div>
         </div>
-        <asp:Button ID="Button2" runat="server" class="btn btn-default" OnClick="Arama_Click" Text="Keyword Ara" /><br /><br />
+        <asp:Button ID="Button2" runat="server" class="btn btn-default" OnClick="Arama_Click" Text="Keyword Ara" /><br />
+        <br />
         <asp:Label ID="bilgi" runat="server"></asp:Label>
     </form>
     <div id="tezler" runat="server">
-    <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
-        <HeaderTemplate>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th style="text-align: center;">Konu </th>
-                        <th style="text-align: center;">Açıklama </th>
-                        <th style="text-align: center;">Poster </th>
-                        <th style="text-align: center;">İşlemler </th>
-                    </tr>
-                </thead>
-                <tbody>
-        </HeaderTemplate>
-        <ItemTemplate>
-            <tr>
-                <td><%#metin_kisalt_yan(Eval("Konu").ToString().Trim()) %></td>
-                <td><%#metin_kisalt_yan(Eval("aciklama").ToString().Trim()) %></td>
-                <td>
-                    <asp:ImageButton ID="ImageButton1" OnCommand="ImageButton1_Command" CommandName="poster" CommandArgument='<%# Eval("Id") %>' runat="server" Height="20px" Width="20px" ImageUrl='<%# "~/Posterler/" + Eval("ResimAd") + "." + Eval("ResimUzanti") %>' />
-                </td>
-                <td>
-                    <div class="btn-group">
-                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Tüm İşlemler <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <asp:LinkButton ID="incBut" CommandName="incele" runat="server" CommandArgument='<%# Eval("Id") %>'>İncele</asp:LinkButton></li>
+        <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+            <HeaderTemplate>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Konu </th>
+                            <th style="text-align: center;">Açıklama </th>
+                            <th style="text-align: center;">Poster </th>
+                            <th style="text-align: center;">İşlemler </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            </HeaderTemplate>
+            <ItemTemplate>
+                <tr>
+                    <td><%#metin_kisalt_yan(Eval("Konu").ToString().Trim()) %></td>
+                    <td><%#metin_kisalt_yan(Eval("aciklama").ToString().Trim()) %></td>
+                    <td>
+                        <asp:ImageButton ID="ImageButton1" OnCommand="ImageButton1_Command" CommandName="poster" CommandArgument='<%# Eval("Id") %>' runat="server" Height="20px" Width="20px" ImageUrl='<%# "~/Posterler/" + Eval("ResimAd") + "." + Eval("ResimUzanti") %>' />
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Tüm İşlemler <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <asp:LinkButton ID="incBut" CommandName="incele" runat="server" CommandArgument='<%# Eval("Id") %>'>İncele</asp:LinkButton></li>
 
-                        </ul>
-                    </div>
-                </td>
-            </tr>
-        </ItemTemplate>
-        <FooterTemplate>
-            </tbody> </table>
-        </FooterTemplate>
-    </asp:Repeater>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </ItemTemplate>
+            <FooterTemplate>
+                </tbody> </table>
+            </FooterTemplate>
+        </asp:Repeater>
     </div>
-     
+
     <!-- Modal başlangıç-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document">
@@ -93,7 +105,7 @@
                             </div>
                             <div class="panel-footer" style="text-align: left;">
                                 <div id="gosterme" runat="server">
-                                 <i class="glyphicon glyphicon-user">&nbsp;</i>Tezi Alan Öğrenciler:
+                                    <i class="glyphicon glyphicon-user">&nbsp;</i>Tezi Alan Öğrenciler:
                                
                                     <asp:Label ID="lbgosterme" runat="server" Text="Label"></asp:Label>
                                 </div>
@@ -105,12 +117,12 @@
                                             <asp:Label ID="lbtezalan" runat="server"></asp:Label>
                                         </ItemTemplate>
                                     </asp:Repeater>
-                                    </div>
-                                    <blockquote style="font-size: 14px;">
-                                        <asp:Label ID="Label5" runat="server"></asp:Label>
-                                    </blockquote>
                                 </div>
+                                <blockquote style="font-size: 14px;">
+                                    <asp:Label ID="Label5" runat="server"></asp:Label>
+                                </blockquote>
                             </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

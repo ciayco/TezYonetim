@@ -99,10 +99,12 @@
                 </div>
                 <div class="modal-footer">
                     <div style="float: right;" id="butonmodal" runat="server">
-                        <asp:Button runat="server" class="btn btn-primary" OnClick="Onayla_Click" Text="Kaydet" /></div>
+                        <asp:Button runat="server" class="btn btn-primary" OnClick="Onayla_Click" Text="Kaydet" />
+                    </div>
                     &nbsp;&nbsp;&nbsp;
                     <div style="float: right;">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button></div>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                    </div>
                     &nbsp;&nbsp;&nbsp;
                     
                 </div>

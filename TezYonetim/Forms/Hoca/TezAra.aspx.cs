@@ -12,19 +12,27 @@ public partial class Forms_Hoca_TezAra : TezBase
     Tez Tez;
     List<Tez> Tezlist;
     List<string> KeywordListesi;
+    List<string> deneme = new List<string>();
+    List<string> deneme2 = new List<string>();
     protected void Page_Load(object sender, EventArgs e)
     {
         db = new TezDBEntities();
         Tezlist = new List<Tez>();
         KeywordListesi = new List<string>();
-        /*  var Ogrdb1 = db.Tez.Where(t => t.Hoca_ID == AppKontrol.id).ToList();//alınan
+        var keywords = db.Tez.Where(w=> w.keywords!=null).ToList();
 
+        foreach (var item in keywords)
+        {
+            int first = item.keywords.IndexOf(",");
+            int last = item.keywords.LastIndexOf(",");
+            deneme.Add(item.keywords.Substring(0, first));
+            deneme.Add(item.keywords.Substring(first+1,last- first-1));
+            deneme.Add(item.keywords.Substring(last+1));
+            Label2.Text = deneme[0].ToString();
+        }
         
-          if (!IsPostBack)
-          {
-              Repeater1.DataSource = Ogrdb1;
-              Repeater1.DataBind();
-          }*/
+        Repeater3.DataSource = from c in deneme select new { NAME = c };
+        Repeater3.DataBind();
     }
     public string metin_kisalt_yan(string metin)
 
