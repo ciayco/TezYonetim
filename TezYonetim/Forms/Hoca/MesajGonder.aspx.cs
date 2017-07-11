@@ -28,7 +28,7 @@ public partial class Forms_Hoca_MesajGonder : TezBase
         hca = db.Hoca.Where(h => h.Id == AppKontrol.id).FirstOrDefault();
         string baslik = Request["Baslik"].Trim();
         string mesajT = Request["Mesaj"].Trim();
-        if (mesajT == "" || baslik == "")
+        if (mesajT == "" || baslik == "" || Alici.SelectedValue=="")
         {
             msgbilgi.Text = "Lütfen Boş Geçmeyiniz";
         }
