@@ -33,13 +33,25 @@
                                 <div class="col-md-9">
                                     <textarea class="form-control" rows="5" id="comment" name="Aciklama" placeholder="Tez Açıklama"></textarea>
                                 </div>
-                            </div><br /><br /><br /><br /><br /><br />
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
                             <div class="form-group">
                                 <label for="name" class="col-md-3 control-label">Öğrenci Sayısı: </label>
                                 <div class="col-md-9">
                                     <input type="number" value="1" class="form-control" name="TezAdet">
                                 </div>
-                            </div><br /><br /><br /><br /><br /><br />
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
                             <div class="form-group">
                                 <label for="name" class="col-md-3 control-label">Keywords: </label>
                                 <div class="col-md-9">
@@ -56,23 +68,25 @@
                                         "language": {
                                             "noResults": function () {
                                                 return "Keywordleri girdikten sonra Enter'a basabilir ya da virgül (,) koyabilirsiniz.";
+                                            },
+                                            "maximumSelected": function () {
+                                                return "En fazla 3 adet Keywords girebilirsiniz";
                                             }
                                         },
                                     });
                                 $('form').on('submit', function () {
                                     var minimum = 3;
 
-                                    if ($(".js-example-basic-multiple").select2('data').length >= minimum){
-                                        alert('Submited...')
+                                    if ($(".js-example-basic-multiple").select2('data').length >= minimum) {
                                         return true;
                                     }
-                          
-                                       
+
+
                                     else {
                                         alert('Seçilmesi gereken keyword sayısı : ' + minimum)
                                         return false;
                                     }
-                                   
+
                                 });
                             </script>
                             <div class="form-group">
@@ -81,7 +95,9 @@
                                         <asp:Label ID="uyari" runat="server" ForeColor="Red"></asp:Label>
                                     </p>
                                 </div>
-                            </div><br /><br />
+                            </div>
+                            <br />
+                            <br />
                             <div class="form-group">
                                 <!-- Button -->
                                 <div class="col-md-offset-3 col-md-9">
