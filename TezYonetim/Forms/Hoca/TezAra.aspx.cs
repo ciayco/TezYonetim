@@ -28,7 +28,6 @@ public partial class Forms_Hoca_TezAra : TezBase
             deneme.Add(item.keywords.Substring(0, first));
             deneme.Add(item.keywords.Substring(first+1,last- first-1));
             deneme.Add(item.keywords.Substring(last+1));
-            Label2.Text = deneme[0].ToString();
         }
         
         Repeater3.DataSource = from c in deneme select new { NAME = c };

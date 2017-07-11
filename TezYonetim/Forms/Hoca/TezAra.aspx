@@ -8,7 +8,6 @@
     <br />
     <form class="form-inline">
         <div class="form-group">
-            <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
             <label for="exampleInputFile">Keyword Arama</label><br />
             <br />
             <div class="input-group" style="width: 100%;">
