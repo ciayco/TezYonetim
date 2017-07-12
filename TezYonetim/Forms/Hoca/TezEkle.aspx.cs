@@ -33,6 +33,7 @@ public partial class TezEkle : TezBase
                 tez.ResimUzanti = "png";
                 tez.Tez_Alan = 0;
                 tez.durum = true;
+                tez.ResimDurum = 1;
                 tez.keywords = keywordlist;
                 db.Tez.Add(tez);
                 db.SaveChanges();

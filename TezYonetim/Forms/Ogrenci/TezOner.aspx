@@ -37,6 +37,46 @@
                             <br />
                             <br />
                             <div class="form-group">
+                                <label for="name" class="col-md-3 control-label">Keywords: </label>
+                                <div class="col-md-9">
+                                    <select name="KeywordBox" id="KeywordBox" class="js-example-basic-multiplee form-control" multiple="multiple"></select>
+                                </div>
+                            </div>
+                                 <script type="text/javascript">
+                                $(".js-example-basic-multiplee").select2(
+                                    {
+                                        maximumSelectionLength: 3,
+                                        tags: true,
+                                        tokenSeparators: [','],
+                                        "language": {
+                                            "noResults": function () {
+                                                return "3 ADET 'Keyword' GİRİNİZ - Keywordleri girdikten sonra Enter'a basabilir ya da virgül (,) koyabilirsiniz.";
+                                            },
+                                            "maximumSelected": function () {
+                                                return "En fazla 3 adet Keywords girebilirsiniz";
+                                            }
+                                        },
+                                    });
+                                $('form').on('submit', function () {
+                                    var minimum = 3;
+
+                                    if ($(".js-example-basic-multiplee").select2('data').length >= minimum) {
+                                        return true;
+                                    }
+
+
+                                    else {
+                                        alert('Seçilmesi gereken keyword sayısı : ' + minimum)
+                                        return false;
+                                    }
+
+                                });
+                            </script>
+
+                            <br />
+                            <br />
+                            <br />
+                            <div class="form-group">
                                 <label for="name" class="col-md-3 control-label">Tezi Alan Diğer Öğrenciler(Varsa): </label>
                                 <div class="col-md-9">
                                     <select name="TeziAlanDigerOgrenciler" id="TeziAlanDigerOgrenciler" class="js-example-basic-multiple form-control" multiple="multiple"></select>
@@ -55,10 +95,12 @@
                                         },
                                     });
                             </script>
+                            <!--Select2-->
+
                             <div class="form-group">
                                 <div class="col-md-9">
                                     <p>
-                                        <asp:Label ID="label1" runat="server" ForeColor="Red"></asp:Label>
+                                        <asp:Label ID="uyarı" runat="server" ForeColor="Red"></asp:Label>
                                     </p>
                                 </div>
                             </div>
@@ -66,8 +108,7 @@
                                 <!-- Button -->
                                 <div class="col-md-offset-3 col-md-9">
 
-
-                                    <asp:Button runat="server" class="btn btn-primary" OnClick="btnGiris_Click" Text="Kaydet" />
+                                    <asp:Button runat="server" type="submit" class="btn btn-primary" OnClick="btnGiris_Click" Text="Kaydet" />
                                 </div>
                             </div>
 

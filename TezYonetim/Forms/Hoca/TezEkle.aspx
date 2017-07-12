@@ -47,11 +47,7 @@
                                 </div>
                             </div>
                             <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <br />
+                            <br />                         
                             <div class="form-group">
                                 <label for="name" class="col-md-3 control-label">Keywords: </label>
                                 <div class="col-md-9">
@@ -67,7 +63,7 @@
                                         tokenSeparators: [','],
                                         "language": {
                                             "noResults": function () {
-                                                return "Keywordleri girdikten sonra Enter'a basabilir ya da virgül (,) koyabilirsiniz.";
+                                                return "3 ADET 'Keyword' GİRİNİZ - Keywordleri girdikten sonra Enter'a basabilir ya da virgül (,) koyabilirsiniz.";
                                             },
                                             "maximumSelected": function () {
                                                 return "En fazla 3 adet Keywords girebilirsiniz";
