@@ -20,7 +20,7 @@ public partial class Forms_Admin_İndex : TezBaseAdmin
 
     protected void Password_Click(object sender, EventArgs e)
     {
-        if (Password.Text != null && Password1.Text != null && Password2.Text != null)
+        if (Password.Text != "" && Password1.Text != "" && Password2.Text != "")
         {
             var guncelKayit = db.Admin.Find(AppKontrol.id);
             string pass = Sifreleme.Sifrele(Password.Text);
